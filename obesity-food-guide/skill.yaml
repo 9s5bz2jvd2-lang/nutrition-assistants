@@ -1,0 +1,82 @@
+name: obesity-food-guide
+display_name: "成人肥胖食养助手"
+version: "1.0.0"
+category: nutrition
+language: zh-CN
+
+source:
+  title: "成人肥胖食养指南(2024年版)"
+  publisher: "国家卫生健康委"
+  year: 2024
+
+parameters:
+  energy_range: [1200, 1400, 1600]  # kcal
+  bmi_obesity: 28.0
+  bmi_overweight: 24.0
+  waist_male: 90  # cm
+  waist_female: 85  # cm
+  protein_ratio: [15, 20]  # %
+  fat_ratio: [20, 30]  # %
+  carb_ratio: [50, 60]  # %
+  oil_limit: [20, 25]  # g/d
+  salt_limit: 5  # g/d
+  regions: 7
+  seasons: 4
+  recipes_per_region_season: 3
+  total_recipes: 84
+  syndrome_types: 5
+  dietary_formulas: 10
+  kpk_count: 18
+
+syndrome_types_detail:
+  - id: 1
+    name: "胃热火郁证"
+    principle: "清胃热、消导滞"
+    formulas: ["铁皮石斛玉竹煲瘦肉", "三豆饮", "芦根汤"]
+    foods: ["铁皮石斛", "麦芽", "鲜芦根", "荷叶"]
+  - id: 2
+    name: "痰湿内盛证"
+    principle: "化痰消滞"
+    formulas: ["柚子皮茯苓炖牛尾骨", "薏苡仁冬瓜汤", "橘枣茶"]
+    foods: ["薏苡仁", "橘皮", "砂仁", "芡实", "党参", "白扁豆", "茯苓", "山药", "莲子"]
+  - id: 3
+    name: "气郁血瘀证"
+    principle: "理气化瘀"
+    formulas: ["佛手橘皮山楂粥", "山楂内金粥", "山楂橘皮茶"]
+    foods: ["橘皮", "山楂", "佛手", "砂仁"]
+  - id: 4
+    name: "脾虚不运证"
+    principle: "健脾益气"
+    formulas: ["黄芪橘皮饮", "扁豆山药粥", "荷叶减肥茶"]
+    foods: ["茯苓", "山药", "莲子", "白扁豆", "黄芪", "麦芽", "砂仁", "木瓜", "大枣"]
+  - id: 5
+    name: "脾肾阳虚证"
+    principle: "温阳补虚"
+    formulas: ["山药黄芪炖鸭肉汤", "人参核桃汤", "姜桂茶"]
+    foods: ["小茴香", "山药", "肉桂", "干姜", "黄芪"]
+
+regions_list:
+  - "华北"
+  - "东北"
+  - "华东"
+  - "华中"
+  - "华南"
+  - "西南"
+  - "西北"
+
+seasons_list:
+  - "春季"
+  - "夏季"
+  - "秋季"
+  - "冬季"
+
+files:
+  skill_meta: "obesity-SKILL.md"
+  system_prompt: "obesity-system_prompt.md"
+  knowledge_base: "obesity-knowledge_base.md"
+  kpk_principles: "obesity-kpk_principles.md"
+  kpk_disease: "obesity-kpk_disease.md"
+  kpk_appendix: "obesity-kpk_appendix.md"
+  kpk_qa: "obesity-kpk_qa.md"
+  recipes_data: "obesity-recipes_data.md"
+  dietary_formulas: "obesity-dietary_formulas.md"
