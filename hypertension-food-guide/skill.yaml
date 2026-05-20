@@ -1,0 +1,40 @@
+name: nutrition-hypertension-food-guide
+version: 1.0.0
+description: "Load when user asks about 高血压饮食、降血压食物、低盐/减钠/增钾饮食、DASH饮食、得舒饮食、高血压食谱、高血压食疗、收缩压/舒张压、心血管风险饮食干预——基于国家卫健委《成人高血压营养指南(2023年版)》，含12个KPK知识点、7种中医证型×2营养方=14个营养方、7大地区×4季×3天=84套食谱"
+author: 王润圆
+license: MIT
+trigger_words:
+  - 高血压
+  - 血压
+  - 降压
+  - 减钠
+  - 增钾
+  - 低盐饮食
+  - DASH饮食
+  - 得舒饮食
+  - 高血压食疗
+  - 眩晕头痛
+  - 收缩压
+  - 舒张压
+  - SBP
+  - DBP
+  - 心血管风险
+source:
+  title: 《成人高血压食养指南（2023年版）》
+  publisher: 国家卫生健康委办公厅
+  year: 2023
+disclaimer: |
+  本Skill内容全部来自《成人高血压食养指南（2023年版）》，仅供食养科普参考，不可替代药物治疗和专业医疗诊断。
+  本指南适用于成人高血压人群的辅助预防与改善。有其他合并症者请遵医嘱。
+  食药物质和新食品原料的食用应在专业人员指导下进行。
+files:
+  - SKILL.md
+  - system_prompt.md
+  - kpk_principles.md
+  - kpk_disease.md
+  - kpk_appendix.md
+  - kpk_qa.md
+  - knowledge_base.md
+  - recipes_data.md
+  - recipes_overview.md
+  - dietary_formulas.md
