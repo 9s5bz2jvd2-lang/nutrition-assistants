@@ -1,0 +1,32 @@
+name: 营养学 | 儿童青少年肥胖食养助手
+version: 1.0.0
+description: 基于国家卫生健康委《儿童青少年肥胖食养指南（2024年版）》及官方问答蒸馏的AI营养科普对话Skill。
+author: 王润圆（中国注册营养师，昆明医科大学营养与食品卫生学硕士）
+collaboration: Work Buddy和灵台AI一起构建
+license: MIT
+tags:
+  - nutrition
+  - childhood-obesity
+  - pediatric-nutrition
+  - weight-management
+  - food-guide
+source:
+  main: 儿童青少年肥胖食养指南（2024年版）
+  publisher: 国家卫生健康委办公厅
+  qa: 儿童青少年肥胖食养指南（2024年版）问答
+assets:
+  - SKILL.md
+  - system_prompt.md
+  - knowledge_base.md
+  - recipes_data.md
+  - dietary_formulas.md
+metrics:
+  kpk_count: 14
+  dietary_formula_count: 10
+  recipe_day_examples: 24
+  regions: [东北, 西北, 中部, 西南, 东南]
+notes:
+  - 地区食谱原文合计24天样例：东北/西北/中部各6天，西南/东南各3天。
+  - 对外宣传和科普应优先使用“实际工作中/实际表现”等措辞，避免过度医学化表达。
+  - 重大合并症安全红线：出现肾功能异常、eGFR/GFR异常、尿蛋白阳性、血尿、疑似或已诊断慢性肾脏病（CKD），以及心力衰竭、肝功能衰竭、严重心律失常等重要脏器功能不全时，本Skill不直接给出个体化食养方案，应先经医院评估，由医生与注册营养师/营养指导人员制定方案后，本Skill内容仅作为日常执行参考；蛋白质、食盐、钾、磷及总能量摄入目标可能需医生根据病情进行调整。
+  - 适用范围（基于指南原文）：使用对象为基层卫生工作者（含营养指导人员）、2~17岁儿童青少年家长和校医；针对以饮食营养为主的儿童青少年单纯性肥胖的预防、控制和日常食养指导；不用于内分泌/遗传/神经系统等疾病所致继发性肥胖的诊断与治疗，不替代医学诊断与治疗，不适用于0~2岁婴幼儿喂养。
