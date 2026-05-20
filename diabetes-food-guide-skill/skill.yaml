@@ -1,0 +1,19 @@
+name: nutrition-diabetes-food-guide
+title: "营养学 | 成人糖尿病食养助手 (Diabetes Food Guide Skill)"
+version: 1.0.0
+author: 王润圆
+description: "Load when user asks about 糖尿病、血糖、胰岛素抵抗、HbA1c、糖化血红蛋白、空腹血糖、餐后血糖、低GI食物、食物交换份、糖尿病食谱、控糖饮食、中医辨证施膳(阴虚热盛/气阴两虚/阴阳两虚)——基于国家卫健委《成人糖尿病营养指南(2023年版)》，含14个KPK知识点、84套食谱(7地区×4季×3能量等级)、9个中医营养方、3种中医证型、完整GI分类表和7类食物交换表"
+
+tags:
+  - nutrition
+  - diabetes
+  - food-guide
+  - tcm
+  - health
+files:
+  - SKILL.md
+  - knowledge_base.md
+  - system_prompt.md
+  - recipes_data.md
+  - recipes_overview.md
+  - dietary_formulas.md
