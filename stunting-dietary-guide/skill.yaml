@@ -1,0 +1,23 @@
+---
+skill_name: 营养学 | 儿童青少年成长迟缓食养助手 (Childhood Stunting Dietary Guide)
+version: 1.0.0
+description: 营养学 Skill — 基于《儿童青少年生长迟缓食养指南（2023年版）》的AI科普对话助手。含13个KPK知识点、5地区15套食谱、7类食物交换表、9个食养方、7种中医证型。
+author: 王润圆（中国注册营养师，昆明医科大学营养与食品卫生学硕士）
+license: MIT
+
+source:
+  title: 儿童青少年生长迟缓食养指南（2023年版）
+  edition: 2023
+  publisher: 国家卫生健康委办公厅
+
+creator:
+  name: 王润圆
+  credential: 中国注册营养师
+  education: 昆明医科大学 营养与食品卫生学 硕士
+  tool: WorkBuddy
+
+knowledge_base: knowledge_base.md
+conversation:
+  max_context_turns: 100
+  adaptive_context: true
+  summary_interval: 20
