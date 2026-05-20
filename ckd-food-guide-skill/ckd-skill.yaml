@@ -1,0 +1,50 @@
+skill_name: 营养学 | 慢性肾脏病食养助手 (CKD Food Guide)
+version: 1.0.0
+description: 营养学 Skill — 基于《成人慢性肾脏病食养指南（2024年版）》的科普对话助手。覆盖CKD 1-5期及透析期的食养原则、中医辨证食养、7地区84套食谱、食物营养成分表及营养管理方案。
+author: 王润圆（中国注册营养师，昆明医科大学营养与食品卫生学硕士）
+license: MIT
+
+source:
+  title: 成人慢性肾脏病食养指南（2024年版）
+  edition: 2024
+  publisher: 国家卫生健康委办公厅
+  release_date: 2024
+
+creator:
+  name: 王润圆
+  credential: 中国注册营养师
+  education: 昆明医科大学 营养与食品卫生学 硕士
+  tool: WorkBuddy
+
+tags:
+  - nutrition
+  - chronic-kidney-disease
+  - ckd
+  - dietary-therapy
+  - tcm-diet-therapy
+  - food-guide
+  - health-guidance
+  - renal-nutrition
+  - 食养指南
+  - 慢性肾脏病
+
+conversation:
+  max_context_turns: 100
+  adaptive_context: true
+  summary_interval: 20
+
+files:
+  knowledge_base: ckd-knowledge_base.md
+  recipes: ckd-recipes_all.md
+  system_prompt: ckd-system_prompt.md
+  skill_metadata: ckd-skill.yaml
+
+features:
+  - 分期差异化饮食指导（CKD 1-2期 / 3-5期 / 5期透析）
+  - 中医七种证型辨证施膳（气虚/血虚/阴虚/阳虚 + 湿/热/瘀）
+  - 7地区×3分期×4季 = 84套全天膳食食谱
+  - 常见食物钠钾磷蛋白质含量速查表
+  - 食物交换表（灵活搭配工具）
+  - 7种症状食养方（水肿/尿频/贫血/腹泻/便秘/咽干/腰膝酸软）
+  - 电解质安全管理（钾/磷/钠个体化指导）
+  - 透析期特殊营养方案
