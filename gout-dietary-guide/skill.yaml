@@ -1,0 +1,37 @@
+skill_name: 营养学 | 高尿酸血症与痛风营养助手 (Hyperuricemia & Gout Dietary Guide)
+version: 1.1.0
+description: >-
+  Load when 用户提到痛风、高尿酸、尿酸高、嘌呤、大脚趾红肿热痛、
+  关节结晶，或问"尿酸高能吃什么""痛风发作怎么办""怎么降尿酸""XX食物嘌呤多少"。
+  涵盖急性期/缓解期饮食、中医辨证施膳（湿热/湿浊/痰瘀/脾肾亏虚）、
+  食物嘌呤查询（400+种）、72套地区×季节食谱定制。
+author: 王润圆（中国注册营养师，昆明医科大学营养与食品卫生学硕士）
+license: MIT
+
+source:
+  title: 成人高尿酸血症与痛风营养指南（2024年版）
+  edition: 2024
+  publisher: 国家卫生健康委办公厅
+  year: 2024
+  pages: 72
+
+creator:
+  name: 王润圆
+  credential: 中国注册营养师
+  education: 昆明医科大学 营养与食品卫生学 硕士
+  tool: WorkBuddy
+
+structure:
+  knowledge_base: gout-knowledge_base.md
+  recipes:
+    - gout-recipes_overview.md
+    - gout-recipes_inland.md
+    - gout-recipes_coastal.md
+    - gout-recipes_plateau.md
+  dietary_formulas: gout-dietary_formulas.md
+
+kpk_count: 18
+recipe_count: 72
+formula_count: 24
+syndrome_types: 4
+region_count: 3
