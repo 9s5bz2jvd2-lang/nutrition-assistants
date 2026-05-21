@@ -1,0 +1,4121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 入门四节课 · 课件 v0.5 Fresh Design</title>
+  <style>
+/* ============================================================
+   AI 入门四节课 · 课件 v0.5 Fresh Design — 内联样式
+   基于 HTML 结构 class 名重建
+   ============================================================ */
+
+/* ========== 变量与基础 ========== */
+:root {
+  --c-text: #2c2c2c;
+  --c-text-light: #5a5a5a;
+  --c-text-muted: #888;
+  --c-bg: #fafaf7;
+  --c-bg-card: #ffffff;
+  --c-bg-stage: #f5f3ef;
+  --c-accent: #3b6fb6;       /* 深蓝 — AI/专业 */
+  --c-accent-light: #e8f0fa;
+  --c-warm: #d4784c;         /* 暖橙 — 行动/亲和 */
+  --c-warm-light: #fdf0e6;
+  --c-green: #3d8b6e;        /* 绿 — 健康/灵台 */
+  --c-green-light: #eaf5ef;
+  --c-red: #c0392b;          /* 红 — 警告/红线 */
+  --c-red-light: #fdecea;
+  --c-purple: #7b5ea7;       /* 紫 — 未来 */
+  --c-purple-light: #f2edf7;
+  --c-gray: #e8e5df;
+  --c-gray-light: #f8f7f5;
+  --c-border: #e0dcd5;
+  --r: 12px;
+  --r-sm: 8px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+  --shadow-md: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,.10);
+  --font: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html, body {
+  width: 100%; height: 100%;
+  font-family: var(--font);
+  font-size: 16px; line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-bg-stage);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== 顶栏 ========== */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; gap: 8px; padding: 10px 20px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-border);
+}
+.topbar button {
+  padding: 6px 18px; border-radius: 20px; border: 1px solid var(--c-border);
+  background: var(--c-bg-card); color: var(--c-text-light);
+  font-size: 14px; cursor: pointer; transition: all .2s;
+}
+.topbar button:hover {
+  background: var(--c-accent-light); border-color: var(--c-accent); color: var(--c-accent);
+}
+
+/* ========== 舞台 & 幻灯片 ========== */
+.stage {
+  width: 100%; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.slide-frame {
+  width: 100%; max-width: 960px;
+  height: 100%; position: relative;
+  padding: 80px 20px 60px;
+  display: flex; align-items: center; justify-content: center;
+}
+.slide {
+  display: none;
+  width: 100%; max-width: 860px;
+  background: var(--c-bg-card);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-lg);
+  padding: 48px 56px;
+  flex-direction: column;
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+.slide.active {
+  display: flex;
+}
+
+/* ========== 封面页 ========== */
+.slide.cover {
+  text-align: center; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #f0f4fb 0%, #e8ecf4 40%, #f8f5f0 100%);
+  min-height: 520px;
+}
+.slide.cover .eyebrow {
+  font-size: 13px; letter-spacing: .3em;
+  color: var(--c-accent); text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.slide.cover h1 {
+  font-size: 48px; font-weight: 800; color: var(--c-text);
+  letter-spacing: .04em; margin-bottom: 16px;
+}
+.slide.cover .lead {
+  font-size: 18px; color: var(--c-text-light);
+  margin-bottom: 28px; max-width: 420px;
+}
+.slide.cover .meta {
+  font-size: 14px; color: var(--c-text-muted);
+  margin-bottom: 24px;
+}
+.slide.cover .speaker {
+  font-size: 15px; color: var(--c-text-light);
+  margin-bottom: 6px;
+}
+.slide.cover .speaker strong { color: var(--c-accent); }
+.slide.cover .credit {
+  font-size: 12px; color: var(--c-text-muted);
+  letter-spacing: .06em;
+}
+
+/* ========== 幻灯片头部 ========== */
+.slide-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 28px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--c-gray);
+}
+.lesson-badge {
+  display: inline-block; padding: 3px 14px; border-radius: 20px;
+  background: var(--c-accent-light); color: var(--c-accent);
+  font-size: 12px; font-weight: 600; letter-spacing: .04em;
+}
+.slide-title {
+  font-size: 28px; font-weight: 700; color: var(--c-text);
+  margin-top: 10px;
+}
+.slide-subtitle {
+  font-size: 15px; color: var(--c-text-muted); margin-top: 6px;
+}
+
+/* ========== 幻灯片主体 ========== */
+.slide-body {
+  flex: 1; overflow-y: auto;
+  font-size: 15px; color: var(--c-text);
+}
+.slide-body p { margin-bottom: 12px; }
+
+/* ========== 幻灯片底部 ========== */
+.slide-foot {
+  margin-top: 24px; padding-top: 14px;
+  border-top: 1px solid var(--c-gray);
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--c-text-muted);
+}
+.brand { font-weight: 600; color: var(--c-accent); }
+
+/* ========== 导航控制 ========== */
+.controls {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--c-border);
+}
+.controls button {
+  padding: 8px 24px; border-radius: 20px;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg-card); color: var(--c-text);
+  font-size: 14px; cursor: pointer; transition: all .2s;
+}
+.controls button:hover {
+  background: var(--c-accent); color: #fff; border-color: var(--c-accent);
+}
+.pageinfo {
+  font-size: 13px; color: var(--c-text-muted);
+  min-width: 80px; text-align: center;
+}
+
+/* ========== 卡片系统 ========== */
+.cards {
+  display: grid; gap: 16px;
+}
+.cards.cols-2 { grid-template-columns: 1fr 1fr; }
+.cards.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-gray);
+  border-radius: var(--r);
+  padding: 24px;
+  transition: box-shadow .2s;
+}
+.card:hover { box-shadow: var(--shadow-md); }
+
+.card.key {
+  border-left: 4px solid var(--c-accent);
+}
+.card.term {
+  border-left: 4px solid var(--c-warm);
+}
+.card.example {
+  border-left: 4px solid var(--c-green);
+}
+.card.warn {
+  border-left: 4px solid var(--c-red);
+  background: var(--c-red-light);
+}
+
+.card-title {
+  font-size: 17px; font-weight: 700; color: var(--c-text);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-tag {
+  display: inline-block; padding: 2px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 600;
+  background: var(--c-accent-light); color: var(--c-accent);
+}
+.card.warn .card-tag { background: #f5d0cb; color: var(--c-red); }
+.card-body {
+  font-size: 14px; color: var(--c-text-light); line-height: 1.7;
+}
+
+/* ========== 引用块 ========== */
+.pull-quote {
+  background: var(--c-accent-light);
+  border-left: 4px solid var(--c-accent);
+  padding: 24px 28px; border-radius: 0 var(--r) var(--r) 0;
+  font-size: 18px; line-height: 1.8; color: var(--c-text);
+  margin-bottom: 20px;
+}
+.pull-quote strong { color: var(--c-accent); }
+
+/* ========== Q&A 卡片 ========== */
+.qa-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-gray);
+  border-radius: var(--r);
+  padding: 18px 22px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.qa-icon {
+  font-size: 28px; flex-shrink: 0;
+}
+.qa-label {
+  font-size: 12px; font-weight: 700; color: var(--c-warm);
+  text-transform: uppercase; letter-spacing: .06em;
+  margin-bottom: 2px;
+}
+.qa-question {
+  font-size: 15px; font-weight: 600; color: var(--c-text);
+  margin-bottom: 4px;
+}
+.qa-text {
+  font-size: 14px; color: var(--c-text-light);
+}
+
+/* ========== 温和提示 ========== */
+.soft-tip {
+  background: var(--c-warm-light);
+  border: 1px solid #f0d8c4;
+  border-radius: var(--r);
+  padding: 14px 20px;
+  font-size: 14px; color: var(--c-text);
+  display: flex; align-items: center; gap: 10px;
+}
+.soft-tip::before { content: "💡"; font-size: 18px; }
+
+/* ========== 时间线 ========== */
+.timeline {
+  position: relative; padding-left: 32px;
+}
+.timeline::before {
+  content: ""; position: absolute; left: 12px; top: 4px; bottom: 4px;
+  width: 2px; background: var(--c-accent); opacity: .3;
+}
+.timeline-row {
+  display: flex; gap: 16px; align-items: baseline;
+  margin-bottom: 16px; position: relative;
+}
+.timeline-dot {
+  position: absolute; left: -26px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--c-accent); border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--c-accent);
+}
+.timeline-time {
+  font-size: 14px; font-weight: 700; color: var(--c-accent);
+  min-width: 80px; flex-shrink: 0;
+}
+.timeline-text {
+  font-size: 14px; color: var(--c-text-light); line-height: 1.6;
+}
+
+/* ========== 目录网格 ========== */
+.toc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.toc-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-gray);
+  border-radius: var(--r);
+  padding: 24px;
+  cursor: pointer; transition: all .25s;
+}
+.toc-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--c-accent);
+}
+.toc-card .num {
+  font-size: 12px; font-weight: 700; color: var(--c-accent);
+  letter-spacing: .04em; margin-bottom: 6px;
+}
+.toc-card .ttl {
+  font-size: 22px; font-weight: 700; color: var(--c-text);
+  margin-bottom: 8px;
+}
+.toc-card .desc {
+  font-size: 14px; color: var(--c-text-light); line-height: 1.6;
+  margin-bottom: 10px;
+}
+.toc-card .time {
+  font-size: 12px; color: var(--c-text-muted);
+}
+
+/* ========== 目录弹窗面板 ========== */
+.toc-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.35);
+}
+.toc-overlay.show { display: block; }
+.toc-panel {
+  display: none; position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); z-index: 201;
+  background: var(--c-bg-card); border-radius: var(--r);
+  box-shadow: var(--shadow-lg); padding: 32px;
+  width: 90%; max-width: 640px; max-height: 80vh; overflow-y: auto;
+}
+.toc-panel.show { display: block; }
+
+/* ========== 讲者备注面板 ========== */
+.notes-data {
+  display: none;
+}
+.notes-panel {
+  display: none; position: fixed; top: 0; right: 0; bottom: 0; z-index: 150;
+  width: 360px; background: #fffdf7; border-left: 1px solid var(--c-gray);
+  box-shadow: -4px 0 20px rgba(0,0,0,.08);
+  padding: 60px 28px 40px; overflow-y: auto;
+  font-size: 13px; color: var(--c-text-light); line-height: 1.8;
+}
+.notes-panel.show { display: block; }
+.notes-body { white-space: pre-wrap; }
+
+/* ========== 品牌卡片 ========== */
+.brand-grid {
+  display: grid; gap: 12px;
+}
+.brand-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.brand-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.brand-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-gray);
+  border-radius: var(--r); padding: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand-logo {
+  width: 44px; height: 44px; border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 15px; color: #fff; flex-shrink: 0;
+}
+.brand-logo.blue  { background: #3b6fb6; }
+.brand-logo.coral { background: #d4784c; }
+.brand-logo.gold  { background: #b8943e; }
+.brand-logo.plum  { background: #7b5ea7; }
+.brand-logo.sage  { background: #3d8b6e; }
+.brand-logo.teal  { background: #378f8f; }
+.brand-logo.warm  { background: #c06040; }
+.brand-info { flex: 1; }
+.brand-name { font-size: 15px; font-weight: 700; color: var(--c-text); }
+.brand-tag  { font-size: 12px; color: var(--c-text-muted); margin-top: 2px; }
+.brand-desc { font-size: 13px; color: var(--c-text-light); margin-top: 4px; line-height: 1.5; }
+
+/* ========== 人物卡片 ========== */
+.people-grid {
+  display: grid; gap: 14px;
+}
+.people-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.people-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.person-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-gray);
+  border-radius: var(--r); padding: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.person-photo {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 20px; color: #fff; flex-shrink: 0;
+}
+.person-avatar.blue  { background: #3b6fb6; }
+.person-avatar.coral { background: #d4784c; }
+.person-avatar.gold  { background: #b8943e; }
+.person-avatar.plum  { background: #7b5ea7; }
+.person-avatar.sage  { background: #3d8b6e; }
+.person-avatar.teal  { background: #378f8f; }
+.person-avatar.warm  { background: #c06040; }
+.person-info { flex: 1; }
+.person-name { font-size: 15px; font-weight: 700; color: var(--c-text); }
+.person-role { font-size: 12px; color: var(--c-text-muted); margin-top: 2px; }
+.person-desc { font-size: 13px; color: var(--c-text-light); margin-top: 4px; line-height: 1.5; }
+
+/* ========== 模型动物园 ========== */
+.model-zoo {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.model-chip {
+  background: var(--c-gray-light);
+  border: 1px solid var(--c-gray);
+  border-radius: 20px; padding: 6px 14px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+}
+.model-name { font-weight: 700; color: var(--c-text); }
+.model-by   { color: var(--c-text-muted); font-size: 11px; }
+.model-tag  {
+  padding: 1px 8px; border-radius: 10px;
+  font-size: 10px; font-weight: 600;
+}
+.model-tag.gold { background: #fdf0e0; color: #b8943e; }
+.model-tag.sage { background: #eaf5ef; color: #3d8b6e; }
+
+/* ========== 清单 ========== */
+.list-checks {
+  list-style: none; padding: 0;
+}
+.list-checks li {
+  padding: 6px 0; padding-left: 28px; position: relative;
+  font-size: 15px; color: var(--c-text);
+}
+.list-checks li::before {
+  content: "✓"; position: absolute; left: 0; top: 6px;
+  font-weight: 700; color: var(--c-green); font-size: 14px;
+}
+
+/* ========== 表格 ========== */
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px; margin: 12px 0;
+}
+thead { background: var(--c-accent); color: #fff; }
+th {
+  padding: 10px 14px; text-align: left;
+  font-weight: 600; font-size: 13px;
+}
+td {
+  padding: 9px 14px; border-bottom: 1px solid var(--c-gray);
+}
+tbody tr:nth-child(even) { background: var(--c-gray-light); }
+tbody tr:hover { background: var(--c-accent-light); }
+
+/* ========== 工具类 ========== */
+.ttl  { font-weight: 700; }
+.time { color: var(--c-text-muted); font-size: 13px; }
+.num  { font-weight: 700; color: var(--c-accent); }
+.desc { color: var(--c-text-light); font-size: 14px; }
+.hint { font-size: 12px; color: var(--c-text-muted); }
+.by   { font-size: 12px; color: var(--c-text-muted); }
+.t    { font-size: inherit; }
+
+/* ========== 导出PDF模式 ========== */
+@media print {
+  .topbar, .controls { display: none !important; }
+  .stage { height: auto; overflow: visible; }
+  .slide-frame { height: auto; padding: 0; display: block; }
+  .slide {
+    display: flex !important;
+    box-shadow: none; border-radius: 0;
+    page-break-after: always; min-height: auto;
+    padding: 32px 48px;
+  }
+  body { background: #fff; }
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  .slide { padding: 28px 24px; }
+  .slide-title { font-size: 22px; }
+  .cards.cols-3, .brand-grid.cols-3, .people-grid.cols-3 { grid-template-columns: 1fr; }
+  .cards.cols-2, .toc-grid, .brand-grid.cols-2, .people-grid.cols-2 { grid-template-columns: 1fr; }
+  .slide.cover h1 { font-size: 32px; }
+  .notes-panel { width: 280px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     顶部按钮：目录 / 备注 / 打印
+     ============================================================ -->
+<div class="topbar">
+  <button id="btn-toc" type="button" title="目录（T）">目录</button>
+  <button id="btn-notes" type="button" title="讲者备注（N）">备注</button>
+  <button id="btn-print" type="button" title="导出 PDF（P）">导出 PDF</button>
+</div>
+
+<!-- ============================================================
+     舞台：所有幻灯片
+     ============================================================ -->
+<div class="stage">
+<div class="slide-frame">
+
+  <!-- ====== 1 / 封面 ====== -->
+  <section class="slide cover active" id="cover" data-section="封面">
+    <div class="eyebrow">A I  ·  入  门  课</div>
+    <h1>AI，是什么？</h1>
+    <div class="lead">四节课，把"AI"这两个字，从陌生变成顺手。</div>
+    <div class="meta">每节 30 分钟 · 共 4 节 · 总长 2 小时</div>
+    <div class="speaker">主讲：<strong>润圆</strong> 老师 &nbsp;|&nbsp; 临床营养师</div>
+    <div class="credit">高级人工智能训练师X灵台AI制作</div>
+    <span class="notes-data">
+开场（约 1 分钟）：
+先看屏幕上的标题，温和地问一句："听到 AI 这两个字，你脑子里第一反应是什么？"
+让两三位同学说，营造放松气氛。不打断、不纠正、不评价对错。
+然后说："今天我们不讲技术，我也不是工程师。我是营养师，跟你们一样，是 AI 的'用户'。
+四节课走完，我希望你能做到三件事：
+  1. 听到 AI 这两个字，不再觉得它玄；
+  2. 打开手机就知道，你早就在用它了；
+  3. 知道哪些事可以放心交给它，哪些事一定要自己拿主意。"
+不需要让大家记任何术语——能听懂、能动手用就够了。
+    </span>
+  </section>
+
+  <!-- ====== 2 / 目录 ====== -->
+  <section class="slide" id="toc" data-section="目录">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">课程地图</span>
+        <h2 class="slide-title">四节课，循序渐进</h2>
+        <div class="slide-subtitle">点击或翻页，可直接进入每一节</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="toc-grid">
+        <div class="toc-card" data-go="l1-cover">
+          <div class="num">第 1 课 · 30 分钟</div>
+          <div class="ttl">AI 是什么</div>
+          <div class="desc">用最家常的话讲清楚"AI"。它从哪儿来、能做什么、跟以前的电脑有什么不一样。</div>
+          <div class="time">关键词：定义 · 简史 · 身边的 AI</div>
+        </div>
+        <div class="toc-card" data-go="l2-cover">
+          <div class="num">第 2 课 · 30 分钟</div>
+          <div class="ttl">主流 AI 类型</div>
+          <div class="desc">打开 AI 工具箱：按"我想做什么"对照"该用哪一类"。常见品牌只作举例，上课前以官网为准。</div>
+          <div class="time">关键词：场景 · 类型 · 怎么挑</div>
+        </div>
+        <div class="toc-card" data-go="l3-cover">
+          <div class="num">第 3 课 · 30 分钟</div>
+          <div class="ttl">AI Agent 和 Skill</div>
+          <div class="desc">从"会聊天的 AI"到"会动手的 AI"。用"管家 + 工作手册 + 工具箱"讲清楚。</div>
+          <div class="time">关键词：会动手 · 工作手册 · 工具箱</div>
+        </div>
+        <div class="toc-card" data-go="l4-cover">
+          <div class="num">第 4 课 · 30 分钟</div>
+          <div class="ttl">边界 · 未来 · 灵台</div>
+          <div class="desc">AI 会出错也会胡说，重要的事自己再核一次；看看未来 3-5 年的样子；认识灵台。</div>
+          <div class="time">关键词：幻觉 · 隐私 · 未来 · 灵台</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">AI 入门 · 润圆</span><span>课程地图</span></div>
+    <span class="notes-data">
+告诉同学：四节课不用一节不落地都听全。
+但如果要选一个顺序记，就是——先听懂、再上手、再会用、再守住边界。
+任何一节没跟上都没关系，下次来都能补，咱们不赶进度。
+讲完顺序，看一眼时间，如果开场已经过 3 分钟，就直接进第 1 课，不要在目录页停留太久。
+    </span>
+  </section>
+
+  <!-- ============================================================
+       第一课：AI 是什么
+       ============================================================ -->
+
+  <!-- ====== 3 / L1 封面 ====== -->
+  <section class="slide" id="l1-cover" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 30 分钟</span>
+        <h2 class="slide-title">AI，到底是什么？</h2>
+        <div class="slide-subtitle">先把这一个词听懂，后面三节课都不怕</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="pull-quote">
+        AI 不是魔法，也不是机器人。<br />
+        它是一种<strong>会自己学</strong>的电脑——<br />
+        你不用告诉它每一步怎么做，<strong>给它看够多的例子，它就慢慢会了</strong>。
+        <span class="by">—— 这节课唯一要记住的一句话</span>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>开场</span></div>
+    <span class="notes-data">
+1 分钟讲完这一句，不要展开。
+让大家先把整句话读一遍——开口读出来比单纯听一遍记得牢。
+读完可以补一句："就这一句，你今天回家就能讲给老人和孩子听。"
+    </span>
+  </section>
+
+  <!-- ====== 4 / L1 时间轴 ====== -->
+  <section class="slide" id="l1-timeline" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 时间安排</span>
+        <h2 class="slide-title">这 30 分钟，我们一起走这四步</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">0 – 3 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">从一个生活小例子说起<span class="hint">你今天用手机做的哪件事，背后其实是 AI 在帮忙？</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">3 – 8 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">AI 是什么？用最家常的话讲清<span class="hint">一个定义 + 一个比喻（菜谱 vs 学徒）+ 三件本事</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">8 – 13 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">身边已经有 AI · 六个生活例子<span class="hint">输入法、美颜、地图、识别花草⋯⋯你早就在用</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">13 – 17 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">AI 会自己学，但不是人脑<span class="hint">澄清三个常见误会，少被吓到也少被骗</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">17 – 24 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">AI 走了几十年的路<span class="hint">只看 5 个节点，不要求记年份</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">24 – 28 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">互动 + 现场提问<span class="hint">没有"蠢问题"，想到啥问啥</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">28 – 30 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">本节小结<span class="hint">三句话带走</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>时间安排</span></div>
+    <span class="notes-data">
+讲这页时强调："这节课我不会催你，慢慢来。听不懂随时举手，我宁可慢一点，不愿意你蒙圈。"
+不需要把每个时间点都念一遍，简短带过即可。
+
+—— 5 个节点的"备用讲法"（不要求大家记年份） ——
+1) 一群科学家开了个小会，第一次问"机器能不能像人一样思考"——AI 这个词从此有了。
+2) 早期的 AI 笨笨的，只能"按菜谱办事"，碰到没教过的就懵。
+3) 后来一群人换了思路——不再硬塞规则，而是让电脑自己看大量例子，它学得越来越像样。
+4) 一台叫 AlphaGo 的 AI 下围棋赢了世界冠军——很多人是从这件事第一次记住"AI"两个字的。
+5) 再后来一个叫 ChatGPT 的工具出来，AI 突然会"说人话"了，一夜之间，所有人都开始用它。
+
+讲的时候说："这 5 步走了大几十年，我们不背时间点，你只要知道——AI 不是天上掉下来的，它一点点长成今天这样。"
+    </span>
+  </section>
+
+  <!-- ====== 5 / L1 三张概念卡 ====== -->
+  <section class="slide" id="l1-cards" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 核心概念</span>
+        <h2 class="slide-title">三张卡，把 AI 讲清楚</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card term">
+          <div class="card-tag">什么是 AI</div>
+          <div class="card-title">菜谱 vs 学徒</div>
+          <div class="card-body">
+            <strong>传统电脑像菜谱</strong>：每一步都得人写好，<br />
+            少写一笔就罢工。<br />
+            <strong>AI 像学徒</strong>：你不用一字一句教，<br />
+            看你做几遍，它自己琢磨出门道。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">三件本事</div>
+          <div class="card-title">学 · 猜 · 做新东西</div>
+          <div class="card-body">
+            <strong>学</strong>：看多了就懂（淘宝知道你爱啥）<br />
+            <strong>猜</strong>：根据线索往后推（输入法猜你下一个字）<br />
+            <strong>做新东西</strong>：能写、能画、能配音（AI 画画 / 写文章）
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">身边的 AI</div>
+          <div class="card-title">你早就在用了</div>
+          <div class="card-body">
+            美颜相机、识别花草、小爱同学、<br />
+            高德绕开堵车、抖音老猜你想看的⋯⋯<br />
+            <strong>这些背后都是 AI。</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>核心概念</span></div>
+    <span class="notes-data">
+节奏：每张卡 2-3 分钟。
+讲第一张时可以举手势——左手"菜谱"翻一下，右手"学徒"晃一下，让对比"看得见"。
+讲完第一张就问："你觉得这跟我们平时说的电脑有什么不一样？"——让一两位回答，鼓励"差不多就这个意思"。
+讲到第三张时强调："你已经是 AI 的老用户了，今天只是把这个名字搞清楚。"
+    </span>
+  </section>
+
+  <!-- ====== L1 身边已经有 AI（生活例子） ====== -->
+  <section class="slide" id="l1-life-examples" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 身边的 AI</span>
+        <h2 class="slide-title">你早就在用 AI，只是没叫它名字</h2>
+        <div class="slide-subtitle">挑 6 件你今天可能已经做过的小事</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card example">
+          <div class="card-tag">手机输入法</div>
+          <div class="card-title">"猜"你下一个字</div>
+          <div class="card-body">你刚打两个字，<strong>它就猜出你想说啥</strong>。<br />猜得准，就是 AI 在帮你。</div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">美颜相机</div>
+          <div class="card-title">认得出你的脸</div>
+          <div class="card-body">能"找到眼睛、磨皮、瘦脸"<br />——它先<strong>认出</strong>，再修。<br />这一步靠 AI。</div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">高德 / 百度地图</div>
+          <div class="card-title">会绕开堵车</div>
+          <div class="card-body">它知道<strong>哪条路慢</strong>，<br />给你换一条快的——<br />全城路况，它在帮你算。</div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">识花君 · 形色</div>
+          <div class="card-title">拍一下就知道是啥花</div>
+          <div class="card-body">这朵花、这棵草、这只虫，<br /><strong>拍一张</strong>它就告诉你名字。<br />背后是图像识别 AI。</div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">抖音 / 小红书</div>
+          <div class="card-title">猜你想看啥</div>
+          <div class="card-body">越刷越对胃口，<br />是它<strong>偷偷在学</strong>你的喜好。<br />推荐 AI 一直在工作。</div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">微信语音 / 听书</div>
+          <div class="card-title">语音变文字</div>
+          <div class="card-body">长按"转文字"那一下，<br />就是 AI 在<strong>把声音听懂</strong>，<br />写成字给你。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>身边的 AI</span></div>
+    <span class="notes-data">
+节奏：6 个例子各停 20-30 秒。
+讲的时候建议自问自答："这个是 AI 吗？是的——"，让大家逐步感受到"AI 早就在身边"。
+讲完可以补一句："所以你今天什么都还没装，AI 已经帮过你好几次了——只是你没意识到。"
+不要展开技术细节，听懂"它在帮我"就足够。
+    </span>
+  </section>
+
+  <!-- ====== L1 AI 会学，但不是人脑 ====== -->
+  <section class="slide" id="l1-not-brain" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 澄清</span>
+        <h2 class="slide-title">AI 会学，但不是"人脑"</h2>
+        <div class="slide-subtitle">把三个常见的误会，先讲清楚</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card term">
+          <div class="card-tag">误会 1</div>
+          <div class="card-title">AI 不是"小机器人"</div>
+          <div class="card-body">
+            它没有身体、没有意识、不会饿、不会累。<br />
+            它就是<strong>一段会算东西的程序</strong>，<br />
+            只是这段程序<strong>会从例子里学</strong>。
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">误会 2</div>
+          <div class="card-title">AI 不是"无所不知"</div>
+          <div class="card-body">
+            它只知道"你给它看过的"和"它学过的"。<br />
+            <strong>没学过的，它会瞎猜</strong>——<br />
+            而且猜得很自信。<br />
+            第 4 课我们专门讲这件事。
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">误会 3</div>
+          <div class="card-title">AI 不是"在思考"</div>
+          <div class="card-body">
+            它更像在<strong>"找规律 + 接龙"</strong>。<br />
+            看了无数句子之后，<br />
+            它知道下一个字该接什么。<br />
+            <em>跟你打字时输入法"猜下一个字"，是同一回事，只是它学的东西多得多。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🧠</div>
+        <div class="qa-text">
+          <div class="qa-label">为 什 么 要 讲 清</div>
+          <div class="qa-question">把这三个误会拆开，你既不会被 AI 吓到（怕它取代你），也不会被它骗到（什么都信它）。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>澄清</span></div>
+    <span class="notes-data">
+这一页用 3-4 分钟，是这节课少有的"稍微正经一点"的页面。
+讲到误会 2 时可以埋伏笔："这就是为什么第 4 课叫'AI 的边界'——它不是不会错，只是错得很自信。"
+讲到误会 3 时可以打个比方："你打'今天天气'三个字，输入法就给你跳出'真好'——这就是它在'接龙'。AI 也是这样，只是接的不是一个词，是一整段话。"
+讲完这一页后总结一句："所以你不用怕它'有思想'，也不用信它'什么都对'——它是个很能干的工具，但还是工具。"
+    </span>
+  </section>
+
+  <!-- ====== 6 / L1 AI 简史 5 步 ====== -->
+  <section class="slide" id="l1-history" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 简史</span>
+        <h2 class="slide-title">AI 走过的 5 步</h2>
+        <div class="slide-subtitle">不背年份，只听故事——它是一点点长成今天这样的</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">第 1 步</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">一群科学家开了个小会<span class="hint">第一次问"机器能不能像人一样思考"——AI 这个词从此有了</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">第 2 步</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">早期的 AI 笨笨的<span class="hint">只能"按菜谱办事"，碰到没教过的就懵</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">第 3 步</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">换思路——让它自己看例子<span class="hint">不再硬塞规则，给它看大量例子，它学得越来越像样</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">第 4 步</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">AlphaGo 下围棋赢了世界冠军<span class="hint">很多人是从这件事第一次记住"AI"两个字的</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">第 5 步</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">ChatGPT 出来了，AI 突然会"说人话"<span class="hint">一夜之间，所有人都开始用它</span></div>
+        </div>
+      </div>
+      <div class="pull-quote" style="margin-top:auto">
+        这 5 步走了大几十年——<br />
+        我们不背时间点，你只要知道：<br />
+        <strong>AI 不是天上掉下来的，它一点点长成今天这样。</strong>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>简史</span></div>
+    <span class="notes-data">
+这一页大约讲 5-8 分钟，对应 l1-timeline 里"15 – 25 分钟讲简史"那一段。
+节奏建议：一步一句话带过，不要在每一步停留太久。
+讲第 3 步时可以稍微停一停——"换思路看例子"是整个 AI 故事最关键的一拐弯。
+讲第 4 步可以顺嘴问一下："还有谁记得 AlphaGo 那会儿的事？"——勾起回忆。
+讲第 5 步收尾时强调："今天的 AI 长这样，就是因为'让它自己看例子'这条路走通了。"
+不需要让大家记任何年份，记不住完全没关系。
+    </span>
+  </section>
+
+  <!-- ====== 7 / L1 互动提问 ====== -->
+  <section class="slide" id="l1-qa" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 互动</span>
+        <h2 class="slide-title">轮到你说说</h2>
+        <div class="slide-subtitle">不会答没关系，想到啥说啥</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-title">问题一</div>
+          <div class="card-body">你今天用手机做的事里，<br />哪一件你怀疑"背后是 AI 在帮我"？<br /><em>——拍照？导航？刷视频？还是别的？</em></div>
+        </div>
+        <div class="card example">
+          <div class="card-title">问题二</div>
+          <div class="card-body">如果 AI 真的像学徒一样自己学——<br />那你觉得它<strong>学错了</strong>会怎样？<br /><em>—— 留个伏笔，第 4 课我们专门讲。</em></div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🙋</div>
+        <div class="qa-text">
+          <div class="qa-label">现 场 互 动</div>
+          <div class="qa-question">每人随便说一个就好，说错也没关系——我们今天是来玩的，不是考试。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>互动</span></div>
+    <span class="notes-data">
+不要让冷场超过 5 秒。
+如果没人说话，自己先讲一个："我早上拍照，手机自动给我磨皮——这就是 AI 在帮我。"
+打开第一个口子，后面就会有人接。
+问题二是给第 4 课"AI 幻觉"埋伏笔，今天不展开，听到答案就温柔接住："等到第 4 课我们专门讲。"
+    </span>
+  </section>
+
+  <!-- ====== 7 / L1 小结 ====== -->
+  <section class="slide" id="l1-summary" data-section="第一课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 1 课 · 小结</span>
+        <h2 class="slide-title">这一课，记住三句话就够</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <ul class="list-checks">
+        <li>AI 是<strong>会自己学</strong>的电脑，不是魔法、也不是机器人。</li>
+        <li>它有三件本事：<strong>学 · 猜 · 做新东西</strong>。</li>
+        <li>你早就在用 AI——拍照、导航、推荐，都是它。</li>
+      </ul>
+      <div class="pull-quote" style="margin-top:auto">
+        下一节课，我们<strong>打开 AI 工具箱</strong>看看——<br />
+        市面上的 AI 都长什么样、各自能干啥。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 1 课 · AI 是什么</span><span>小结</span></div>
+    <span class="notes-data">
+让大家跟着你齐声把三句话读一遍。
+预告下节课方向：不是马上动手，而是"先打开工具箱看一眼"——心里有数再选哪个用。
+如果是分两次/两天上的，可以加一句："下次来不用带任何东西，听就行。"
+    </span>
+  </section>
+
+  <!-- ============================================================
+       第二课：主流 AI 类型（七大场景 + 三层抽屉认知锚点）
+       ============================================================ -->
+
+  <!-- ====== 8 / L2 封面 ====== -->
+  <section class="slide" id="l2-cover" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 30 分钟</span>
+        <h2 class="slide-title">主流 AI 类型 · 打开 AI 工具箱</h2>
+        <div class="slide-subtitle">市面上的 AI 一大堆，先看清都有哪几类，再决定先用哪个</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="pull-quote">
+        AI 多到让人眼花，但其实分得清——<br />
+        看<strong>"长什么样"</strong>，是<strong>三层抽屉</strong>；<br />
+        看<strong>"用来干啥"</strong>，是<strong>七大场景</strong>。<br />
+        今天我们两个角度都打开看一眼。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>开场</span></div>
+    <span class="notes-data">
+开场金句："学完今天，下次有人甩一堆 AI 名字给你，你心里有个抽屉、有个清单，不慌。"
+不要一上来就报品牌名——先让"两种切法（形态 + 场景）"立住。
+特别提醒：今天提到的 AI 品牌只是"举例子"，更新很快，上课当天最好以官网为准。
+    </span>
+  </section>
+
+  <!-- ====== 9 / L2 时间轴 ====== -->
+  <section class="slide" id="l2-timeline" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 时间安排</span>
+        <h2 class="slide-title">30 分钟，打开两种视角</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">0 – 2 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">开场：打开 AI 工具箱<span class="hint">两个角度——三层抽屉（形态）+ 七大场景（用途）</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">2 – 6 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">三层抽屉 + 七大场景概览<span class="hint">先有个大致框架</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">6 – 9 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">我该用哪个 AI · 三步选择指引<span class="hint">不纠结哪个"最好"，先挑一个用</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">扩 展 · 选讲</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">谁在做这些 AI · 公司 + 创始人一瞥<span class="hint">御三家 + 国内大厂派 + 创业派 + 模型外号 · 共 9 页，时间紧可整段跳过，学员看回放</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">9 – 13 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">通用助手 · 什么都能聊<span class="hint">先认识"全科老师"</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">13 – 16 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">写作 / 办公：写邮件、做 PPT、改稿<span class="hint">最高频，先抓住这块</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">16 – 20 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">图像 + 音视频<span class="hint">说一句话，AI 帮你画 / 配音 / 做视频</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">20 – 24 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">代码 / 数据 / 知识库 + 行业专业<span class="hint">越往后越"专"，先听个名字</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">24 – 27 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">生活场景对号入座 · 小练习<span class="hint">通知、海报、录音、查资料 ⋯⋯ 分别用哪类</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">扩 展 · 选讲</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">创作类 AI · 9 页（绘画 / 音乐 / 视频 / 配音 / PPT 设计 / 剪辑 / 边界 / 怎么选）<span class="hint">"AI 不只是聊天"——共 9 页，时间紧可整段跳过，学员看回放</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">27 – 30 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">场景抢答 + 怎么挑一个<span class="hint">不求多，挑一个先用起来</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>时间安排</span></div>
+    <span class="notes-data">
+节奏提醒：抽屉 + 七大场景前导一共 10 分钟，后面 17 分钟铺七大场景，最后 3 分钟抢答收尾。
+不要在每个品牌名上停留太久——重点是"知道有这一类"，不是记住名字。
+凡是写了品牌的页面都说一句："这些只是例子，更新很快，记得开课前自己核一下。"
+    </span>
+  </section>
+
+  <!-- ====== 10 / L2 三层抽屉总览 ====== -->
+  <section class="slide" id="l2-drawers" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 视角 ①</span>
+        <h2 class="slide-title">三层抽屉：按"长什么样"分</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card term">
+          <div class="card-tag">第一层 · 万能扳手</div>
+          <div class="card-title">通用类 AI</div>
+          <div class="card-body">
+            什么都能聊、什么都能写。<br />
+            像一个<strong>全科老师</strong>。<br />
+            <em>用来：日常问答、写一段话、整理思路</em>
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">第二层 · 专业刀具</div>
+          <div class="card-title">专业类 AI</div>
+          <div class="card-body">
+            只干一件事，干得特别好。<br />
+            像各种<strong>专科医生</strong>。<br />
+            <em>用来：画画、配乐、做视频、写代码</em>
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">第三层 · 小配件</div>
+          <div class="card-title">嵌入类 AI</div>
+          <div class="card-body">
+            藏在你<strong>每天用的 App</strong> 里。<br />
+            微信翻译、剪映自动字幕、<br />
+            高德绕堵、夸克扫描⋯⋯<br />
+            <strong>你早就在用了。</strong>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🧰</div>
+        <div class="qa-text">
+          <div class="qa-label">下 一 页</div>
+          <div class="qa-question">三层是"形态"——下一页换个角度，按"我想做什么"看，是七大场景。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>三层抽屉</span></div>
+    <span class="notes-data">
+讲这一页可以把手伸出来做"拉抽屉"的动作——加强记忆。
+强调："你不用学全，知道有这三层、能挑一个最适合你的就够了。"
+不要展开品牌，下一页有完整对照表。
+    </span>
+  </section>
+
+  <!-- ====== 11 / L2 七大场景 ====== -->
+  <section class="slide" id="l2-seven" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 视角 ②</span>
+        <h2 class="slide-title">七大场景：按"我想做什么"挑</h2>
+        <div class="slide-subtitle">这是今天的主线——记不住名字没关系，能"对号入座"就好</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr><th style="width:80px">#</th><th style="width:200px">我想做什么</th><th style="width:220px">用哪一类</th><th>代表 / 可先了解</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>找个 AI 聊天、问问题、整理思路</td><td>通用助手</td><td>豆包 / Kimi / 通义 / 文心 / DeepSeek …</td></tr>
+          <tr><td><strong>2</strong></td><td>写文章、做 PPT、改邮件、做表格</td><td>内容创作 / 办公写作</td><td>通用助手大多能做；办公软件里也有 AI</td></tr>
+          <tr><td><strong>3</strong></td><td>画图、剪视频、做配音、写歌</td><td>图像 / 音频 / 视频</td><td>专门做画画、配音、视频生成的工具</td></tr>
+          <tr><td><strong>4</strong></td><td>写代码、做数据分析、看 Excel</td><td>代码 / 数据</td><td>代码助手 / 通用助手的"数据分析"模式</td></tr>
+          <tr><td><strong>5</strong></td><td>让 AI 只看我的资料、按出处回答</td><td>知识库（RAG）</td><td>给 AI 一份 PDF / 一堆指南，让它"开卷答题"</td></tr>
+          <tr><td><strong>6</strong></td><td>交代一句话，让它替我办完一件事</td><td>Agent 自动化</td><td>第 3 课专门讲</td></tr>
+          <tr><td><strong>7</strong></td><td>专业领域：医疗、营养、法律、教育…</td><td>行业专业 AI</td><td>各行业里由懂行的人参与整理和把关的 AI</td></tr>
+        </tbody>
+      </table>
+      <div class="qa-card" style="margin-top:14px">
+        <div class="qa-icon">🎯</div>
+        <div class="qa-text">
+          <div class="qa-label">这 节 课 的 用 法</div>
+          <div class="qa-question">不用每一类都试。从你"最想做的那件事"出发，对照这张表，挑一个先用起来就行。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>七大场景</span></div>
+    <span class="notes-data">
+这一页是第 2 课的"地图"，建议讲 3-4 分钟，慢一点。
+逐行读"想做什么 → 该用哪一类"，让大家在脑子里"对号入座"。
+讲到第 5 类（知识库）时打个比方："就像开卷考试——AI 翻着你给的书回答你。"
+讲到第 6 类（Agent）时点一下："这个第 3 课会专门讲，今天先听个名字。"
+讲到第 7 类（行业专业 AI）时埋伏笔："营养也是其中一种，第 4 课我会讲我自己怎么用。"
+    </span>
+  </section>
+
+  <!-- ====== L2 选择指引：我该用哪个 AI ====== -->
+  <section class="slide" id="l2-decision-tree" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 选择指引</span>
+        <h2 class="slide-title">"我该用哪个 AI？"——问自己三步</h2>
+        <div class="slide-subtitle">别一上来就纠结哪家最好，先把这三步走完</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card key">
+          <div class="card-tag">第 1 步</div>
+          <div class="card-title">先想：我要它干啥？</div>
+          <div class="card-body">
+            一句话写下你要做的事：<br />
+            <em>"我想写一封请假条。"</em><br />
+            <em>"我想做一张活动海报。"</em><br />
+            <em>"我想把这段录音整理成文字。"</em><br />
+            <strong>越具体，越好挑。</strong>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第 2 步</div>
+          <div class="card-title">再看：这件事在哪个抽屉？</div>
+          <div class="card-body">
+            对照上一页的"七大场景"——<br />
+            写字 → <strong>通用助手</strong><br />
+            画图 → <strong>图像 AI</strong><br />
+            录音 → <strong>语音类 AI</strong><br />
+            <em>不用每个都装，找对一类就行。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第 3 步</div>
+          <div class="card-title">最后选：挑一个就开始</div>
+          <div class="card-body">
+            国产先用得顺的几款（豆包 / Kimi / 通义 / 文心 / 元宝），<br />
+            <strong>挑一个，今天就试一次。</strong><br />
+            不要纠结"它是不是最厉害"——<br />
+            <em>用起来比挑半天更要紧。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🧭</div>
+        <div class="qa-text">
+          <div class="qa-label">一 句 话 口 诀</div>
+          <div class="qa-question">想做啥 → 哪个抽屉 → 挑一个用。这三步，是新手最不容易"被选择吓退"的方法。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>选择指引</span></div>
+    <span class="notes-data">
+讲这一页用 2-3 分钟，是 L2 的"减压药"——很多人卡在"选不出来"。
+讲完三步之后强调："你不需要试十个 AI，你需要试一次 AI。"
+品牌名只举国产、最容易找到的几个；不要说成"第一名"、不要说成"全网免费"——避免给人过满的印象。
+凡是写到品牌名，都补一句："这些是举例，更新很快，以官网为准。"
+    </span>
+  </section>
+
+  <!-- ============================================================
+       第二课 · 扩展段：认识"谁在做这些 AI"
+       （v0.3 新增 · 9 页 · 公司 + 创始人 + 模型外号；v0.4 给可考证的人物配真人照片）
+       ============================================================ -->
+
+  <!-- ====== L2 御三家概览 ====== -->
+  <section class="slide" id="l2-trio-intro" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 谁在做这些 AI</span>
+        <h2 class="slide-title">先认这"御三家"——三家最常被一起提起的公司</h2>
+        <div class="slide-subtitle">"御三家"是网友爱用的口语，不是官方排名。先用它当个简单记号</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="brand-grid cols-3">
+        <div class="brand-card">
+          <div class="brand-logo">O</div>
+          <div class="brand-info">
+            <div class="brand-name">OpenAI</div>
+            <div class="brand-tag">美国 · 旧金山</div>
+            <div class="brand-desc">代表产品：<strong>ChatGPT</strong><br />普通人理解：<strong>"那个最早火出圈的 AI 聊天"</strong>。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo sage">A</div>
+          <div class="brand-info">
+            <div class="brand-name">Anthropic</div>
+            <div class="brand-tag">美国 · 旧金山</div>
+            <div class="brand-desc">代表产品：<strong>Claude</strong><br />普通人理解：<strong>"主打更稳、更谨慎"</strong>的另一家。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo blue">G</div>
+          <div class="brand-info">
+            <div class="brand-name">Google DeepMind</div>
+            <div class="brand-tag">英国 / 美国 · 谷歌旗下</div>
+            <div class="brand-desc">代表产品：<strong>Gemini</strong><br />普通人理解：<strong>"谷歌搜索/邮箱里那个 AI"</strong>就是它做的。</div>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card" style="margin-top:12px">
+        <div class="qa-icon">🌍</div>
+        <div class="qa-text">
+          <div class="qa-label">先 听 个 印 象 就 行</div>
+          <div class="qa-question">国外讨论 AI，绕不开这三家。国内访问它们的网站需要自备网络条件——日常用国产几家足够，名字听过即可。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>御三家概览</span></div>
+    <span class="notes-data">
+讲这一段（认识各家 AI 公司）建议穿插在"通用助手"之前，约 3-4 分钟带过；如果时间紧可以选讲，但学员看回放会用得上。
+开口先说："网上经常听到'AI 御三家'——这不是官方榜单，就是网友顺嘴的说法。意思是 OpenAI、Anthropic、谷歌 DeepMind 这三家，在国外讨论里出现得最多。"
+强调三点：
+  1. 这是"网友口语"，不是权威；
+  2. 国内日常用国产 AI 就够；
+  3. 名字听过有印象就行，不背。
+不要把任何一家说成"第一名 / 最厉害 / 全网公推"。
+    </span>
+  </section>
+
+  <!-- ====== L2 OpenAI ====== -->
+  <section class="slide" id="l2-openai" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 御三家 ①</span>
+        <h2 class="slide-title">OpenAI · "ChatGPT 的妈妈家"</h2>
+        <div class="slide-subtitle">2015 年成立 · 让"AI 跟人说话"这件事一夜爆火的公司</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="people-grid cols-2">
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/altman.jpg" alt="Sam Altman" />
+          <div class="person-info">
+            <div class="person-name">Sam Altman</div>
+            <div class="person-role">CEO · 公司"对外说话的人"</div>
+            <div class="person-desc">
+              出身硅谷创业圈，是 OpenAI 现在最常被媒体拍到的脸。
+              <strong>你看到的大部分"OpenAI 又发了什么"</strong>，几乎都是他出来讲。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/sutskever.jpg" alt="Ilya Sutskever" />
+          <div class="person-info">
+            <div class="person-name">Ilya Sutskever</div>
+            <div class="person-role">早期联合创始人 · 偏技术派</div>
+            <div class="person-desc">
+              AI 圈里一位很受尊重的研究者，<strong>早期把 OpenAI 的技术路线立起来的人之一</strong>。
+              现在已经不在 OpenAI，但很多人提起这家公司还会提到他。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cards cols-2" style="margin-top:6px">
+        <div class="card term">
+          <div class="card-tag">代表产品</div>
+          <div class="card-title">ChatGPT · GPT-4o · Sora</div>
+          <div class="card-body">
+            <strong>ChatGPT</strong>：能聊天的那个 AI。<br />
+            <strong>GPT-4o</strong>：背后更新的"大脑"。<br />
+            <strong>Sora</strong>：一句话就能生成视频的工具。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">普通人怎么理解</div>
+          <div class="card-title">"AI 聊天的那个老牌子"</div>
+          <div class="card-body">
+            <strong>第一个让全世界都开始用 AI 聊天的公司</strong>。<br />
+            国内访问它的网站需要自备网络条件，<br />
+            日常用国产 AI 就行——但<strong>名字一定听过</strong>。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>OpenAI</span></div>
+    <span class="notes-data">
+讲法："OpenAI 是 2015 年几个搞 AI 的人凑出来的，本来名字里有'Open'是说想开放给大家。后来做出了 ChatGPT——'AI 聊天'这件事，从他们这儿真正变成了普通人都用得上的东西。"
+人物简介保持轻：
+  - Sam Altman：当年硅谷创业圈出名的年轻 CEO，现在是公司"对外讲话的脸"；
+  - Ilya Sutskever：早期技术核心之一，现在已经离开，复杂内情不展开。
+不要展开 2023 年的那场风波——一句话带过："这家公司这两年有些人事变动，但 ChatGPT 还在更新。"
+不要把任何一家说成"第一名 / 最厉害"。
+    </span>
+  </section>
+
+  <!-- ====== L2 Anthropic ====== -->
+  <section class="slide" id="l2-anthropic" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 御三家 ②</span>
+        <h2 class="slide-title">Anthropic · 主打"更稳"的 Claude</h2>
+        <div class="slide-subtitle">2021 年由一对兄妹和几位前同事从 OpenAI 出来另起的公司</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="people-grid cols-2">
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/amodei_dario.jpg" alt="Dario Amodei" />
+          <div class="person-info">
+            <div class="person-name">Dario Amodei</div>
+            <div class="person-role">CEO · 哥哥 · 技术出身</div>
+            <div class="person-desc">
+              本来在 OpenAI 做研究，后来和妹妹一起出来开了 Anthropic。
+              对外说话最多的<strong>主题是"AI 怎么用得更安全"</strong>。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar plum">DA</div>
+          <div class="person-info">
+            <div class="person-name">Daniela Amodei</div>
+            <div class="person-role">总裁 · 妹妹 · 管运营和团队</div>
+            <div class="person-desc">
+              负责公司日常运转，<strong>是 AI 圈里少见的"兄妹搭档"</strong>。
+              很多场合两人一起出来讲。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cards cols-2" style="margin-top:6px">
+        <div class="card term">
+          <div class="card-tag">代表产品</div>
+          <div class="card-title">Claude（克劳德）</div>
+          <div class="card-body">
+            一款<strong>说话比较温和、不太胡来</strong>的 AI 助手。<br />
+            在程序员和写长文的人里很受欢迎。<br />
+            "Claude" 是人名，类似中文叫"克劳德"，<strong>这就是它的"外号"</strong>。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">普通人怎么理解</div>
+          <div class="card-title">"更注意安全的那一家"</div>
+          <div class="card-body">
+            这家公司常常强调 AI 别乱说、别越界，<br />
+            <strong>看重"AI 不要给人添麻烦"这件事</strong>。<br />
+            国内日常不太用得到，但<strong>名字会经常出现在新闻里</strong>。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>Anthropic</span></div>
+    <span class="notes-data">
+讲法："Anthropic 是一对兄妹带着几个老同事从 OpenAI 出来开的——这件事 AI 圈都知道。他们的卖点不是'最聪明'，而是'更稳、更不容易乱说'。"
+不要展开公司之间的恩怨。一句话带过即可。
+强调："Claude 这个名字就是个英文人名'克劳德'。AI 起名很喜欢用人名/动物名/神话名——后面有一页专门讲这个。"
+    </span>
+  </section>
+
+  <!-- ====== L2 Google DeepMind ====== -->
+  <section class="slide" id="l2-deepmind" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 御三家 ③</span>
+        <h2 class="slide-title">Google DeepMind · 搜索框里的 Gemini</h2>
+        <div class="slide-subtitle">谷歌旗下的 AI 部门，起家是"下围棋的 AlphaGo"</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="people-grid cols-2">
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/hassabis.jpg" alt="Demis Hassabis" />
+          <div class="person-info">
+            <div class="person-name">Demis Hassabis</div>
+            <div class="person-role">DeepMind 创始人 · CEO · 神经科学背景</div>
+            <div class="person-desc">
+              年轻时是国际象棋少年高手，后来研究人脑，<strong>开了 DeepMind</strong>，
+              做出了那只下围棋赢人类世界冠军的 AlphaGo——<strong>第 1 课时间轴里提过</strong>。
+              2024 年还拿了诺贝尔化学奖。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar gold">G</div>
+          <div class="person-info">
+            <div class="person-name">谷歌（Google）</div>
+            <div class="person-role">母公司 · 全球最大搜索引擎</div>
+            <div class="person-desc">
+              2014 年把 DeepMind 收编进来。<br />
+              现在<strong>谷歌搜索、Gmail、YouTube 背后的 AI</strong>，很多就是这一支团队在做。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cards cols-2" style="margin-top:6px">
+        <div class="card term">
+          <div class="card-tag">代表产品</div>
+          <div class="card-title">Gemini（双子座）</div>
+          <div class="card-body">
+            谷歌现在主推的 AI 助手，<strong>名字是星座"双子座"</strong>。<br />
+            搜索结果里你常看到的"AI 帮你总结"，<br />
+            背后多半就是它。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">普通人怎么理解</div>
+          <div class="card-title">"搜索那家公司也做了一个 AI"</div>
+          <div class="card-body">
+            谷歌在国内不能直接打开，<br />
+            <strong>但凡看新闻、读论文经常会提到 Gemini</strong>，<br />
+            就知道——它是谷歌家的 AI。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>Google DeepMind</span></div>
+    <span class="notes-data">
+讲法："DeepMind 起家的时候做的就是下围棋的 AlphaGo——第 1 课讲 AI 历史时提过的那只。后来谷歌把它买下来，整个并到了谷歌的 AI 部门里。"
+Demis Hassabis 简介可以多讲一句："这个人小时候是国际象棋小神童，后来去研究人脑，最后做出 AI。2024 年还拿了诺贝尔化学奖，是 AI 圈里少见的'科学家型创始人'。"
+不要展开"谷歌跟 OpenAI 谁更厉害"这种比较——避免误导。
+    </span>
+  </section>
+
+  <!-- ====== L2 海外其他 ====== -->
+  <section class="slide" id="l2-overseas-other" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 海外其他</span>
+        <h2 class="slide-title">除了御三家，还有这两家也常听到</h2>
+        <div class="slide-subtitle">Meta（脸书母公司）+ xAI（马斯克的新公司）</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="people-grid cols-2">
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/zuckerberg.jpg" alt="Mark Zuckerberg" />
+          <div class="person-info">
+            <div class="person-name">Mark Zuckerberg · 扎克伯格</div>
+            <div class="person-role">Meta CEO · 脸书/Instagram/WhatsApp 老板</div>
+            <div class="person-desc">
+              Meta 现在做的 AI 叫 <strong>Llama（羊驼）</strong>——一系列模型。
+              特别之处：<strong>大部分版本是开源的</strong>，研究者和小团队可以拿来自己改。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/lecun.jpg" alt="Yann LeCun" />
+          <div class="person-info">
+            <div class="person-name">Yann LeCun · 杨立昆</div>
+            <div class="person-role">Meta 首席 AI 科学家 · 法国人 · 图灵奖得主</div>
+            <div class="person-desc">
+              AI 学术圈里地位很高的"老前辈"之一。
+              <strong>常在公开场合讨论 AI 的方向，发言很犀利</strong>。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <img class="person-photo" src="assets/people/musk.jpg" alt="Elon Musk" />
+          <div class="person-info">
+            <div class="person-name">Elon Musk · 马斯克</div>
+            <div class="person-role">xAI 创始人 · 特斯拉/SpaceX/X（推特）老板</div>
+            <div class="person-desc">
+              <strong>OpenAI 早年也是他出钱出力之一</strong>，后来分道扬镳，
+              2023 年自己又开了 xAI。代表产品：<strong>Grok</strong>（嵌在 X 平台里那个 AI）。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar blue">📦</div>
+          <div class="person-info">
+            <div class="person-name">这两家代表产品</div>
+            <div class="person-role">Llama · Grok</div>
+            <div class="person-desc">
+              <strong>Llama</strong>：Meta 的"羊驼"系列，开源给全世界。<br />
+              <strong>Grok</strong>：xAI 的助手，藏在 X（推特）里。<br />
+              <em>普通用户在国内不太能直接用上。</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>海外其他</span></div>
+    <span class="notes-data">
+讲法："御三家之外，国外还有两家名字也经常飘过——Meta 和 xAI。"
+Meta 一句话："就是脸书和 Instagram 那家公司。它做了一个叫 Llama 的 AI，外号是'羊驼'。最特别的是——这家公司把它开源了，所以全世界很多小团队的 AI 都是在 Llama 上改出来的。"
+xAI 一句话："马斯克新开的 AI 公司，做了一个 Grok。我们大多数人用不上，但名字会经常出现在新闻里。"
+不要展开马斯克和 OpenAI 的恩怨——一句"早年也是他出过钱"就够。
+    </span>
+  </section>
+
+  <!-- ====== L2 国内大厂派 ====== -->
+  <section class="slide" id="l2-cn-bigtech" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 国内 · 大厂派</span>
+        <h2 class="slide-title">国内大厂派：公司 + 代表产品</h2>
+        <div class="slide-subtitle">这几家在你手机里"几乎都装过它们的别的 App"</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="brand-grid cols-2">
+        <div class="brand-card">
+          <div class="brand-logo warm">字</div>
+          <div class="brand-info">
+            <div class="brand-name">字节跳动 · 豆包 / Doubao</div>
+            <div class="brand-tag">抖音 / 今日头条 / 剪映 同一家</div>
+            <div class="brand-desc">
+              <strong>豆包</strong>是国内最容易上手的一款 AI 助手，<br />
+              App 体验亲切，自带 AI 画画。<br />
+              <em>不知道先用哪个，就先用它。</em>
+            </div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo coral">阿</div>
+          <div class="brand-info">
+            <div class="brand-name">阿里巴巴 · 通义千问</div>
+            <div class="brand-tag">淘宝 / 钉钉 / 高德 同一家</div>
+            <div class="brand-desc">
+              名字取自苏轼"<strong>千问</strong>"。<br />
+              办公场景顺手——写文档、做表格、整理会议。<br />
+              开源版本也很受研究者欢迎。
+            </div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo blue">百</div>
+          <div class="brand-info">
+            <div class="brand-name">百度 · 文心一言</div>
+            <div class="brand-tag">百度搜索 同一家</div>
+            <div class="brand-desc">
+              <strong>国内最早一批对外发布</strong>的大模型助手。<br />
+              百度生态整合好，搜索经验丰富。<br />
+              名字"文心"取自唐朝<em>《文心雕龙》</em>意思。
+            </div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo sage">腾</div>
+          <div class="brand-info">
+            <div class="brand-name">腾讯 · 元宝 / 混元</div>
+            <div class="brand-tag">微信 / QQ 同一家</div>
+            <div class="brand-desc">
+              <strong>元宝</strong>是面向普通用户的 App，<br />
+              <strong>混元</strong>是背后的"大脑"。<br />
+              跟微信生态联动顺手。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="soft-tip" style="margin-top:10px">
+        <strong>提示：</strong>这一类的特点是<strong>公司本身就有几亿用户</strong>，AI 直接长在你已经用顺手的 App 里——
+        不用再装新东西，找个入口点开就能用。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>国内大厂派</span></div>
+    <span class="notes-data">
+讲法："国内 AI 分两派——一派是大厂自己做的，一派是这两年专门做 AI 的创业公司。先说大厂派。"
+四家串讲不要超过 1 分钟：
+  - 字节：豆包，最适合入门；
+  - 阿里：通义千问，办公顺手，开源也做得好；
+  - 百度：文心一言，国内最早一批；
+  - 腾讯：元宝（App）+ 混元（背后大脑），跟微信连得很好。
+强调："这一派不要求你单独装 App——它们的 AI 都长在你已经用的微信、淘宝、抖音、百度里。"
+    </span>
+  </section>
+
+  <!-- ====== L2 国内创业派 ====== -->
+  <section class="slide" id="l2-cn-startups" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 国内 · 创业派</span>
+        <h2 class="slide-title">国内创业派：四家"年轻团队"</h2>
+        <div class="slide-subtitle">这几家都是这两年新冒出来的——主要做 AI 一件事</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="people-grid cols-2">
+        <div class="person-card">
+          <div class="person-avatar warm">梁</div>
+          <div class="person-info">
+            <div class="person-name">梁文锋 · DeepSeek（深度求索）</div>
+            <div class="person-role">创始人 · 量化投资背景</div>
+            <div class="person-desc">
+              原本是做量化投资的，后来开了 DeepSeek 做 AI。
+              <strong>2025 年初一款叫 R1 的模型</strong>让国内外都注意到这家，
+              理由是<em>"用更少的钱训出来的、效果也不错"</em>。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar plum">杨</div>
+          <div class="person-info">
+            <div class="person-name">杨植麟 · 月之暗面（Kimi）</div>
+            <div class="person-role">创始人 · 清华系 · 海归学者</div>
+            <div class="person-desc">
+              做出了 <strong>Kimi</strong>。卖点是<strong>"一次能读很长的资料"</strong>——
+              一篇几十页的 PDF 丢给它，它都能读完。
+              营养师做文献综述时挺好用。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar sage">张</div>
+          <div class="person-info">
+            <div class="person-name">智谱 AI · 团队代表</div>
+            <div class="person-role">清华大学技术成果转化 · CEO 张鹏</div>
+            <div class="person-desc">
+              从清华大学走出来的 AI 团队，代表产品是 <strong>ChatGLM / 智谱清言</strong>。
+              <strong>在国内开源圈里做得早</strong>，研究者用得多。
+            </div>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar teal">M</div>
+          <div class="person-info">
+            <div class="person-name">MiniMax · 创业公司</div>
+            <div class="person-role">上海 · 多模态团队</div>
+            <div class="person-desc">
+              代表产品有<strong>"星野"（AI 角色聊天）</strong>和<strong>海螺 AI</strong>等。
+              在 AI <strong>画画、配音、视频</strong>方向投入较多。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="soft-tip" style="margin-top:8px">
+        创业派的共同特点：<strong>更新很快、迭代很猛</strong>。今天讲的版本号、价格、额度，下个月可能就变了——
+        <strong>以官网为准</strong>，不要拿这张卡片当"最终事实"。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>国内创业派</span></div>
+    <span class="notes-data">
+讲法："另一派是这两年才冒出来的创业公司——年轻团队，只做 AI 一件事。"
+四家串讲不要超过 1.5 分钟：
+  - 深度求索 / DeepSeek：梁文锋，量化背景，2025 年初一款 R1 模型让大家注意到他们；
+  - 月之暗面 / Kimi：杨植麟，清华系，特点是"看长资料"；
+  - 智谱 AI：清华团队转化出来的，ChatGLM 开源做得早；
+  - MiniMax：上海团队，画画 / 配音 / 视频方向做得多，代表产品是星野和海螺 AI。
+强调："这些公司更新很快，今天讲的下个月可能就变了，以官网为准。"
+不要把任何一家说成"第一名 / 最厉害"。
+    </span>
+  </section>
+
+  <!-- ====== L2 模型动物园 ====== -->
+  <section class="slide" id="l2-model-zoo" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 模型动物园</span>
+        <h2 class="slide-title">模型名字像外号——同一类东西，不同团队的"昵称"</h2>
+        <div class="slide-subtitle">见到一个陌生名字，先去查"哪家做的"，剩下的就好理解了</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="model-zoo">
+        <div class="model-chip">
+          <div class="model-name">GPT</div>
+          <div class="model-by">OpenAI</div>
+          <span class="model-tag">海外</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Claude</div>
+          <div class="model-by">Anthropic</div>
+          <span class="model-tag">海外</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Gemini</div>
+          <div class="model-by">Google</div>
+          <span class="model-tag">海外</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Llama</div>
+          <div class="model-by">Meta</div>
+          <span class="model-tag sage">开源</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Grok</div>
+          <div class="model-by">xAI</div>
+          <span class="model-tag">海外</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">DeepSeek</div>
+          <div class="model-by">深度求索</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Kimi</div>
+          <div class="model-by">月之暗面</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">豆包</div>
+          <div class="model-by">字节跳动</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">通义千问</div>
+          <div class="model-by">阿里</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">文心一言</div>
+          <div class="model-by">百度</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">混元 / 元宝</div>
+          <div class="model-by">腾讯</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">ChatGLM</div>
+          <div class="model-by">智谱</div>
+          <span class="model-tag sage">国产 · 开源</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">星野 / 海螺</div>
+          <div class="model-by">MiniMax</div>
+          <span class="model-tag gold">国产</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Yi</div>
+          <div class="model-by">零一万物</div>
+          <span class="model-tag sage">国产 · 开源</span>
+        </div>
+        <div class="model-chip">
+          <div class="model-name">Qwen</div>
+          <div class="model-by">阿里 · 开源版</div>
+          <span class="model-tag sage">国产 · 开源</span>
+        </div>
+      </div>
+      <div class="qa-card" style="margin-top:12px">
+        <div class="qa-icon">🐾</div>
+        <div class="qa-text">
+          <div class="qa-label">这 一 页 的 用 法</div>
+          <div class="qa-question">看到一个陌生 AI 名字——先问一句"哪家做的？"再问"它擅长干啥？"两步走完，名字就不可怕了。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>模型动物园</span></div>
+    <span class="notes-data">
+讲法："这一页叫'模型动物园'——你看一眼就知道，AI 名字花花绿绿的，谁家都给自己起了个外号。"
+节奏：不用每个都念，扫一眼即可。重点说三件事：
+  1. 海外 vs 国产：上面三排是海外，下面是国产；
+  2. 开源 vs 不开源：标了'开源'的，研究者和小团队可以拿来自己改；
+  3. 一个公司可以有好几个名字——比如阿里同时有"通义千问"（给普通人用）和"Qwen"（给研究者用的开源版）。
+强调："这一整张表都不要求背。看到陌生名字，去查'哪家做的'就行。"
+不要把任何一家说成"第一名 / 最厉害 / 全网公推"。
+    </span>
+  </section>
+
+  <!-- ====== L2 名字记不住没关系 + 奇怪外号 ====== -->
+  <section class="slide" id="l2-model-nicknames" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 名字不背</span>
+        <h2 class="slide-title">还会冒出一堆"怪外号"——你不背也不亏</h2>
+        <div class="slide-subtitle">开源圈、研究圈喜欢起神话和动物名——刚入门完全不用记</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card term">
+          <div class="card-tag">名字花样举例</div>
+          <div class="card-title">动物 · 神话 · 风 · 数字</div>
+          <div class="card-body">
+            <strong>动物名</strong>：Llama（羊驼）、Falcon（猎鹰）。<br />
+            <strong>神话名</strong>：Hermes（希腊神话信使）。<br />
+            <strong>风/自然</strong>：Mistral（法国地中海的风）。<br />
+            <strong>数字/字母</strong>：Yi、Qwen2、GLM-4 ⋯⋯<br />
+            <em>名字背后没什么深奥意思，就像起昵称。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">遇到陌生名字的应对</div>
+          <div class="card-title">三句口诀</div>
+          <div class="card-body">
+            ① <strong>不慌</strong>——AI 名字本来就多。<br />
+            ② <strong>查一下"哪家做的"</strong>——多数能在百度、官网查到。<br />
+            ③ <strong>看你自己用不用得上</strong>——多数小众模型，普通人是用不到的。
+          </div>
+        </div>
+      </div>
+      <div class="soft-tip" style="margin-top:14px">
+        <strong>特别说一句：</strong>网上有些"养虾、养马"之类的说法，大多是网友给某些<strong>开源小众模型起的中文外号</strong>。
+        如果不能可靠查到这是什么东西——<strong>对初学者来说，它就不重要</strong>。
+        知道"AI 名字会一直多下去、不用一个个认"就够了。
+      </div>
+      <div class="qa-card" style="margin-top:10px">
+        <div class="qa-icon">🧸</div>
+        <div class="qa-text">
+          <div class="qa-label">这 一 段 的 收 尾</div>
+          <div class="qa-question">你不需要"认识所有 AI"。你只需要——挑一个用顺手的，把它的脾气摸熟。剩下的，遇到再说。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>名字不背</span></div>
+    <span class="notes-data">
+这一页是"减压页"，专门给容易被名字吓到的同学。
+讲法："你听课、刷视频，总会刷到一些没见过的 AI 名字——'养虾的'、'养马的'、'信使的'、'风的'。它们大多是国外开源圈、研究圈的小众模型。咱们刚入门，完全不用记。"
+强调三句口诀：
+  ① 不慌；
+  ② 查"哪家做的"；
+  ③ 看自己用不用得上。
+最后这句一定要说："你不需要认识所有 AI——你只需要挑一个用顺手的，把它的脾气摸熟。"
+不要把任何具体名字（比如 Hermes、Mistral、Falcon、Yi）说成"最好用"——只是举例。
+"养虾 / 养马"这种网络梗如果学员问起，可以坦白："这些是网友外号，我没全核实过来源，所以我不替它们打包票——你听个乐就行。"
+    </span>
+  </section>
+
+  <!-- ====== 12 / L2 通用助手 ====== -->
+  <section class="slide" id="l2-general" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 1 · 通用助手</span>
+        <h2 class="slide-title">通用类 AI：什么都能聊</h2>
+        <div class="slide-subtitle">挑 1-2 个就行，多数都有手机 App、能直接搜到</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr><th style="width:130px">名称</th><th style="width:150px">出品方</th><th style="width:220px">怎么用</th><th>一句话特点</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FFF4E8"><td><strong>★ 豆包</strong></td><td>字节跳动</td><td>App / doubao.com</td><td><strong>不知道先用哪个，就先看这个。</strong>国内常见的入门款，App 体验亲切，自带 AI 画画。</td></tr>
+          <tr><td><strong>Kimi</strong></td><td>月之暗面</td><td>App / kimi.com</td><td>擅长长文阅读，一次能读很长的资料</td></tr>
+          <tr><td><strong>通义千问</strong></td><td>阿里</td><td>App / tongyi.aliyun.com</td><td>办公场景顺手，写文档、做表格</td></tr>
+          <tr><td><strong>文心一言</strong></td><td>百度</td><td>App / yiyan.baidu.com</td><td>百度生态整合好，搜索经验丰富</td></tr>
+          <tr><td><strong>DeepSeek</strong></td><td>深度求索</td><td>chat.deepseek.com</td><td>常以"深度推理"被提及；功能与额度以官网为准</td></tr>
+          <tr><td><strong>腾讯元宝</strong></td><td>腾讯</td><td>App / yuanbao.tencent.com</td><td>跟微信生态联动顺手</td></tr>
+          <tr><td><strong>ChatGPT</strong></td><td>OpenAI · 美国</td><td>chat.openai.com</td><td>国外常被提及；国内访问需要自备网络</td></tr>
+          <tr><td><strong>Claude / Gemini</strong></td><td>Anthropic / Google</td><td>claude.ai / gemini.google.com</td><td>国外另两款常见助手；同样需要自备网络</td></tr>
+        </tbody>
+      </table>
+      <div class="qa-card" style="margin-top:10px">
+        <div class="qa-icon">💡</div>
+        <div class="qa-text">
+          <div class="qa-label">温 馨 提 示</div>
+          <div class="qa-question">这些品牌迭代很快，以上课当天各家官网为准。你不用每个都装——选一个用顺手就够。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>通用助手</span></div>
+    <span class="notes-data">
+不要逐行念。挑 2-3 个重点讲：豆包（推荐入门）、Kimi（看长文章）、再补一句"国外的 ChatGPT / Claude / Gemini 听过名字就行"。
+告诉大家："国外的几个也很好用，但访问要费点功夫；国产几个先用，绰绰有余。"
+避免说成"第一名 / 全程在线 / 全网公推"这类过满话。
+现场可以打开豆包问一句："给我推荐一道适合糖友的早餐"，让大家看 AI 怎么答——一个动作比讲十遍都管用。
+    </span>
+  </section>
+
+  <!-- ====== L2 写作 / 办公 ====== -->
+  <section class="slide" id="l2-write" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 2 · 写作 / 办公</span>
+        <h2 class="slide-title">写邮件 · 改稿 · 做 PPT · 整理表格</h2>
+        <div class="slide-subtitle">用得最多的一类——上手最快、回报最直接</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">通用助手已经够用</div>
+          <div class="card-title">先用手头的"全科老师"</div>
+          <div class="card-body">
+            豆包 / Kimi / 通义 / 文心 / DeepSeek 这一类，<br />
+            <strong>写一段话、改一段话、起一个标题、列一份提纲</strong>，<br />
+            它们都干得不错。<br />
+            <em>多数同学在这一类就能解决八成需求。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">办公软件里的 AI</div>
+          <div class="card-title">WPS AI · 飞书 AI · 钉钉智能助理</div>
+          <div class="card-body">
+            <strong>在 Word/Excel/PPT 里直接用 AI</strong>——<br />
+            不用切窗口，"右键"或"工具栏"里就有入口。<br />
+            <em>例：让它帮你把表格里"重复的客户"去掉。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">一句话出 PPT / 海报</div>
+          <div class="card-title">Gamma · 美图设计室 · Canva</div>
+          <div class="card-body">
+            说一句"做一份 10 页的<strong>糖尿病饮食科普 PPT</strong>"，<br />
+            它直接帮你出版式、配图、文字。<br />
+            <em>做出来再人工改，比从空白页快十倍。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">常见提示句</div>
+          <div class="card-title">话越具体，结果越准</div>
+          <div class="card-body">
+            "帮我把这段会议记录，<strong>整理成 5 条待办</strong>，按时间排序。"<br />
+            "用<strong>客气一点</strong>的口吻，给客户写一段三句话的回邮件。"<br />
+            <em>关键词：要做什么 + 给谁看 + 多长 + 什么口吻。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>写作 / 办公</span></div>
+    <span class="notes-data">
+这一类是大家工作里最高频的，建议讲 3-4 分钟，节奏可以稍微慢。
+现场可以现做一个："帮我写一段感谢家长的群发短信，口吻温柔一点，三句话。"——让 AI 当场出，比讲十遍都管用。
+强调："你不用把它写的全留下，挑能用的两三句拷过去就行——AI 是助手，不是替你交作业的。"
+品牌名都补一句："这些只是举例，更新很快，以官网为准。"
+    </span>
+  </section>
+
+  <!-- ====== L2 图像生成 ====== -->
+  <section class="slide" id="l2-image" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 3 · 图像生成</span>
+        <h2 class="slide-title">说一句话，AI 给你画</h2>
+        <div class="slide-subtitle">海报、配图、头像、菜单封面——全都能让它出</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国内常见</div>
+          <div class="card-title">豆包画画 · 即梦 · 文心一格 · 通义万相</div>
+          <div class="card-body">
+            App 友好，注册就能用。<br />
+            <strong>豆包画画</strong> 在豆包 App 里就能找到入口，<br />
+            <em>新手最容易开始的一档。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">Midjourney · DALL·E · Stable Diffusion</div>
+          <div class="card-body">
+            常被设计师提到。<br />
+            <strong>访问需要自备网络</strong>，<br />
+            新手不必先碰，等需要时再说。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">提示词怎么写</div>
+          <div class="card-title">三件事：画什么 + 风格 + 场景</div>
+          <div class="card-body">
+            <strong>画什么</strong>：一只穿宇航服的猫<br />
+            <strong>风格</strong>：手绘 / 油画 / 写实 / 卡通<br />
+            <strong>场景</strong>：在月亮上钓鱼<br />
+            <em>三件凑齐，出图就有方向。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">能干啥</div>
+          <div class="card-title">真实的生活场景</div>
+          <div class="card-body">
+            · 给科普文章<strong>配一张图</strong><br />
+            · 做一张<strong>活动海报</strong><br />
+            · 做朋友圈封面 / 头像<br />
+            · 给孩子讲故事画插画<br />
+            <em>商用前留意各家的版权条款。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>图像生成</span></div>
+    <span class="notes-data">
+现场演示首选：打开豆包 AI 画画，输入"一只穿宇航服的猫在月亮上钓鱼，手绘风"——3-5 秒钟一张图出来，全场效果最好。
+不要在 Midjourney / DALL·E 上停留：提一句"国外的代表，访问需要自备网络"就够。
+讲到"商用版权"那一行不展开——只是提一句"商用之前看一下条款"，避免给人留"AI 出图随便用"的印象。
+    </span>
+  </section>
+
+  <!-- ====== L2 音视频 ====== -->
+  <section class="slide" id="l2-audio-video" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 3 · 音视频</span>
+        <h2 class="slide-title">声音、视频，也能让 AI 帮你做</h2>
+        <div class="slide-subtitle">配音、转文字、做视频——很多功能藏在你常用的 App 里</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">🎬 视频生成 / 剪辑</div>
+          <div class="card-title">剪映 AI · 即梦 · 可灵 · 海螺</div>
+          <div class="card-body">
+            <strong>剪映 AI</strong>：做短视频最常用——<br />
+            自动加字幕、智能配音、AI 一键剪辑。<br />
+            <strong>即梦 / 可灵 / 海螺</strong>：一句话生成短视频。<br />
+            <em>例：把孩子小时候的照片做成 30 秒的"会动的相册"。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">🎵 写歌 / 配乐</div>
+          <div class="card-title">Suno · 天工 SkyMusic</div>
+          <div class="card-body">
+            写下两句歌词，<br />
+            它给你<strong>编曲、配唱、出整首歌</strong>。<br />
+            <em>例：「给妈妈写一首温柔的生日歌，民谣风。」</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">🗣️ 文字变声</div>
+          <div class="card-title">讯飞配音 · 剪映配音</div>
+          <div class="card-body">
+            把一段文字<strong>读成自然的语音</strong>，<br />
+            做科普视频、广播稿、有声书。<br />
+            <em>可以挑男声/女声/方言/温柔/正经⋯⋯多种声线。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">🎧 录音变文字</div>
+          <div class="card-title">讯飞听见 · 通义听悟 · 飞书妙记</div>
+          <div class="card-body">
+            把会议、讲课、采访的录音<br />
+            <strong>自动整理成文字稿</strong>，<br />
+            还能分段、出摘要、列待办。<br />
+            <em>对营养咨询的回访录音特别好用。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>音视频</span></div>
+    <span class="notes-data">
+节奏 2-3 分钟。
+讲"录音变文字"时多停一句——"你以前要听两个小时整理一份纪要，现在 AI 几分钟给你出初稿，你只需要校一下。"
+不要在每个工具上展开评测——只让大家知道"有这一类东西"。
+品牌名都补一句："这些只是举例，更新很快，以官网为准。"
+    </span>
+  </section>
+
+  <!-- ====== L2 代码 / 数据 / 知识库 ====== -->
+  <section class="slide" id="l2-tool-data" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 4-6 · 越往后越"专"</span>
+        <h2 class="slide-title">代码 · 数据 · 知识库 · Agent</h2>
+        <div class="slide-subtitle">这一类不必新手都用，但要心里有数</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card key">
+          <div class="card-tag">场景 4 · 代码 / 数据</div>
+          <div class="card-title">写代码 + 看表格 + 出图</div>
+          <div class="card-body">
+            <strong>代码助手</strong>：Cursor / GitHub Copilot / 通义灵码 …<br />
+            <strong>数据分析</strong>：通用助手上传 Excel，让它"自己写代码、跑出结果、出图"。<br />
+            <em>例：「这份打卡表里，谁最近 4 周坚持得最好？」</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">场景 5 · 知识库（RAG）</div>
+          <div class="card-title">让 AI"开卷考试"</div>
+          <div class="card-body">
+            普通 AI 凭记忆答 → 容易瞎编。<br />
+            <strong>知识库 AI</strong> 先翻你给的资料再答 → 不容易胡说，还能给出处。<br />
+            <em>例：把营养指南 PDF 喂给它，问"指南第几页提到了什么"。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">场景 6 · Agent 自动化</div>
+          <div class="card-title">交代一件事，它自己办完</div>
+          <div class="card-body">
+            不再"你问一句、它答一句"——<br />
+            它会拆任务、自己用工具、把事情<strong>真的</strong>办完。<br />
+            <em>第 3 课专门讲，今天点到为止。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">"开卷考试" 一句话</div>
+          <div class="card-title">为什么知识库这么重要</div>
+          <div class="card-body">
+            一般的 AI 答题靠"记忆 + 接龙"——容易编。<br />
+            知识库 AI 答题靠"翻你给的资料"——<br />
+            <strong>答错的概率小很多，还能告诉你来源</strong>。<br />
+            <em>对营养师、医生、老师这类靠"指南"工作的人，特别合适。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>场景 4-6</span></div>
+    <span class="notes-data">
+节奏 2-3 分钟。
+讲到场景 5（知识库）时强调"开卷考试"这个比喻——这是一个全班只要听懂一次就受益匪浅的概念。
+讲到场景 6（Agent）时点一句："第 3 课专门讲，先听个名字。"
+讲到代码 / 数据时强调："不用真的会写代码——你只要会说话，AI 自己写、自己跑。"
+    </span>
+  </section>
+
+  <!-- ====== L2 行业专业 AI ====== -->
+  <section class="slide" id="l2-industry" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">场景 7 · 行业专业 AI</span>
+        <h2 class="slide-title">走进各行各业</h2>
+        <div class="slide-subtitle">通用 AI 太"宽"——专业事，需要懂行的人参与整理</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card key">
+          <div class="card-tag">医疗</div>
+          <div class="card-title">医学影像 · 辅助阅片 · 病历整理</div>
+          <div class="card-body">
+            帮医生<strong>看片</strong>、<strong>找异常</strong>、<strong>整理病历</strong>——<br />
+            提高效率，但<strong>最终判断在医生</strong>。<br />
+            <em>从来不是 AI 替医生看病。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">营养（润圆在做的方向）</div>
+          <div class="card-title">食物识别 · 食养方案 · 患者回访</div>
+          <div class="card-body">
+            <strong>食物识别</strong>：拍照估算热量。<br />
+            <strong>食养方案</strong>：按指南、按个体情况给建议。<br />
+            <strong>回访</strong>：把回访录音整理成结构化记录。<br />
+            <em>—— 我自己每天都在用。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">教育</div>
+          <div class="card-title">作业批改 · 口语陪练 · 个性化讲解</div>
+          <div class="card-body">
+            英文作文 AI 批改、<br />
+            口语 AI 陪你练对话、<br />
+            数学题 AI <strong>讲解</strong>给孩子听。<br />
+            <em>家长省时间，孩子学得更细。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">法律 / 金融 / 客服</div>
+          <div class="card-title">合同审查 · 智能客服 · 报告摘要</div>
+          <div class="card-body">
+            合同里"哪几条不利于我"——<br />
+            AI 给一份初筛清单，<br />
+            最后还是<strong>专业人士拍板</strong>。<br />
+            <em>金融研报、客服问答也是常见场景。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🧩</div>
+        <div class="qa-text">
+          <div class="qa-label">关 键 一 点</div>
+          <div class="qa-question">行业 AI 越来越多——但<strong>最终拍板的人，始终是懂行的人</strong>。第 4 课我们会再讲"灵台"——这背后是把"懂行的人"和 AI 接起来的方法。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>行业专业 AI</span></div>
+    <span class="notes-data">
+讲营养那一张卡时润圆可以轻描淡写一句："这就是我现在在做的事。"——为第 4 课"灵台 / AI 食养助手"埋伏笔，不展开。
+讲到医疗 / 法律时一定强调："AI 是助手，最后拍板的人是医生 / 律师 / 营养师——不是 AI。"——这是第 4 课红线的前导。
+不要把"行业应用"讲成科幻——只列大家听得懂的几类。
+    </span>
+  </section>
+
+  <!-- ====== L2 生活场景对应练习 ====== -->
+  <section class="slide" id="l2-life-practice" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 场景练习</span>
+        <h2 class="slide-title">生活里常见的 6 件事，分别用哪类 AI？</h2>
+        <div class="slide-subtitle">看一眼答案，下次自己就会"对号入座"</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr><th style="width:300px">我想做的事</th><th style="width:200px">该用哪一类</th><th>怎么开始</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>给家长群发一段开学通知</strong></td><td>通用助手（写作）</td><td>豆包 / Kimi / 通义里，直接说："写一段三句话的开学通知，口吻温柔。"</td></tr>
+          <tr><td><strong>做一张社区营养讲座的海报</strong></td><td>图像生成 / 海报工具</td><td>美图设计室 / Canva / 豆包画画——给主题、给风格、给场景。</td></tr>
+          <tr><td><strong>把 2 小时的患者回访录音整理成文字</strong></td><td>语音 / 听见类</td><td>讯飞听见 / 通义听悟 / 飞书妙记，上传录音就行。</td></tr>
+          <tr><td><strong>查一查《中国居民膳食指南》怎么写</strong></td><td>知识库（RAG）</td><td>把指南 PDF 喂给 AI，让它"按出处回答"——少胡说。</td></tr>
+          <tr><td><strong>做一份"糖尿病饮食科普" 8 页 PPT</strong></td><td>办公 / PPT 类</td><td>Gamma / WPS AI / 通用助手，一句话出初稿，再人工微调。</td></tr>
+          <tr><td><strong>有点不舒服，想问问健康问题</strong></td><td>通用助手（仅参考）+ 看医生</td><td>可以用 AI 整理思路、解释名词；<strong>诊断、用药、做方案，找专业人士</strong>。</td></tr>
+        </tbody>
+      </table>
+      <div class="qa-card">
+        <div class="qa-icon">📝</div>
+        <div class="qa-text">
+          <div class="qa-label">回 家 后 试 一 件</div>
+          <div class="qa-question">从这 6 件里挑一件，今晚就动手试一下。第 4 课我们专门讲"健康问题怎么用 AI 不踩线"。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>场景练习</span></div>
+    <span class="notes-data">
+节奏 2-3 分钟。
+讲到最后一行（健康问题）时一定要慢一拍——这是第 4 课红线的前导。
+说："AI 可以陪你想问题，但不能替医生看病——这条线，等到第 4 课我会专门讲。"
+不要在这页就把"健康"全展开，留到第 4 课。
+讲到 PPT / 海报这两行可以现场打开一个 AI 工具看一眼——一个动作比讲十遍都管用。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 扩展专题（v0.4 新增 · 9 页 · 时间紧可整段跳过） ====== -->
+
+  <!-- ====== L2 创作类 AI · 1 / 9 总览 ====== -->
+  <section class="slide" id="l2-creative-intro" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 1 / 9</span>
+        <h2 class="slide-title">AI 不只是聊天——它还会"动手做东西"</h2>
+        <div class="slide-subtitle">画画、写歌、做视频、配音、出 PPT、做剪辑——后面 8 页一类一类看</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="brand-grid cols-3">
+        <div class="brand-card">
+          <div class="brand-logo warm">画</div>
+          <div class="brand-info">
+            <div class="brand-name">绘画 / 图片</div>
+            <div class="brand-tag">输入文字 · 生成图片</div>
+            <div class="brand-desc">海报、配图、头像、插画——一句话起步。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo plum">乐</div>
+          <div class="brand-info">
+            <div class="brand-name">音乐 / 歌曲</div>
+            <div class="brand-tag">输入主题 / 歌词 · 生成歌</div>
+            <div class="brand-desc">编曲、配唱、出整首歌——连副歌都给你写好。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo blue">视</div>
+          <div class="brand-info">
+            <div class="brand-name">视频</div>
+            <div class="brand-tag">文字 / 图片 · 变短视频</div>
+            <div class="brand-desc">老照片动起来、一句话出短片——还在快速进步。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo sage">声</div>
+          <div class="brand-info">
+            <div class="brand-name">配音 / 声音</div>
+            <div class="brand-tag">文字 · 变语音</div>
+            <div class="brand-desc">做科普视频、有声书、广播稿——多种声线挑着用。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo gold">设</div>
+          <div class="brand-info">
+            <div class="brand-name">PPT / 设计 / 海报</div>
+            <div class="brand-tag">一句话 · 出版式</div>
+            <div class="brand-desc">课件、宣传单、朋友圈封面——AI 出初稿，你来定调。</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo teal">剪</div>
+          <div class="brand-info">
+            <div class="brand-name">剪辑 / 字幕 / 办公</div>
+            <div class="brand-tag">重复劳动 · 交给工具</div>
+            <div class="brand-desc">自动加字幕、出会议纪要、生成待办——省下来的时间留给自己。</div>
+          </div>
+        </div>
+      </div>
+      <div class="soft-tip" style="margin-top:8px">
+        这一整组是"扩展 · 选讲"——讲不完可以整段跳过，学员回放再看。
+        重点是<strong>"AI 不只是会聊天"</strong>这一句先种到大家心里。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>1 / 9 总览</span></div>
+    <span class="notes-data">
+开场一句："你别以为 AI 只是会陪你聊天——它还会画画、写歌、出视频、配音⋯⋯后面 8 页我们一类一类看一眼，知道有这种东西就够。"
+不要在这一页停留太久——30 秒带过六个抽屉，让大家先有个"原来 AI 还能干这些"的反应。
+品牌名后面具体那一页再说，这一页先不举名字。
+"扩展·选讲"再强调一次：时间紧整段跳过没问题，学员看回放也能补。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 2 / 9 绘画 ====== -->
+  <section class="slide" id="l2-creative-image" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 2 / 9</span>
+        <h2 class="slide-title">绘画 / 图片 AI · 一句话画一张</h2>
+        <div class="slide-subtitle">海报、菜单封面、科普配图、朋友圈头像——都能让它出</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国内常见</div>
+          <div class="card-title">即梦 · 可灵 · 通义万相 · 豆包画画</div>
+          <div class="card-body">
+            App 注册就能用，<strong>不需要自备网络</strong>。<br />
+            <strong>豆包画画</strong> 直接藏在豆包 App 里，<br />
+            <em>新手最容易开始的一档。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">Midjourney · Stable Diffusion · DALL·E</div>
+          <div class="card-body">
+            <strong>设计师圈里常听到的名字</strong>。<br />
+            访问需要自备网络条件，<br />
+            <em>新手不必先碰，等需要时再说。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">提示词三件套</div>
+          <div class="card-title">画什么 + 风格 + 场景</div>
+          <div class="card-body">
+            <strong>画什么</strong>：一盘清蒸鲈鱼<br />
+            <strong>风格</strong>：手绘 / 卡通 / 写实 / 水彩<br />
+            <strong>场景</strong>：摆在白瓷盘里，旁边一支葱<br />
+            <em>三件凑齐，出图就有方向。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">营养师能用在哪</div>
+          <div class="card-title">真实场景四件套</div>
+          <div class="card-body">
+            · 给科普文章<strong>配一张图</strong><br />
+            · 做<strong>讲座海报、菜单封面</strong><br />
+            · 给孩子讲营养知识画插画<br />
+            · 朋友圈头像 / 节日封面<br />
+            <em>商用前请看一下各家版权条款。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>2 / 9 绘画</span></div>
+    <span class="notes-data">
+节奏 1.5-2 分钟。
+现场可以打开豆包画画，输入"一盘清蒸鲈鱼，手绘风，摆在白瓷盘里"——3-5 秒出图，全场效果最好。
+不在 Midjourney / DALL·E 上停留——提一句"国外的代表，访问要自备网络"就够。
+"商用版权"那一行不要展开，留半句即可——避免给"AI 出图随便用"的印象。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 3 / 9 音乐 ====== -->
+  <section class="slide" id="l2-creative-music" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 3 / 9</span>
+        <h2 class="slide-title">音乐 AI · 写两句歌词，它给你出整首歌</h2>
+        <div class="slide-subtitle">编曲、配唱、副歌——一气呵成</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">Suno · Udio · Stable Audio</div>
+          <div class="card-body">
+            <strong>Suno</strong> 最容易上手——<br />
+            输入"民谣风 · 给妈妈的生日歌 · 温柔"，<br />
+            它一次出两个版本，你挑一个。<br />
+            <em>访问需要自备网络条件。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国内可用</div>
+          <div class="card-title">天工 SkyMusic · 海绵音乐</div>
+          <div class="card-body">
+            <strong>App 注册就能用</strong>，中文歌词支持好。<br />
+            适合做<strong>科普短视频 BGM、活动主题曲</strong>。<br />
+            <em>这些都更新很快，以官网为准。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">写提示句</div>
+          <div class="card-title">三件套：风格 + 主题 + 情绪</div>
+          <div class="card-body">
+            <strong>风格</strong>：民谣 / 流行 / 摇滚 / 童谣<br />
+            <strong>主题</strong>：母亲节、社区义诊、儿童营养<br />
+            <strong>情绪</strong>：温暖、轻松、激励<br />
+            <em>三件凑齐，出歌就稳。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">营养师能用在哪</div>
+          <div class="card-title">活动主题曲 / 短视频配乐</div>
+          <div class="card-body">
+            · 营养讲座<strong>开场主题曲</strong><br />
+            · 健康科普<strong>短视频背景音乐</strong><br />
+            · 给孩子的<strong>"吃菜歌""喝水歌"</strong><br />
+            <em>商用前看授权条款；别人嗓子别去模仿。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>3 / 9 音乐</span></div>
+    <span class="notes-data">
+节奏 1.5 分钟。
+如果时间允许，现场用天工或 Suno 出一首 30 秒的"吃菜歌"——效果非常炸场。
+不要在"用 AI 给妈妈写生日歌"这一行停留太久——一句话就够，把情绪点到。
+反复提醒："商用看授权 · 别用别人嗓子"——这是 8 / 9 边界页的伏笔。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 4 / 9 视频 ====== -->
+  <section class="slide" id="l2-creative-video" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 4 / 9</span>
+        <h2 class="slide-title">视频 AI · 文字或图片，变成短视频</h2>
+        <div class="slide-subtitle">老照片动起来、一句话出短片——还在快速进步</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国内常听到</div>
+          <div class="card-title">可灵 · 即梦 · 海螺 AI</div>
+          <div class="card-body">
+            <strong>可灵</strong>（快手系）·<strong>即梦</strong>（字节系）·<strong>海螺</strong>（MiniMax）。<br />
+            App / 网页都能用，<strong>都支持文字一句话出视频</strong>。<br />
+            <em>更新很快——以官网为准。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">Runway · Pika · Sora</div>
+          <div class="card-body">
+            <strong>Sora</strong> 是 OpenAI 出的那个 AI。<br />
+            国外这几家话题度高，<strong>访问需要自备网络</strong>。<br />
+            <em>新手了解名字即可，不必先碰。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">常见用法</div>
+          <div class="card-title">三种最容易上手</div>
+          <div class="card-body">
+            · <strong>把照片"动起来"</strong>——老照片、孩子小时候<br />
+            · <strong>一句话生成短片</strong>——5 秒、10 秒<br />
+            · <strong>给短视频加 AI 特效</strong>——卡通脸、风格滤镜<br />
+            <em>满意的镜头通常要试 3-5 次。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">营养师能用在哪</div>
+          <div class="card-title">科普短视频 / 节日问候</div>
+          <div class="card-body">
+            · <strong>把"清蒸鱼步骤图"变成动态短片</strong><br />
+            · <strong>把妈妈的老照片做成 30 秒"会动的相册"</strong><br />
+            · <strong>给社区义诊做 10 秒预告片</strong><br />
+            <em>真人画面 / 名人脸——别拿来伪造。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>4 / 9 视频</span></div>
+    <span class="notes-data">
+节奏 1.5 分钟。
+现场可以打开即梦或可灵，输入"妈妈做菜的照片，让她笑一下、转过身来"——把"老照片动起来"演一次。
+不要把"AI 出视频随便发抖音"当成事实，反复提醒："出来不代表你能商用、不能拿来伪造现实——下下页专门讲边界"。
+不要展开 Sora 国内能不能用——一句"需要自备网络"带过。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 5 / 9 配音 / 声音 ====== -->
+  <section class="slide" id="l2-creative-voice" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 5 / 9</span>
+        <h2 class="slide-title">配音 / 声音 AI · 文字变语音</h2>
+        <div class="slide-subtitle">做科普视频、有声书、广播稿——多种声线挑着用</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国内常用</div>
+          <div class="card-title">讯飞配音 · 火山引擎语音 · 剪映配音</div>
+          <div class="card-body">
+            <strong>讯飞配音</strong>：教育、医疗、政务里很常见。<br />
+            <strong>剪映配音</strong>：直接在剪映 App 里就能用。<br />
+            <em>多数 AI 配音工具都<strong>免费试 + 付费深度用</strong>。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">ElevenLabs · 海螺 Speech</div>
+          <div class="card-body">
+            <strong>ElevenLabs</strong> 英文配音以"自然"出名，<br />
+            播客圈、有声书圈常用。<br />
+            <strong>国内海螺也支持英文 / 多语种</strong>。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">三种用法</div>
+          <div class="card-title">挑一个先用起来</div>
+          <div class="card-body">
+            · <strong>文字转语音</strong>：科普视频自动配旁白<br />
+            · <strong>声线挑选</strong>：男声 / 女声 / 方言 / 温柔 / 正经<br />
+            · <strong>声音克隆</strong>：用本人样本，让 AI 学着说<br />
+            <em>克隆嗓音<strong>只克隆自己的</strong>，不要克隆别人。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">营养师能用在哪</div>
+          <div class="card-title">科普视频 / 公众号音频</div>
+          <div class="card-body">
+            · 给短视频<strong>配一段温柔的女声旁白</strong><br />
+            · <strong>把公众号长文做成有声版</strong><br />
+            · <strong>给义诊宣传做 30 秒广播稿</strong><br />
+            <em>真人嗓音不属于你时，请先拿到对方书面同意。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>5 / 9 配音</span></div>
+    <span class="notes-data">
+节奏 1.5 分钟。
+现场可以打开讯飞配音或剪映 App，把一句话"今天我们讲一讲老年人怎么吃豆制品"——配出温柔女声，让大家听一下。
+反复说："克隆嗓音，只克隆自己的。"——这是边界页的伏笔。
+不要展开 ElevenLabs 怎么注册——一句"国外的代表"就够。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 6 / 9 PPT / 设计 / 海报 ====== -->
+  <section class="slide" id="l2-creative-design" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 6 / 9</span>
+        <h2 class="slide-title">PPT / 设计 / 海报 AI · 一句话出版式</h2>
+        <div class="slide-subtitle">课件、宣传单、朋友圈封面——AI 出初稿，你来定调</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">国内常听到</div>
+          <div class="card-title">美图设计室 · WPS AI · 稿定设计</div>
+          <div class="card-body">
+            <strong>美图设计室</strong>：海报、社交配图很顺手。<br />
+            <strong>WPS AI</strong>：直接在 WPS PPT 里一句话出页。<br />
+            <strong>稿定</strong>：海报模板 + AI 一起用。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">国外代表</div>
+          <div class="card-title">Canva AI · Gamma · Tome · Microsoft Designer</div>
+          <div class="card-body">
+            <strong>Canva</strong> 海报模板最丰富，国内可访问。<br />
+            <strong>Gamma / Tome</strong>：一句话出长 PPT。<br />
+            <em>Microsoft Designer 在 Office 365 里。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">怎么开口</div>
+          <div class="card-title">告诉它五件事</div>
+          <div class="card-body">
+            <strong>主题</strong>：糖尿病饮食科普<br />
+            <strong>受众</strong>：60-70 岁老人<br />
+            <strong>页数</strong>：10 页<br />
+            <strong>风格</strong>：温暖、清淡、不复杂<br />
+            <strong>关键信息</strong>：3 件能做、3 件别做
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">营养师能用在哪</div>
+          <div class="card-title">最高频的两件事</div>
+          <div class="card-body">
+            · <strong>讲座 PPT</strong>：先让 AI 出 10 页，再人工挑要不要保留<br />
+            · <strong>义诊 / 讲座海报</strong>：主题一句、风格一句，剩下交给它<br />
+            <em>AI 出来的别原封不动用——你来定调子。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>6 / 9 PPT 设计</span></div>
+    <span class="notes-data">
+节奏 1.5-2 分钟。这一类是营养师真的能省时间的地方，可以稍微多停一下。
+现场最炸场的演示：在 Gamma 或 WPS AI 里输入"做一份 10 页的糖尿病饮食科普 PPT，给 60-70 岁老人，温暖清淡"——20-30 秒一份初稿。
+强调："AI 是出初稿的，不是替你交作业的"——这一句要慢一拍说。
+不要展开"哪一家最好"——一句"挑一个手上现成的"。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 7 / 9 剪辑 / 字幕 / 办公 ====== -->
+  <section class="slide" id="l2-creative-edit" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 7 / 9</span>
+        <h2 class="slide-title">剪辑 / 字幕 / 办公内容 AI · 重复劳动交给工具</h2>
+        <div class="slide-subtitle">省下来的时间，留给你自己</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">剪视频 / 加字幕</div>
+          <div class="card-title">剪映 AI · CapCut · 必剪</div>
+          <div class="card-body">
+            <strong>剪映 AI</strong>：自动加字幕、智能配音、AI 一键剪辑、人物抠图。<br />
+            <strong>CapCut</strong>：海外版剪映，模板多。<br />
+            <em>做短视频科普，先想到这一类。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">录音变文字</div>
+          <div class="card-title">讯飞听见 · 通义听悟 · 飞书妙记</div>
+          <div class="card-body">
+            把会议 / 讲课 / 患者回访录音<br />
+            <strong>自动整理成文字稿</strong>，还能分段、出摘要、列待办。<br />
+            <em>营养师整理回访录音特别好用。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">办公里的 AI</div>
+          <div class="card-title">WPS AI · 飞书智能伙伴 · 钉钉智能助理 · Notion AI</div>
+          <div class="card-body">
+            <strong>Word / Excel / PPT</strong> 里直接喊它做事——<br />
+            "把这张表里重复的客户去掉"<br />
+            "把这段会议记录变成五条待办"。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">三个真实场景</div>
+          <div class="card-title">营养师每周用得上</div>
+          <div class="card-body">
+            · <strong>讲座录音 → 文字稿 + 摘要</strong><br />
+            · <strong>短视频 → 自动加字幕 + 配旁白</strong><br />
+            · <strong>客户回访表 → AI 帮你列 5 条下周待办</strong><br />
+            <em>重复劳动越多，AI 省下来的时间越多。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>7 / 9 剪辑 办公</span></div>
+    <span class="notes-data">
+节奏 1.5 分钟。
+讲到"录音变文字"时多停一句——"以前你要听两小时整理一份纪要，现在 AI 几分钟给你出初稿，你只需要校一下。"
+不要在每个工具上展开评测——只让大家知道"有这一类东西"。
+品牌名后面都补一句："这些只是举例，更新很快，以官网为准。"
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 8 / 9 三条边界 ====== -->
+  <section class="slide" id="l2-creative-boundaries" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 8 / 9</span>
+        <h2 class="slide-title">创作类 AI 的三条边界</h2>
+        <div class="slide-subtitle">能做出来 ≠ 能拿出去用——这三条先记住</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card warn">
+          <div class="card-tag">① 版权</div>
+          <div class="card-title">能生成 ≠ 能商用</div>
+          <div class="card-body">
+            每家平台对<strong>商业使用</strong>都有自己的条款。<br />
+            发朋友圈一般问题不大，<br />
+            <strong>挂到付费课程、印进书、做产品包装</strong>——先看条款。<br />
+            <em>不确定就别直接商用。</em>
+          </div>
+        </div>
+        <div class="card warn">
+          <div class="card-tag">② 肖像 / 声音</div>
+          <div class="card-title">别拿别人的脸和嗓子去克隆</div>
+          <div class="card-body">
+            <strong>名人脸 / 同事脸 / 患者脸</strong> 别拿去做 AI 视频。<br />
+            <strong>别人的嗓子</strong>别拿来做 AI 配音。<br />
+            <em>克隆自己的可以——克隆别人的，先拿到书面同意。</em>
+          </div>
+        </div>
+        <div class="card warn">
+          <div class="card-tag">③ 别用来伪造现实</div>
+          <div class="card-title">AI 出图 / 视频不能拿来骗人</div>
+          <div class="card-body">
+            <strong>不要做"以假乱真"的事情</strong>——<br />
+            假名人发言、假病例、假活动现场图。<br />
+            <em>哪怕只是"玩一下"，也别发到公共场合。</em>
+          </div>
+        </div>
+      </div>
+      <div class="soft-tip" style="margin-top:10px">
+        三条记不住，记一句：<strong>"AI 帮你做东西，但别让 AI 替你撒谎。"</strong>
+        第 4 课会再展开讲健康场景里的红线。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>8 / 9 三条边界</span></div>
+    <span class="notes-data">
+节奏 1.5-2 分钟——这一页要慢一拍讲。
+讲到"克隆嗓音 / 克隆脸"一定要说一遍："克隆自己的可以，克隆别人的，先拿到对方书面同意。"
+"伪造现实"举一个实在的例子："不要拿 AI 做的'某专家说要每天吃十个鸡蛋'去发到群里——这事看起来好玩，传出去会出事。"
+强调："第 4 课会再展开健康场景里的红线"——给第 4 课打前导。
+不要在"商用版权"这一行展开法律细节——一句"不确定就别商用"。
+    </span>
+  </section>
+
+  <!-- ====== L2 创作类 AI · 9 / 9 怎么选 ====== -->
+  <section class="slide" id="l2-creative-choose" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">扩展 · 选讲 · 创作类 AI 9 / 9</span>
+        <h2 class="slide-title">小白怎么选？想做什么 · 找哪一类</h2>
+        <div class="slide-subtitle">不纠结哪个"最好"——先挑一类，今晚就动手</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr><th style="width:220px">我想做什么</th><th style="width:200px">找哪一类 AI</th><th>新手最容易开始的</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>写一段话 · 改稿 · 回邮件</strong></td><td>聊天 AI（通用助手）</td><td>豆包 · Kimi · 通义 · 元宝</td></tr>
+          <tr><td><strong>画一张图 · 做一张海报封面</strong></td><td>绘画 AI</td><td>豆包画画 · 即梦 · 通义万相</td></tr>
+          <tr><td><strong>给主题曲 · 做短视频 BGM</strong></td><td>音乐 AI</td><td>天工 SkyMusic · 海绵音乐 · Suno</td></tr>
+          <tr><td><strong>做 5-30 秒短视频 · 老照片动起来</strong></td><td>视频 AI</td><td>可灵 · 即梦 · 海螺</td></tr>
+          <tr><td><strong>给视频配旁白 · 做有声版公众号</strong></td><td>配音 AI</td><td>讯飞配音 · 剪映配音</td></tr>
+          <tr><td><strong>讲座 PPT · 义诊海报 · 朋友圈封面</strong></td><td>PPT / 设计 AI</td><td>WPS AI · 美图设计室 · Canva · Gamma</td></tr>
+          <tr><td><strong>剪短视频 · 加字幕 · 录音变文字</strong></td><td>剪辑 / 办公 AI</td><td>剪映 AI · 飞书妙记 · 通义听悟</td></tr>
+        </tbody>
+      </table>
+      <div class="pull-quote" style="margin-top:auto">
+        <strong>今晚动作：</strong>从上面任选 <strong>一行</strong>，今晚下班就试一次。
+        下次课分享：你试的是哪一类？
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 创作类 AI · 扩展 · 选讲</span><span>9 / 9 怎么选</span></div>
+    <span class="notes-data">
+节奏 1.5 分钟收尾。
+反复说一句："不纠结哪个最好——挑一个用起来，比挑半天更要紧。"
+让大家在这张表上指一行——"今晚就动手这一类"——比留作业更容易落地。
+表格里的工具名都是<strong>举例</strong>，再补一句"更新很快，以官网为准"。
+    </span>
+  </section>
+
+  <!-- ====== 15 / L2 互动 ====== -->
+  <section class="slide" id="l2-qa" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 互动</span>
+        <h2 class="slide-title">场景抢答</h2>
+        <div class="slide-subtitle">下面这几件事，对应七大场景里的哪一种？</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card example">
+          <div class="card-title">题 1</div>
+          <div class="card-body">"<strong>帮我写一段感谢信</strong>，要客气一点。"<br /><em>—— 哪一个场景？</em></div>
+        </div>
+        <div class="card example">
+          <div class="card-title">题 2</div>
+          <div class="card-body">"<strong>给我画一张菜单封面</strong>，温馨一点。"<br /><em>—— 哪一个场景？</em></div>
+        </div>
+        <div class="card example">
+          <div class="card-title">题 3</div>
+          <div class="card-body">"<strong>读完这份指南 PDF，回答时给我标页码。</strong>"<br /><em>—— 哪一个场景？</em></div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🙋</div>
+        <div class="qa-text">
+          <div class="qa-label">答 案 揭 晓</div>
+          <div class="qa-question">题 1 = 通用助手（场景 1） · 题 2 = 图像生成（场景 3） · 题 3 = 知识库 RAG（场景 5）。错没关系——能"对号入座"就够了。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>互动</span></div>
+    <span class="notes-data">
+点 3-4 位同学抢答，答完直接揭晓。
+关键不是答对，是让大家真的体会"分类是为了好下手"。
+答错可以温柔接住："这题分到哪一类都行，重点是你心里有个'抽屉'。"
+    </span>
+  </section>
+
+  <!-- ====== 16 / L2 小结：怎么挑 ====== -->
+  <section class="slide" id="l2-summary" data-section="第二课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 2 课 · 小结</span>
+        <h2 class="slide-title">怎么挑？问自己 3 个问题</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <ul class="list-checks">
+        <li><strong>我要让 AI 干什么？</strong>对照"七大场景"表，找到自己的那一行。</li>
+        <li><strong>我能不能直接下载、注册和打开？</strong>先选国内常见的：豆包、Kimi、通义千问、文心、DeepSeek、腾讯元宝。</li>
+        <li><strong>能不能马上用上？</strong>不要纠结哪个"最好"，<strong>挑一个用起来</strong>比挑半天更要紧。</li>
+      </ul>
+      <div class="pull-quote" style="margin-top:auto">
+        <strong>今晚动作：</strong>打开你手机里的<strong>任何一个 App</strong>，找一个 AI 功能用一次。<br />
+        下次课分享：你用的是哪一类场景？
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 2 课 · 主流 AI 类型</span><span>小结</span></div>
+    <span class="notes-data">
+"挑一个用起来"是这节课最重要的一句话——选择越多越难下手，先让大家有"我已经在用"的踏实感。
+作业要尽量轻：哪怕只是用 AI 写一句话也算完成。
+    </span>
+  </section>
+
+  <!-- ============================================================
+       第三课：AI Agent 和 Skill（管家 + 工作手册 + 工具箱）
+       ============================================================ -->
+
+  <!-- ====== 17 / L3 封面 ====== -->
+  <section class="slide" id="l3-cover" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 30 分钟</span>
+        <h2 class="slide-title">AI Agent 和 Skill</h2>
+        <div class="slide-subtitle">从"会聊天的 AI"，到"会动手的 AI"</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="pull-quote">
+        给 AI 加上<strong>"会动手"</strong>三个字，就变成 <strong>Agent</strong>。<br />
+        给它一本<strong>工作手册</strong>、一个<strong>工具箱</strong>，就变成<strong>会某一行的 Agent</strong>。<br />
+        你只需要把话说清楚，剩下的它去办。
+        <span class="by">—— 这节课唯一要记住的一句话</span>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>开场</span></div>
+    <span class="notes-data">
+强调：这一课名字里有两个英文词，听起来唬人，其实就是"管家 + 工作手册"。
+开场不要急着解释 Agent/Skill 怎么拼——先建立"管家"这个画面感。
+    </span>
+  </section>
+
+  <!-- ====== 18 / L3 时间轴 ====== -->
+  <section class="slide" id="l3-timeline" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 时间安排</span>
+        <h2 class="slide-title">30 分钟，请一个 AI 管家</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">0 – 4 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">前两课的 AI 缺了点什么？<span class="hint">"会答" ≠ "会办事"</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">4 – 8 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">Agent 就是"会动手的管家"<span class="hint">会拆任务、会用工具、会回头检查</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">8 – 12 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">普通 AI 和 Agent，差在哪里<span class="hint">一张对照表立刻能看清</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">12 – 15 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">Skill 就是给管家的"工作手册 + 工具箱"<span class="hint">没手册的管家是路人，有手册的管家是专业户</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">15 – 19 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">具体场景：旅行 / 会议 / 营养科普 / 客户跟进<span class="hint">把"管家干活"装到生活里</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">19 – 22 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">互动 · 哪些事可以交给管家<span class="hint">想到啥说啥，别怕</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">22 – 26 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">现场看一个小例子<span class="hint">让 AI 读一篇长文章，自己整理出纪要</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">26 – 29 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">给管家交代事的 3 个小技巧<span class="hint">说清楚 · 不满意接着说 · 给个角色</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">29 – 30 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">小结 + 答疑</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>时间安排</span></div>
+    <span class="notes-data">
+这节课最容易把人讲晕，节奏要慢，每段讲完都停一停问："听到这儿，有问题吗？"
+不要急着引出 Skill——先把"管家"这个画面立住，听众想清楚"我要请的管家长啥样"，再上工作手册。
+    </span>
+  </section>
+
+  <!-- ====== 19 / L3 三张概念卡 ====== -->
+  <section class="slide" id="l3-cards" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 核心概念</span>
+        <h2 class="slide-title">三张卡，讲清两个词</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card term">
+          <div class="card-tag">Agent</div>
+          <div class="card-title">会动手的 AI 管家</div>
+          <div class="card-body">
+            普通 AI 像<strong>坐家里的聪明人</strong>，你问它它就答。<br />
+            Agent 像<strong>能出门跑腿的管家</strong>——你交代一件事，它自己拆步骤、用工具、把事办完。
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">Skill</div>
+          <div class="card-title">工作手册 + 工具箱</div>
+          <div class="card-body">
+            通用管家是"路人"——什么都懂一点，但都不专。<br />
+            给他一本<strong>《营养师工作手册》</strong>、一个<strong>装着量勺、食物秤、热量表的工具箱</strong>——他就是<strong>专业管家</strong>。<br />
+            <em>Skill 就是这本手册和这个工具箱。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">用法</div>
+          <div class="card-title">直接说话就行</div>
+          <div class="card-body">
+            "帮我查下北京下周的天气，写一段给老人的提醒。"<br />
+            → 管家自己<strong>翻"上网查"的手册</strong>，再<strong>翻"写关怀短信"的手册</strong>。<br />
+            <strong>你完全不用懂技术。</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>核心概念</span></div>
+    <span class="notes-data">
+讲第二张卡时强调："手册不是给你看的，是给 AI 看的；你只管交代事。"
+讲完第三张卡，强调："你不用学技术，你只需要把要做的事说清楚——话说得越具体，管家干得越准。"
+有听众问到"Agent 怎么知道翻哪一本手册"——一句话回："就像专业管家干活，自己看情况选工具，你不用挑。"
+不要展开技术细节，今天不讲"它怎么决定调哪个工具"——那是工程师的事。
+    </span>
+  </section>
+
+  <!-- ====== L3 普通 AI vs Agent 对比 ====== -->
+  <section class="slide" id="l3-vs" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 对比</span>
+        <h2 class="slide-title">普通 AI 和 Agent，差在哪里</h2>
+        <div class="slide-subtitle">同一件事，看两边怎么做，立刻看清</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr><th style="width:200px">你交代的事</th><th style="width:280px">普通 AI（坐家里的聪明人）</th><th>Agent（会出门的管家）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>"明天北京天气怎么样"</strong></td><td>凭"记忆"答——可能用的是几个月前的数据，未必准。</td><td>它<strong>自己上网查</strong>实时天气，再用人话告诉你。</td></tr>
+          <tr><td><strong>"给客户写一段回邮件"</strong></td><td>就给你一段文字，你自己复制、贴、发。</td><td>它<strong>翻出邮件历史</strong>、用合适语气写、放进草稿箱让你确认。</td></tr>
+          <tr><td><strong>"读完这份指南，整理 5 个要点"</strong></td><td>你得分段贴给它，它一段一段答。</td><td>它<strong>自己读完整份文件</strong>、自己拆要点、自己排序，给你一份成稿。</td></tr>
+          <tr><td><strong>不满意你说"再改一下"</strong></td><td>多半要重新给它说一遍。</td><td>它<strong>记得上一步</strong>，照你说的微调，接着往下做。</td></tr>
+        </tbody>
+      </table>
+      <div class="qa-card">
+        <div class="qa-icon">🧑‍💼</div>
+        <div class="qa-text">
+          <div class="qa-label">一 句 话 区 别</div>
+          <div class="qa-question">普通 AI 是"问答机"——你问它答；Agent 是"管家"——你交代，它办完。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>对比</span></div>
+    <span class="notes-data">
+讲这一页用 3-4 分钟，是这节课最重要的一页之一。
+建议：每一行先念"交代的事"，再左右两边对比一下，让大家自己感受出"管家有手有脚"的不同。
+不要展开技术细节（不要讲它"调用了什么工具"）——只讲"它做了几件事，把活儿干完了"。
+讲到第二行"客户邮件"时可以补一句："你不用担心它直接发出去——一般都会让你过一遍再发，这一点 AI 比人靠谱。"
+    </span>
+  </section>
+
+  <!-- ====== L3 Skill 是一本工作手册 ====== -->
+  <section class="slide" id="l3-skill-handbook" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 工作手册</span>
+        <h2 class="slide-title">Skill 像什么？像一本"工作手册"</h2>
+        <div class="slide-subtitle">同一个管家，给他不同的手册，他就成了不同行业的专业户</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card term">
+          <div class="card-tag">没手册</div>
+          <div class="card-title">通用管家：路人</div>
+          <div class="card-body">
+            什么都能聊一点。<br />
+            但碰到<strong>"我血糖 8.4，能不能吃西瓜"</strong>这种问题，<br />
+            它<strong>说得太宽</strong>——既不专业，也不敢做主。
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">给一本《营养师工作手册》</div>
+          <div class="card-title">营养专业户</div>
+          <div class="card-body">
+            手册里写了：先问几个关键信息（餐前/餐后？吃了多少？）、<br />
+            参考哪本指南、什么情况建议复查、什么时候劝去找医生⋯⋯<br />
+            <strong>它就会按这套流程回答。</strong>
+          </div>
+        </div>
+        <div class="card term">
+          <div class="card-tag">给一本《教师工作手册》</div>
+          <div class="card-title">教学专业户</div>
+          <div class="card-body">
+            换一本手册，<br />
+            <strong>同一个管家</strong> 就变成会按教案讲题、<br />
+            会鼓励、会给作业讲解的"学科 AI"。<br />
+            <em>手册换一本，AI 换一行。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">📖</div>
+        <div class="qa-text">
+          <div class="qa-label">为 什 么 这 样 设 计</div>
+          <div class="qa-question">工作手册不是给你看的，是给 AI 看的。你只管交代事——背后哪本手册被翻开，由它自己决定。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>工作手册</span></div>
+    <span class="notes-data">
+节奏 3-4 分钟。
+建议讲法：把手伸出来，做"翻手册"的动作——左手"营养师手册"、右手"教师手册"，让对比变得"看得见"。
+讲到营养这张时强调："手册里写的不光是知识——还写了'什么情况让用户去看医生'。这就是为什么我用得放心。"
+不展开技术细节（不要讲它"内部怎么挑手册"）——只讲"手册换一本，AI 换一行"。
+不要外发任何真实手册结构或内部规则——只讲"它会按手册答"。
+    </span>
+  </section>
+
+  <!-- ====== L3 具体场景 ====== -->
+  <section class="slide" id="l3-scenarios" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 具体场景</span>
+        <h2 class="slide-title">管家可以替你做哪些事</h2>
+        <div class="slide-subtitle">不讲科幻，讲生活里 4 件你今天就能交代的事</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-tag">场景 1 · 旅行</div>
+          <div class="card-title">"帮我做一份周末长沙两日游"</div>
+          <div class="card-body">
+            管家自己<strong>查路线、看天气、估时间</strong>，<br />
+            给你一份带早中晚和打车段的行程。<br />
+            <em>不满意你说一句："换成不用爬山的版本。"它就改。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">场景 2 · 会议纪要</div>
+          <div class="card-title">"读这份录音 / 长文，整理纪要"</div>
+          <div class="card-body">
+            它<strong>读完、分要点、列待办、标决定点</strong>，<br />
+            给你一份能直接发群里的成稿。<br />
+            <em>每周开例会的人，省回不少时间。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">场景 3 · 营养科普</div>
+          <div class="card-title">"给糖友写一段早餐建议"</div>
+          <div class="card-body">
+            按"营养师工作手册"答——<br />
+            <strong>先问几个关键信息</strong>，再给方向，<br />
+            遇到高风险问题<strong>会主动建议看医生</strong>。<br />
+            <em>这就是润圆做的"AI 食养助手"在干的事。</em>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">场景 4 · 客户跟进</div>
+          <div class="card-title">"汇总最近 4 周这位客户的情况"</div>
+          <div class="card-body">
+            管家翻你给的<strong>打卡、回访、咨询记录</strong>，<br />
+            按时间整理成 1 页摘要，<br />
+            标出"需要重点关注的几条"。<br />
+            <em>给老客户做月度回顾时特别合适。</em>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>具体场景</span></div>
+    <span class="notes-data">
+节奏 3-4 分钟。
+讲到"营养科普"那一张时润圆可以轻描淡写一句："这就是我自己做的'AI 食养助手'平时在干的事。"——不展开内部细节、不晒任何手册原文。
+讲到"客户跟进"那张时强调："你不必懂技术——你只要把'你已经在做的事'告诉它，它会按你的方式整理。"
+不要在这页讲 Skill 怎么搭、AI 怎么调工具——那是工程师的事。
+    </span>
+  </section>
+
+  <!-- ====== 20 / L3 互动 ====== -->
+  <section class="slide" id="l3-qa" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 互动</span>
+        <h2 class="slide-title">想想看：哪些事可以交给管家？</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card example">
+          <div class="card-title">场景一</div>
+          <div class="card-body">"明天要见客户，<strong>帮我查一下最近他们公司的新闻</strong>，整理一段简短的会前提示。"</div>
+        </div>
+        <div class="card example">
+          <div class="card-title">场景二</div>
+          <div class="card-body">"<strong>读一下这份体检报告</strong>，用我能听懂的话，告诉我有没有需要重点关注的。"<br /><span style="display:inline-block;margin-top:10px;font-size:0.78em;color:#9A6B5A">⚠️ 但要不要看医生、要不要复查，AI 替不了——下一课专门讲。</span></div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🛠️</div>
+        <div class="qa-text">
+          <div class="qa-label">猜 一 猜</div>
+          <div class="qa-question">这两件事，管家会从工具箱里拿出哪几样工具？说错也没关系。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>互动</span></div>
+    <span class="notes-data">
+讲到场景二（体检报告）时一定要补一句：
+  "AI 帮我们理清思路、提醒哪些项目偏出来了，是没问题的；
+   但要不要看医生、需不需要复查、该不该开药——这些事 AI 替不了医生。"
+这一条是第 4 课"红线"的预告，今天不展开。
+让两位同学说说他们会想让管家干什么，鼓励"敢想"。
+    </span>
+  </section>
+
+  <!-- ====== 22 / L3 现场演示 ====== -->
+  <section class="slide" id="l3-demo" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 现场演示</span>
+        <h2 class="slide-title">📱 现场看一下</h2>
+        <div class="slide-subtitle">交代一句话，看管家怎么自己把事办完</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="qa-card">
+        <div class="qa-icon">📝</div>
+        <div class="qa-text">
+          <div class="qa-label">现 场 提 示 词</div>
+          <div class="qa-question">"帮我读一下这篇长文章，<strong>整理成一份会议纪要</strong>——分要点、列待办、标出我可能要决定的地方。"</div>
+        </div>
+      </div>
+      <div class="cards cols-2" style="margin-top:14px">
+        <div class="card key">
+          <div class="card-tag">先看这一步</div>
+          <div class="card-title">看它怎么拆任务</div>
+          <div class="card-body">
+            不要急着看答案——<br />
+            先看 AI <strong>怎么把"读长文 + 整理纪要"拆成几步</strong>。<br />
+            <em>这就是"会动手的管家"在你眼前干活。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">再看这一步</div>
+          <div class="card-title">看它怎么整理结果</div>
+          <div class="card-body">
+            再看它<strong>怎么把要点、待办、决定点排好</strong>，<br />
+            交回给你。<br />
+            <em>不满意可以追一句："待办按时间排序。"</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card" style="margin-top:14px">
+        <div class="qa-icon">💡</div>
+        <div class="qa-text">
+          <div class="qa-label">小 提 示</div>
+          <div class="qa-question">演示用一篇真实的长文章就好。看不清没关系——重点是让大家"看到管家干活的样子"。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>现场演示</span></div>
+    <span class="notes-data">
+这一页用 4-6 分钟，跟 l3-timeline "22 – 28 分钟现场看一个小例子"对上。
+现场打开你常用的 AI 助手 App，把上屏的提示词读一遍打进去，让大家看完整的过程。
+讲解节奏：
+1) 先把提示词念一遍："帮我读一下这篇长文章，整理成一份会议纪要……"——让大家听清楚是怎么交代的。
+2) 提交之后不要急——先指着屏幕说："你看它在拆步骤——先读、再分要点、再列待办。"
+3) 等它出结果，再说："再看它怎么把要点和待办排好——这就是管家干活的样子。"
+4) 不满意可以现场追一句："待办按时间排序。"——演示"接着说就行"，对话可以连着。
+如果现场网不好打不开，可以把准备好的截图当 fallback；或者干脆讲一遍"管家会做哪几步"也行，不必硬演示。
+不要展开技术细节，不讲它"调了什么工具"——只讲"管家在干活"。
+    </span>
+  </section>
+
+  <!-- ====== L3 给管家交代事的 3 个小技巧 ====== -->
+  <section class="slide" id="l3-prompt-tips" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 用法小技巧</span>
+        <h2 class="slide-title">怎么把话说清楚，让管家干得准？</h2>
+        <div class="slide-subtitle">不用学技术——记住三件事，管家就听得懂</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card key">
+          <div class="card-tag">第一招</div>
+          <div class="card-title">"谁、做啥、给谁、多长" 说清楚</div>
+          <div class="card-body">
+            模糊：「写个通知」<br />
+            清楚：「<strong>给社区老人</strong>写一份通知，<strong>提醒明天下午做血糖筛查</strong>，<strong>200 字以内</strong>，<strong>口气温柔一点</strong>。」<br />
+            <em>越具体，结果越接近你想要的。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第二招</div>
+          <div class="card-title">不满意，接着说</div>
+          <div class="card-body">
+            管家是给你"改稿"的，不要一次就要它满分。<br />
+            常用追问：<br />
+            「再短一点。」<br />
+            「换个口气，再亲切一点。」<br />
+            「拆成 3 条，每条一句。」
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第三招</div>
+          <div class="card-title">给它一个角色</div>
+          <div class="card-body">
+            一句话给它"披个身份"，回答会更稳：<br />
+            「你是一位<strong>温柔的社区营养师</strong>，<br />
+            请帮我跟糖友讲讲早餐怎么吃。」<br />
+            <em>角色越清楚，话越像对的那个人。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">💬</div>
+        <div class="qa-text">
+          <div class="qa-label">小 提 醒</div>
+          <div class="qa-question">不会"提示词工程"也没事——把你平时怎么交代同事的话，原样打给 AI，就够用了。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>用法小技巧</span></div>
+    <span class="notes-data">
+节奏 2-3 分钟，三招挨个讲，每招配一个口语化例子。
+讲第一招时强调："你交代得越细，它做得越准。不要怕话多——AI 不嫌你啰嗦。"
+讲第二招时鼓励大家："第一次答不好不要慌，多问一句就是了——它不会烦。"
+讲第三招时举一个跟润圆专业贴近的例子："你是一位社区营养师"——让大家立刻能套用。
+最后落到 qa-card 的那句话："不会提示词工程也没事"——这是给小白的最大解脱。
+不要展开任何"提示词模板""高级提示工程"——那对小白只会增加门槛。
+    </span>
+  </section>
+
+  <!-- ====== 23 / L3 小结 ====== -->
+  <section class="slide" id="l3-summary" data-section="第三课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 3 课 · 小结</span>
+        <h2 class="slide-title">这一课，记住一句话</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="pull-quote">
+        <strong>Agent</strong> 是会动手的 AI 管家，<br />
+        <strong>Skill</strong> 是给管家的<strong>工作手册</strong>和<strong>工具箱</strong>。<br />
+        你只需要<strong>把话说清楚</strong>，剩下的它去办。
+      </div>
+      <ul class="list-checks" style="margin-top:24px">
+        <li>不需要记英文，记住"管家 + 工作手册"就够。</li>
+        <li>话越具体，管家干得越准。</li>
+        <li>下一课，我们讲讲——管家也会犯错，重要的事怎么不被它带偏。</li>
+      </ul>
+    </div>
+    <div class="slide-foot"><span class="brand">第 3 课 · Agent 和 Skill</span><span>小结</span></div>
+    <span class="notes-data">
+轻松收尾，不要拖。如果时间紧张，直接进入下一节即可。
+预告第 4 课的关键词：会犯错 / 红线 / 未来 / 灵台。
+    </span>
+  </section>
+
+  <!-- ============================================================
+       第四课：AI 的边界 · 未来 · 灵台
+       ============================================================ -->
+
+  <!-- ====== 22 / L4 封面 ====== -->
+  <section class="slide" id="l4-cover" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 30 分钟</span>
+        <h2 class="slide-title">AI 的边界 · 未来 · 灵台</h2>
+        <div class="slide-subtitle">学会怎么用，更要学会怎么不被带偏；最后看看 AI 会去哪</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="pull-quote">
+        AI 像一个<strong>博学但偶尔吹牛的朋友</strong>。<br />
+        能用、值得用——<strong>但重要的事，自己再核一次</strong>。<br />
+        最后我们一起看看：未来 3-5 年 AI 会变成什么样，灵台是怎么回事。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · 边界 · 未来 · 灵台</span><span>开场</span></div>
+    <span class="notes-data">
+这一节是整门课最重要的一节——它防止听众被 AI 误导，尤其是健康类信息。
+口吻要严肃但温和，不要把大家吓到不敢用。
+开场可以加一句："我自己作为营养师，每天都在用 AI；我今天讲的边界，是我自己日常守的那一套。"
+    </span>
+  </section>
+
+  <!-- ====== 23 / L4 时间轴 ====== -->
+  <section class="slide" id="l4-timeline" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 时间安排</span>
+        <h2 class="slide-title">30 分钟，五段走完</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">0 – 3 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">三条红线总览<span class="hint">幻觉 · 隐私 · 健康</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">3 – 6 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">幻觉小案例<span class="hint">AI 编了一本不存在的指南</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">6 – 9 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">隐私小案例<span class="hint">体检报告应该怎么发给 AI</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">9 – 12 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">健康小案例<span class="hint">"我能不能停药" — AI 应该怎么接</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">12 – 16 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">正确使用 AI 的三步：先问 · 再核 · 自己决定<span class="hint">把红线变成可操作的动作</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">16 – 19 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">互动 · 这两个情景你会怎么办<span class="hint">说错没关系，能"挡住"AI 才厉害</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">19 – 23 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">未来 3-5 年：AI 会变成什么样<span class="hint">专属 AI · Agent 普及 · 行业 AI 兴起</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">23 – 28 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">灵台是什么<span class="hint">把专业知识，整理成一个可协作的 AI 助手</span></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">28 – 30 分钟</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-text">收尾：四节课金句 + 答疑</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · 边界 · 未来 · 灵台</span><span>时间安排</span></div>
+    <span class="notes-data">
+节奏建议：边界 14 分钟，未来 6 分钟，灵台 6 分钟，收尾 4 分钟。
+任何一段都不要拖：宁可少讲两个点，也别讲到一半铃响。
+    </span>
+  </section>
+
+  <!-- ====== 24 / L4 三张警示卡 ====== -->
+  <section class="slide" id="l4-cards" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 三条红线</span>
+        <h2 class="slide-title">三张卡，三条要守住的线</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card warn">
+          <div class="card-tag">红线一</div>
+          <div class="card-title">AI 会一本正经地胡说</div>
+          <div class="card-body">
+            它答得很自信≠它对。<br />
+            常见花样：<strong>编一本不存在的指南</strong>、<br />
+            <strong>编一篇没发表过的论文</strong>、<br />
+            <strong>编一个不存在的"研究表明"数据</strong>。<br />
+            <strong>重要的事，自己再查一次。</strong>
+          </div>
+        </div>
+        <div class="card warn">
+          <div class="card-tag">红线二</div>
+          <div class="card-title">什么不要告诉 AI</div>
+          <div class="card-body">
+            密码、银行卡号、身份证号、<br />
+            完整家庭住址、孩子学校、<br />
+            体检报告里的姓名手机号⋯⋯<br />
+            <strong>能不打就不打。</strong>
+          </div>
+        </div>
+        <div class="card warn">
+          <div class="card-tag">红线三</div>
+          <div class="card-title">健康 · AI 不替代医生</div>
+          <div class="card-body">
+            AI 可以<strong>帮你整理思路、解释名词</strong>，<br />
+            但 <strong>不替代医生面诊、不替代营养师做方案</strong>，<br />
+            <strong>不做诊断、不开药、不下结论。</strong><br />
+            最终决定，请找<strong>专业的人</strong>。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>三条红线</span></div>
+    <span class="notes-data">
+讲到红线一时，举一个生活化的例子：
+  "我自己见过 AI 编一个我从没听过的'国家糖尿病饮食指南'，连第几页第几条都说得头头是道——我去查，根本没这本。"
+讲到红线二时，给一个具体例子："比如想让 AI 帮忙写孩子的请假条，可以——但不要把孩子的全名+学校+班级都打进去。"
+讲到红线三时用润圆自己的话：
+  "我作为营养师，每天用 AI 帮我整理资料、回顾文献、写讲稿——
+   但每一份给患者的方案、每一句建议，我都自己再看一遍才发出去。
+   AI 是我的助手，不是替我看患者的人。"
+    </span>
+  </section>
+
+  <!-- ====== L4 幻觉小案例 ====== -->
+  <section class="slide" id="l4-hallucination-case" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 案例 · 幻觉</span>
+        <h2 class="slide-title">AI 编了一本不存在的"指南"</h2>
+        <div class="slide-subtitle">真实发生过的小事——告诉你它的胡说长什么样</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card warn">
+          <div class="card-tag">事情是这样</div>
+          <div class="card-title">"它说得头头是道"</div>
+          <div class="card-body">
+            我问了一句："国家有没有发过糖尿病饮食的最新指南？"<br />
+            AI 给了一段答案——<strong>书名、年份、发布机构、第几章都有</strong>。<br />
+            <em>读起来像模像样，谁也看不出问题。</em>
+          </div>
+        </div>
+        <div class="card warn">
+          <div class="card-tag">真相是这样</div>
+          <div class="card-title">"这本书根本不存在"</div>
+          <div class="card-body">
+            我去查——<strong>没这本书</strong>。<br />
+            机构、年份、章节、原文，全是 AI <strong>"接龙"接出来的</strong>。<br />
+            <em>它不是骗你，它只是不知道但接着说。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🔍</div>
+        <div class="qa-text">
+          <div class="qa-label">怎 么 防 这 一 招</div>
+          <div class="qa-question">追一句："具体是<strong>哪一本指南、哪一页、哪一年</strong>？给我原文。"——答不上来，多半就是编的。重要的事，自己再核一次。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>幻觉案例</span></div>
+    <span class="notes-data">
+讲这一页要用"我自己亲身碰到的"的口吻——比讲抽象概念有说服力。
+讲完两张卡之后用一句话总结："它不是骗你，它是不知道但接着说——这就是'幻觉'。"
+"追一句问出处"的招数最好现场演示一下：打开任意 AI，问一个"虚构指南名字"看它怎么答。
+不要拿真实存在的指南举反例——避免造成混淆。
+    </span>
+  </section>
+
+  <!-- ====== L4 隐私小案例 ====== -->
+  <section class="slide" id="l4-privacy-case" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 案例 · 隐私</span>
+        <h2 class="slide-title">体检报告，怎么发给 AI 才安全？</h2>
+        <div class="slide-subtitle">不能图省事——一张照片可能就把家人信息全交了</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card warn">
+          <div class="card-tag">很多人这样做（不推荐）</div>
+          <div class="card-title">整张拍照直接发</div>
+          <div class="card-body">
+            照片里一并有：<br />
+            姓名 · 身份证号 · 手机号 · 住址 ·<br />
+            医院 · 就诊号 · 出生年月⋯⋯<br />
+            <strong>这相当于把这个人交给了 AI。</strong>
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">这样做更稳妥</div>
+          <div class="card-title">先"打码"再发</div>
+          <div class="card-body">
+            发之前把这几项<strong>遮掉</strong>：<br />
+            姓名 / 身份证 / 手机 / 住址 / 医院名。<br />
+            只发<strong>"检测项目 + 数值 + 单位 + 参考范围"</strong>，<br />
+            <strong>足以让 AI 帮你看懂大致情况。</strong>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🔒</div>
+        <div class="qa-text">
+          <div class="qa-label">一 句 话 守 则</div>
+          <div class="qa-question">能不告诉 AI 的，就不告诉它——它不是坏人，但你也不需要把所有家底都摆给它看。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>隐私案例</span></div>
+    <span class="notes-data">
+讲这页节奏 3 分钟，是 L4 第二个关键点。
+讲到"打码"那张可以举一个具体动作：手机自带的"标记"功能可以涂掉敏感信息，或者干脆只把数字部分手敲进去。
+不要把听众吓到不敢用——只是教他们"发之前过一下脑子"。
+讲完这页可以补一句："这一条不是为了 AI——是为了你身边的人。"
+    </span>
+  </section>
+
+  <!-- ====== L4 健康边界小案例 ====== -->
+  <section class="slide" id="l4-health-case" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 案例 · 健康</span>
+        <h2 class="slide-title">"我能不能停药？" —— AI 应该怎么接</h2>
+        <div class="slide-subtitle">健康这条线最难也最重要——这是我自己天天守的</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card warn">
+          <div class="card-tag">不推荐的 AI 回答</div>
+          <div class="card-title">"看起来可以停药"</div>
+          <div class="card-body">
+            一些 AI 会顺着你的话说——<br />
+            "看起来你最近指标不错，可以试着减一片。"<br />
+            <strong>这是非常不安全的回答</strong>——<br />
+            因为 AI 看不到你完整的病历，也不知道你这个月有没有别的情况。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">应该是的 AI 回答</div>
+          <div class="card-title">"这一条交给医生"</div>
+          <div class="card-body">
+            一个守边界的 AI 会说：<br />
+            <strong>"减药、停药、换药，请去咨询你的主治医生。</strong><br />
+            <strong>我可以帮你整理这次想问医生的几个问题，</strong><br />
+            <strong>带去门诊用。"</strong>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🩺</div>
+        <div class="qa-text">
+          <div class="qa-label">一 条 硬 规 矩</div>
+          <div class="qa-question">AI 不替医生看病，<strong>不替营养师做方案</strong>，不诊断、不开药、不下结论——这是我自己每天守的边界，也希望今天你能记住。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>健康案例</span></div>
+    <span class="notes-data">
+这一页是整门课最重要的页之一，节奏要慢——3-4 分钟。
+讲到"不推荐的 AI 回答"时，强调："这不是我编出来吓你的——是 AI 真的会这样答。"
+讲到"应该是的 AI 回答"时停一停——这一段就是润圆自己的真实立场，可以用"我自己每天就是这样守的"来收。
+固定免责口径（强烈建议一字不改）：
+  "减药、停药、换药 / 这种症状是不是某某病 / 这个体检结果代表什么病——这些事，AI 替不了医生。
+   AI 可以帮你整理思路、解释名词、列出你想问的问题，
+   但最终判断 / 复查 / 开药，请找专业的医生或营养师。"
+讲完这页之后，自然过渡到下一页"正确使用 AI 的三步"。
+    </span>
+  </section>
+
+  <!-- ====== L4 三步法 ====== -->
+  <section class="slide" id="l4-three-steps" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 三步法</span>
+        <h2 class="slide-title">正确使用 AI 的三步：先问 · 再核 · 自己决定</h2>
+        <div class="slide-subtitle">把三条红线，变成你回家就能用的动作</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card key">
+          <div class="card-tag">第 1 步</div>
+          <div class="card-title">先问 · 把话说清楚</div>
+          <div class="card-body">
+            <strong>越具体越好</strong>。<br />
+            说清楚：要做什么 · 给谁看 · 多长 · 什么口吻 · 有没有不能碰的话。<br />
+            <em>例：「给糖友写一段早餐建议，三句话，温柔一点，不要推荐保健品。」</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第 2 步</div>
+          <div class="card-title">再核 · 重要的事自己再查一次</div>
+          <div class="card-body">
+            涉及<strong>健康、钱、法律、孩子</strong> 的事，<br />
+            AI 给的内容<strong>当作初稿</strong>，<br />
+            <strong>自己上权威来源核一次</strong>：<br />
+            指南原文 · 医生 · 专业人士。
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">第 3 步</div>
+          <div class="card-title">自己决定 · 方向盘在你手上</div>
+          <div class="card-body">
+            最终拍板的人<strong>始终是你</strong>。<br />
+            AI 帮你想，<strong>不替你决定</strong>。<br />
+            <em>会用 AI 的人，多一个超能力——但开车的人还是你。</em>
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🧭</div>
+        <div class="qa-text">
+          <div class="qa-label">把 三 步 记 住</div>
+          <div class="qa-question">先问 → 再核 → 自己决定。这三步走顺了，AI 就既好用，又不容易把你带偏。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>三步法</span></div>
+    <span class="notes-data">
+节奏 3-4 分钟。这是整门课少数"要求带走"的方法论。
+讲完三步可以让大家跟着齐声念一次："先问、再核、自己决定。"——念出来的东西比听到的东西记得牢。
+强调："第二步'再核'不是不信 AI——是因为重要的事，本来就该多看一眼。"
+讲到第三步时收一句："这一条，是我作为营养师每天对自己说的。"——把整节课的精神立住。
+    </span>
+  </section>
+
+  <!-- ====== 25 / L4 互动 ====== -->
+  <section class="slide" id="l4-qa" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 互动</span>
+        <h2 class="slide-title">这个情景，你会怎么办？</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card warn">
+          <div class="card-title">情景一</div>
+          <div class="card-body">AI 告诉你某个保健品"对你的病很有效"，还说"权威研究表明"。<br /><strong>你会怎么做？</strong></div>
+        </div>
+        <div class="card warn">
+          <div class="card-title">情景二</div>
+          <div class="card-body">朋友让你把家里老人的<strong>体检报告原件</strong>整张拍照发给 AI 解读。<br /><strong>你会怎么处理？</strong></div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🛡️</div>
+        <div class="qa-text">
+          <div class="qa-label">守 住 边 界</div>
+          <div class="qa-question">说出你的处理方式——会用 AI，更要会"挡住"AI。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · AI 的边界</span><span>互动</span></div>
+    <span class="notes-data">
+让两到三位同学回答，听完润圆补一句标准答案：
+情景一——保健品、药物相关的事，一定先问医生或营养师；AI 的"权威研究"未必存在，建议追问"具体是哪本指南、哪一页"；它答不上来，多半就是编的。
+情景二——发之前先遮掉姓名、身份证、手机号、住址、医院名；最好只发数值部分和检测项目名。处理报告就是处理别人的隐私，不能图省事。
+    </span>
+  </section>
+
+  <!-- ====== 26 / L4 未来展望 ====== -->
+  <section class="slide" id="l4-future" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 未来展望</span>
+        <h2 class="slide-title">未来 3-5 年，AI 会变成什么样</h2>
+        <div class="slide-subtitle">不讲科幻，只讲三个看得见的变化</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-3">
+        <div class="card key">
+          <div class="card-tag">变化 1</div>
+          <div class="card-title">每个人都会有"专属 AI"</div>
+          <div class="card-body">
+            它记得你的<strong>口味、过敏、目标、家人情况</strong>，<br />
+            像一个跟了你很久的朋友。<br />
+            <em>例：早上给你推荐昨天没吃够的菜。</em>
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">变化 2</div>
+          <div class="card-title">Agent 会"普及"</div>
+          <div class="card-body">
+            从"会聊"变成"会办"。<br />
+            订机票、填表格、挂号、回邮件——<br />
+            交代一句话，<strong>它替你做完</strong>。
+          </div>
+        </div>
+        <div class="card key">
+          <div class="card-tag">变化 3</div>
+          <div class="card-title">行业 AI 会大量出现</div>
+          <div class="card-body">
+            通用 AI 太"宽"。<br />
+            未来每个行业都会有自己的 AI——<br />
+            <strong>营养有营养的、法律有法律的</strong>，<br />
+            更贴近本行业的真实场景。
+          </div>
+        </div>
+      </div>
+      <div class="pull-quote" style="margin-top:auto">
+        AI 不是来取代你的，<br />
+        是来让一个普通人，做到以前要请<strong>一个小团队</strong>才做得动的事。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · 边界 · 未来 · 灵台</span><span>未来展望</span></div>
+    <span class="notes-data">
+不要预测哪家公司赢、不要喊"几年后某行业失业"——只讲"大家会用到什么"。
+讲到"行业 AI 会大量出现"时自然过渡到下一页的灵台简介。
+讲完这一页强调："对未来不焦虑、有期待，不被'AI 取代论'吓到。会用 AI 的人，方向盘始终在自己手上。"
+    </span>
+  </section>
+
+  <!-- ====== 27 / L4 灵台简介 ====== -->
+  <section class="slide" id="l4-lingtai" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 灵台简介</span>
+        <h2 class="slide-title">那"灵台"是什么？</h2>
+        <div class="slide-subtitle">这背后的方法，叫"灵台"</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="cards cols-2">
+        <div class="card term">
+          <div class="card-tag">一句话</div>
+          <div class="card-title">把"专业知识"整理成"可协作的 AI 助手"</div>
+          <div class="card-body">
+            通用 AI 什么都聊，但一到<strong>专业事</strong>就容易胡说。<br />
+            灵台是一个<strong>工作台 / 一套方法</strong>：<br />
+            把<strong>真正懂行的人</strong>的经验，<br />
+            一点点整理成一个<strong>能跟人对话、会守边界</strong>的 AI 助手。
+          </div>
+        </div>
+        <div class="card example">
+          <div class="card-tag">举个例子</div>
+          <div class="card-title">我的"AI 食养助手"</div>
+          <div class="card-body">
+            我是临床营养师。<br />
+            借助灵台，我把自己日常用的<strong>食养方法</strong>，<br />
+            整理成了一个 AI 助手——<br />
+            它会按我教它的方式回答食养问题，<br />
+            <strong>不替我做诊断</strong>，碰到高风险问题<strong>会主动让你看医生</strong>。
+          </div>
+        </div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-icon">🌱</div>
+        <div class="qa-text">
+          <div class="qa-label">为 什 么 重 要</div>
+          <div class="qa-question">未来的专业人士，可能都会有这样一个"AI 助手"。你信谁这个人，就用谁整理出来的 AI——这比"哪家 AI 牌子大、哪家产品最厉害"更要紧。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · 边界 · 未来 · 灵台</span><span>灵台简介</span></div>
+    <span class="notes-data">
+讲灵台的几条原则：
+1) 讲成"一种把专业变成 AI 的方法 / 工作台"，不要讲成"工具"也不要讲成"公司广告"。
+2) 不展开技术细节，不外发任何底层结构——不展示搭建过程、不展示内部资料、不展示规则清单。
+3) 演示 AI 食养助手时只展示"对外回答"——观众看到的是它怎么答、怎么礼貌地拒绝越界问题。
+4) 高风险问题（如"我能不能停药""我这个症状是不是糖尿病"）用我自己练过的固定免责口径接住，不临场发挥。
+5) 提到"AI 食养助手"时统一这个称呼，不要带"营养师亲自调教 / 经专业人员训练"一类的宣传味儿话术。
+
+建议现场打开 AI 食养助手，让大家提一个营养问题，演示它怎么回答；再故意问一个高风险问题，演示它怎么拒绝并请用户看医生。
+    </span>
+  </section>
+
+  <!-- ====== 28 / L4 小结 ====== -->
+  <section class="slide" id="l4-summary" data-section="第四课">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">第 4 课 · 小结</span>
+        <h2 class="slide-title">这一课，记住三句话</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <ul class="list-checks">
+        <li>AI 会一本正经胡说，<strong>重要的事自己再核一次</strong>。</li>
+        <li>密码、隐私、家人信息，<strong>能不告诉就不告诉</strong>。</li>
+        <li>AI 是助手，不是医生、不是营养师、不是律师——<strong>方向盘始终在你手上</strong>。</li>
+      </ul>
+      <div class="pull-quote" style="margin-top:auto">
+        会用 AI 的人，像会开车的人——<br />
+        多一个超能力，但<strong>方向盘始终在你手上</strong>。
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">第 4 课 · 边界 · 未来 · 灵台</span><span>小结</span></div>
+    <span class="notes-data">
+这是整门课的精神落脚点。语气要慢一点、真诚一点。
+讲完这页之后，进入下一张"四节课总结"——给大家一个完整的回顾。
+    </span>
+  </section>
+
+  <!-- ============================================================
+       课程总结
+       ============================================================ -->
+
+  <!-- ====== 带走 4 句话 ====== -->
+  <section class="slide" id="takeaway" data-section="总结">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">带走 4 句话</span>
+        <h2 class="slide-title">这两小时，请你带回家的 4 句话</h2>
+        <div class="slide-subtitle">每一节课一句——记住这 4 句，整门课就装在口袋里了</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      <ul class="list-checks">
+        <li><strong>第 1 课</strong> · AI 是一种<strong>会自己学</strong>的电脑——你早就在用它了。</li>
+        <li><strong>第 2 课</strong> · 想做啥 → 哪个抽屉 → <strong>挑一个用</strong>。不要在选哪个上耗太久。</li>
+        <li><strong>第 3 课</strong> · Agent 是<strong>会动手的管家</strong>，Skill 是它的<strong>工作手册</strong>——你只管把话说清楚。</li>
+        <li><strong>第 4 课</strong> · <strong>先问、再核、自己决定</strong>——会用 AI 的人，方向盘始终在自己手上。</li>
+      </ul>
+      <div class="pull-quote" style="margin-top:auto">
+        如果只能记一句——<br />
+        <strong>"AI 是你的助手，不是你的主人。"</strong>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">AI 入门 · 四节课</span><span>带走 4 句话</span></div>
+    <span class="notes-data">
+节奏 2-3 分钟，是整门课的精神落脚点之一。
+让大家跟着念一遍这 4 句——念出来的东西最容易记。
+最后那句"AI 是你的助手，不是你的主人"，可以慢慢念，停一拍再翻页。
+讲完这一页之后，进入"四节课总结"（一张大表格）。
+    </span>
+  </section>
+
+  <!-- ====== 29 / 整体总结 ====== -->
+  <section class="slide" id="course-summary" data-section="总结">
+    <div class="slide-head">
+      <div>
+        <span class="lesson-badge">四节课总结</span>
+        <h2 class="slide-title">这两小时，我们一起做到的</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <table class="t">
+        <thead>
+          <tr>
+            <th style="width:120px">课次</th>
+            <th style="width:200px">主题</th>
+            <th>你拿走了什么</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>第 1 课</strong></td><td>AI 是什么</td><td>菜谱 vs 学徒——AI 是"会自己学的电脑"，不再被这两个字唬住。</td></tr>
+          <tr><td><strong>第 2 课</strong></td><td>主流 AI 类型</td><td>三层抽屉 + 七大场景：按"我想做什么"挑一个 AI 用起来。</td></tr>
+          <tr><td><strong>第 3 课</strong></td><td>Agent 和 Skill</td><td>会动手的 AI 管家，加一本工作手册、一个工具箱，就成了专业户。</td></tr>
+          <tr><td><strong>第 4 课</strong></td><td>边界 · 未来 · 灵台</td><td>守住三条红线；知道"灵台"是把专业整理成可协作 AI 助手的方法。</td></tr>
+        </tbody>
+      </table>
+      <div class="qa-card" style="margin-top:18px">
+        <div class="qa-icon">🌟</div>
+        <div class="qa-text">
+          <div class="qa-label">回 家 作 业</div>
+          <div class="qa-question">这一周，用 AI 帮自己做一件真实的小事——发到我们群里，下次一起看。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span class="brand">AI 入门 · 四节课</span><span>总结</span></div>
+    <span class="notes-data">
+讲完表格之后停 5 秒，让大家自己回看一遍。
+作业要尽量轻：哪怕只是用 AI 写一句话也算完成。
+鼓励他们把这一周的"AI 小事"发到群里，下次开课时挑几个分享。
+    </span>
+  </section>
+
+  <!-- ====== 30 / 谢谢 / 答疑 ====== -->
+  <section class="slide cover" id="thanks" data-section="结束">
+    <div class="eyebrow">谢 谢 大 家</div>
+    <h1>有问题，问我</h1>
+    <div class="lead">不懂、没听清、想多看一遍——任何问题都欢迎。</div>
+    <div class="meta">下节课见 · 记得带手机 📱</div>
+    <div class="speaker">主讲：<strong>润圆</strong> 老师</div>
+    <div class="credit">高级人工智能训练师X灵台AI制作</div>
+    <span class="notes-data">
+留 5 分钟开放答疑。
+如果没人提问，自己抛一个："你最想用 AI 帮你做什么？"——大概率能勾起话题。
+如果有人问到自己也答不上来的，标准回法是："这个我得回头查，下次告诉你。"不丢人，不翻车。
+    </span>
+  </section>
+
+</div><!-- /.slide-frame -->
+</div><!-- /.stage -->
+
+<!-- ============================================================
+     底部导航条
+     ============================================================ -->
+<div class="controls">
+  <button id="btn-prev" type="button" title="上一页（←）">上一页</button>
+  <span class="pageinfo" id="pageinfo">1 / 66</span>
+  <button id="btn-next" type="button" title="下一页（→）">下一页</button>
+</div>
+
+<!-- ============================================================
+     目录覆盖层
+     ============================================================ -->
+<div class="toc-overlay" id="toc-overlay">
+  <div class="toc-panel">
+    <h2>目录 · 点击跳转</h2>
+    <ol id="toc-list"></ol>
+  </div>
+</div>
+
+<!-- ============================================================
+     讲者备注侧栏
+     ============================================================ -->
+<aside class="notes-panel" id="notes-panel">
+  <h3>讲者备注</h3>
+  <div id="notes-title" style="font-size:20px;color:#FBE5C8;margin-bottom:12px;font-weight:600"></div>
+  <div class="notes-body" id="notes-body"></div>
+</aside>
+
+<script src="assets/app.js"></script>
+
+<script>
+(function() {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let current = 0;
+
+  // Find initial active slide
+  slides.forEach((s, i) => { if (s.classList.contains('active')) current = i; });
+
+  function showSlide(idx) {
+    if (idx < 0 || idx >= slides.length) return;
+    slides.forEach(s => s.classList.remove('active'));
+    slides[idx].classList.add('active');
+    current = idx;
+    updateNav();
+  }
+
+  function updateNav() {
+    const el = document.getElementById('page-indicator');
+    if (el) el.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  // Create navigation controls
+  const controls = document.createElement('div');
+  controls.className = 'controls';
+  controls.innerHTML = `
+    <button id="btn-prev">← 上一页</button>
+    <span class="pageinfo" id="page-indicator">${current + 1} / ${slides.length}</span>
+    <button id="btn-next">下一页 →</button>
+  `;
+  document.body.appendChild(controls);
+
+  document.getElementById('btn-prev').addEventListener('click', () => showSlide(current - 1));
+  document.getElementById('btn-next').addEventListener('click', () => showSlide(current + 1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault(); showSlide(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault(); showSlide(current - 1);
+    }
+    if (e.key === 't' || e.key === 'T') toggleTOC();
+    if (e.key === 'n' || e.key === 'N') toggleNotes();
+    if (e.key === 'p' || e.key === 'P') window.print();
+  });
+
+  // TOC panel
+  const tocOverlay = document.createElement('div');
+  tocOverlay.className = 'toc-overlay';
+  tocOverlay.addEventListener('click', () => toggleTOC());
+  document.body.appendChild(tocOverlay);
+
+  const tocPanel = document.createElement('div');
+  tocPanel.className = 'toc-panel';
+  tocPanel.innerHTML = '<h3 style="margin-bottom:16px">📑 目录（共 ' + slides.length + ' 页）</h3><div id="toc-list"></div>';
+  document.body.appendChild(tocPanel);
+
+  function buildTOC() {
+    const list = document.getElementById('toc-list');
+    let html = '<div class="toc-grid">';
+    slides.forEach((s, i) => {
+      const section = s.getAttribute('data-section') || '';
+      const titleEl = s.querySelector('h1, h2, .slide-title, .ttl');
+      const title = titleEl ? titleEl.textContent.trim() : (s.id || '第 ' + (i+1) + ' 页');
+      html += `<div class="toc-card" data-idx="${i}">
+        <div class="num">${section}</div>
+        <div class="ttl">${title}</div>
+      </div>`;
+    });
+    html += '</div>';
+    list.innerHTML = html;
+
+    // Click handlers
+    list.querySelectorAll('.toc-card').forEach(card => {
+      card.addEventListener('click', () => {
+        showSlide(parseInt(card.getAttribute('data-idx')));
+        toggleTOC();
+      });
+    });
+  }
+  buildTOC();
+
+  function toggleTOC() {
+    const visible = tocPanel.classList.contains('show');
+    if (visible) { tocPanel.classList.remove('show'); tocOverlay.classList.remove('show'); }
+    else { tocPanel.classList.add('show'); tocOverlay.classList.add('show'); }
+  }
+
+  // Notes panel
+  const notesPanel = document.createElement('div');
+  notesPanel.className = 'notes-panel';
+  notesPanel.innerHTML = '<h3 style="margin-bottom:12px">📝 讲者备注</h3><div class="notes-body" id="notes-body"></div>';
+  document.body.appendChild(notesPanel);
+
+  let notesVisible = false;
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    if (notesVisible) {
+      notesPanel.classList.add('show');
+      updateNotes();
+    } else {
+      notesPanel.classList.remove('show');
+    }
+  }
+
+  function updateNotes() {
+    const activeSlide = slides[current];
+    const notesEl = activeSlide ? activeSlide.querySelector('.notes-data') : null;
+    const body = document.getElementById('notes-body');
+    if (notesEl) {
+      body.textContent = notesEl.textContent.trim();
+    } else {
+      body.textContent = '（本页无讲者备注）';
+    }
+  }
+
+  // Topbar button handlers
+  document.getElementById('btn-toc').addEventListener('click', toggleTOC);
+  document.getElementById('btn-notes').addEventListener('click', toggleNotes);
+  document.getElementById('btn-print').addEventListener('click', () => window.print());
+
+  // TOC card click on the course map page
+  document.querySelectorAll('.toc-card[data-go]').forEach(card => {
+    card.addEventListener('click', () => {
+      const targetId = card.getAttribute('data-go');
+      const target = document.getElementById(targetId);
+      if (target) {
+        const idx = slides.indexOf(target);
+        if (idx >= 0) showSlide(idx);
+      }
+    });
+  });
+
+  // Touch swipe for mobile
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) showSlide(current + 1);
+      else showSlide(current - 1);
+    }
+  });
+
+  updateNav();
+})();
+</script>
+
+</body>
+</html>
