@@ -28,8 +28,6 @@ An open-source project maintained by Wang Runyuan to provide free AI skills and 
 
 这个开源项目我会尽力维护和持续更新，后续会继续尝试如何利用agent协助临床营养工作。如果大家支持我，请给我点个星星，我听说这是程序员间一种鼓励的方式，我正在努力的融入其中。[呲牙]
 
-**English translation**
-
 Hello everyone, I am Wang Runyuan, a registered nutritionist from China. I received my master’s degree in Nutrition and Food Hygiene from the School of Public Health, Kunming Medical University. I currently work as a clinical nutritionist in a hospital.
 
 For many years, I have used my spare time to participate in science communication activities. Not only in nutrition — I am also an astronomy enthusiast. Through my past science communication work, I found that many times people are not unwilling to gain knowledge; they simply do not know how to obtain it, and there is no simple way for them to access accurate knowledge.
