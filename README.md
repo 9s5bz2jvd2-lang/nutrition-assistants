@@ -15,10 +15,19 @@ A bilingual open-source nutrition education and AI-assisted nutrition workflow p
 **建议中文描述**  
 由毕业于昆明医科大学营养与食品卫生学专业的硕士、中国注册营养师王润圆维护的中英双语开源营养教育与 AI 辅助营养工作流项目，包含食养助手资料、营养师应用助手、科普网页、蒸馏方法论、工作流与多 Agent 营养评估研究。
 
+## Project Goal｜项目目标
+
+**English**  
+This project aims to provide free AI-related skills, structured nutrition assistant resources, and workflow examples for nutrition professionals. It helps nutritionists use AI to improve work efficiency while also supporting public nutrition education. The repository will be updated regularly as new skills, workflows, safety checks, and education examples are developed.
+
+**中文**  
+本项目的目标是为营养师们提供免费的 AI 相关 Skill、结构化营养助手资料与工作流示例，协助营养师利用 AI 提高工作效率，同时科普营养知识。项目会随着新的 Skill、工作流、安全评测与科普示例持续定期更新。
+
 ---
 
 ## Navigation｜导航
 
+- [Project Goal｜项目目标](#project-goal--项目目标)
 - [Project Overview｜项目概览](#project-overview--项目概览)
 - [Repository Structure｜仓库结构](#repository-structure--仓库结构)
 - [Covered Conditions｜覆盖主题 / 疾病方向](#covered-conditions--覆盖主题--疾病方向)
