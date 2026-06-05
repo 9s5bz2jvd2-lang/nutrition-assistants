@@ -15,7 +15,17 @@ A bilingual open-source nutrition education and AI-assisted nutrition workflow p
 
 ## Project Goal
 
-This project aims to provide free AI-related skills, structured nutrition assistant resources, and workflow examples for nutrition professionals. It helps nutritionists use AI to improve work efficiency while also supporting public nutrition education. The repository will be updated regularly as new skills, workflows, safety checks, and education examples are developed.
+Hello everyone, I am Wang Runyuan, a registered nutritionist from China. I received my master’s degree in Nutrition and Food Hygiene from the School of Public Health, Kunming Medical University. I currently work as a clinical nutritionist in a hospital.
+
+For many years, I have used my spare time to participate in science communication activities. Not only in nutrition — I am also an astronomy enthusiast. Through my past science communication work, I found that many times people are not unwilling to gain knowledge; they simply do not know how to obtain it, and there is no simple way for them to access accurate knowledge.
+
+After encountering AI, I decided to try turning nutrition-related knowledge into open-source skills. Later, I decided to build public education webpages and free assistant skills for nutritionists to use.
+
+I hope my efforts can contribute to the popularization of nutrition knowledge and to human health.
+
+Humanity needs the progress of AI, but nutrition is the foundation of life. As a nutritionist, I want to use AI to protect everyone’s health.
+
+I will do my best to maintain and continuously update this open-source project. In the future, I will continue exploring how agents can assist clinical nutrition work. If you support me, please give me a star. I heard that this is a way programmers encourage one another, and I am trying hard to become part of this community. [grin]
 
 ---
 
