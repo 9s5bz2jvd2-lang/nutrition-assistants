@@ -1,5 +1,8 @@
 # 圆酱的营养师膳食评价助手skill
 
+[English README](README.en.md)
+
+
 **中文署名：王润圆 + 灵台AI 制作**  
 **English attribution: Created by Runyuan Wang + LingTai AI**
 
