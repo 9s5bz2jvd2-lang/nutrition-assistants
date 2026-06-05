@@ -120,6 +120,7 @@ AI Skill 与工作流
 | 🥗 Dietary guidance assistants | 食养助手（资料 / Skills） | Structured dietary guidance assistants for nutrition-related conditions | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/), [`ckd-food-guide-skill/`](ckd-food-guide-skill/), [`hypertension-food-guide/`](hypertension-food-guide/) |
 | 👩‍⚕️ Nutritionist application assistant | 营养师应用助手 | Professional workflow support for organizing three-day diet records and nutritionist-facing assessment materials | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
 | 🌐 Public education projects | 科普网页 / 营养传播 | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
+| 📊 Reference data | 参考数据 | Structured food composition data, GI tables, nutrient definitions | [`china-food-composition/`](china-food-composition/) |
 | 🤖 Workflows & multi-agent research | 工作流与多 Agent 研究 | Nutrition content production workflow and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`multi-agent-research/`](multi-agent-research/) |
 
 ### Main directories｜主要目录
@@ -145,6 +146,7 @@ AI Skill 与工作流
 | [`shiwu-guanxing/`](shiwu-guanxing/) | 食物观星 | Public-facing nutrition education web / communication project. |
 | [`nutrition-history-anti-hallucination-skill/`](nutrition-history-anti-hallucination-skill/) | 营养学历史防幻觉 | Anti-hallucination workflow for nutrition history and historical texts. |
 | [`multi-agent-research/`](multi-agent-research/) | 多 Agent 营养评估研究 | Early research placeholder for future multi-agent nutrition assessment systems. |
+| [`china-food-composition/`](china-food-composition/) | 中国食物成分表（标准版第6版） | Knowledge base distilled from *China Food Composition Tables* (Standard Edition, 6th Ed.). Contains food classification system (21 categories), 259-food glycemic index table, nutrient definitions with INFOODS Tagname, amino acid & fatty acid nomenclature, phytochemical reference metadata, and methodology notes. Created by Wang Runyuan. |
 
 ---
 
@@ -165,6 +167,7 @@ The repository currently includes dietary guidance assistants and nutrition educ
 | 9 | Gout | 痛风 | [`gout-dietary-guide/`](gout-dietary-guide/) |
 | 10 | Stroke recovery | 卒中恢复期 | [`stroke-food-guide-skill/`](stroke-food-guide-skill/) |
 | 11 | Childhood stunting / growth | 儿童生长迟缓 / 生长发育 | [`stunting-dietary-guide/`](stunting-dietary-guide/) |
+| 12 | Food composition reference | 中国食物成分表 | [`china-food-composition/`](china-food-composition/) |
 
 Many of these assistants are based on structured interpretation of official Chinese dietary guidance materials, especially public dietary guidance documents from the National Health Commission of China and related professional nutrition references. Each assistant should be used for **education and professional workflow support**, not for diagnosis or individualized medical treatment.
 
