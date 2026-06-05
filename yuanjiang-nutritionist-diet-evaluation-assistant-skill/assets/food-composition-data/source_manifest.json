@@ -1,0 +1,66 @@
+{
+  "skill_target": "three-day-diet-record-analyzer skill directory",
+  "data_origin": {
+    "type": "tencent_docs_pdf",
+    "share_url": "https://docs.qq.com/pdf/DRkJFSkhPbnJIeHdk",
+    "pad_id": "FBEJHOnrHxwd",
+    "domain_id": "300000000",
+    "pad_title": "中国食物成分表",
+    "owner": "腾讯文档分享者「长风·灼月」",
+    "downloaded_size": 2062728,
+    "sha256": "41634f901869a143c8dede50ea96ffdd232cd86de77e4b959335bdba55ae353e",
+    "downloaded_via": "AES-192-ECB token / /api/pdf-loader/load (reverse-engineered)"
+  },
+  "data_version": {
+    "inferred": "1991 版《中国食物成分表》子集抄录",
+    "evidence": [
+      "大黄米 蛋白质 13.6g / 脂肪 2.7g / 能量 349 kcal 命中 1991 版",
+      "大麦 元麦 307 kcal 命中 1991 版",
+      "条目数 1284 < 1358 (1991 完整) < 1506 (2002)",
+      "类别编码 11/21/31/61/71/86 为 1991 6位双级编码前2位（不是 2015 WS/T 464 新国标）"
+    ],
+    "confidence": "high (1991 谱系)，low (是否为完整 1991 数据集)",
+    "trust_for_clinical_use": "NOT recommended as-is; demo / 演示 only"
+  },
+  "schema_version": "v0_draft",
+  "items_count": 1284,
+  "fields": [
+    "seq",
+    "name_raw",
+    "name_base",
+    "name_note",
+    "edible_part_percent",
+    "energy_kcal",
+    "water_g",
+    "protein_g",
+    "fat_g",
+    "dietary_fiber_g",
+    "carbohydrate_g",
+    "vitamin_a_ugRAE",
+    "vitamin_b1_mg",
+    "vitamin_b2_mg",
+    "niacin_mgNE",
+    "vitamin_e_mg",
+    "sodium_mg",
+    "calcium_mg",
+    "iron_mg",
+    "category_code_raw",
+    "vitamin_c_mg",
+    "cholesterol_mg",
+    "category_name_draft",
+    "data_source",
+    "data_version_hint",
+    "pdf_page_left",
+    "pdf_page_right",
+    "quality_flags"
+  ],
+  "issued_at": "2026-05-28",
+  "issued_by": "claude-opus-4-7 sub-agent (mimo-2-5-pro)",
+  "review_required_before_b_level": [
+    "完整 1991 / 2002 / 2018 标准版核对每条数据",
+    "category_code_map_1991_draft.csv 大类编码标 verified=yes",
+    "name_base / name_note 拆分的命名规范",
+    "缺失字段（磷/钾/镁/锌/硒/铜/锰/碘）的来源",
+    "quality_flags != '' 的所有条目人工复核"
+  ]
+}

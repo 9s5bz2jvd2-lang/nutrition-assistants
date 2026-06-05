@@ -1,0 +1,8 @@
+chart_id,chart_title,chart_type,audience,metric,unit,day1_value,day2_value,day3_value,lower_bound_day1,upper_bound_day1,lower_bound_day2,upper_bound_day2,lower_bound_day3,upper_bound_day3,confidence,source_basis,can_plot,plot_rule,client_caption
+meal_completeness,三日餐次记录完整度,stacked_bar,nutritionist_internal,recorded_meals,count,,,,,,,,,high,结构化餐次表,yes,可画记录完整度；未记录不等于没吃,
+energy_range,三日能量粗估趋势,range_line,nutritionist_internal_or_client_communication,energy,kcal,,,,,,,,,medium_or_low,食物份量估算表,conditional,只画区间；低置信度只写文字不画精确点,
+protein_distribution,三日优质蛋白分布,bar_or_heatmap,nutritionist_client_communication,quality_protein_meals,count,,,,,,,,,medium,餐次食物项,yes,优先画出现次数/餐次分布而非克数,
+vegetable_frequency,蔬菜出现次数趋势,bar,nutritionist_client_communication,vegetable_meals,count,,,,,,,,,medium,餐次食物项,yes,蔬菜和水果分开,
+sugary_drink_frequency,甜饮/奶茶/酒精频率,bar,nutritionist_client_communication,sugary_drink_or_alcohol,count,,,,,,,,,high,原始记录与结构化表,yes,作为行为入口，不做道德评价,
+takeout_frequency,外卖/聚餐/重口味频率,bar,nutritionist_internal_or_client_communication,takeout_or_heavy_meal,count,,,,,,,,,medium,原始记录与场景备注,yes,标注特殊日代表性不足,
+dri_gap_core,DRIs 2023 核心营养素差距,bar,nutritionist_internal,nutrient_percent_of_reference,%,,,,,,,,,medium_or_high,已核验 DRIs + 中高置信度摄入估算,conditional,只画已核验且中高置信度项目；不画 pending/low,

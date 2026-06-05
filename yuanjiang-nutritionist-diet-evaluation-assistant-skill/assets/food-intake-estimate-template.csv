@@ -1,0 +1,2 @@
+day,meal,raw_description,normalized_food,amount_g,amount_basis,amount_confidence,food_composition_source,energy_kcal,protein_g,fat_g,carbohydrate_g,fiber_g,vitamin_a_ugRAE,vitamin_d_ug,vitamin_e_mgATE,thiamin_mg,riboflavin_mg,niacin_mgNE,vitamin_b6_mg,folate_ugDFE,vitamin_b12_ug,vitamin_c_mg,calcium_mg,phosphorus_mg,potassium_mg,sodium_mg,magnesium_mg,iron_mg,zinc_mg,iodine_ug,selenium_ug,copper_mg,manganese_mg,assumptions,notes
+Day 1,早餐,"客户原话",标准化食物名,,"克数/家用量/包装/经验估算",high/medium/low/unknown,"中国食物成分表/包装营养成分表/品牌公开数据/营养师手工录入",,,,,,,,,,,,,,,,,,,,,,,,,,,,

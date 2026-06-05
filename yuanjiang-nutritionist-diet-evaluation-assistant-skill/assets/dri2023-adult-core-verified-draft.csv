@@ -1,0 +1,41 @@
+nutrient_id,nutrient_name_zh,nutrient_group,unit,dri_type,age_min,age_max,sex,physiological_status,value,source_title,source_page_or_table,source_status,note
+protein,蛋白质,macronutrient,g/d,RNI,18,29,male,general,65,中国居民膳食营养素参考摄入量（2023版）,附表3-2/page 646,verified_draft,PDF OCR 与原页表格可见；建议二次人工校对
+protein,蛋白质,macronutrient,g/d,RNI,18,29,female,general,55,中国居民膳食营养素参考摄入量（2023版）,附表3-2/page 646,verified_draft,PDF OCR 与原页表格可见；建议二次人工校对
+protein,蛋白质,macronutrient,%E,AMDR,18,64,all,general,10-20,中国居民膳食营养素参考摄入量（2023版）,附表3-5/page 649,verified_draft,供能比范围
+fat_energy_percent,总脂肪供能比,macronutrient,%E,AMDR,18,64,all,general,20-30,中国居民膳食营养素参考摄入量（2023版）,附表3-3/page 647; 附表3-5/page 649,verified_draft,供能比范围
+carbohydrate_energy_percent,碳水化合物供能比,macronutrient,%E,AMDR,18,64,all,general,50-65,中国居民膳食营养素参考摄入量（2023版）,附表3-4/page 648; 附表3-5/page 649,verified_draft,供能比范围
+carbohydrate,碳水化合物,macronutrient,g/d,EAR,18,64,all,general,120,中国居民膳食营养素参考摄入量（2023版）,附表3-4/page 648,verified_draft,EAR；不是推荐摄入上限
+added_sugar,添加糖,other_dietary_component,g/d,PI-NCD,18,64,all,general,<50; preferably <25,中国居民膳食营养素参考摄入量（2023版）,附表3-4/page 648 note,verified_draft,注：添加糖每天不超过50g/d，最好低于25g/d
+calcium,钙,mineral,mg/d,RNI,18,49,all,general,800,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+phosphorus,磷,mineral,mg/d,RNI,18,49,all,general,720,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+potassium,钾,mineral,mg/d,AI,18,49,all,general,2000,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+sodium,钠,mineral,mg/d,AI,18,49,all,general,1500,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；注意PI-NCD可能另有慢病风险目标
+magnesium,镁,mineral,mg/d,RNI/AI,18,49,all,general,330,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,表头 OCR 不清，字段类型需二次校对
+chloride,氯,mineral,mg/d,AI,18,49,all,general,2300,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+iron,铁,mineral,mg/d,RNI,18,49,male,general,12,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；女性按有月经/无月经区分，需二次校对
+iron,铁,mineral,mg/d,RNI,18,49,female,general,18,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,18-49岁非孕女性；需结合月经状态二次校对
+iodine,碘,mineral,μg/d,RNI,18,49,all,general,120,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+zinc,锌,mineral,mg/d,RNI,18,49,male,general,12.0,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+zinc,锌,mineral,mg/d,RNI,18,49,female,general,8.5,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+selenium,硒,mineral,μg/d,RNI,18,49,all,general,60,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+copper,铜,mineral,mg/d,RNI/AI,18,49,all,general,0.8,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,表头 OCR 不清，字段类型需二次校对
+manganese,锰,mineral,mg/d,AI,18,49,all,general,4.5,中国居民膳食营养素参考摄入量（2023版）,附表3-7/page 651,verified_draft,成人常用值；建议二次人工校对
+vitamin_a,维生素A,vitamin,μgRAE/d,RNI,18,49,male,general,770,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+vitamin_a,维生素A,vitamin,μgRAE/d,RNI,18,49,female,general,660,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+vitamin_d,维生素D,vitamin,μg/d,RNI/AI,18,49,all,general,10,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；类型需二次校对
+vitamin_e,维生素E,vitamin,mg α-TE/d,AI,18,49,all,general,14,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+vitamin_k,维生素K,vitamin,μg/d,AI,18,49,all,general,80,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+thiamin,维生素B1/硫胺素,vitamin,mg/d,RNI,18,49,male,general,1.4,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+thiamin,维生素B1/硫胺素,vitamin,mg/d,RNI,18,49,female,general,1.2,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+riboflavin,维生素B2/核黄素,vitamin,mg/d,RNI,18,49,male,general,1.4,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+riboflavin,维生素B2/核黄素,vitamin,mg/d,RNI,18,49,female,general,1.2,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+niacin,烟酸,vitamin,mgNE/d,RNI,18,49,male,general,15,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+niacin,烟酸,vitamin,mgNE/d,RNI,18,49,female,general,12,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+vitamin_b6,维生素B6,vitamin,mg/d,RNI,18,49,all,general,1.4,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+folate,叶酸,vitamin,μgDFE/d,RNI,18,49,all,general,400,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+vitamin_b12,维生素B12,vitamin,μg/d,RNI,18,49,all,general,2.4,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+pantothenic_acid,泛酸,vitamin,mg/d,AI,18,49,all,general,5.0,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+biotin,生物素,vitamin,μg/d,AI,18,49,all,general,40,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对
+choline,胆碱,vitamin,mg/d,AI,18,49,male,general,450,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；表头需二次校对
+choline,胆碱,vitamin,mg/d,AI,18,49,female,general,380,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；表头需二次校对
+vitamin_c,维生素C,vitamin,mg/d,RNI,18,49,all,general,100,中国居民膳食营养素参考摄入量（2023版）,附表3-8/page 652,verified_draft,成人常用值；建议二次人工校对

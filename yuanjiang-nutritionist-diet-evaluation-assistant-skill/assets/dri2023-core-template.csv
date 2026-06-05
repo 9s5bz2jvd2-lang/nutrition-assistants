@@ -1,0 +1,28 @@
+nutrient_id,nutrient_name_zh,nutrient_group,unit,dri_type,age_min,age_max,sex,physiological_status,value,source_title,source_page_or_table,source_status,note
+energy,能量,energy,kcal/d,EER,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验；能量需结合PAL/体重等
+protein,蛋白质,macronutrient,g/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+fat_energy_percent,脂肪供能比,macronutrient,%E,AMDR,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,范围型值；填入时可用 low-high 或拆上下限
+carbohydrate_energy_percent,碳水化合物供能比,macronutrient,%E,AMDR,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,范围型值；填入时可用 low-high 或拆上下限
+dietary_fiber,膳食纤维,other_dietary_component,g/d,AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+vitamin_a,维生素A,vitamin,μgRAE/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意单位
+vitamin_d,维生素D,vitamin,μg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意UL另列
+vitamin_e,维生素E,vitamin,mg α-TE/d,AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意单位
+vitamin_k,维生素K,vitamin,μg/d,AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+thiamin,维生素B1/硫胺素,vitamin,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+riboflavin,维生素B2/核黄素,vitamin,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+niacin,烟酸,vitamin,mgNE/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意NE单位
+vitamin_b6,维生素B6,vitamin,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+folate,叶酸,vitamin,μgDFE/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意DFE单位
+vitamin_b12,维生素B12,vitamin,μg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+vitamin_c,维生素C,vitamin,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+calcium,钙,mineral,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,UL需另列
+phosphorus,磷,mineral,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+potassium,钾,mineral,mg/d,AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+sodium,钠,mineral,mg/d,AI/PI-NCD,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意AI与PI-NCD/慢病风险相关值
+magnesium,镁,mineral,mg/d,RNI/AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,以原表为准
+iron,铁,mineral,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意性别、孕期、UL
+zinc,锌,mineral,mg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+iodine,碘,mineral,μg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,注意孕哺期
+selenium,硒,mineral,μg/d,RNI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
+copper,铜,mineral,mg/d,RNI/AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,以原表为准
+manganese,锰,mineral,mg/d,AI,,,,general,,中国居民膳食营养素参考摄入量（2023版）,,pending,待从原表核验
