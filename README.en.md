@@ -6,6 +6,10 @@
 
 🌱 I am new to AI and hope to use it to spread nutrition knowledge and help more people. Feedback is welcome.
 
+## Maintainer / Nutrition professional
+
+**Wang Runyuan**: Master of Nutrition and Food Hygiene, Kunming Medical University (graduated); China Registered Nutritionist. The author avatar used for this project is a real photo of the maintainer.
+
 This is not a generic nutrition repository. It is a complete open-source AI project that brings together **distillation methodology, food-therapy assistant resources, a nutritionist application assistant, public education web projects, and AI-assisted workflows**. The goal is to connect: **evidence sources → skill distillation → AI applications → public-health communication → multi-agent workflow research**.
 
 ## Project focus
