@@ -39,7 +39,6 @@ I will do my best to maintain and continuously update this open-source project. 
 - [Future Development Roadmap](#future-development-roadmap)
 - [Multi-Agent Nutrition Assessment Research](#multi-agent-nutrition-assessment-research)
 - [Maintainer](#maintainer)
-- [Suggested Visual Assets](#suggested-visual-assets)
 - [License](#license)
 
 ---
@@ -206,44 +205,6 @@ It does **not** provide:
 - replacement for physicians, registered dietitians, or qualified nutrition professionals.
 
 For any disease, medication, pregnancy, child growth, kidney disease, eating disorder, unexplained weight loss, or severe symptom scenario, users should seek professional medical or nutrition care.
-
----
-
-## Suggested Visual Assets
-
-To improve GitHub presentation, the following assets are recommended:
-
-1. **Repository banner**  
-   A calm blue-green nutrition + AI workflow banner with the title “Nutrition Assistants”.
-
-2. **Repository architecture diagram**  
-   A diagram showing five blocks: methodology, dietary assistants, nutritionist application assistant, public education projects, workflows & multi-agent research.
-
-3. **Multi-agent workflow illustration**  
-   Evidence extraction → nutrition review → public education drafting → safety evaluation → professional review.
-
-4. **Covered conditions matrix**  
-   A visual grid of the 11 dietary guidance assistant areas.
-
-5. **Professional maintainer card**  
-   A simple maintainer card with Wang Runyuan’s professional background and the note that the avatar is a real photo.
-
----
-
-## Suggested GitHub Topics
-
-```text
-nutrition
-nutrition-education
-dietary-guidance
-public-health
-ai-for-health
-ai-workflows
-multi-agent
-registered-nutritionist
-china-nutrition
-health-education
-```
 
 ---
 

@@ -17,8 +17,6 @@ A bilingual open-source nutrition education and AI-assisted nutrition workflow p
 
 ## Project Goal｜项目目标
 
-**中文（王润圆原文，分段保留）**
-
 大家好，我是来自中国的注册营养师王润圆，我硕士毕业于昆明医科大学公共卫生学院的营养与食品卫生专业，目前我在一家医院以临床营养师的身份工作。
 
 过去很多年，我一直利用业余时间参与科普活动，不仅仅是营养学，我还是天文爱好者。过去的科普工作让我发现，很多时候人们不是不想获得知识，是不知道如何获得，没有简单的方式去获得准确的知识。
@@ -57,7 +55,6 @@ I will do my best to maintain and continuously update this open-source project. 
 - [Future Development Roadmap｜未来路线图](#future-development-roadmap--未来路线图)
 - [Multi-Agent Nutrition Assessment Research｜多 Agent 营养评估研究](#multi-agent-nutrition-assessment-research--多-agent-营养评估研究)
 - [Maintainer｜维护者](#maintainer--维护者)
-- [Suggested Visual Assets｜建议补充的图片与架构图](#suggested-visual-assets--建议补充的图片与架构图)
 - [License｜许可说明](#license--许可说明)
 
 ---
@@ -277,46 +274,6 @@ It does **not** provide:
 For any disease, medication, pregnancy, child growth, kidney disease, eating disorder, unexplained weight loss, or severe symptom scenario, users should seek professional medical or nutrition care.
 
 涉及疾病、用药、孕期、儿童生长发育、肾病、进食障碍、不明原因体重下降或严重症状时，应寻求医生或营养专业人员帮助。
-
----
-
-## Suggested Visual Assets｜建议补充的图片与架构图
-
-To improve GitHub presentation, the following assets are recommended:
-
-为增强项目展示效果，建议后续补充：
-
-1. **Repository banner / 项目横幅图**  
-   A calm blue-green nutrition + AI workflow banner with the title “Nutrition Assistants”.
-
-2. **Repository architecture diagram / 仓库结构图**  
-   A diagram showing five blocks: methodology, dietary assistants, nutritionist application assistant, public education projects, workflows & multi-agent research.
-
-3. **Multi-agent workflow illustration / 多 Agent 工作流图**  
-   Evidence extraction → nutrition review → public education drafting → safety evaluation → professional review.
-
-4. **Covered conditions matrix / 覆盖疾病矩阵图**  
-   A visual grid of the 11 dietary guidance assistant areas.
-
-5. **Professional maintainer card / 维护者专业卡片**  
-   A simple maintainer card with Wang Runyuan’s professional background and the note that the avatar is a real photo.
-
----
-
-## Suggested GitHub Topics｜建议 GitHub topics
-
-```text
-nutrition
-nutrition-education
-dietary-guidance
-public-health
-ai-for-health
-ai-workflows
-multi-agent
-registered-nutritionist
-china-nutrition
-health-education
-```
 
 ---
 
