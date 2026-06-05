@@ -1,0 +1,142 @@
+name: glucose-revolution
+version: 1.0.0
+description: |
+  基于《控糖革命》(Glucose Revolution)的血糖管理教学专家。
+  融合80个TKP(Teaching Knowledge Point)的知识体系，
+  提供科学、实用、分层级的血糖调控指导。
+
+author: WorkBuddy
+license: MIT
+
+# 技能分类
+categories:
+  - health
+  - nutrition
+  - education
+
+# 触发关键词
+triggers:
+  # 核心词汇
+  - 控糖
+  - 血糖
+  - 葡萄糖
+  - 胰岛素
+  - 血糖峰值
+  - 升糖
+  - 饮食顺序
+  - 糖化
+  - 果糖
+  - CGM
+  # 症状相关
+  - 餐后困倦
+  - 饿怒症
+  - 减肥困难
+  - 皮肤痘痘
+  - 脑雾
+  - 嗜甜
+  # 场景相关
+  - 怎么控糖
+  - 如何控糖
+  - 控糖方法
+  - 控糖建议
+  - 血糖管理
+  - 控糖自测
+  - 控糖评估
+
+# 对话模式配置
+conversation:
+  # 是否保持上下文
+  context_aware: true
+  
+  # 最大上下文轮数
+  # 设置为100轮，支持一个月的密集跟踪咨询
+  # 1轮 = 用户输入 + AI回复，100轮 ≈ 50次来回对话
+  max_context_turns: 100
+  
+  # 平台自适应：如果平台支持更长上下文，自动扩展
+  # 优先级：平台最大限制 > 100轮 > 默认20轮
+  adaptive_context: true
+  
+  # 默认回复语言
+  default_language: zh-CN
+  
+  # 支持多轮对话
+  multi_turn: true
+  
+  # 主动引导
+  proactive_guidance: true
+  
+  # 跟进提醒
+  follow_up: true
+  
+  # 长对话优化：定期总结关键信息，防止上下文膨胀
+  periodic_summary: true
+  summary_interval: 20  # 每20轮主动总结一次
+  
+  # 关键信息持久化：跨会话记住核心信息
+  persistent_context:
+    - user_symptoms       # 用户症状记录
+    - user_goals          # 用户目标（减肥/精力/皮肤/睡眠）
+    - user_profile        # 用户画像（初学者/专业人士等）
+    - given_advice        # 已给建议及用户反馈
+    - progress_tracking   # 进度跟踪（尝试天数、改善情况）
+    - dietary_preferences # 饮食偏好（爱吃米饭/经常外食等）
+  
+  # 上下文管理策略
+  context_management:
+    # 当接近上限时，保留关键信息，压缩早期对话
+    compression_strategy: "preserve_key_info"
+    # 始终保留的轮数（最近的对话）
+    preserve_recent: 30
+    # 定期归档间隔
+    archive_interval: 50
+
+# 教学配置
+teaching:
+  # 默认教学层级
+  default_level: adaptive  # beginner, advanced, expert, adaptive
+  # 是否主动提供学习活动
+  suggest_activities: true
+  # 是否引用原文
+  cite_sources: true
+
+# 知识库配置
+knowledge:
+  # TKP总数
+  tkp_count: 80
+  # 核心知识链数量
+  core_chains: 3
+  # 控糖窍门数量
+  tips_count: 10
+  # 知识来源
+  source_book: "《控糖革命》(Glucose Revolution) by Jessie Inchauspé"
+
+# 内容约束
+constraints:
+  # 必须包含的字段检查
+  required_sections:
+    - 教学解释
+    - 实用建议
+  # 禁止内容
+  forbidden_content:
+    - 未经证实的医疗建议
+    - 替代医生诊断的建议
+    - 极端节食方案
+  # 必须声明的免责声明
+  disclaimer: |
+    本技能提供的建议基于《控糖革命》一书的研究成果，
+    仅供参考，不构成医疗建议。如有健康问题，请咨询专业医生。
+
+# 工具配置
+tools:
+  enabled:
+    - file_read
+  # TKP目录路径
+  tkp_path: "./tkps"
+
+# 元数据
+metadata:
+  created: "2025-01-09"
+  updated: "2025-01-09"
+  tkp_version: "1.0"
+  methodology: "Teaching Meta-Methodology (改编自impersonate-meta)"

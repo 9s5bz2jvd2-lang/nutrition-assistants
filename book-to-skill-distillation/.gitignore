@@ -1,0 +1,18 @@
+# Private extraction substrate — never commit
+work/
+*.pdf
+*.epub
+**/full_ocr/
+**/topic_ocr/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

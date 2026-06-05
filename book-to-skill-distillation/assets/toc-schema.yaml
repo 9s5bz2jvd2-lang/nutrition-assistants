@@ -1,0 +1,11 @@
+book:
+  title:
+  source_path:
+  page_count:
+chapters:
+  - id:
+    title:
+    printed_start:
+    pdf_start:
+    subtopics: []
+    confidence: medium

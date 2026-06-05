@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>食物观星 · Food, Nutrition &amp; Stargazing Learning Hub</title>
+<meta name="author" content="Runyuan Wang 王润圆" />
+<meta name="description" content="食物观星：由王润圆策划维护的公共学习网页，集中整理11个国家卫生健康委食养指南原文入口、食谱查询线索、营养科普小工具与星空科普内容。纯静态网页，不收集访问者数据。" />
+<meta name="robots" content="index, follow" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ========= 顶部说明条 ========= -->
+<div class="topnote" role="note">
+  <strong>公共学习中心</strong> · 本站为公开科普资料整理，不提供诊断、治疗或个体化处方；如有身体不适请就近就医。
+</div>
+
+<!-- ========= 顶部品牌栏 ========= -->
+<header class="topbar">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 44 44" width="44" height="44" role="img" aria-label="食物观星标识">
+        <defs>
+          <radialGradient id="lgGrad" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stop-color="#f5d6c1" />
+            <stop offset="100%" stop-color="#c98aa1" />
+          </radialGradient>
+        </defs>
+        <circle cx="22" cy="22" r="20" fill="#4d3a64" />
+        <circle cx="22" cy="22" r="20" fill="none" stroke="#7a6b8a" stroke-width="0.75" />
+        <path d="M22 8 L24.6 16.6 L33.4 16.6 L26.3 21.8 L29 30.4 L22 25.1 L15 30.4 L17.7 21.8 L10.6 16.6 L19.4 16.6 Z"
+              fill="url(#lgGrad)" />
+        <circle cx="33" cy="11" r="0.9" fill="#f5e0bb" />
+        <circle cx="11" cy="33" r="0.7" fill="#f5e0bb" />
+        <circle cx="35" cy="29" r="0.6" fill="#f5e0bb" />
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="brand-title">食物观星</div>
+      <div class="brand-sub">营养科普、生活方式健康与星空探索</div>
+      <div class="brand-en">Food, Nutrition &amp; Stargazing Learning Hub</div>
+    </div>
+  </div>
+  <nav class="topbar-nav" aria-label="本站主要分节">
+    <a href="#hero">首页</a>
+    <a href="#source-guides">官方指南</a>
+    <a href="#source-text-library">食养与食谱查询</a>
+    <a href="#calculator">营养小工具</a>
+    <a href="#cosmos">营养与星空</a>
+    <a href="#about">关于本站</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ========= 1. Hero ========= -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="stars stars-a"></div>
+    <div class="stars stars-b"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+    <p class="eyebrow">公共营养科普学习入口</p>
+    <h1 class="hero-h1">
+      <span class="hero-zh">食物观星</span>
+    </h1>
+    <p class="hero-sub">营养科普 · 生活方式健康 · 星空探索</p>
+    <p class="hero-en-aux">Food, Nutrition &amp; Stargazing Learning Hub</p>
+    <p class="hero-lead">
+      把 <strong>11 个国家食养指南</strong>、<strong>营养小工具</strong>和<strong>面向公众的天文科普</strong>，
+      整理成可以直接点进去的几个清晰入口。
+    </p>
+    <p class="hero-lead" lang="en">
+      This public learning hub, curated by Runyuan Wang, brings together entry points for 11 official National Health Commission dietary-nutrition guides, lightweight nutrition tools, and public-facing stargazing science. It is a static site for learning and source navigation, not medical diagnosis, treatment, or individualized nutrition advice.
+    </p>
+
+    <div class="hero-entries" aria-label="主要入口">
+      <a class="hero-entry" href="#source-guides">
+        <span class="entry-icon" aria-hidden="true">📖</span>
+        <span class="entry-text">
+          <strong>11 个官方食养指南</strong>
+          <span>直达官方原文与可下载 PDF 入口</span>
+        </span>
+      </a>
+      <a class="hero-entry" href="#source-text-library">
+        <span class="entry-icon" aria-hidden="true">🥗</span>
+        <span class="entry-text">
+          <strong>食养与食谱查询</strong>
+          <span>按疾病、人群、地区、季节查食养方与食谱示例</span>
+        </span>
+      </a>
+      <a class="hero-entry" href="#calculator">
+        <span class="entry-icon" aria-hidden="true">🧮</span>
+        <span class="entry-text">
+          <strong>营养小工具</strong>
+          <span>BMI · 能量 · 宏量 · 钠纤维（本地计算）</span>
+        </span>
+      </a>
+      <a class="hero-entry" href="#cosmos">
+        <span class="entry-icon" aria-hidden="true">✦</span>
+        <span class="entry-text">
+          <strong>营养与星空</strong>
+          <span>面向公众的天文科普与观星夜宵</span>
+        </span>
+      </a>
+    </div>
+
+    <p class="hero-owner-line">
+      <a class="hero-help-link" href="#how-to-use">第一次来？先看 3 步使用说明</a><br>
+      作者 / Curated by <strong>王润圆 Runyuan Wang</strong> · 中国注册营养师 · 昆明医科大学营养与食品卫生学硕士 · 公众号 <strong>圆酱说营养</strong>
+    </p>
+    <p class="hero-tiny">
+      纯静态网页 · 不联网 · 不收集任何访问者信息
+    </p>
+    </div>
+
+    <aside class="hero-visual" aria-label="食物观星首屏照片：木桌上的真实蔬菜食材">
+      <figure class="visual-card visual-card-main hero-photo-card">
+        <img src="assets/hero-real-food-vegetables.jpg" alt="木桌上的胡萝卜、洋葱、大蒜和根茎类蔬菜，呈现真实食材与日常餐桌的温暖质感" loading="eager" decoding="async">
+        <figcaption class="visual-note">
+          <strong>真实食物 · 日常餐桌 · 科学食养</strong>
+          <span>从看得见的食材出发，把专业营养知识整理成普通人也愿意停留的公共入口。</span>
+        </figcaption>
+      </figure>
+      <div class="visual-mini-row" aria-hidden="true">
+        <span>真实食材</span><span>权威指南</span><span>食谱线索</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ========= 2. 关于本站（含关于作者，弱化简历感） ========= -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-h2">关于本站</h2>
+
+    <div class="about-grid">
+      <article class="about-card">
+        <h3>这是一个公共学习入口，不是个人主页</h3>
+        <p>
+          食物观星希望把分散、可信的公开资料，汇总成<strong>一座小型公共学习中心</strong>：
+          以国家食养指南原文查询、食谱线索、营养科普与公众天文科普为主线。
+          每个主题入口都会标注主要的公开来源类型（指南、教材、官方科普网站），
+          方便读者自行核对，不替代任何官方文本。
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h3>关于作者</h3>
+        <p>
+          本站由<strong>王润圆（Runyuan Wang）</strong>策划与维护：昆明医科大学营养与食品卫生学硕士、中国注册营养师，
+          长期参与营养科普与食养实践。
+        </p>
+        <p>
+          作者同时是<strong>长期天文爱好者</strong>，云南省天文爱好者协会秘书处干事，
+          参与过"马路天文"等面向公众的科普志愿活动；
+          这也是本站为什么会同时收录"营养"与"星空"两块内容的原因。
+        </p>
+        <p class="contact-chip">
+          更多营养科普内容，欢迎关注公众号：<strong>圆酱说营养</strong>
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h3>为什么把营养与星空放在一起</h3>
+        <p>
+          营养与天文看起来很远，其实共享同一种公共品格：
+          <strong>把复杂的科学，用普通人能听懂的方式讲清楚</strong>。
+          营养师每天的工作是把"怎么吃、怎么活"翻译给来访者；
+          科普志愿者把"宇宙是什么"翻译给路边的孩子。
+          这个小站希望同时承载这两种翻译的尝试。
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h3>本站不会做的事</h3>
+        <ul class="tight-list">
+          <li>不下诊断、不开处方、不替代医生与临床营养师；</li>
+          <li>不承诺减重斤数、不承诺疗效；</li>
+          <li>不放置登录、注册、上传、支付按钮，不收集任何用户数据；</li>
+          <li>不加载任何第三方脚本、统计或广告；</li>
+          <li>提供官方原文入口，并把公开食养资料做成网页内查询；正式出处以国家卫生健康委原文为准。</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 2b. 11个食养指南原文查询 ========= -->
+<section class="section" id="source-guides">
+  <div class="container container-wide">
+    <p class="eyebrow">Official Food Therapy Guidelines</p>
+    <h2 class="section-h2">11 个官方食养指南 · 原文入口</h2>
+    <p class="section-sub">
+      国家卫生健康委 2023 / 2024 / 2026 年发布的 11 个食养指南，集中成入口：点通知页看附件，部分条目附 PDF 直链。
+    </p>
+
+    <p class="guide-group-note">本网站为方便查找所做主题分组；正式分类与内容仍以国家卫健委公开发布的官方原文为准。</p>
+
+    <section class="guide-group" aria-label="代谢与心血管">
+      <h3 class="guide-group-title">代谢与心血管</h3>
+      <div class="guides-grid guides-grid-compact">
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2023</span>
+        <h3>1. 成人高脂血症食养指南（2023年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>血脂异常人群；重点查食物选择、烹调方式、不同地区食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d/files/1732844468104_32731.pdf" target="_blank" rel="noopener noreferrer">原文 PDF ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2023</span>
+        <h3>2. 成人高血压食养指南（2023年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>高血压人群；重点查减盐、钾摄入、DASH式搭配和食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d/files/1732844468136_16321.pdf" target="_blank" rel="noopener noreferrer">原文 PDF ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2023</span>
+        <h3>4. 成人糖尿病食养指南（2023年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>成人糖尿病人群；重点查主食分配、餐次安排、血糖友好型食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2024</span>
+        <h3>5. 成人高尿酸血症与痛风食养指南（2024年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>高尿酸血症与痛风人群；重点查嘌呤、饮水、酒精限制和食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2024</span>
+        <h3>6. 成人肥胖食养指南（2024年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>成人肥胖人群；重点查能量控制、食物选择、证型与地区食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d/files/1743476136267_20714.pdf" target="_blank" rel="noopener noreferrer">原文 PDF ↗</a>
+        </p>
+      </article>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-label="儿童与青少年">
+      <h3 class="guide-group-title">儿童与青少年</h3>
+      <div class="guides-grid guides-grid-compact">
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2023</span>
+        <h3>3. 儿童青少年生长迟缓食养指南（2023年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>儿童青少年；重点查年龄段、优质蛋白、奶类豆类、家庭餐搭配示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202301/f01895a06c5349ef999f25da833c166d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2024</span>
+        <h3>7. 儿童青少年肥胖食养指南（2024年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>儿童青少年肥胖；重点查家庭饮食、校餐、运动与不同年龄段食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/wjw/c100378/202402/afd5dda4bd6745fda10aad8d43a16369/files/1732845128961_34845.pdf" target="_blank" rel="noopener noreferrer">原文 PDF ↗</a>
+        </p>
+      </article>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-label="肾脏与康复">
+      <h3 class="guide-group-title">肾脏与康复</h3>
+      <div class="guides-grid guides-grid-compact">
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2024</span>
+        <h3>8. 成人慢性肾脏病食养指南（2024年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>成人慢性肾脏病人群；重点查蛋白质、钠、钾、磷与分期相关饮食提醒。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2026</span>
+        <h3>9. 成人脑卒中食养指南（2026年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>脑卒中恢复期、后遗症期人群；重点查吞咽、质地、复发预防与食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100087/202604/a69d2fce21e040dc96cbc40b923a06d3.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100087/202604/a69d2fce21e040dc96cbc40b923a06d3/files/附件1.成人脑卒中食养指南（2026年版）-20260422152158566.pdf" target="_blank" rel="noopener noreferrer">原文 PDF ↗</a> <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100087/202604/a69d2fce21e040dc96cbc40b923a06d3/files/附件2.成人脑卒中食养指南（2026年版）问答-20260423152240909.pdf" target="_blank" rel="noopener noreferrer">问答 PDF ↗</a>
+        </p>
+      </article>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-label="骨骼与肌肉">
+      <h3 class="guide-group-title">骨骼与肌肉</h3>
+      <div class="guides-grid guides-grid-compact">
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2026</span>
+        <h3>10. 成人骨质疏松症食养指南（2026年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>成人骨质疏松症人群；重点查钙、维生素D、蛋白质、日晒运动与食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100087/202604/a69d2fce21e040dc96cbc40b923a06d3.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      <article class="guide-card guide-card-compact">
+        <span class="guide-tag">国家卫生健康委 · 2026</span>
+        <h3>11. 成人肌少症食养指南（2026年版）</h3>
+        <p class="guide-topics"><strong>重点：</strong>成人肌少症人群；重点查蛋白质、能量、抗阻运动配合与食谱示例。</p>
+        <p class="guide-links">
+          <a class="ext-link-soft" href="https://www.nhc.gov.cn/sps/c100087/202604/a69d2fce21e040dc96cbc40b923a06d3.shtml" target="_blank" rel="noopener noreferrer">国家卫健委通知页 / 原文附件入口 ↗</a>
+        </p>
+      </article>
+      </div>
+    </section>
+
+    <article class="guide-note">
+      <h3>说明</h3>
+      <ul class="tight-list">
+        <li>本页保留官方原文入口；下方查询区提供可搜索、可点开的网页内整理。正式版本以国家卫生健康委原文为准。</li>
+        <li>具体疾病、用药、减重、肾病、卒中恢复等问题，请回到医生与临床营养师的面对面评估。</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ========= 2c. 如何使用本站 · 3 步 ========= -->
+<section class="section section-soft" id="how-to-use">
+  <div class="container container-wide">
+    <p class="eyebrow">How to use</p>
+    <h2 class="section-h2">如何使用本站 · 3 步</h2>
+    <p class="section-sub">
+      不需要登录，不收集任何信息。从首页 4 个入口里挑一个，3 步就能找到想看的内容。
+    </p>
+
+    <ol class="use-steps">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-text">
+          <strong>选主题</strong>
+          <p>点首页 4 个入口卡片：官方指南 / 食养与食谱查询 / 营养小工具 / 营养与星空。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-text">
+          <strong>看摘要</strong>
+          <p>每张卡片只放一行短摘要，可按疾病、人群、地区、季节、食材或证型筛选。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-text">
+          <strong>点开看详情</strong>
+          <p>详细内容在「点开查看详细内容」里展开；正式出处以国家卫生健康委原文为准。</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+
+<!-- ========= 2d. 11个食养指南 · 查询点开 ========= -->
+<section class="section" id="source-text-library">
+  <div class="container container-wide">
+    <p class="eyebrow">Food Therapy Finder</p>
+    <h2 class="section-h2">食养与食谱查询</h2>
+    <p class="section-sub">
+      先选「食养方 / 食谱示例 / 指南原文」之一，再按疾病、人群、地区、季节、食材或证型搜索。
+    </p>
+
+    <div class="guide-query-panel" aria-label="食养指南查询">
+      <div class="guide-tabs" id="foodGuideTabs" role="tablist" aria-label="查询类型">
+        <button class="guide-tab is-active" type="button" data-kind="formula" role="tab" aria-selected="true">🥗 食养方</button>
+        <button class="guide-tab" type="button" data-kind="recipe" role="tab" aria-selected="false">🍱 食谱示例</button>
+        <button class="guide-tab" type="button" data-kind="original" role="tab" aria-selected="false">📖 指南原文</button>
+      </div>
+      <p class="tab-help">不知道点哪个？想看汤羹茶饮等食养内容，选“食养方”；想看一日/一餐/地区季节搭配，选“食谱示例”；想核对出处，选“指南原文”。</p>
+
+      <div class="filter-bar guide-filter-bar" id="guideFilterBar" aria-label="按指南筛选">
+        <!-- JS 渲染 11 个指南筛选按钮 -->
+      </div>
+
+      <div class="source-search-panel">
+        <label for="sourceTextSearch"><strong>关键词搜索</strong></label>
+        <input class="filter-search source-search" id="sourceTextSearch" type="text" placeholder="试试：山楂 / 春季 / 西南 / 糖尿病" autocomplete="off" />
+        <p class="hint">点开卡片查看详细内容；正式出处以国家卫生健康委原文为准。</p>
+      </div>
+
+      <div class="guide-result-summary" id="guideResultSummary">正在整理查询结果……</div>
+    </div>
+
+    <div class="source-text-grid query-result-grid" id="foodGuideDocGrid"><!-- JS 渲染查询卡片 --></div>
+    <p class="hint">本页只做科普查询，不做诊断、处方或个体化治疗。特殊情况（用药、肾病、脑卒中、儿童、孕产期等）请回到医生与注册营养师的面对面评估。</p>
+  </div>
+</section>
+
+<!-- ========= 3. 营养资料库 ========= -->
+<section class="section section-soft" id="library">
+  <div class="container container-wide">
+    <h2 class="section-h2">营养资料库 · 主题入门</h2>
+    <p class="section-sub">
+      几个常见话题的短科普卡片：成人/儿童肥胖、维生素 D、生活方式医学、膳食与食养指南。可按标签筛选或关键字搜索。
+    </p>
+
+    <div class="filter-bar" role="tablist" aria-label="按主题筛选">
+      <button class="chip is-active" data-filter="all" type="button" role="tab" aria-selected="true">全部</button>
+      <button class="chip" data-filter="adult-obesity" type="button" role="tab">成人肥胖</button>
+      <button class="chip" data-filter="child-obesity" type="button" role="tab">儿童青少年肥胖</button>
+      <button class="chip" data-filter="vitamin-d" type="button" role="tab">维生素 D</button>
+      <button class="chip" data-filter="lifestyle" type="button" role="tab">生活方式医学</button>
+      <button class="chip" data-filter="guideline" type="button" role="tab">膳食 / 食养指南</button>
+      <input class="filter-search" id="librarySearch" type="text" placeholder="按关键字搜索（中文 / 英文）" autocomplete="off" />
+    </div>
+
+    <div class="card-grid" id="libraryGrid"><!-- JS 渲染 --></div>
+
+    <p class="hint">
+      本资料库是<strong>主题导引</strong>，不替代官方原文。完整内容请回到上方 <a href="#source-guides">官方指南入口</a>，或国家卫生健康委员会、中国营养学会、世界卫生组织等机构官方网站。
+    </p>
+  </div>
+</section>
+
+<!-- ========= 4. 小工具 · 计算器 ========= -->
+<section class="section" id="calculator">
+  <div class="container">
+    <h2 class="section-h2">小工具 · 营养科普计算器</h2>
+    <p class="section-sub">
+      下面四组小工具仅用于<strong>科普理解</strong>，帮助大家对 BMI、能量需求、宏量营养素比例、钠与膳食纤维形成大致直观；
+      <strong>不替代个体化的营养评估与诊疗</strong>。所有计算在你的浏览器里完成，不上传任何数据。
+    </p>
+
+    <div class="calc-grid">
+
+      <!-- BMI -->
+      <article class="calc-card">
+        <h3>1. BMI 体重指数</h3>
+        <div class="calc-row">
+          <label>身高（cm）<input type="number" id="bmiHeight" min="80" max="230" step="0.1" placeholder="例如 165" /></label>
+          <label>体重（kg）<input type="number" id="bmiWeight" min="20" max="250" step="0.1" placeholder="例如 60" /></label>
+        </div>
+        <div class="calc-output" id="bmiOutput" aria-live="polite">请输入身高和体重</div>
+        <p class="hint">中国成人 BMI 切点：偏瘦 &lt; 18.5；正常 18.5–23.9；超重 24–27.9；肥胖 ≥ 28。该切点不适用于儿童青少年、孕产妇、运动员等人群。</p>
+      </article>
+
+      <!-- 能量需求 -->
+      <article class="calc-card">
+        <h3>2. 一日能量需求（粗估）</h3>
+        <div class="calc-row">
+          <label>性别
+            <select id="eeSex">
+              <option value="female">女</option>
+              <option value="male">男</option>
+            </select>
+          </label>
+          <label>年龄（岁）<input type="number" id="eeAge" min="10" max="100" step="1" placeholder="例如 30" /></label>
+        </div>
+        <div class="calc-row">
+          <label>身高（cm）<input type="number" id="eeHeight" min="120" max="220" step="0.1" placeholder="例如 165" /></label>
+          <label>体重（kg）<input type="number" id="eeWeight" min="30" max="200" step="0.1" placeholder="例如 60" /></label>
+        </div>
+        <div class="calc-row">
+          <label>活动水平
+            <select id="eeActivity">
+              <option value="1.2">久坐（办公室、几乎不运动）</option>
+              <option value="1.375" selected>轻体力（日常通勤+少量运动）</option>
+              <option value="1.55">中等（每周 3–5 次中等强度运动）</option>
+              <option value="1.725">较高（体力工作或较多训练）</option>
+            </select>
+          </label>
+        </div>
+        <div class="calc-output" id="eeOutput" aria-live="polite">请填完上面四项</div>
+        <p class="hint">使用 Mifflin–St Jeor 公式估 BMR 再乘活动系数。仅作粗估；正式评估需要由营养师结合体测、化验、用药与目标综合判断。</p>
+      </article>
+
+      <!-- 三大宏量比例 -->
+      <article class="calc-card">
+        <h3>3. 三大宏量营养素比例提示</h3>
+        <div class="calc-row">
+          <label>目标能量（kcal/天）<input type="number" id="macroEnergy" min="800" max="4000" step="10" placeholder="例如 1800" /></label>
+        </div>
+        <div class="calc-row">
+          <label>结构（一般人群）
+            <select id="macroPattern">
+              <option value="balanced" selected>均衡型：碳水 50% / 脂 30% / 蛋白 20%</option>
+              <option value="higher-protein">高蛋白型：碳水 45% / 脂 30% / 蛋白 25%</option>
+              <option value="moderate-low-carb">中低碳水：碳水 40% / 脂 35% / 蛋白 25%</option>
+            </select>
+          </label>
+        </div>
+        <div class="calc-output" id="macroOutput" aria-live="polite">请输入目标能量</div>
+        <p class="hint">中国 DRIs（2023 版）一般人群推荐：碳水化合物 50–65%、脂肪 20–30%、蛋白质 10–20%。糖尿病、肾病、肝病、孕产期等特殊人群比例需由营养师个体化调整。</p>
+      </article>
+
+      <!-- 钠 / 膳食纤维 -->
+      <article class="calc-card">
+        <h3>4. 钠 / 膳食纤维自查</h3>
+        <div class="calc-row">
+          <label>今天大致吃了多少克盐？<input type="number" id="saltGrams" min="0" max="30" step="0.5" placeholder="例如 8" /></label>
+        </div>
+        <div class="calc-row">
+          <label>今天大致摄入多少克膳食纤维？<input type="number" id="fiberGrams" min="0" max="80" step="0.5" placeholder="例如 15" /></label>
+        </div>
+        <div class="calc-output" id="naFiberOutput" aria-live="polite">请填写一项或两项</div>
+        <p class="hint">参考：中国成人每日食盐建议 &lt; 5 g（约 2000 mg 钠）；膳食纤维推荐摄入 25–30 g/天。高血压、糖尿病、肾病等人群目标可能更严，需由医生 / 营养师个体化设定。</p>
+      </article>
+
+    </div>
+
+    <div class="callout warn">
+      <strong>科普表述：</strong>本页所有计算结果仅供"心里有个数"，<strong>不构成营养处方</strong>。妊娠期、哺乳期、儿童青少年、老年、慢病服药、术后康复、肿瘤治疗、肾功能异常等情况，请面对面咨询营养师与主管医师。
+    </div>
+    <p class="trust-note">小工具只在你的浏览器本地计算，不上传身高、体重、年龄或饮食数据。</p>
+  </div>
+</section>
+
+<!-- ========= 5. 营养与星空 ========= -->
+<section class="section section-cosmos" id="cosmos">
+  <div class="cosmos-bg" aria-hidden="true">
+    <div class="stars stars-c"></div>
+  </div>
+  <div class="container container-wide">
+    <p class="eyebrow eyebrow-light">Astronomy &amp; Nutrition</p>
+    <h2 class="section-h2 section-h2-light">营养与星空</h2>
+    <p class="section-sub section-sub-light">
+      本板块由作者作为<strong>长期天文爱好者</strong>整理：把面向公众的天文知识写成短科普卡片，
+      原始资料来自 NASA、IAU 等公开科普资源；卡片文字为整理性表述，<strong>不代表官方译文</strong>。
+    </p>
+
+    <div class="cosmos-grid" id="cosmosGrid"><!-- JS 渲染 --></div>
+
+    <p class="trust-note trust-note-dark">星空内容来自 NASA、IAU 等公开科普资料整理；这里是科学兴趣延伸，非诊疗、非玄学，也不暗示“吃什么能改变星象”。</p>
+
+    <div class="cosmos-subnav" aria-label="星空子板块">
+      <a class="cosmos-sublink" href="#nightsnack">
+        <span aria-hidden="true">☄</span>
+        <span>营养师的观星夜宵 →</span>
+      </a>
+      <a class="cosmos-sublink" href="#skywatch">
+        <span aria-hidden="true">☾</span>
+        <span>本月星空 · 免费天象 →</span>
+      </a>
+    </div>
+
+    <article class="cosmos-bridge">
+      <h3>为什么营养师也关心星空？</h3>
+      <p>
+        营养与星空之间没有"吃星星更健康"的捷径——这一点先说在前面。真正的连接其实在三件小事上：
+      </p>
+      <ul class="tight-list">
+        <li><strong>科普能力</strong>——把一件复杂的科学讲给路过的人听，是营养师与天文志愿者共同的基本功；</li>
+        <li><strong>好奇心</strong>——愿意看比"今天吃什么"更远一点的事，会让人对生活更有耐心；</li>
+        <li><strong>昼夜节律与户外光照</strong>——规律作息、白天足量阳光、夜里减少强光干扰，与代谢健康、睡眠和情绪相关，这是生活方式医学反复关注的话题，但请<em>不要</em>把"看星星"包装成任何疾病的治疗手段。</li>
+      </ul>
+      <p class="src light">
+        天文资料来源：NASA Solar System Exploration、NASA Space Place、NASA Exoplanet Exploration、International Astronomical Union 公众主题页等公开科普资源；页面文字为整理性科普，不代表官方译文。
+      </p>
+      <div class="cosmos-links">
+        <a class="ext-link" href="https://science.nasa.gov/solar-system/" target="_blank" rel="noopener noreferrer">NASA Solar System Exploration ↗</a>
+        <a class="ext-link" href="https://spaceplace.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA Space Place ↗</a>
+        <a class="ext-link" href="https://exoplanets.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA Exoplanet Exploration ↗</a>
+        <a class="ext-link" href="https://www.iau.org/public/themes/" target="_blank" rel="noopener noreferrer">IAU Public Themes ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========= 5b. 营养师的观星夜宵 ========= -->
+<section class="section section-soft" id="nightsnack">
+  <div class="container container-wide">
+    <p class="eyebrow">Night Snack for Stargazers</p>
+    <h2 class="section-h2">营养师的观星夜宵</h2>
+    <p class="section-sub">
+      给夜间观星、马路天文、守流星雨、通宵拍星与夜间科普活动准备的<strong>轻负担夜宵建议</strong>。
+      这一节面向健康成人，目的是让夜间在户外的人不饿、不困、不胃胀，<strong>不是减肥处方</strong>，更不是任何疾病的医学治疗方案。
+    </p>
+
+    <div class="nightsnack-grid" id="nightsnackGrid"><!-- JS 渲染 --></div>
+
+    <article class="nightsnack-rules">
+      <h3>夜宵选择小原则</h3>
+      <ul class="tight-list">
+        <li>结构上以<strong>适量碳水 + 优质蛋白 + 蔬果 / 膳食纤维</strong>为主，少油少糖、不过咸。</li>
+        <li>份量"小而有饱腹感"为宜，避免凌晨大餐与暴食；夜间消化能力一般弱于白天。</li>
+        <li>注意<strong>补水</strong>：寒冷户外尤其容易忽视，温水 / 淡茶 / 牛奶都可以。</li>
+        <li>咖啡因不过量：成人一般每日 ≤ 400 mg（约 3–4 杯普通咖啡），<strong>下半夜尽量不再加浓咖啡因</strong>，以免影响第二天恢复。</li>
+        <li>夜间观测/夜班结束前 1–2 小时尽量减少进食，给胃留出休息时间；回家后若需助眠，选清淡易消化的小份食物。</li>
+        <li><em>特殊人群</em>（孕产期、儿童青少年、老年、慢病服药、消化道疾病、糖尿病、肾病、术后康复等）请<strong>事先咨询医生或临床营养师</strong>，本页内容不替代个体化方案。</li>
+      </ul>
+    </article>
+
+    <article class="nightsnack-refs">
+      <h3>真实参考来源</h3>
+      <p class="muted">以下为本节内容主要参考的公开来源，方便读者自行核对。本页未复制原文，只做面向公众的整理性表述。</p>
+      <ul class="ref-list">
+        <li>
+          Bonnell EK, Huggins CE, Huggins CT, McCaffrey TA, Palermo C, Bonham MP.
+          <em>Dietary Interventions for Night Shift Workers: A Literature Review.</em>
+          <strong>Nutrients</strong>. 2019;11(10):2276.
+          <a class="ext-link-soft" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6836085/" target="_blank" rel="noopener noreferrer">PMC 全文 ↗</a>
+          <a class="ext-link-soft" href="https://doi.org/10.3390/nu11102276" target="_blank" rel="noopener noreferrer">DOI ↗</a>
+        </li>
+        <li>
+          D'Annibale M, et al.
+          <em>Eating on the night shift: A need for evidence-based dietary guidelines?</em>
+          <strong>Nutrition Bulletin</strong>. 2021.
+          <a class="ext-link-soft" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/nbu.12515" target="_blank" rel="noopener noreferrer">Wiley 摘要 ↗</a>
+        </li>
+        <li>
+          CDC / NIOSH. <em>Module 9. Coping with the Night and Evening Shifts — Diet Suggestions for Night-Shift Nurses.</em>
+          面向夜班护士的官方科普网页（建议尽量沿用白天的三餐节律、午夜至凌晨 6 点之间尽量减少进食、把进食拆为三餐加两到三次小食等）。
+          <a class="ext-link-soft" href="https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod9/08.html" target="_blank" rel="noopener noreferrer">CDC/NIOSH 页面 ↗</a>
+        </li>
+        <li>
+          中国营养学会. <em>《中国居民膳食指南（2022）》</em>.
+          作为一般平衡膳食原则的来源（少盐少油、控糖限酒、食物多样、规律进餐、足量饮水等）；该指南并非专门面向夜班 / 观星人群。
+        </li>
+      </ul>
+      <p class="src">
+        说明：本节为面向公众的整理性表述，<strong>不代表 CDC/NIOSH 与膳食指南的官方译文或官方立场</strong>；个体化方案请回到面对面就诊。
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ========= 5c. 本月星空日历 / 免费天象来源 ========= -->
+<section class="section section-cosmos" id="skywatch">
+  <div class="cosmos-bg" aria-hidden="true">
+    <div class="stars stars-c"></div>
+  </div>
+  <div class="container container-wide">
+    <p class="eyebrow eyebrow-light">Monthly Sky Calendar &amp; Free Sources</p>
+    <h2 class="section-h2 section-h2-light">本月星空 · 免费天象来源</h2>
+    <p class="section-sub section-sub-light">
+      不接入任何收费 API 或需要 key 的服务。本月可看的内容由作者人工维护（按 NASA What's Up、AMS 流星雨日历当月公开页面）；
+      右侧给出几个长期可用的<strong>免费公开来源</strong>，配套一个小工具可以本地粗估月相，正式观测请回到 NASA / Timeanddate / 当地天文台。
+    </p>
+
+    <div class="skywatch-grid">
+
+      <article class="skywatch-card">
+        <h3>本月可看什么（2026-06）</h3>
+        <p class="hint hint-light">
+          下面是 2026 年 6 月人工维护的本月概览；日期与时刻会随时区和所在地平线条件略有差异，正式观测前请再按
+          <a class="ext-link" href="https://science.nasa.gov/skywatching/whats-up/" target="_blank" rel="noopener noreferrer">NASA What's Up 当月页面</a>、
+          <a class="ext-link" href="https://www.timeanddate.com/moon/phases/" target="_blank" rel="noopener noreferrer">Timeanddate 月相查询</a>
+          与当地天文台 / 天文协会公开渠道核对。
+        </p>
+        <ul class="sky-list">
+          <li><strong>6 月 8–9 日：金星与木星傍晚相近</strong>。日落后约 30–60 分钟看西北偏西低空，两个最亮的行星会靠得很近；低空遮挡、云量和大气透明度会明显影响效果。</li>
+          <li><strong>6 月 15 日前后：新月 + 水星东大距</strong>。新月前后月光干扰少，适合暗空下看银河、星团等较暗目标；同日水星达到东大距，日落后西方低空有较好的尝试窗口。</li>
+          <li><strong>6 月 21 日：六月至日</strong>。北半球进入夏至附近，白昼最长、夜晚最短；适合把观测计划排到更晚些，并注意夜间户外补水、防蚊和返程安全。</li>
+          <li><strong>6 月 29 日：六月满月</strong>。满月前后适合肉眼赏月、拍月亮轮廓；但月光会压低暗弱深空天体和银河的可见度。</li>
+          <li><strong>整月夜空</strong>：6 月没有特别大型流星雨，偶发流星仍可能出现；北半球后半夜可留意夏季大三角（织女、牛郎、天津四）与银河季逐步展开。</li>
+        </ul>
+        <p class="src light">本次更新参考：NASA What's Up / Timeanddate 月相页 / The Planetary Society 夜空月报 / EarthSky 与 AMS 等公开天象资料；页面文字为整理性科普，不代表上述机构官方译文。具体观测时间请以所在地公开天文信息为准。</p>
+      </article>
+
+      <article class="skywatch-card">
+        <h3>NASA 每日天文一图（APOD）</h3>
+        <p>
+          如果今天只想看一张宇宙照片，可以从 NASA 的 <em>Astronomy Picture of the Day</em> 开始：每天一张天文图片或影像，配一段面向公众的英文说明，常见主题包括星云、星系、行星、日月食、流星雨、极光与航天任务影像。
+        </p>
+        <ul class="link-list">
+          <li>
+            <a class="ext-link" href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">NASA APOD · 今日图片 ↗</a>
+            <span class="link-note">APOD 官方每日页面；图片版权、作者署名与说明文字请以 NASA 当日页面为准。</span>
+          </li>
+          <li>
+            <a class="ext-link" href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">NASA APOD · 历史归档 ↗</a>
+            <span class="link-note">可按日期回看往期每日天文一图，适合做公众号选题灵感或观星科普素材线索。</span>
+          </li>
+        </ul>
+        <p class="src light">说明：本站不抓取 APOD 图片、不调用 NASA APOD API，也不复制 NASA 当日说明；这里只提供官方入口与中文导读，避免版权和接口 key 问题。</p>
+      </article>
+
+      <article class="skywatch-card">
+        <h3>免费公开来源</h3>
+        <ul class="link-list">
+          <li>
+            <a class="ext-link" href="https://science.nasa.gov/skywatching/whats-up/" target="_blank" rel="noopener noreferrer">NASA · What's Up（每月观星提示） ↗</a>
+            <span class="link-note">NASA 面向公众的每月观星栏目，月相、行星、流星雨等亮点一页可看。</span>
+          </li>
+          <li>
+            <a class="ext-link" href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">NASA · Astronomy Picture of the Day（每日天文一图） ↗</a>
+            <span class="link-note">每天一张天文图片/影像与公开说明；具体图片版权与署名以 APOD 当日页面为准。</span>
+          </li>
+          <li>
+            <a class="ext-link" href="https://www.amsmeteors.org/meteor-showers/meteor-shower-calendar/" target="_blank" rel="noopener noreferrer">American Meteor Society · 流星雨日历 ↗</a>
+            <span class="link-note">由美国流星学会维护的全年流星雨日历，给出活跃期、峰值日期与 ZHR 预估。</span>
+          </li>
+          <li>
+            <a class="ext-link" href="https://www.timeanddate.com/moon/phases/" target="_blank" rel="noopener noreferrer">Timeanddate · 月相 / 月升月落查询 ↗</a>
+            <span class="link-note">网页可免费查询当月月相与月升月落；其 API 服务并非完全免费，本页只链接网页查询入口，不调用其接口。</span>
+          </li>
+          <li>
+            <a class="ext-link" href="https://nightsky.jpl.nasa.gov/planner.cfm" target="_blank" rel="noopener noreferrer">NASA Night Sky Network · Planner ↗</a>
+            <span class="link-note">面向天文爱好者社群的活动规划页面，可查找各地公众观星活动与教育资源。</span>
+          </li>
+        </ul>
+        <p class="src light">本站只在普通超链接里指向以上来源，不调用任何外部 API、不加载任何外部脚本。</p>
+      </article>
+
+      <article class="skywatch-card skywatch-tool">
+        <h3>小工具 · 月相粗估</h3>
+        <p class="hint hint-light">
+          输入一个日期（默认是今天），本工具会用<strong>本地算法</strong>给出当晚月相名称与亮面比例的粗估，仅供科普理解；
+          正式观测请查 NASA / Timeanddate / 当地天文台。
+        </p>
+        <div class="calc-row">
+          <label class="light-label">日期
+            <input type="date" id="moonDate" />
+          </label>
+        </div>
+        <div class="calc-output skywatch-output" id="moonOutput" aria-live="polite">请选择一个日期</div>
+        <p class="src light">算法说明：以已知朔月时刻（2000-01-06 18:14 UTC）为基准，按朔望月平均长度 29.530588853 天循环估算月龄；忽略轨道偏心率、地理位置等因素，误差通常在数小时到一两天，<strong>不能用于精确观测</strong>。</p>
+      </article>
+
+    </div>
+
+    <article class="cosmos-bridge">
+      <h3>关于"本月内容"如何维护</h3>
+      <p>
+        本节<strong>不依赖任何收费天文 API</strong>，也不需要 key 或注册。
+        "本月可看什么"是人工维护的概览：作者会在每月初参考
+        <a class="ext-link" href="https://science.nasa.gov/skywatching/whats-up/" target="_blank" rel="noopener noreferrer">NASA What's Up</a>
+        与
+        <a class="ext-link" href="https://www.amsmeteors.org/meteor-showers/meteor-shower-calendar/" target="_blank" rel="noopener noreferrer">AMS 流星雨日历</a>
+        ，把该月的月相、行星、流星雨、季节性夜空亮点整理成几条短句。
+      </p>
+      <p>
+        如果想做更精确的规划（具体时刻、月升月落、行星合月、地理位置差异等），请直接前往上面这些公开来源，或当地天文台、天文协会的公开渠道。
+      </p>
+      <p class="src light">
+        本节文字为面向公众的整理性科普，<strong>不代表 NASA、AMS、Timeanddate 等机构的官方译文或官方立场</strong>。
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ========= 7. 关注公众号 ========= -->
+<section class="section section-soft" id="contact">
+  <div class="container contact-panel">
+    <div class="contact-copy">
+      <p class="eyebrow-inline">继续关注</p>
+      <h2 class="section-h2">公众号：圆酱说营养</h2>
+      <p class="section-lead">
+        如果你对营养科普、食养实践、生活方式健康、食养指南、食谱查询与星空科普感兴趣，
+        欢迎关注公众号<strong>「圆酱说营养」</strong>。这里会持续整理更适合普通人阅读的营养知识、学习笔记与工具探索。
+      </p>
+      <p class="contact-email">欢迎联系、交流：<a href="mailto:jykmsg@163.com">jykmsg@163.com</a></p>
+    </div>
+    <figure class="wechat-qr">
+      <img src="assets/wechat-qrcode.jpg" alt="圆酱说营养公众号二维码" loading="lazy" />
+      <figcaption>扫码关注「圆酱说营养」</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ========= 8. 免责声明 ========= -->
+<section class="section section-soft" id="disclaimer">
+  <div class="container">
+    <h2 class="section-h2">免责声明</h2>
+    <div class="disclaimer-box">
+      <p><strong>本页仅供科普参考；身体不适或慢病、用药、孕产期、儿童青少年等情况，请寻求正规医师与临床营养师的面对面评估。</strong></p>
+      <ul>
+        <li>本页不构成诊断、处方、减重方案或个体化治疗建议；</li>
+        <li>页内 BMI、能量、宏量、钠纤维等小工具与天文板块都是公众科普级的粗估与整理，不代表官方译文或个体化方案；</li>
+        <li>本站不收集访问者信息，不放置登录 / 注册 / 上传 / 支付入口。</li>
+      </ul>
+      <p class="muted">
+        如发现页面中有错漏或与最新指南不一致，欢迎通过公众号「圆酱说营养」联系作者指出。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="page-foot">
+  <div class="container">
+    <div class="foot-brand">食物观星 · 营养科普、生活方式健康与星空探索</div>
+    <div class="foot-en">Food, Nutrition &amp; Stargazing Learning Hub</div>
+    <div>作者 / Curated by：王润圆 Runyuan Wang · 中国注册营养师 · 昆明医科大学营养与食品卫生学硕士</div>
+    <div class="foot-links">
+      <a href="#contact">公众号 · 圆酱说营养</a>
+      <span class="foot-dot" aria-hidden="true">·</span>
+      <a href="#disclaimer">免责声明</a>
+      <span class="foot-dot" aria-hidden="true">·</span>
+      <a href="#about">关于本站</a>
+    </div>
+    <div class="foot-tiny">静态站点 · 不联网 · 无后端 · 不收集任何访问者数据</div>
+  </div>
+</footer>
+
+</main>
+
+<script src="food-guide-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

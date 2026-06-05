@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">食物观星主视觉</title>
+  <desc id="desc">星空、月光、餐桌、食物、茶饮、手账和小望远镜组成的温柔科普插画。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#44345d"/>
+      <stop offset="0.55" stop-color="#7b5576"/>
+      <stop offset="1" stop-color="#d29aa6"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#f5dfd7"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ef"/>
+      <stop offset="1" stop-color="#ecd3c9"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="35%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#fff9e9"/>
+      <stop offset="0.75" stop-color="#f2d9ae"/>
+      <stop offset="1" stop-color="#dfbc87"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#5f2d3b" flood-opacity="0.20"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="paperLines" width="1" height="28" patternUnits="userSpaceOnUse">
+      <path d="M0 27.5H960" stroke="#d9b8ad" stroke-width="1" opacity="0.32"/>
+    </pattern>
+  </defs>
+
+  <rect width="960" height="720" rx="52" fill="#fff8f4"/>
+  <rect x="28" y="28" width="904" height="664" rx="44" fill="url(#sky)"/>
+
+  <g opacity="0.95">
+    <circle cx="752" cy="128" r="54" fill="url(#moon)" filter="url(#glow)"/>
+    <circle cx="720" cy="112" r="8" fill="#d9bc8e" opacity="0.26"/>
+    <circle cx="770" cy="146" r="6" fill="#d9bc8e" opacity="0.22"/>
+    <ellipse cx="324" cy="160" rx="180" ry="62" fill="none" stroke="#f5e0bb" stroke-width="2" opacity="0.34" transform="rotate(-17 324 160)"/>
+    <ellipse cx="324" cy="160" rx="116" ry="40" fill="none" stroke="#f5e0bb" stroke-width="1.4" opacity="0.22" transform="rotate(-17 324 160)"/>
+    <g fill="#f5e0bb" opacity="0.9">
+      <circle cx="112" cy="98" r="3"/><circle cx="184" cy="178" r="2.4"/><circle cx="286" cy="92" r="2.2"/>
+      <circle cx="414" cy="132" r="2.7"/><circle cx="528" cy="86" r="2"/><circle cx="624" cy="190" r="2.3"/>
+      <circle cx="830" cy="244" r="2.2"/><circle cx="110" cy="300" r="2.6"/><circle cx="455" cy="252" r="2.1"/>
+    </g>
+    <g fill="#f5e0bb" opacity="0.9">
+      <path d="M220 126l8 24 24 8-24 8-8 24-8-24-24-8 24-8z"/>
+      <path d="M630 262l6 18 18 6-18 6-6 18-6-18-18-6 18-6z" opacity="0.78"/>
+      <path d="M834 92l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" opacity="0.82"/>
+    </g>
+  </g>
+
+  <path d="M68 408C154 352 236 358 318 394c74 32 144 32 216 2 116-48 234-40 356 22v226H68z" fill="#f3c8c2" opacity="0.32"/>
+  <rect x="82" y="390" width="796" height="218" rx="44" fill="url(#table)" filter="url(#softShadow)"/>
+  <path d="M118 428h724" stroke="#fffaf6" stroke-width="3" opacity="0.9"/>
+
+  <g transform="translate(112 438)" filter="url(#softShadow)">
+    <ellipse cx="136" cy="92" rx="132" ry="74" fill="#fffdf8"/>
+    <ellipse cx="136" cy="92" rx="108" ry="55" fill="#f7eadf"/>
+    <ellipse cx="136" cy="92" rx="78" ry="37" fill="#fffdf9"/>
+    <path d="M94 92c38-38 86-38 122 0-34 34-82 35-122 0z" fill="#8fa66f" transform="rotate(-14 155 92)"/>
+    <path d="M62 106c28-30 70-28 98 3-30 24-67 26-98-3z" fill="#b8a76f" transform="rotate(23 108 106)"/>
+    <ellipse cx="143" cy="87" rx="30" ry="15" fill="#e7bd79"/>
+    <ellipse cx="106" cy="116" rx="26" ry="14" fill="#d8a96b"/>
+    <circle cx="165" cy="119" r="12" fill="#a8525e"/>
+    <circle cx="192" cy="101" r="10" fill="#c98aa1"/>
+    <circle cx="126" cy="72" r="9" fill="#c98aa1"/>
+  </g>
+
+  <g transform="translate(656 432)" filter="url(#softShadow)">
+    <path d="M42 38h96v82c0 30-22 52-52 52h-4c-30 0-52-22-52-52V50c0-7 5-12 12-12z" fill="#fff8f0" stroke="#d8b7a7" stroke-width="3"/>
+    <path d="M136 64h22c24 0 42 18 42 42s-18 42-42 42h-22v-22h20c11 0 20-9 20-20s-9-20-20-20h-20z" fill="#ead0c7"/>
+    <ellipse cx="84" cy="38" rx="48" ry="16" fill="#e9cfc6"/>
+    <ellipse cx="84" cy="34" rx="34" ry="9" fill="#b76d75" opacity="0.28"/>
+    <path d="M64 14c-14-24 18-28 4-52M96 16c-18-28 20-36 2-62" fill="none" stroke="#fff2e6" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+  </g>
+
+  <g transform="translate(396 386) rotate(-4)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="242" height="188" rx="22" fill="url(#paper)"/>
+    <rect x="24" y="28" width="194" height="132" rx="12" fill="url(#paperLines)" opacity="0.86"/>
+    <path d="M42 58h92M42 86h146M42 114h120" stroke="#7b5576" stroke-width="8" stroke-linecap="round" opacity="0.38"/>
+    <path d="M160 130c28-32 46-32 62 0" stroke="#8fa66f" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.72"/>
+    <circle cx="50" cy="148" r="8" fill="#c98aa1"/>
+    <circle cx="78" cy="148" r="8" fill="#e7bd79"/>
+  </g>
+
+  <g transform="translate(598 252) rotate(-18)" opacity="0.92">
+    <rect x="0" y="34" width="148" height="34" rx="17" fill="#fff8f0" stroke="#e0c0b7" stroke-width="3"/>
+    <circle cx="36" cy="51" r="23" fill="#7b5576" stroke="#fff8f0" stroke-width="7"/>
+    <circle cx="111" cy="51" r="22" fill="#49375f" stroke="#fff8f0" stroke-width="7"/>
+    <path d="M84 69l26 74M52 70L20 144" stroke="#e9c27f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M50 144h92" stroke="#e9c27f" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(92 86)">
+    <rect x="0" y="0" width="250" height="72" rx="24" fill="#fffaf7" opacity="0.78"/>
+    <text x="28" y="31" font-family="'Noto Serif SC','Songti SC',serif" font-size="21" font-weight="700" fill="#5d4054">食物 · 节律 · 星空</text>
+    <text x="28" y="55" font-family="'Noto Sans SC','PingFang SC',sans-serif" font-size="14" fill="#8a6472">Food, Nutrition &amp; Stargazing</text>
+  </g>
+</svg>

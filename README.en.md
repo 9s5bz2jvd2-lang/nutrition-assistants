@@ -2,51 +2,108 @@
 
 # Nutrition Assistants
 
-> 🌱 New to AI, hoping to use AI to spread nutrition knowledge and help more people. Feedback welcome.
+> **An open-source nutrition education and AI-assisted nutrition workflow project maintained by a nutrition professional.**
 
-This is a collection of a **nutrition knowledge base + AI application projects**. It both accumulates nutrition / food-therapy / diet-evaluation **knowledge** based on authoritative guides, and turns that knowledge into usable tools as **AI applications** — food-therapy popular-science conversation skills, a nutritionist work-assistant skill, and an in-progress multi-agent research direction.
+🌱 I am new to AI and hope to use it to spread nutrition knowledge and help more people. Feedback is welcome.
 
-## 📂 Repository scope & arrangement
+This is not a generic nutrition repository. It is a complete open-source AI project that brings together **distillation methodology, food-therapy assistant resources, a nutritionist application assistant, public education web projects, and AI-assisted workflows**. The goal is to connect: **evidence sources → skill distillation → AI applications → public-health communication → multi-agent workflow research**.
 
-```
+## Project focus
+
+- **Evidence-informed nutrition education**: structure nutrition knowledge from authoritative food-therapy guides, public-health materials, nutrition history, and professional nutrition frameworks.
+- **Public health communication**: translate professional nutrition knowledge into clear, warm, non-alarmist web and education materials for the public.
+- **AI-assisted nutrition guidance**: help nutrition professionals organize diet records, identify follow-up questions, draft communication wording, and prepare review material.
+- **Future multi-agent nutrition assessment systems**: explore multi-agent workflows for source collection, evidence extraction, nutrition review, writing, media production, and evaluation.
+- **Open-source community value**: publish methodology, knowledge structures, skills, workflows, and examples for learning, review, reuse, and responsible improvement.
+
+## Why OpenAI API credits would meaningfully accelerate this project
+
+OpenAI API credits would directly support:
+
+1. **Evidence extraction and cross-checking** from guidelines, papers, textbooks, and public-health materials before review by a nutrition professional.
+2. **Iteration of nutrition assistants and workflows**, including food-therapy skills, the nutritionist diet-evaluation assistant, public-education production workflows, and multi-agent collaboration prototypes.
+3. **Public-health communication**, including bilingual explainers, FAQs, web copy, poster copy, and education-material drafts.
+4. **Safety and boundary evaluation**, checking for fabricated citations, exaggerated claims, medical-scope overreach, and missing referral-to-care warnings.
+5. **Open-source documentation**, including bilingual READMEs, examples, evaluation sets, methodology notes, and reusable templates.
+
+In short, credits would accelerate the loop from **evidence base → AI workflow → safety evaluation → public-health communication → future multi-agent nutrition assessment systems**.
+
+## Five project components
+
+```text
 nutrition-assistants/
-├── Diabetes Guide                    Adult diabetes food-therapy assistant
-├── CKD Guide                         Chronic kidney disease food-therapy assistant
-├── Hypertension Guide                Hypertension food-therapy assistant
-├── Nutritionist Assistant Skill      Nutritionist diet-evaluation assistant skill
-└── Multi-Agent Research (In Progress) Multi-agent research (in progress)
+├── Distillation Methodology
+├── Food-therapy Assistants
+├── Nutritionist Application Skill
+├── Public Education Web Projects
+└── Workflows & Multi-Agent Research
 ```
 
-This arrangement is the backbone of the collection: the first three are **knowledge-base** food-therapy assistants (distilling China NHC food-therapy guides into structured knowledge and popular-science conversation ability), the fourth is a **professional workflow skill** for nutritionists, and the fifth is a still-exploratory **multi-agent research** direction.
+### 1. Distillation Methodology
+
+| Project | Description | Entry |
+|---------|-------------|-------|
+| Nutrition Skill Methodology | Methodology for distilling nutrition / food-therapy guide materials into reusable AI skills. | [`nutrition-skill-methodology/`](nutrition-skill-methodology/) |
+| Book-to-Skill Distillation | General method for turning long books, PDFs, and source packs into agent-native skills. | [`book-to-skill-distillation/`](book-to-skill-distillation/) |
+
+### 2. Food-therapy Assistants
+
+Backbone arrangement:
+
+```text
+├── Diabetes Guide
+├── CKD Guide
+├── Hypertension Guide
+├── Nutritionist Assistant Skill
+└── Multi-Agent Research (In Progress)
+```
 
 | Project | Description | Status | Entry |
 |---------|-------------|--------|-------|
-| **Diabetes Guide** | AI popular-science conversation skill based on the *Adult Diabetes Food-Therapy Guide (2023)*, with KPK knowledge points, regional/seasonal recipes, and TCM-syndrome guidance. | ✅ Available | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/) |
-| **CKD Guide** | AI popular-science conversation skill based on the *Adult Chronic Kidney Disease Food-Therapy Guide (2024)*, with stage-specific dietary guidance and TCM syndrome-differentiation food therapy. | ✅ Available | [`ckd-food-guide-skill/`](ckd-food-guide-skill/) |
-| **Hypertension Guide** | AI popular-science conversation skill based on the *Adult Hypertension Food-Therapy Guide (2023)*. | ✅ Available | [`hypertension-food-guide/`](hypertension-food-guide/) |
-| **Nutritionist Assistant Skill** | Nutritionist diet-evaluation assistant: helps nutrition professionals structure three-day diet records, estimate energy and macronutrient trends with confidence labels, draft follow-up questions, prepare internal judgment material, and generate client-friendly communication wording. Intended for professional review support; does not replace diagnosis, clinical judgment, or individualized treatment prescriptions. | ✅ Available | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
-| **Multi-Agent Research** | Research direction: using multi-agent collaboration to build a nutrition literature / evidence / popular-science production line. Currently a placeholder; no completed capability is claimed in advance. | 🚧 In Progress | [`multi-agent-research/`](multi-agent-research/) |
+| Diabetes Guide | Adult diabetes food-therapy assistant. | ✅ Available | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/) |
+| CKD Guide | Adult chronic kidney disease food-therapy assistant. | ✅ Available | [`ckd-food-guide-skill/`](ckd-food-guide-skill/) |
+| Hypertension Guide | Adult hypertension food-therapy assistant. | ✅ Available | [`hypertension-food-guide/`](hypertension-food-guide/) |
+| Gout Dietary Guide | Hyperuricemia & gout food-therapy assistant. | ✅ Available | [`gout-dietary-guide/`](gout-dietary-guide/) |
+| Hyperlipidemia Food Guide | Hyperlipidemia food-therapy assistant. | ✅ Available | [`hyperlipidemia-food-guide/`](hyperlipidemia-food-guide/) |
+| Obesity Food Guide | Adult obesity food-therapy assistant. | ✅ Available | [`obesity-food-guide/`](obesity-food-guide/) |
+| Child Obesity Food Guide Skill | Childhood & adolescent obesity food-therapy assistant. | ✅ Available | [`child-obesity-food-guide-skill/`](child-obesity-food-guide-skill/) |
+| Childhood Obesity Agent | Complete system-prompt agent for childhood obesity food-therapy education. | ✅ Available | [`childhood-obesity-agent/`](childhood-obesity-agent/) |
+| Osteoporosis Food Guide Skill | Osteoporosis food-therapy assistant. | ✅ Available | [`osteoporosis-food-guide-skill/`](osteoporosis-food-guide-skill/) |
+| Sarcopenia Food Guide Skill | Sarcopenia food-therapy assistant. | ✅ Available | [`sarcopenia-food-guide-skill/`](sarcopenia-food-guide-skill/) |
+| Stroke Food Guide Skill | Stroke food-therapy assistant. | ✅ Available | [`stroke-food-guide-skill/`](stroke-food-guide-skill/) |
+| Stunting Dietary Guide | Childhood stunting food-therapy assistant. | ✅ Available | [`stunting-dietary-guide/`](stunting-dietary-guide/) |
+| Glucose Revolution Skill | Glucose-management teaching skill. | ✅ Available | [`glucose-revolution-skill/`](glucose-revolution-skill/) |
+| Nutrition Taibai Growth | Playful child-growth nutrition education assistant. | ✅ Available | [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
+| Nutrition History Anti-Hallucination | Anti-hallucination workflow for nutrition-history research. | ✅ Available | [`nutrition-history-anti-hallucination-skill/`](nutrition-history-anti-hallucination-skill/) |
 
-## 📚 Other food-therapy assistants in the collection
+### 3. Nutritionist Application Skill
 
-Beyond the backbone above, the repository also includes a set of AI popular-science conversation skills based on China NHC food-therapy guides, under continuous improvement:
+| Project | Description | Entry |
+|---------|-------------|-------|
+| Nutritionist Assistant Skill | Professional-support workflow for structuring three-day diet records, estimating trends, drafting follow-up questions, preparing internal review material, and generating client-friendly communication wording. | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
 
-- [`gout-dietary-guide/`](gout-dietary-guide/) — Hyperuricemia & gout food-therapy assistant
-- [`hyperlipidemia-food-guide/`](hyperlipidemia-food-guide/) — Hyperlipidemia food-therapy assistant
-- [`obesity-food-guide/`](obesity-food-guide/) — Adult obesity food-therapy assistant
-- [`child-obesity-food-guide-skill/`](child-obesity-food-guide-skill/) — Childhood & adolescent obesity food-therapy assistant
-- [`osteoporosis-food-guide-skill/`](osteoporosis-food-guide-skill/) — Osteoporosis food-therapy assistant
-- [`sarcopenia-food-guide-skill/`](sarcopenia-food-guide-skill/) — Sarcopenia food-therapy assistant
-- [`stroke-food-guide-skill/`](stroke-food-guide-skill/) — Stroke food-therapy assistant
-- [`stunting-dietary-guide/`](stunting-dietary-guide/) — Stunting food-therapy assistant
+### 4. Public Education Web Projects
 
-## 🛡️ Safety & boundaries
+| Project | Description | Entry |
+|---------|-------------|-------|
+| Shiwu Guanxing / 食物观星 | Public communication web project linking nutrition education, lifestyle health, and stargazing. | [`shiwu-guanxing/`](shiwu-guanxing/) |
 
-- The content is intended for **education** and **professional support**;
-- It is **evidence-based**, derived from authoritative food-therapy guides;
-- It is **not medical diagnosis or treatment**, and does not replace clinical judgment or individualized prescriptions by physicians or registered nutritionists;
-- For specific health concerns, please consult a professional medical institution or a registered nutritionist.
+### 5. Workflows & Multi-Agent Research
+
+| Project | Description | Status | Entry |
+|---------|-------------|--------|-------|
+| Yuanjiang Nutrition Production Line Skill | Nutrition public-communication workflow: evidence gate, multi-agent collaboration, copy/media production, and review loop. | ✅ Available | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/) |
+| Multi-Agent Research | Research direction for multi-agent nutrition literature, evidence, review, and public-communication workflows. | 🚧 In Progress | [`multi-agent-research/`](multi-agent-research/) |
+
+## Safety & boundaries
+
+- This repository supports **nutrition education, public-health communication, and professional workflow assistance**;
+- Medical and nutrition claims should trace back to real guidelines, textbooks, papers, or authoritative public materials;
+- It does not fabricate guideline names, papers, years, institutional documents, or pseudo-citations;
+- It does **not** replace physicians, registered dietitians/nutritionists, clinical diagnosis, treatment, or individualized medical nutrition therapy;
+- For specific disease, medication, pregnancy, child, older-adult, kidney disease, diabetes, or other clinical contexts, users should consult qualified medical professionals or registered nutrition professionals.
 
 ---
 
-*Maintainer: Wang Runyuan (9s5bz2jvd2-lang).*
+*Maintainer: Wang Runyuan (9s5bz2jvd2-lang).*  
+*This project is open-source and welcomes careful review, educational reuse, and responsible improvement.*
