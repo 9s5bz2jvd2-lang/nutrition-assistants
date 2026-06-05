@@ -10,8 +10,10 @@
 > **Tagline**  
 > Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.
 
-**Suggested GitHub About description**  
-A bilingual open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University, covering dietary guidance assistants, nutritionist-facing tools, public education resources, skill distillation methodology, workflows, and multi-agent nutrition assessment research.
+**Project Introduction｜项目简介**  
+An open-source project maintained by Wang Runyuan to provide free AI skills and workflows for nutritionists, help nutritionists use AI to improve work efficiency, share nutrition knowledge with the public, and keep the project regularly updated.
+
+由王润圆维护：为营养师提供免费AI Skill与工作流，协助营养师利用AI提高工作效率，同时科普营养知识；项目会定期更新。
 
 ## Project Goal
 
