@@ -11,3 +11,5 @@ A collection of AI popular-science conversation skills based on National Health 
 ## Notes
 
 This file intentionally does not add new features or claims beyond the existing repository description and files.
+
+<!-- Maintainer update: Runyuan Wang (9s5bz2jvd2-lang). -->
