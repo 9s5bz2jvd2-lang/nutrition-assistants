@@ -8,10 +8,10 @@
 [中文 README](README.md)
 
 > **Tagline**  
-> Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by a nutrition professional.
+> Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.
 
 **Suggested GitHub About description**  
-A bilingual open-source nutrition education and AI-assisted nutrition workflow project maintained by a registered nutritionist, covering dietary guidance assistants, nutritionist-facing tools, public education resources, skill distillation methodology, workflows, and multi-agent nutrition assessment research.
+A bilingual open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University, covering dietary guidance assistants, nutritionist-facing tools, public education resources, skill distillation methodology, workflows, and multi-agent nutrition assessment research.
 
 ---
 
@@ -31,7 +31,7 @@ A bilingual open-source nutrition education and AI-assisted nutrition workflow p
 
 ## Project Overview
 
-Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, workflow templates, and early multi-agent research directions for nutrition assessment.
+Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, workflow templates, and early multi-agent research directions for nutrition assessment.
 
 The repository is designed for:
 
@@ -172,7 +172,7 @@ Key research questions:
 
 **Wang Runyuan / 王润圆**
 
-- Master of Nutrition and Food Hygiene, Kunming Medical University (graduated).
+- Master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.
 - China Registered Nutritionist.
 - Maintains this repository as a nutrition professional exploring open-source nutrition education, AI-assisted nutrition workflows, and future multi-agent nutrition assessment research.
 - The author avatar used for this project is a real photo of the maintainer.

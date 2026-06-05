@@ -6,14 +6,14 @@
 [![Bilingual](https://img.shields.io/badge/README-English%20%2F%20中文-91A8D0)](#navigation--导航)
 
 > **Tagline / 项目一句话**  
-> **Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by a nutrition professional.**  
-> **由营养专业人员维护的、基于证据的营养教育与 AI 辅助营养工作流开源项目。**
+> **Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.**  
+> **由毕业于昆明医科大学营养与食品卫生学专业的硕士、中国注册营养师王润圆维护的，基于证据的营养教育与 AI 辅助营养工作流开源项目。**
 
 **Suggested GitHub About description / 建议 GitHub About 描述**  
-A bilingual open-source nutrition education and AI-assisted nutrition workflow project maintained by a registered nutritionist, covering dietary guidance assistants, nutritionist-facing tools, public education resources, skill distillation methodology, workflows, and multi-agent nutrition assessment research.
+A bilingual open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University, covering dietary guidance assistants, nutritionist-facing tools, public education resources, skill distillation methodology, workflows, and multi-agent nutrition assessment research.
 
 **建议中文描述**  
-由中国注册营养师维护的中英双语开源营养教育与 AI 辅助营养工作流项目，包含食养助手资料、营养师应用助手、科普网页、蒸馏方法论、工作流与多 Agent 营养评估研究。
+由毕业于昆明医科大学营养与食品卫生学专业的硕士、中国注册营养师王润圆维护的中英双语开源营养教育与 AI 辅助营养工作流项目，包含食养助手资料、营养师应用助手、科普网页、蒸馏方法论、工作流与多 Agent 营养评估研究。
 
 ---
 
@@ -35,7 +35,7 @@ A bilingual open-source nutrition education and AI-assisted nutrition workflow p
 
 **English**
 
-Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, workflow templates, and early multi-agent research directions for nutrition assessment.
+Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, workflow templates, and early multi-agent research directions for nutrition assessment.
 
 The repository is designed for:
 
@@ -60,7 +60,7 @@ future multi-agent nutrition assessment research
 
 **中文**
 
-Nutrition Assistants（圆酱营养助手合集）不是泛泛的“营养资料仓库”，也不是替代医生或营养师的诊疗系统。它是一个完整的 AI 开源项目：把**食养指南资料、营养教育资源、可复用 AI Skill、营养师应用助手、科普网页、工作流与多 Agent 研究方向**放在同一个开源集合中。
+Nutrition Assistants（圆酱营养助手合集）不是泛泛的“营养资料仓库”，也不是替代医生或营养师的诊疗系统。它是一个由毕业于昆明医科大学营养与食品卫生学专业的硕士、中国注册营养师王润圆维护的完整 AI 开源项目：把**食养指南资料、营养教育资源、可复用 AI Skill、营养师应用助手、科普网页、工作流与多 Agent 研究方向**放在同一个开源集合中。
 
 它服务于：
 
@@ -212,8 +212,8 @@ Key research questions:
 
 **Wang Runyuan / 王润圆**
 
-- Master of Nutrition and Food Hygiene, Kunming Medical University (graduated).  
-  昆明医科大学营养与食品卫生学硕士（已毕业）。
+- Master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.  
+  毕业于昆明医科大学营养与食品卫生学专业的硕士。
 - China Registered Nutritionist.  
   中国注册营养师。
 - Maintains this repository as a nutrition professional exploring open-source nutrition education, AI-assisted nutrition workflows, and future multi-agent nutrition assessment research.  
