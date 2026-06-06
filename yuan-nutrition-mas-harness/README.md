@@ -35,7 +35,7 @@ Public source repository and canonical runnable project:
 
 - <https://github.com/9s5bz2jvd2-lang/yuan-nutrition-mas-harness>
 
-This directory serves as the Nutrition Assistants entry page for the public Yuan Nutrition MAS Harness project. Users who want to download, inspect, or run the harness should use the standalone repository above as the canonical source.
+This directory serves as the Nutrition Assistants entry page for the public Yuan Nutrition MAS Harness project. Users who want to download, inspect, or run the harness should use the standalone repository above as the canonical source. The standalone project is released under the MIT License.
 
 ## Safety scope
 
