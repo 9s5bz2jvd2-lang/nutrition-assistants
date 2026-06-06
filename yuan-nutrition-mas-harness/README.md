@@ -31,11 +31,11 @@ The current standalone project includes:
 
 ## Repository
 
-Canonical runnable repository:
+Public source repository and canonical runnable project:
 
 - <https://github.com/9s5bz2jvd2-lang/yuan-nutrition-mas-harness>
 
-If the standalone repository is private during early development, this directory serves as the public project entry inside Nutrition Assistants. When the runnable repository is made public, this page should point users there as the canonical download/install location.
+This directory serves as the Nutrition Assistants entry page for the public Yuan Nutrition MAS Harness project. Users who want to download, inspect, or run the harness should use the standalone repository above as the canonical source.
 
 ## Safety scope
 
