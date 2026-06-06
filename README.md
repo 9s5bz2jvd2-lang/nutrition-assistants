@@ -122,6 +122,7 @@ AI Skill 与工作流
 | 🌐 Public education projects | 科普网页 / 营养传播 | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
 | 📊 Reference data | 参考数据 | Structured food composition data, GI tables, nutrient definitions | [`china-food-composition/`](china-food-composition/) |
 | 🤖 Workflows & multi-agent research | 工作流与多 Agent 研究 | Nutrition content production workflow and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`multi-agent-research/`](multi-agent-research/) |
+| 🧭 MAS harness & agent orchestration | 营养 MAS harness / 多 Agent 编排 | Nutritionist-friendly lightweight MAS harness for API management, approvals, rollback, worker handoff, and structured nutrition-AI workflows | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) |
 
 ### Main directories｜主要目录
 
@@ -143,6 +144,7 @@ AI Skill 与工作流
 | [`book-to-skill-distillation/`](book-to-skill-distillation/) | 书籍 / 资料到 Skill 蒸馏 | Workflow for distilling long-form material into reusable AI skills. |
 | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) | 圆酱营养师膳食评价助手 | Nutritionist-facing assistant for structuring messy three-day diet records. |
 | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/) | 圆酱营养科普生产线 | Multi-step workflow for nutrition public education content production. |
+| [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) | Yuan Nutrition MAS Harness | Nutritionist-friendly MAS harness developed by Wang Runyuan on top of [LingTai](https://github.com/Lingtai-AI/lingtai), for lightweight agent orchestration, API management, safety approvals, rollback, and nutrition-AI workflows. |
 | [`shiwu-guanxing/`](shiwu-guanxing/) | 食物观星 | Public-facing nutrition education web / communication project. |
 | [`nutrition-history-anti-hallucination-skill/`](nutrition-history-anti-hallucination-skill/) | 营养学历史防幻觉 | Anti-hallucination workflow for nutrition history and historical texts. |
 | [`multi-agent-research/`](multi-agent-research/) | 多 Agent 营养评估研究 | Early research placeholder for future multi-agent nutrition assessment systems. |
