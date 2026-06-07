@@ -17,17 +17,9 @@ An open-source project maintained by Wang Runyuan to provide free AI skills and 
 
 ## Project Goal
 
-Hello everyone, I am Wang Runyuan, a registered nutritionist from China. I received my master’s degree in Nutrition and Food Hygiene from the School of Public Health, Kunming Medical University. I currently work as a clinical nutritionist in a hospital.
+Nutrition Assistants is an open-source nutrition education and AI workflow project maintained by Wang Runyuan, a China Registered Nutritionist. It turns professional nutrition sources, dietary guidance materials, and reference data into reusable AI skills, dietary guidance assistants, education resources, and nutritionist-facing workflows. The project is intended for education, structured knowledge organization, and professional review support — not for medical diagnosis or individualized treatment.
 
-For many years, I have used my spare time to participate in science communication activities. Not only in nutrition — I am also an astronomy enthusiast. Through my past science communication work, I found that many times people are not unwilling to gain knowledge; they simply do not know how to obtain it, and there is no simple way for them to access accurate knowledge.
-
-After encountering AI, I decided to try turning nutrition-related knowledge into open-source skills. Later, I decided to build public education webpages and free assistant skills for nutritionists to use.
-
-I hope my efforts can contribute to the popularization of nutrition knowledge and to human health.
-
-Humanity needs the progress of AI, but nutrition is the foundation of life. As a nutritionist, I want to use AI to protect everyone’s health.
-
-I will do my best to maintain and continuously update this open-source project. In the future, I will continue exploring how agents can assist clinical nutrition work. If you support me, please give me a star. I heard that this is a way programmers encourage one another, and I am trying hard to become part of this community. [grin]
+The goal is to make reliable nutrition knowledge easier to understand, review, and apply: offering clearer nutrition education entry points for the public, while giving nutrition professionals reusable, auditable, and continuously updated AI-assisted workflows.
 
 ---
 

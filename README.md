@@ -16,29 +16,11 @@ An open-source project maintained by Wang Runyuan to provide free AI skills and 
 
 ## Project Goal｜项目目标
 
-大家好，我是来自中国的注册营养师王润圆，我硕士毕业于昆明医科大学公共卫生学院的营养与食品卫生专业，目前我在一家医院以临床营养师的身份工作。
+Nutrition Assistants（圆酱营养助手合集）是由中国注册营养师王润圆维护的开源营养教育与 AI 工作流项目。它将专业营养资料、食养指南和参考数据结构化为可复用的 AI Skills、食养助手、科普内容与营养师工作流，用于营养教育、资料整理和专业复核辅助；本项目不提供医学诊断或个体化治疗方案。
 
-过去很多年，我一直利用业余时间参与科普活动，不仅仅是营养学，我还是天文爱好者。过去的科普工作让我发现，很多时候人们不是不想获得知识，是不知道如何获得，没有简单的方式去获得准确的知识。
+项目希望让可靠的营养知识更容易被理解、复核和应用：一方面为公众提供更清晰的营养科普入口，另一方面为营养专业人员提供可复用、可审计、可持续更新的 AI 辅助工作流。
 
-接触AI后，我决定尝试把营养学的相关知识做成开源的skill，后来决定做科普网页，做供营养师们使用的免费助手 Skill。
-
-我希望我的努力可以为营养知识的普及和人类的健康做出一份贡献。
-
-人类需要AI的进步，但营养，是生命的基础。 作为营养师，我想利用AI守护大家的健康，。
-
-这个开源项目我会尽力维护和持续更新，后续会继续尝试如何利用agent协助临床营养工作。如果大家支持我，请给我点个星星，我听说这是程序员间一种鼓励的方式，我正在努力的融入其中。[呲牙]
-
-Hello everyone, I am Wang Runyuan, a registered nutritionist from China. I received my master’s degree in Nutrition and Food Hygiene from the School of Public Health, Kunming Medical University. I currently work as a clinical nutritionist in a hospital.
-
-For many years, I have used my spare time to participate in science communication activities. Not only in nutrition — I am also an astronomy enthusiast. Through my past science communication work, I found that many times people are not unwilling to gain knowledge; they simply do not know how to obtain it, and there is no simple way for them to access accurate knowledge.
-
-After encountering AI, I decided to try turning nutrition-related knowledge into open-source skills. Later, I decided to build public education webpages and free assistant skills for nutritionists to use.
-
-I hope my efforts can contribute to the popularization of nutrition knowledge and to human health.
-
-Humanity needs the progress of AI, but nutrition is the foundation of life. As a nutritionist, I want to use AI to protect everyone’s health.
-
-I will do my best to maintain and continuously update this open-source project. In the future, I will continue exploring how agents can assist clinical nutrition work. If you support me, please give me a star. I heard that this is a way programmers encourage one another, and I am trying hard to become part of this community. [grin]
+Nutrition Assistants is an open-source nutrition education and AI workflow project maintained by Wang Runyuan, a China Registered Nutritionist. It turns professional nutrition sources, dietary guidance materials, and reference data into reusable AI skills, dietary guidance assistants, education resources, and nutritionist-facing workflows. The project is intended for education, structured knowledge organization, and professional review support — not for medical diagnosis or individualized treatment.
 
 ---
 
