@@ -75,7 +75,7 @@ future multi-agent nutrition assessment research
 | 👩‍⚕️ Nutritionist application assistant | Professional workflow support for organizing three-day diet records and nutritionist-facing assessment materials | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
 | 🌐 Public education projects | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
 | 🤖 Workflows & multi-agent research | Nutrition content production workflow and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`multi-agent-research/`](multi-agent-research/) |
-| 🧭 MAS harness & agent orchestration | Nutritionist-friendly lightweight MAS harness for API management, approvals, rollback, worker handoff, and structured nutrition-AI workflows | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) |
+| 🧭 Project under maintenance | **Temporarily under maintenance** — this entry is being reviewed before conference submission; implementation details are not publicly available at this time. | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) |
 
 ### Main directories
 
@@ -97,7 +97,7 @@ future multi-agent nutrition assessment research
 | [`book-to-skill-distillation/`](book-to-skill-distillation/) | Workflow for distilling long-form material into reusable AI skills. |
 | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) | Nutritionist-facing assistant for structuring messy three-day diet records. |
 | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/) | Multi-step workflow for nutrition public education content production. |
-| [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) | Nutritionist-friendly MAS harness developed by Wang Runyuan on top of [LingTai](https://github.com/Lingtai-AI/lingtai), for lightweight agent orchestration, API management, safety approvals, rollback, and nutrition-AI workflows. |
+| [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) | **Temporarily under maintenance**. This project is being reviewed before conference submission, so the public entry is intentionally limited for now. |
 | [`shiwu-guanxing/`](shiwu-guanxing/) | Public-facing nutrition education web / communication project. |
 | [`nutrition-history-anti-hallucination-skill/`](nutrition-history-anti-hallucination-skill/) | Anti-hallucination workflow for nutrition history and historical texts. |
 | [`multi-agent-research/`](multi-agent-research/) | Early research placeholder for future multi-agent nutrition assessment systems. |
