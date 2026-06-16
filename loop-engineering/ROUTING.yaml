@@ -1,0 +1,107 @@
+# ROUTING.yaml — loop-engineering sparse overlay
+
+role: routed_expert_router
+activation_model: "shared-core + top-k routed experts + missed-case sweep"
+
+trigger_terms:
+  strong:
+    - loop engineering
+    - coding agent loop
+    - autonomous agent loop
+    - agent loop design
+    - agent automation
+    - worktree isolation
+    - agent skills
+    - SKILL.md
+    - sub-agent verification
+    - maker-checker split
+    - agent state management
+    - /goal
+    - /loop
+    - agent harness
+    - factory model
+    - cognitive surrender
+    - comprehension debt
+    - loop primitives
+  weak:
+    - agent orchestration
+    - parallel agents
+    - agent workflow
+    - agent memory
+    - agent plugins
+    - MCP connectors
+    - agent review
+    - triage automation
+    - intent debt
+
+anti_triggers:
+  - one-shot prompting
+  - simple code generation
+  - article summary only
+  - vendor comparison only
+  - no agent involved
+
+neighbors:
+  upstream:
+    - book-to-skill-distillation
+    - agent-harness-engineering
+  safety:
+    - verification-gate
+    - comprehension-debt-check
+    - cognitive-surrender-guard
+  adjacent:
+    - coding-agent-orchestra
+    - adversarial-code-review
+    - intent-debt
+    - orchestration-tax
+  output:
+    - loop-design-document
+    - skill-package
+
+budget:
+  shared_core:
+    target_tokens: "200-800"
+    cache_tier: stable_prefix
+  routed_expert:
+    target_tokens: "800-3000"
+    cache_tier: variable_by_task
+  missed_case_sweep:
+    target_tokens: "200-800"
+    cache_tier: stable_checklist
+  heavy_reference:
+    target_tokens: "on-demand only"
+    cache_tier: variable_suffix
+
+sparse_activation:
+  seed_strategy: "keyword/task signature -> seed nodes -> point-to-point graph expansion -> missed-case sweep"
+  default_top_k: 2
+  max_top_k: 4
+  rules:
+    - "Always load shared core first."
+    - "Loop-design tasks load primitives + loop-design-pattern."
+    - "Danger-check tasks load dangers + eval-cases."
+    - "Vendor-specific questions load primitives (comparison table) only."
+    - "After broad reading, compress back into routing, graph, cache, or eval."
+
+missed_case_sweep:
+  required:
+    - verification_gate_present
+    - comprehension_debt_addressed
+    - cognitive_surrender_guard
+    - maker_checker_split_enforced
+    - state_on_disk_not_in_context
+    - skill_written_not_re_prompted
+  high_risk_extra:
+    - unattended_loop_has_stop_condition
+    - token_cost_budgeted
+    - human_review_bandwidth_check
+
+route_log_fields:
+  - task_summary
+  - selected_experts
+  - skipped_experts
+  - sweep_items_checked
+  - sweep_hits
+  - budget_tier
+  - output_artifacts
+  - followup_needed

@@ -1,0 +1,85 @@
+# skill-manifest.yaml — loop-dietary-guide-assistant machine-readable invocation surface
+
+name: loop-dietary-guide-assistant
+version: 1.0.0
+role: autonomous_loop_dietary_guidance_with_maker_checker_verification
+
+core_rule: >
+  Design the loop that delivers dietary guidance. Maker drafts, Checker verifies.
+  Special populations are checked. Official vs. uncompromised is clarified.
+  State lives on disk. No medical advice. The loop changes the work, not the responsibility.
+
+entrypoints:
+  human:
+    - SKILL.md
+    - reference/loop-architecture.md
+  machine:
+    - skill-manifest.yaml
+    - ROUTING.yaml
+
+reading_modes:
+  quick:
+    default_files: [SKILL.md, ROUTING.yaml]
+    top_k_default: 1
+  loop_design:
+    default_files: [SKILL.md, reference/loop-architecture.md, reference/triage-loop.md]
+    top_k_default: 3
+  verification:
+    default_files: [SKILL.md, reference/maker-checker.md, reference/guidelines-content.md]
+    top_k_default: 3
+  safety_audit:
+    default_files: [SKILL.md, reference/dangers-in-context.md, assets/eval-cases.md]
+    top_k_default: 3
+
+modules:
+  - id: loop-architecture
+    path: reference/loop-architecture.md
+    role: full loop design with 6 primitives mapped to dietary context
+    triggers: [loop, architecture, design, automation, worktree, state, connector]
+  - id: triage-loop
+    path: reference/triage-loop.md
+    role: SAFE/VERIFY/ESCALATE classification for dietary questions
+    triggers: [triage, classify, safe, verify, escalate, batch]
+  - id: maker-checker
+    path: reference/maker-checker.md
+    role: dietary advice verification with safety checklist
+    triggers: [verify, check, maker, checker, draft, review, safety checklist]
+  - id: guidelines-content
+    path: reference/guidelines-content.md
+    role: operational summary of 5 Guidelines for maker/checker use
+    triggers: [guideline, dietary pattern, food group, limit, sugar, sodium, fat, alcohol]
+  - id: dangers-in-context
+    path: reference/dangers-in-context.md
+    role: loop dangers applied to dietary guidance domain
+    triggers: [danger, verification debt, comprehension debt, surrender, unattended, review]
+  - id: eval-cases
+    path: assets/eval-cases.md
+    role: positive, anti-trigger, danger, and integration tests
+    triggers: [test, eval, validate, verify, integration]
+
+parent_skills:
+  - name: cspi-uncompromised-dga
+    role: dietary content source
+    path: /workspace/cspi-uncompromised-dga
+  - name: loop-engineering
+    role: loop infrastructure source
+    path: /workspace/loop-engineering
+
+escalation:
+  full_reading_allowed_when:
+    - full_loop_redesign
+    - safety_audit
+    - new_evidence_review
+  never_skip:
+    - special_population_check
+    - medical_advice_boundary
+    - maker_checker_split
+    - official_vs_uncompromised_clarification
+    - missed_case_sweep
+
+return_surfaces:
+  - ROUTING.yaml
+  - GRAPH.md
+  - CACHE.md
+  - assets/eval-cases.md
+  - state_file (external, on disk)

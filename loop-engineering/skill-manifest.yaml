@@ -1,0 +1,66 @@
+# skill-manifest.yaml — loop-engineering machine-readable invocation surface
+
+name: loop-engineering
+version: 1.0.0
+role: autonomous_coding_agent_loop_design_and_evaluation
+
+core_rule: >
+  Design the system that prompts the agent, don't prompt the agent yourself.
+  The loop changes the work; it does not delete you from it.
+
+entrypoints:
+  human:
+    - SKILL.md
+    - reference/primitives.md
+  machine:
+    - skill-manifest.yaml
+    - ROUTING.yaml
+
+reading_modes:
+  quick:
+    default_files: [SKILL.md, ROUTING.yaml]
+    top_k_default: 1
+  normal:
+    default_files: [SKILL.md, ROUTING.yaml, reference/primitives.md]
+    top_k_default: 2
+  design:
+    default_files: [SKILL.md, ROUTING.yaml, reference/primitives.md, reference/loop-design-pattern.md]
+    top_k_default: 3
+  danger_check:
+    default_files: [SKILL.md, reference/dangers.md, assets/eval-cases.md]
+    top_k_default: 3
+
+modules:
+  - id: primitives
+    path: reference/primitives.md
+    role: the six loop primitives with tool comparison
+    triggers: [automation, worktree, skill, plugin, connector, sub-agent, state, /loop, /goal, maker-checker]
+  - id: loop-design-pattern
+    path: reference/loop-design-pattern.md
+    role: concrete loop example and generic design checklist
+    triggers: [design, pattern, checklist, morning triage, architecture, scale]
+  - id: dangers
+    path: reference/dangers.md
+    role: three dangers that sharpen as the loop improves
+    triggers: [verification, comprehension, surrender, danger, debt, unattended, review]
+  - id: eval-cases
+    path: assets/eval-cases.md
+    role: positive triggers, anti-triggers, and danger scenario tests
+    triggers: [test, eval, verify, validate, anti-trigger]
+
+escalation:
+  full_reading_allowed_when:
+    - audit_of_existing_loop
+    - loop_redesign
+    - safety_concern
+  never_skip:
+    - maker_checker_split_check
+    - verification_gate_check
+    - comprehension_debt_check
+    - cognitive_surrender_guard
+
+return_surfaces:
+  - ROUTING.yaml
+  - GRAPH.md
+  - CACHE.md
+  - assets/eval-cases.md

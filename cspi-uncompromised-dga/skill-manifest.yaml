@@ -1,0 +1,77 @@
+# skill-manifest.yaml — cspi-uncompromised-dga machine-readable invocation surface
+
+name: cspi-uncompromised-dga
+version: 1.0.0
+role: dietary_guidance_based_on_2025_DGAC_uncompromised_recommendations
+
+core_rule: >
+  All guidance is grounded in the 2025 DGAC Scientific Report.
+  Clarify official vs. uncompromised. No medical advice. Check special populations.
+
+entrypoints:
+  human:
+    - SKILL.md
+    - reference/guidelines-overview.md
+  machine:
+    - skill-manifest.yaml
+    - ROUTING.yaml
+
+reading_modes:
+  quick:
+    default_files: [SKILL.md, ROUTING.yaml]
+    top_k_default: 1
+  normal:
+    default_files: [SKILL.md, ROUTING.yaml, reference/guidelines-overview.md]
+    top_k_default: 2
+  dietary_pattern:
+    default_files: [SKILL.md, reference/guidelines-overview.md, reference/dietary-pattern.md]
+    top_k_default: 3
+  alcohol:
+    default_files: [SKILL.md, reference/guidelines-overview.md, reference/alcohol-context.md]
+    top_k_default: 3
+  sustainability:
+    default_files: [SKILL.md, reference/guidelines-overview.md, reference/sustainable-diet.md]
+    top_k_default: 3
+
+modules:
+  - id: guidelines-overview
+    path: reference/guidelines-overview.md
+    role: all 5 Guidelines with decision trees and checklists
+    triggers: [guideline, life stage, infant, feeding, nutrient-dense, limit, sugar, sodium, fat]
+  - id: dietary-pattern
+    path: reference/dietary-pattern.md
+    role: Eat Healthy Your Way 2000-calorie pattern with food group amounts
+    triggers: [dietary pattern, food group, cup equivalent, ounce equivalent, calories, servings]
+  - id: sustainable-diet
+    path: reference/sustainable-diet.md
+    role: Guideline 5 sustainable diet practices
+    triggers: [sustainable, environment, plant-based, food waste, tap water, packaging]
+  - id: alcohol-context
+    path: reference/alcohol-context.md
+    role: alcohol guidance political timeline and context
+    triggers: [alcohol, drinking, wine, beer, liquor, drink limit]
+  - id: glossary
+    path: reference/glossary.md
+    role: key term definitions
+    triggers: [cup equivalent, ounce equivalent, nutrient-dense, DGAC, DGA, dietary pattern]
+  - id: eval-cases
+    path: assets/eval-cases.md
+    role: positive, anti-trigger, and danger scenario tests
+    triggers: [test, eval, validate, verify, check]
+
+escalation:
+  full_reading_allowed_when:
+    - audit_of_all_guidelines
+    - cross_guideline_synthesis
+    - new_evidence_review
+  never_skip:
+    - special_population_check
+    - medical_advice_boundary
+    - official_vs_uncompromised_clarification
+    - missed_case_sweep
+
+return_surfaces:
+  - ROUTING.yaml
+  - GRAPH.md
+  - CACHE.md
+  - assets/eval-cases.md

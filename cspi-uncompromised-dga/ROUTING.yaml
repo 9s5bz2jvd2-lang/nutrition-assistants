@@ -1,0 +1,103 @@
+# ROUTING.yaml — cspi-uncompromised-dga sparse overlay
+
+role: routed_expert_router
+activation_model: "shared-core + top-k routed experts + missed-case sweep"
+
+trigger_terms:
+  strong:
+    - Dietary Guidelines
+    - DGA
+    - DGAC
+    - dietary pattern
+    - Eat Healthy Your Way
+    - food group recommendations
+    - nutrient-dense
+    - added sugars limit
+    - sodium limit
+    - saturated fat limit
+    - alcohol guideline
+    - sustainable diet
+    - uncompromised DGA
+    - CSPI dietary guidelines
+    - 2025 Dietary Guidelines
+    - cup equivalent
+    - ounce equivalent
+  weak:
+    - healthy eating
+    - food guide
+    - nutrition recommendation
+    - dietary advice
+    - meal planning
+    - food groups
+    - vegetable servings
+    - fruit servings
+
+anti_triggers:
+  - Chinese Dietary Guidelines
+  - clinical nutrition therapy
+  - medical treatment plan
+  - non-U.S. dietary guideline
+  - official published DGA (use for the uncompromised version only)
+
+neighbors:
+  upstream:
+    - book-to-skill-distillation
+  safety:
+    - medical-nutrition-boundary
+    - special-population-gate
+    - evidence-source-gate
+  adjacent:
+    - loop-engineering
+    - food-agent-methodology
+    - nutrition-ai-productization
+  output:
+    - dietary-guidance-response
+    - loop-dietary-guide-assistant
+
+budget:
+  shared_core:
+    target_tokens: "200-800"
+    cache_tier: stable_prefix
+  routed_expert:
+    target_tokens: "800-3000"
+    cache_tier: variable_by_task
+  missed_case_sweep:
+    target_tokens: "200-800"
+    cache_tier: stable_checklist
+  heavy_reference:
+    target_tokens: "on-demand only"
+    cache_tier: variable_suffix
+
+sparse_activation:
+  seed_strategy: "keyword/food-group/concept signature -> seed nodes -> point-to-point graph expansion -> missed-case sweep"
+  default_top_k: 2
+  max_top_k: 4
+  rules:
+    - "Always load shared core first."
+    - "Food-group questions load dietary-pattern.md."
+    - "Alcohol questions load alcohol-context.md."
+    - "Sustainability questions load sustainable-diet.md."
+    - "Life-stage questions load guidelines-overview.md."
+    - "Always run missed-case sweep for: special populations, medical advice boundary, source clarification (official vs. uncompromised)."
+
+missed_case_sweep:
+  required:
+    - special_population_check
+    - medical_advice_boundary
+    - official_vs_uncompromised_clarification
+    - evidence_source_labeling
+    - age_group_specification
+  high_risk_extra:
+    - alcohol_context_required
+    - infant_feeding_specificity
+    - pregnancy_lactation_specificity
+
+route_log_fields:
+  - task_summary
+  - selected_experts
+  - skipped_experts
+  - sweep_items_checked
+  - sweep_hits
+  - budget_tier
+  - output_artifacts
+  - followup_needed
