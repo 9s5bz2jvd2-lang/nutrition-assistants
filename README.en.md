@@ -8,16 +8,16 @@
 [中文 README](README.md)
 
 > **Tagline**  
-> Evidence-informed nutrition education and AI-assisted nutrition workflows, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.
+> Evidence-informed nutrition education, AI-assisted nutrition workflows, guideline-to-skill automation, and nutrition loop assistants, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.
 
 **Project Introduction｜项目简介**  
-An open-source project maintained by Wang Runyuan to provide free AI skills and workflows for nutritionists, help nutritionists use AI to improve work efficiency, share nutrition knowledge with the public, and keep the project regularly updated.
+An open-source project maintained by Wang Runyuan to provide free AI skills and workflows for nutritionists, help nutritionists use AI to improve work efficiency, turn authoritative nutrition materials and dietary guidelines into reusable skills, build stateful nutrition loops, share nutrition knowledge with the public, and keep the project regularly updated.
 
-由王润圆维护：为营养师提供免费AI Skill与工作流，协助营养师利用AI提高工作效率，同时科普营养知识；项目会定期更新。
+由王润圆维护：为营养师提供免费 AI Skill 与工作流，协助营养师利用 AI 提高工作效率，并把权威营养资料与膳食指南转化为可复用的自动化 Skill，探索可验证、可追踪的营养 loop，同时科普营养知识；项目会定期更新。
 
 ## Project Goal
 
-Nutrition Assistants is an open-source nutrition education and AI workflow project maintained by Wang Runyuan, a China Registered Nutritionist. It turns professional nutrition sources, dietary guidance materials, and reference data into reusable AI skills, dietary guidance assistants, education resources, and nutritionist-facing workflows. The project is intended for education, structured knowledge organization, and professional review support — not for medical diagnosis or individualized treatment.
+Nutrition Assistants is an open-source nutrition education and AI workflow project maintained by Wang Runyuan, a China Registered Nutritionist. It turns professional nutrition sources, dietary guidance materials, U.S. dietary-guideline materials, and reference data into reusable AI skills, dietary guidance assistants, education resources, guideline-automation workflows, stateful nutrition loop assistants, and nutritionist-facing workflows. The project is intended for education, structured knowledge organization, recurring workflow support, and professional review support — not for medical diagnosis or individualized treatment.
 
 The goal is to make reliable nutrition knowledge easier to understand, review, and apply: offering clearer nutrition education entry points for the public, while giving nutrition professionals reusable, auditable, and continuously updated AI-assisted workflows.
 
@@ -39,7 +39,7 @@ The goal is to make reliable nutrition knowledge easier to understand, review, a
 
 ## Project Overview
 
-Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, workflow templates, and early multi-agent research directions for nutrition assessment.
+Nutrition Assistants is a serious open-source nutrition education and AI-assisted nutrition workflow project maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University. It collects structured dietary guidance assistants, nutrition education resources, reusable AI skills, guideline-to-skill automation examples, loop-capable nutrition assistant patterns, workflow templates, and early multi-agent research directions for nutrition assessment.
 
 The repository is designed for:
 
@@ -71,10 +71,11 @@ future multi-agent nutrition assessment research
 | Area | What it contains | Representative directories |
 |---|---|---|
 | 🧪 Distillation methodology | How to turn books, guidelines, and professional material into reusable AI skills | [`nutrition-skill-methodology/`](nutrition-skill-methodology/), [`book-to-skill-distillation/`](book-to-skill-distillation/) |
+| 🧭 Guideline automation | Agent-native automation distilled from dietary guidelines and nutrition policy documents | [`cspi-uncompromised-dga/`](cspi-uncompromised-dga/) |
 | 🥗 Dietary guidance assistants | Structured dietary guidance assistants for nutrition-related conditions | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/), [`ckd-food-guide-skill/`](ckd-food-guide-skill/), [`hypertension-food-guide/`](hypertension-food-guide/) |
 | 👩‍⚕️ Nutritionist application assistant | Professional workflow support for organizing three-day diet records and nutritionist-facing assessment materials | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
 | 🌐 Public education projects | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
-| 🤖 Workflows & multi-agent research | Nutrition content production workflow and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`multi-agent-research/`](multi-agent-research/) |
+| 🤖 Workflows, loops & multi-agent research | Nutrition content production workflow, loop-capable dietary assistants, and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/), [`loop-engineering/`](loop-engineering/), [`multi-agent-research/`](multi-agent-research/) |
 | 🧭 Project under maintenance | **Temporarily under maintenance** — this entry is being reviewed before conference submission; implementation details are not publicly available at this time. | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) |
 
 ### Main directories
@@ -95,6 +96,9 @@ future multi-agent nutrition assessment research
 | [`stunting-dietary-guide/`](stunting-dietary-guide/) | Dietary guidance assistant for childhood stunting / growth nutrition education. |
 | [`nutrition-skill-methodology/`](nutrition-skill-methodology/) | Methodology for turning nutrition guidelines into safer assistant skills. |
 | [`book-to-skill-distillation/`](book-to-skill-distillation/) | Workflow for distilling long-form material into reusable AI skills. |
+| [`cspi-uncompromised-dga/`](cspi-uncompromised-dga/) | Agent-native automation distilled from CSPI & Center for Biological Diversity's *The Uncompromised Dietary Guidelines for Americans, 2025–2030*; covers five guidelines, the Eat Healthy Your Way pattern, quantitative targets, sustainability, alcohol-context cautions, and evidence/policy boundaries. |
+| [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/) | Loop-capable dietary guideline assistant combining Uncompromised DGA content with loop engineering: scheduled checks, auto-triage, maker-checker verification, persistent state, and safety escalation. |
+| [`loop-engineering/`](loop-engineering/) | General loop-engineering pattern distilled from Addy Osmani's article: automations, worktrees, skills, connectors, sub-agents, state, maker-checker split, and loop safety dangers. |
 | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) | Nutritionist-facing assistant for structuring messy three-day diet records. |
 | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/) | Multi-step workflow for nutrition public education content production. |
 | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) | **Temporarily under maintenance**. This project is being reviewed before conference submission, so the public entry is intentionally limited for now. |
@@ -121,6 +125,8 @@ The repository currently includes dietary guidance assistants and nutrition educ
 | 9 | Gout | [`gout-dietary-guide/`](gout-dietary-guide/) |
 | 10 | Stroke recovery | [`stroke-food-guide-skill/`](stroke-food-guide-skill/) |
 | 11 | Childhood stunting / growth | [`stunting-dietary-guide/`](stunting-dietary-guide/) |
+| 12 | U.S. dietary guidelines / nutrition policy | [`cspi-uncompromised-dga/`](cspi-uncompromised-dga/) |
+| 13 | Nutrition loop assistant | [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/) |
 
 Many of these assistants are based on structured interpretation of official Chinese dietary guidance materials, especially public dietary guidance documents from the National Health Commission of China and related professional nutrition references. Each assistant should be used for **education and professional workflow support**, not for diagnosis or individualized medical treatment.
 
@@ -132,6 +138,8 @@ Many of these assistants are based on structured interpretation of official Chin
 |---|---|
 | 📚 Evidence organization | Turn guidelines, books, and professional references into structured, reviewable knowledge. |
 | 🧩 Skill distillation | Convert nutrition knowledge into reusable AI assistant behaviors with boundaries and safety rules. |
+| 🧭 Guideline automation | Turn dietary guidelines and nutrition policy documents into routed, testable, agent-native skills with source boundaries and red lines. |
+| 🔁 Nutrition loops | Design recurring dietary-guidance workflows that triage questions, verify claims with maker-checker separation, track state, and escalate risky cases. |
 | 📝 Diet record structuring | Help nutritionists organize messy text, chat logs, and three-day diet records into reviewable tables. |
 | 🌱 Nutrition education drafting | Draft plain-language education material while preserving evidence boundaries. |
 | 🔍 Anti-hallucination review | Check citations, claims, source hierarchy, and medical safety boundaries. |
@@ -147,7 +155,7 @@ Many of these assistants are based on structured interpretation of official Chin
 | ✅ Phase 1 | Collect dietary guidance assistants and nutrition education skills in one repository. |
 | ✅ Phase 2 | Add bilingual README, professional positioning, repository map, and maintainer profile. |
 | 🔄 Phase 3 | Improve source labeling, evidence hierarchy, evaluation checklists, and safety red lines for each assistant. |
-| 🔄 Phase 4 | Build repeatable workflows for nutrition education production, diet record structuring, and professional review. |
+| 🔄 Phase 4 | Build repeatable workflows for nutrition education production, guideline automation, loop-capable dietary guidance, diet record structuring, and professional review. |
 | 🔬 Phase 5 | Prototype multi-agent nutrition assessment research: evidence agent, nutrition review agent, writing agent, safety agent, and evaluation agent. |
 | 🚀 Phase 6 | Run larger-scale evidence extraction, bilingual documentation, safety evaluation, and workflow automation experiments under professional review. |
 
