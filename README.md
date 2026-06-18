@@ -298,7 +298,7 @@ Wang Runyuan. Nutrition Assistants: Evidence-informed nutrition education and AI
 ---
 
 > **禁止抄袭商用，违者等同盗法，因果自负**
-> **Plagiarism and commercial use prohibited. Violators shall be deemed as infringers of law and shall bear all consequences.**
+> **Plagiarism and commercial use are strictly prohibited. Violators shall be deemed as thieves of sacred scriptures and shall face divine karmic retribution.**
 >
 > 公益开源项目，禁止商用 | Public welfare open-source project, commercial use prohibited
 > License: CC BY-NC 4.0
