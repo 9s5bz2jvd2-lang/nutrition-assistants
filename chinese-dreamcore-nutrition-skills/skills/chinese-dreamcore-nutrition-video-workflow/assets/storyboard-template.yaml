@@ -1,0 +1,54 @@
+video_id: <如 breakfast_protein_001_v01>
+ratio: 9:16
+resolution: 1080x1920
+duration: 15
+shots:
+  - shot_id: S01
+    duration: 3
+    画面目的: 建立温柔早晨氛围
+    底图需求: 月洞窗、白瓷小碗、柔软蒸汽、上方留白
+    运动方式: slow_zoom_in
+    屏幕文字: <来自证据卡的短句>
+    旁白: <可选>
+    Cute Gate: 待评分
+    evidence状态: 只做氛围
+
+  - shot_id: S02
+    duration: 3
+    画面目的: 情绪承接
+    底图需求: 竹帘轻动、普通温热食物
+    运动方式: slow_pan
+    屏幕文字: <来自证据卡的短句>
+    旁白: <可选>
+    Cute Gate: 待评分
+    evidence状态: 来自证据卡第 1 条
+
+  - shot_id: S03
+    duration: 3
+    画面目的: 科普信息 1
+    底图需求: 圆润餐具组合、左侧文字区
+    运动方式: gentle_light_breathing
+    屏幕文字: <来自证据卡的短句>
+    旁白: <可选>
+    Cute Gate: 待评分
+    evidence状态: 来自证据卡第 2 条
+
+  - shot_id: S04
+    duration: 3
+    画面目的: 科普信息 2
+    底图需求: 柔光照普通餐具
+    运动方式: slow_zoom_in
+    屏幕文字: <来自证据卡的短句>
+    旁白: <可选>
+    Cute Gate: 待评分
+    evidence状态: 来自证据卡第 3 条
+
+  - shot_id: S05
+    duration: 3
+    画面目的: 温柔收口
+    底图需求: 窗边暖光、主体居中偏下
+    运动方式: slow_pan
+    屏幕文字: 个体情况不同，可咨询专业人员
+    旁白: <可选>
+    Cute Gate: 待评分
+    evidence状态: 安全收口

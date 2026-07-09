@@ -105,6 +105,7 @@ AI Skill 与工作流
 | 🌐 Public education projects | 科普网页 / 营养传播 | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
 | 📊 Reference data | 参考数据 | Structured food composition data, GI tables, nutrient definitions | [`china-food-composition/`](china-food-composition/) |
 | 🤖 Workflows & multi-agent research | 工作流、Loop 与多 Agent 研究 | Nutrition content production workflow, loop-capable dietary assistants, and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/), [`loop-engineering/`](loop-engineering/), [`multi-agent-research/`](multi-agent-research/) |
+| 🎨 Nutrition media production | 中式梦核营养科普生产 | Cute-first image/video production skills for Chinese dreamcore nutrition education: evidence cards, no-text base-image prompts, backend/BLOCKED contracts, local prototype fallback, and trial reports. | [`chinese-dreamcore-nutrition-skills/`](chinese-dreamcore-nutrition-skills/) |
 | 🧭 Project under maintenance | 项目维护中 | **Temporarily under maintenance（维护中）** — this entry is being reviewed before conference submission; implementation details are not publicly available at this time. | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) |
 
 ### Main directories｜主要目录
@@ -130,6 +131,7 @@ AI Skill 与工作流
 | [`loop-engineering/`](loop-engineering/) | Loop Engineering 方法论 | General loop-engineering pattern distilled from Addy Osmani's article: automations, worktrees, skills, connectors, sub-agents, state, maker-checker split, and loop safety dangers. |
 | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) | 圆酱营养师膳食评价助手 | Nutritionist-facing assistant for structuring messy three-day diet records. |
 | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/) | 圆酱营养科普生产线 | Multi-step workflow for nutrition public education content production. |
+| [`chinese-dreamcore-nutrition-skills/`](chinese-dreamcore-nutrition-skills/) | 中式梦核营养图片/视频生产 Skills | Callable image/video production skills for cute-first Chinese dreamcore nutrition education; includes backend/BLOCKED contracts and a GPT apple-theme trial run. |
 | [`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) | Yuan Nutrition MAS Harness | **Temporarily under maintenance（维护中）**. This project is being reviewed before conference submission, so the public entry is intentionally limited for now. |
 | [`shiwu-guanxing/`](shiwu-guanxing/) | 食物观星 | Public-facing nutrition education web / communication project. |
 | [`nutrition-history-anti-hallucination-skill/`](nutrition-history-anti-hallucination-skill/) | 营养学历史防幻觉 | Anti-hallucination workflow for nutrition history and historical texts. |
@@ -175,6 +177,7 @@ Many of these assistants are based on structured interpretation of official Chin
 | 🔁 Nutrition loops | 营养 loop | Design recurring dietary-guidance workflows that triage questions, verify claims with maker-checker separation, track state, and escalate risky cases. |
 | 📝 Diet record structuring | 饮食记录结构化 | Help nutritionists organize messy text, chat logs, and three-day diet records into reviewable tables. |
 | 🌱 Nutrition education drafting | 营养科普初稿 | Draft plain-language education material while preserving evidence boundaries. |
+| 🎨 Image/video production | 中式梦核营养图片/视频生产 | Produce cute-first Chinese dreamcore nutrition visuals and short-video assets while keeping nutrition facts evidence-card-bound and models away from Chinese body text. |
 | 🔍 Anti-hallucination review | 防幻觉审查 | Check citations, claims, source hierarchy, and medical safety boundaries. |
 | 🤖 Multi-agent workflows | 多 Agent 工作流 | Explore division of labor among evidence extraction, nutrition review, writing, media generation, and quality assurance agents. |
 | 📊 Evaluation datasets | 评测集建设 | Build test cases for nutrition advice safety, citation accuracy, and professional review quality. |

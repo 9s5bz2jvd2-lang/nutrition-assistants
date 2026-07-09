@@ -1,0 +1,52 @@
+subject_cute:
+  purpose: 决定可爱主体
+  examples:
+    - round small bowl with gentle warm steam
+    - tiny ceramic spoon resting beside a soft cloth
+    - plump white porcelain cup with a shy little handle
+    - round fresh apple on a small white porcelain plate
+
+chinese_daily_scene:
+  purpose: 决定中式日常空间
+  examples:
+    - moon gate window in an old quiet courtyard
+    - bamboo curtain, warm wooden table, white porcelain
+    - paper-cut shadow on a cream wall
+    - old Chinese home interior with rice-paper texture
+
+dreamy_layer:
+  purpose: 决定梦幻感
+  examples:
+    - soft moon-white light
+    - thin mist like rice paper texture
+    - floating dust motes, gentle glow, quiet morning air
+
+composition:
+  purpose: 为后期中文排版留白
+  examples:
+    - main subject in lower right, clean empty space in upper left
+    - centered object with wide blank margin on top
+    - vertical poster composition, safe area for Chinese title
+
+color:
+  purpose: 控制可爱与梦感
+  examples:
+    - warm cream, moon white, pale apricot, soft jade green
+    - low saturation, no neon, no harsh contrast
+
+quality:
+  purpose: 控制画质
+  examples:
+    - soft watercolor texture
+    - gentle semi-realistic illustration
+    - high detail but not photorealistic advertising
+
+negative:
+  purpose: 禁止跑偏
+  examples:
+    - no text, no letters, no logo, no watermark
+    - no horror, no abandoned hallway, no infinite corridor
+    - no anime girl, no chibi character, no childish toy style
+    - no hospital, no medicine, no before-after body comparison
+    - no luxury marketing poster, no cheap commercial ad
+    - no fantasy palace, no dragon overload, no temple
