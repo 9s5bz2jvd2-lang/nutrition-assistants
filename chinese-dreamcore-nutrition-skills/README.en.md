@@ -22,3 +22,8 @@ They define a production contract: when invoked, the executor must either produc
 ## Real generation requirement
 
 A real production run needs a callable image/video backend: for example, an image-generation MCP, a local ComfyUI/SDXL/Flux workflow, or a stable external CLI/API. The backend should support English prompts, 4:5 no-text PNG output, batch candidate generation, and downstream Cute Gate scoring plus Chinese layout.
+
+## General portability
+
+- General use guide: [`GENERAL_USE.md`](GENERAL_USE.md)
+- Backend contract: [`docs/backend-contract.md`](docs/backend-contract.md)

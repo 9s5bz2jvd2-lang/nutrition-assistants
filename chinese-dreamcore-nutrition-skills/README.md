@@ -67,3 +67,8 @@ They are not merely style notes. They define a production contract: when the ima
 ### Next step for real generation
 
 To produce real model-generated images, configure a callable image-generation backend such as an image-generation MCP, local ComfyUI/SDXL/Flux workflow, or a stable external CLI/API. The backend should support English prompts, 4:5 no-text PNGs, batch candidate generation, and downstream Cute Gate scoring plus Chinese layout.
+
+## 通用化入口｜General portability
+
+- 通用使用说明 / General use guide: [`GENERAL_USE.md`](GENERAL_USE.md)
+- 后端接口契约 / Backend contract: [`docs/backend-contract.md`](docs/backend-contract.md)
