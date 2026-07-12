@@ -1,0 +1,127 @@
+# ROUTING.yaml — 功能医学综合 Skill
+# Purpose: machine/agent-readable hints for activation, safety gates, and budgeted references.
+
+role: functional_medicine_knowledge_and_formula_design
+activation_model: "tree-based progressive disclosure (Layer 1-8)"
+
+trigger_terms:
+  strong:
+    - 功能医学
+    - functional medicine
+    - 七大失衡
+    - 功能失衡
+    - Go-to-it
+    - 功能医学矩阵
+    - 功能医学时间轴
+    - 补剂配方
+    - 营养素处方
+    - 营养素方案
+    - 肠漏
+    - SIBO
+    - 肠道菌群失调
+    - 慢性炎症
+    - 自身免疫
+    - 食物不耐受
+    - 解毒生物转化
+    - 肝脏I相II相
+    - HPA轴
+    - 肾上腺疲劳
+    - 胰岛素抵抗
+    - 甲状腺功能
+    - 性激素失衡
+    - PCOS
+    - 更年期营养
+    - 氧化应激
+    - 线粒体功能
+    - MTHFR
+    - 同型半胱氨酸
+    - 营养基因组学
+    - 治未病
+    - 非药物干预
+  weak:
+    - 慢性病根源
+    - 健康管理
+    - 功能营养
+    - 补剂推荐
+    - 营养素缺乏
+    - 代谢综合征
+    - 亚健康
+
+anti_triggers:
+  - 只问一个普通营养知识（如"维生素C的作用"）
+  - 急性疾病/急诊症状（应建议立即就医）
+  - 要求确诊疾病（本skill不诊断）
+  - 要求替代处方药治疗
+  - 只想要普通食谱/膳食指南（应转介食养助手）
+
+neighbors:
+  upstream:
+    - nutrition-skill-methodology
+    - book-to-skill-distillation
+  safety:
+    - nutrition-history-anti-hallucination-skill
+    - anti-hallucination-academic-writing
+  adjacent:
+    - diabetes-food-guide-skill
+    - hypertension-food-guide
+    - hyperlipidemia-food-guide
+    - gout-dietary-guide
+    - osteoporosis-food-guide-skill
+    - sarcopenia-food-guide-skill
+  output:
+    - 循证证据表（RCT查询）
+    - 各国使用标准参考表
+
+budget:
+  # 调用阶段预算
+  layer_1_quick_reference:
+    target_tokens: "500-1500"
+    when: "快速概览功能医学概念"
+  layer_2_imbalances:
+    target_tokens: "2000-5000"
+    when: "深入某一失衡系统"
+  layer_3_genomics_nutrients:
+    target_tokens: "2000-5000"
+    when: "基因多态性或营养素详解"
+  layer_4_formula_design:
+    target_tokens: "3000-8000"
+    when: "设计补剂配方"
+  layer_5_cases:
+    target_tokens: "1000-3000"
+    when: "参考病例"
+  layer_6_special_populations:
+    target_tokens: "500-2000"
+    when: "特殊人群调整"
+  layer_7_full_knowledge:
+    target_tokens: "on-demand only"
+    when: "需要原文级深度引用"
+  layer_8_evidence_query:
+    target_tokens: "per-nutrient lookup"
+    when: "配方生成后强制执行RCT查询"
+
+missed_case_sweep:
+  required:
+    - safety_red_line_check        # 是否触犯安全红线
+    - special_population_check      # 是否涉及特殊人群
+    - drug_interaction_check        # 是否有药物-营养素相互作用风险
+    - evidence_boundary_check       # 建议是否超出证据层级
+    - referral_check                # 是否需要转介就医
+    - anti_trigger_check            # 是否误触发
+    - citation_verifiability        # 引用是否真实可核验
+  high_risk_extra:
+    - pregnancy_lactation_flag      # 孕妇/哺乳期标注
+    - pediatric_flag                # 儿童标注
+    - hepatic_renal_flag            # 肝肾障碍标注
+    - eating_disorder_language_check # 羞耻语言检查
+
+route_log_fields:
+  - task_summary
+  - selected_layers
+  - formula_designed
+  - sweep_items_checked
+  - sweep_hits
+  - references_loaded
+  - rct_queries_executed
+  - safety_warnings_issued
+  - referral_needed
+  - followup_needed
