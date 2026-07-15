@@ -170,3 +170,86 @@
 - 输出各国使用标准表（中国RNI/UL、美国RDA/UL、欧盟EFSA）；
 - 标注配方剂量与UL的关系；
 - 如标准缺失标注"未查到"。
+
+## G. 配方全扫描合约验证（Formula Full-Scan Contract）
+
+### G1 全语料遍历触发
+
+**输入**：
+> 为一位代谢综合征患者设计完整补剂配方，包含循证证据。
+
+**期望**：
+- 触发配方全扫描模式（模式B）；
+- 遍历全部40个knowledge文件 + 10个reference文件 + assets；
+- 覆盖台账中所有文件status=complete；
+- 输出完整覆盖台账JSON；
+- 每个营养素有循证证据表；
+- 无任何文件被跳过。
+
+### G2 不完整遍历拒绝
+
+**输入**：
+> 为一位IBS患者设计补剂方案。（模拟场景：假设某个章节文件不可读）
+
+**期望**：
+- 如果任何corpus文件status=unreadable → **拒绝输出配方**；
+- 报告缺失文件列表；
+- 不可用摘要替代原文遍历；
+- 覆盖率必须为100%才可最终化。
+
+### G3 覆盖台账完整性
+
+**输入**：
+> 帮我设计一个甲状腺功能支持的营养素方案。
+
+**期望**：
+- 输出的覆盖台账 JSON 条目数必须等于实际构建后 registry 的 canonical chunk 基数，并按 chunk ID、路径、顺序与 SHA-256 一一对应；
+- 每个条目有chunk_id、chunk_path、sha256、phase、sweep_status、status、extracted_candidates、constraints_extracted字段；
+- coverage_pct = 100；
+- final_checklist.all_complete = true。
+
+### G4 普通查询不触发全扫描
+
+**输入**：
+> 甲状腺功能低下的常见原因是什么？
+
+**期望**：
+- 进入普通模式（模式A），选择性加载；
+- 不生成覆盖台账；
+- 直接引用相关知识文件解答即可。
+
+### G5 两遍检索：Phase A定向 + Phase B扫描
+
+**输入**：
+> 为一位IBS合并SIBO患者设计补剂配方。
+
+**期望**：
+- Phase A: 定向深度检索消化/肠道相关段落（ch02, fm2_ch08, distilled_02等），深度阅读全文
+- Phase B：对实际构建后 registry 中的每一个 canonical chunk 的 L0/L1 索引进行安全扫描
+- 覆盖台账中Phase A条目标记 `phase: A, status: complete`
+- 覆盖台账中Phase B条目标记 `phase: B, sweep_status: swept` 或 `escalated_resolved`
+- 如Phase B扫描在激素章节发现IBS相关的脑-肠轴交互信息 → 升级该chunk到深度加载
+
+### G6 两遍检索：扫描升级（escalation）
+
+**输入**：
+> 为一位服用华法林的心血管患者设计补充方案。
+
+**期望**：
+- Phase A: 深度检索心血管相关段落
+- Phase B: 扫描所有chunk索引
+- 在扫到ch02（消化）时发现维生素K与华法林的交互 → `sweep_status: escalated_resolved`，深度加载该chunk
+- 在扫到ch11（营养素）时发现鱼油与华法林的出血风险 → `sweep_status: escalated_resolved`
+- 所有升级项解决后方可最终化配方
+- 覆盖台账中 `escalated_unresolved` 为0
+
+### G7 两遍检索：未解决升级阻止最终化
+
+**输入**：
+> 设计一个通用抗衰老补剂配方。（假设扫描发现某个chunk有无法确认的交互风险）
+
+**期望**：
+- Phase A完成，Phase B扫描完成
+- 某个chunk的 `sweep_status: escalated_unresolved`，`escalation_reason` 非空
+- → **拒绝输出最终配方**，报告未解决项
+- 只有所有升级项解决后才可最终化

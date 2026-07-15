@@ -125,3 +125,152 @@ route_log_fields:
   - safety_warnings_issued
   - referral_needed
   - followup_needed
+
+# ── Path-based routing hints (added by progressive-disclosure refactor) ──
+
+reference_paths:
+  layer_1_quick_reference: reference/layer1_quick_reference.md
+  layer_2_imbalances: reference/layer2_imbalances.md
+  layer_3_genomics_nutrients: reference/layer3_genomics_nutrients.md
+  layer_4_formula_design: reference/layer4_formula_design.md
+  layer_5_cases: reference/layer5_cases.md
+  layer_6_special_populations: reference/layer6_special_populations.md
+  routing_tree_navigation: reference/routing_tree_navigation.md
+  safety_red_lines: reference/safety_red_lines.md
+  layer_8_evidence_query: reference/layer8_evidence_query.md
+
+knowledge_index: reference/knowledge_index.md
+
+knowledge_paths:
+  # Primary textbook chapters (功能医学概论, 17 chapters)
+  ch01_overview: knowledge/ch01_overview.txt
+  ch02_digestion: knowledge/ch02_digestion.txt
+  ch03_immune: knowledge/ch03_immune.txt
+  ch04_detox: knowledge/ch04_detox.txt
+  ch05_hormone: knowledge/ch05_hormone.txt
+  ch06_oxidative: knowledge/ch06_oxidative.txt
+  ch07_circulation: knowledge/ch07_circulation.txt
+  ch08_structural: knowledge/ch08_structural.txt
+  ch09_homeostasis: knowledge/ch09_homeostasis.txt
+  ch10_genomics: knowledge/ch10_genomics.txt
+  ch11_nutrition: knowledge/ch11_nutrition.txt
+  ch12_antiaging: knowledge/ch12_antiaging.txt
+  ch13_metabolic: knowledge/ch13_metabolic.txt
+  ch14_female: knowledge/ch14_female.txt
+  ch15_children4A: knowledge/ch15_children4A.txt
+  ch16_other: knowledge/ch16_other.txt
+  ch17_cases: knowledge/ch17_cases.txt
+  # Distilled knowledge summaries
+  distilled_01_fundamentals: knowledge/distilled_01_fundamentals.md
+  distilled_02_digestive: knowledge/distilled_02_digestive.md
+  distilled_03_immune_detox: knowledge/distilled_03_immune_detox.md
+  distilled_04_hormone_metabolic: knowledge/distilled_04_hormone_metabolic.md
+  distilled_05_oxidative_circulatory: knowledge/distilled_05_oxidative_circulatory.md
+  distilled_06_genomics_nutrition: knowledge/distilled_06_genomics_nutrition.md
+  distilled_07_cases_special: knowledge/distilled_07_cases_special.md
+  # Secondary textbook chapters (营养达人荟萃版, 16 chapters)
+  fm2_ch01_origin: knowledge/fm2_ch01_origin.txt
+  fm2_ch02_definition: knowledge/fm2_ch02_definition.txt
+  fm2_ch03_imbalance: knowledge/fm2_ch03_imbalance.txt
+  fm2_ch04_diagnosis: knowledge/fm2_ch04_diagnosis.txt
+  fm2_ch05_tcm: knowledge/fm2_ch05_tcm.txt
+  fm2_ch06_food: knowledge/fm2_ch06_food.txt
+  fm2_ch07_indicators: knowledge/fm2_ch07_indicators.txt
+  fm2_ch08_digestive: knowledge/fm2_ch08_digestive.txt
+  fm2_ch09_insulin: knowledge/fm2_ch09_insulin.txt
+  fm2_ch10_cardiovascular: knowledge/fm2_ch10_cardiovascular.txt
+  fm2_ch11_thyroid: knowledge/fm2_ch11_thyroid.txt
+  fm2_ch12_autoimmune: knowledge/fm2_ch12_autoimmune.txt
+  fm2_ch13_female: knowledge/fm2_ch13_female.txt
+  fm2_ch14_lifestyle: knowledge/fm2_ch14_lifestyle.txt
+  fm2_ch15_testing: knowledge/fm2_ch15_testing.txt
+  fm2_ch16_supplements: knowledge/fm2_ch16_supplements.txt
+
+asset_paths:
+  eval_cases: assets/eval-cases.md
+
+# ── V2 Runtime Prerequisites ──
+v2_runtime:
+  method: sparse-book-to-skill-distillation-v2
+  purpose: complete one-time semantic distillation followed by sparse runtime retrieval
+  required_artifacts:
+    semantic_index: expert-index.v2.json
+    registry: registry.v2.json
+    source_manifest: source-manifest.json
+  readiness:
+    complete_semantic_review_required: true
+    required_levels: [L0, L1, L2, L3]
+    cardinality_source: built_registry
+    ordering_source: built_registry
+    hash_source: source_manifest
+    missing_or_stale_artifact: fail_closed
+  package_boundary:
+    local_trial_paths_forbidden: true
+    hard_coded_chunk_counts_forbidden: true
+    runtime_status_source: actual_built_artifacts
+
+# ── Formula Two-Pass Retrieval + Full-Corpus Safety Sweep ──
+formula_full_scan:
+  mode: two_pass
+  prerequisite: v2_runtime_ready
+  trigger_keywords:
+    - "配方"
+    - "补剂方案"
+    - "营养素组合"
+    - "剂量"
+    - "protocol"
+    - "supplement formula"
+
+  phase_a_targeted_deep_retrieval:
+    purpose: retrieve and deep-read only chunks directly relevant to the case
+    query_dimensions:
+      - purpose
+      - symptoms
+      - diagnoses
+      - medications
+      - contraindications
+      - nutrients
+      - special_populations
+    selection_source: built semantic index and registry
+    loading_rule: selected canonical chunks must be loaded from the exact original text
+
+  phase_b_corpus_wide_omission_safety_sweep:
+    purpose: check every canonical registry chunk's compact index for omissions, conflicts, interactions, safety red lines, and uncertainty
+    iteration_source: built registry stable order
+    sweep_fields:
+      - l0_weighted_triggers
+      - l0_expert_anti_triggers
+      - l1_brief
+      - l1_safety_red_lines
+      - l1_uncertainty
+      - chunk_risk_tags
+    escalation_rule: any relevant hit must load and deep-read the exact original chunk
+    allowed_terminal_sweep_statuses:
+      - swept
+      - escalated_resolved
+    blocking_statuses:
+      - pending
+      - unreadable
+      - escalated_unresolved
+
+  coverage_ledger:
+    template: reference/formula_coverage_ledger_template.json
+    generation_source: built registry and source manifest
+    cardinality_rule: exactly one entry per canonical registry chunk
+    order_rule: exact built-registry order
+    required_identity_fields:
+      - chunk_id
+      - chunk_path
+      - sha256
+    static_prefilled_entry_list_forbidden: true
+
+  finalization_gates:
+    gate_a: all Phase A selected chunks deep-read from exact originals
+    gate_b: every registry chunk swept exactly once in Phase B
+    gate_c: every sweep hit escalated and resolved; any unresolved or unreadable item blocks
+    gate_d: every chunk identity and SHA-256 matches registry/source manifest
+    fail_closed: true
+    justification_bypass_forbidden: true
+
+  contract_doc: reference/formula_full_scan_contract.md
+  adapter_doc: reference/v2-sparse-dual-mode-adapter.md

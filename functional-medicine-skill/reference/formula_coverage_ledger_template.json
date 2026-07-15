@@ -1,0 +1,58 @@
+{
+  "_schema": "formula-coverage-ledger-template-v3",
+  "_description": "Blank fail-closed schema. Generate entries dynamically from a completed v2 registry and source manifest; never ship a static prefilled corpus list.",
+  "_generation_contract": {
+    "source": "built registry.v2.json plus source-manifest.json",
+    "cardinality": "exactly one entry per canonical registry chunk",
+    "ordering": "exact built-registry order",
+    "identity": "chunk_id + chunk_path + sha256 must match built artifacts",
+    "missing_or_stale_artifact": "abort"
+  },
+  "_required_entry_fields": [
+    "index",
+    "chunk_id",
+    "chunk_path",
+    "sha256",
+    "phase",
+    "status",
+    "sweep_status",
+    "escalation_reason",
+    "extracted_candidates",
+    "constraints_extracted"
+  ],
+  "_allowed_values": {
+    "phase": [
+      "A",
+      "B"
+    ],
+    "status": [
+      "pending",
+      "complete",
+      "unreadable"
+    ],
+    "sweep_status": [
+      "pending",
+      "swept",
+      "escalated_resolved",
+      "escalated_unresolved",
+      "N/A"
+    ]
+  },
+  "_total_corpus_entries": null,
+  "run_metadata": {
+    "registry_sha256": "",
+    "source_manifest_sha256": "",
+    "generated_at": "",
+    "phase_a_query": ""
+  },
+  "entries": [],
+  "finalization_checklist": {
+    "phase_a_100_percent": false,
+    "phase_b_100_percent": false,
+    "all_escalations_resolved": false,
+    "no_unreadable_entries": false,
+    "all_hashes_verified": false,
+    "formula_finalization_allowed": false,
+    "hard_block_rule": "ANY pending, unreadable, or escalated_unresolved entry blocks finalization; no justification bypass"
+  }
+}
