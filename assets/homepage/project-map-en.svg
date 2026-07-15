@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-label="Project map: one-line positioning, four audience routes, four content areas, status note, and safety boundary">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8F6FF"/>
+      <stop offset="55%" stop-color="#FDFCFF"/>
+      <stop offset="100%" stop-color="#F1FAF7"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5E4BD8"/>
+      <stop offset="100%" stop-color="#8A63E8"/>
+    </linearGradient>
+    <clipPath id="card">
+      <rect x="1" y="1" width="1598" height="758" rx="26"/>
+    </clipPath>
+    <style>
+      text { font-family: -apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif; }
+      .hdrLabel { font-size: 16px; font-weight: 600; fill: #DDD6FF; letter-spacing: 1.5px; }
+      .hdrMain { font-size: 26px; font-weight: 700; fill: #FFFFFF; letter-spacing: 0.2px; }
+      .chipText { font-size: 15.5px; font-weight: 700; fill: #FFFFFF; }
+      .secLabel { font-size: 18px; font-weight: 700; fill: #57506E; }
+      .tagText { font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+      .cardTitle { font-size: 19px; font-weight: 700; fill: #383152; }
+      .cardDesc { font-size: 14.5px; fill: #6F6884; }
+      .mapTitle { font-size: 16.5px; font-weight: 700; }
+      .statusText { font-size: 15px; font-weight: 600; fill: #675F7B; }
+      .safetyLead { font-size: 17.5px; font-weight: 700; fill: #3D3B55; }
+      .safetyCore { font-size: 17.5px; font-weight: 700; fill: #5E4BD8; }
+      .safetyNote { font-size: 14.5px; fill: #756E87; }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="1598" height="758" rx="26" fill="url(#bg)" stroke="#E2DCF0" stroke-width="2"/>
+  <g clip-path="url(#card)">
+    <circle cx="1502" cy="66" r="92" fill="#BDEDDD" opacity="0.18"/>
+    <circle cx="86" cy="706" r="112" fill="#DCD4FF" opacity="0.18"/>
+  </g>
+
+  <!-- Positioning band -->
+  <rect x="44" y="40" width="1512" height="136" rx="22" fill="url(#violet)"/>
+  <text x="82" y="76" class="hdrLabel">WHAT THIS IS</text>
+  <text x="82" y="114" class="hdrMain">Turning authoritative nutrition sources and guidelines into traceable,</text>
+  <text x="82" y="150" class="hdrMain">reusable agent Skills and workflows, with human-review boundaries</text>
+  <rect x="1276" y="56" width="252" height="38" rx="19" fill="#FFFFFF" opacity="0.16"/>
+  <text x="1402" y="81" text-anchor="middle" class="chipText">Evidence → Skill → Workflow</text>
+
+  <!-- Audience routes -->
+  <text x="46" y="222" class="secLabel">Where do I start?</text>
+
+  <g>
+    <rect x="44" y="240" width="360" height="130" rx="18" fill="#FFF6F4" stroke="#F4DCD5" stroke-width="1.5"/>
+    <rect x="66" y="260" width="76" height="27" rx="13.5" fill="#F28B7A"/>
+    <text x="104" y="279" text-anchor="middle" class="tagText">Public</text>
+    <text x="66" y="322" class="cardTitle">Education entry</text>
+    <text x="66" y="350" class="cardDesc">Trustworthy, readable nutrition education</text>
+
+    <rect x="428" y="240" width="360" height="130" rx="18" fill="#F6F4FF" stroke="#E2DCF8" stroke-width="1.5"/>
+    <rect x="450" y="260" width="118" height="27" rx="13.5" fill="#7460D7"/>
+    <text x="509" y="279" text-anchor="middle" class="tagText">Professionals</text>
+    <text x="450" y="322" class="cardTitle">Review workflows</text>
+    <text x="450" y="350" class="cardDesc">Organize records · review education drafts</text>
+
+    <rect x="812" y="240" width="360" height="130" rx="18" fill="#F1FAF7" stroke="#D6EEE6" stroke-width="1.5"/>
+    <rect x="834" y="260" width="106" height="27" rx="13.5" fill="#55B89F"/>
+    <text x="887" y="279" text-anchor="middle" class="tagText">Researchers</text>
+    <text x="834" y="322" class="cardTitle">Methods &amp; evidence</text>
+    <text x="834" y="350" class="cardDesc">Traceable structure and evidence boundaries</text>
+
+    <rect x="1196" y="240" width="360" height="130" rx="18" fill="#F3F7FE" stroke="#D9E4F6" stroke-width="1.5"/>
+    <rect x="1218" y="260" width="152" height="27" rx="13.5" fill="#5D8FD7"/>
+    <text x="1294" y="279" text-anchor="middle" class="tagText">Agents / Developers</text>
+    <text x="1218" y="322" class="cardTitle">Install &amp; integrate</text>
+    <text x="1218" y="350" class="cardDesc">Load SKILL.md · plug into workflows</text>
+  </g>
+
+  <!-- Content map -->
+  <text x="46" y="418" class="secLabel">Content map — every piece has a place</text>
+
+  <g>
+    <rect x="44" y="436" width="360" height="106" rx="18" fill="#F6F4FF" stroke="#E2DCF8" stroke-width="1.5"/>
+    <text x="66" y="480" class="mapTitle" fill="#5E4BD8">01 · Guidance Skills</text>
+    <text x="66" y="512" class="cardDesc">Education &amp; professional review support</text>
+
+    <rect x="428" y="436" width="360" height="106" rx="18" fill="#F0FAF7" stroke="#D6EEE6" stroke-width="1.5"/>
+    <text x="450" y="480" class="mapTitle" fill="#3C9D87">02 · Reference data</text>
+    <text x="450" y="512" class="cardDesc">Food composition · GI · nutrients</text>
+
+    <rect x="812" y="436" width="360" height="106" rx="18" fill="#FFF7F3" stroke="#F4DCD5" stroke-width="1.5"/>
+    <text x="834" y="480" class="mapTitle" fill="#D97663">03 · Education &amp; media</text>
+    <text x="834" y="512" class="cardDesc">Public communication and web projects</text>
+
+    <rect x="1196" y="436" width="360" height="106" rx="18" fill="#F3F7FE" stroke="#D9E4F6" stroke-width="1.5"/>
+    <text x="1218" y="480" class="mapTitle" fill="#547FC6">04 · Methods · Workflows · Research</text>
+    <text x="1218" y="512" class="cardDesc">Distillation · loops · multi-agent research</text>
+  </g>
+
+  <!-- Status strip -->
+  <rect x="44" y="566" width="1512" height="42" rx="21" fill="#F0EDF8"/>
+  <text x="800" y="593" text-anchor="middle" class="statusText">Status labels only state what the repository can evidence: available content · professional-review workflows · research exploration · under maintenance</text>
+
+  <!-- Safety strip -->
+  <rect x="44" y="630" width="1512" height="92" rx="20" fill="#FFFFFF" stroke="#E2DCF0" stroke-width="1.5"/>
+  <circle cx="92" cy="676" r="21" fill="#59BFA7"/>
+  <path d="M82 676 L89 683 L103 668" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="132" y="669"><tspan class="safetyLead">Safety boundary: </tspan><tspan class="safetyCore">nutrition education, structured knowledge organization, and professional review support</tspan></text>
+  <text x="132" y="700" class="safetyNote">Not medical diagnosis, individualized prescriptions, or treatment replacement; risk, evidence-gap, and regulatory judgments belong to qualified professionals and primary sources.</text>
+</svg>

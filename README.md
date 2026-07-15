@@ -1,18 +1,67 @@
+<div align="center">
+
 # Nutrition Assistants｜圆酱营养助手合集
 
-[![Nutrition Education](https://img.shields.io/badge/Nutrition-Education-5DADEC)](#project-overview--项目概览)
-[![AI Workflow](https://img.shields.io/badge/AI--assisted-Workflow-BE9DD9)](#ai-applications--ai-应用方向)
-[![Maintained by Nutrition Professional](https://img.shields.io/badge/Maintainer-Registered%20Nutritionist-7FBF7F)](#maintainer--维护者)
-[![Bilingual](https://img.shields.io/badge/README-English%20%2F%20中文-91A8D0)](#navigation--导航)
+**把权威营养资料与指南，转成可追溯、可复用、带人审边界的 agent Skill 与工作流**
+
+Turning authoritative nutrition sources and guidelines into traceable, reusable agent Skills and workflows, with human-review boundaries.
+
+[![Nutrition Education](https://img.shields.io/badge/Nutrition-Education-5DADEC)](#project-overview)
+[![AI Workflow](https://img.shields.io/badge/AI--assisted-Workflow-BE9DD9)](#ai-applications)
+[![Maintained by Nutrition Professional](https://img.shields.io/badge/Maintainer-Registered%20Nutritionist-7FBF7F)](#maintainer)
+[![Bilingual](https://img.shields.io/badge/README-English%20%2F%20中文-91A8D0)](README.en.md)
+
+**[English README](README.en.md)** · [从哪里开始](#start-here) · [内容地图](#content-map) · [仓库结构](#repo-structure) · [安全边界](#safety-scope)
+
+<img src="assets/homepage/project-map-zh.svg" width="880" alt="项目地图：一句话定位——把权威营养资料与指南，转成可追溯、可复用、带人审边界的 agent Skill 与工作流；四类读者入口：公众（科普入口）、专业人员（复核工作流）、研究（方法与证据）、Agent 与开发者（安装与接入）；四块内容地图：食养 Guidance Skills、参考数据、科普与媒体、方法工作流研究；状态只标注仓库能证实的事实；安全边界：用于营养教育、资料结构化与专业复核辅助，不替代医学诊断、个体化处方或治疗。" />
+
+</div>
+
+> **安全边界｜Safety boundary**
+>
+> 本项目用于**营养教育、资料结构化与专业复核辅助**；不提供医学诊断、个体化处方、治疗替代、疗效保证或法规审批工具。涉及疾病、用药或其他风险情形，请咨询医生、注册营养师等合格专业人员。
+>
+> This project is for **nutrition education, structured knowledge organization, and professional review support** — not a diagnosis, prescription, treatment-replacement, efficacy-guarantee, or regulatory-approval tool.
+
+<a id="project-introduction"></a>
+
+## Project Introduction｜项目简介
 
 > **Tagline / 项目一句话**  
 > **Evidence-informed nutrition education, AI-assisted nutrition workflows, guideline-to-skill automation, and nutrition loop assistants, maintained by Wang Runyuan, a China Registered Nutritionist and master’s graduate in Nutrition and Food Hygiene from Kunming Medical University.**  
 > **由毕业于昆明医科大学营养与食品卫生学专业的硕士、中国注册营养师王润圆维护的，基于证据的营养教育、AI 辅助营养工作流、指南自动化 Skill 与营养 loop 助手开源项目。**
 
-**Project Introduction｜项目简介**  
-An open-source project maintained by Wang Runyuan to provide free AI skills and workflows for nutritionists, help nutritionists use AI to improve work efficiency, turn authoritative nutrition materials and dietary guidelines into reusable skills, build stateful nutrition loops, share nutrition knowledge with the public, and keep the project regularly updated.
+Nutrition Assistants turns nutrition sources and guidance into traceable, reusable agent Skills and workflows: structured source boundaries, evidence organization, human-review checkpoints, and public education materials. It is maintained by Wang Runyuan as an open-source collection for education, research, and professional workflow support—not a diagnosis, prescription, treatment-replacement, efficacy-guarantee, or regulatory-approval tool.
 
-由王润圆维护：为营养师提供免费 AI Skill 与工作流，协助营养师利用 AI 提高工作效率，并把权威营养资料与膳食指南转化为可复用的自动化 Skill，探索可验证、可追踪的营养 loop，同时科普营养知识；项目会定期更新。
+Nutrition Assistants 把营养资料与指南转化为可追溯、可复用的 agent Skill 与工作流：保留来源边界，组织证据，设置人类复核节点，并产出营养科普材料。项目面向营养教育、研究与专业工作流辅助；不提供诊断、处方、治疗替代、疗效保证或法规审批工具。
+
+<a id="start-here"></a>
+
+## Who should start where｜从哪里开始
+
+| 读者 | 从这里开始 | 用途 |
+|---|---|---|
+| 🌱 公众与营养科普读者 | [`shiwu-guanxing/`](shiwu-guanxing/) 或主题食养助手 | 看可信、易懂的营养科普；先阅读各目录说明与安全边界 |
+| 👩‍⚕️ 营养专业人员 | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) 和主题食养助手 | 资料整理、科普初稿与专业复核辅助 |
+| 🔬 研究者 | [`nutrition-skill-methodology/`](nutrition-skill-methodology/) · [`book-to-skill-distillation/`](book-to-skill-distillation/) · [`multi-agent-research/`](multi-agent-research/) | 方法论、蒸馏流程与多 Agent 研究方向 |
+| 🤖 Agent / 开发贡献者 | [`functional-medicine-skill/`](functional-medicine-skill/) · [`cspi-uncompromised-dga/`](cspi-uncompromised-dga/) 及各目录的 `SKILL.md`、验证材料 | 可移植 Skill 的加载、验证与工作流接入 |
+
+<a id="content-map"></a>
+
+## Content map｜内容地图
+
+四类内容各有位置；完整目录见[仓库结构](#repo-structure)。
+
+| # | 板块 | 主要内容 | 代表目录 |
+|---|---|---|---|
+| 01 | 🥗 食养 Guidance Skills | 面向疾病 / 主题的食养助手，用于教育与专业复核辅助 | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/) · [`ckd-food-guide-skill/`](ckd-food-guide-skill/) · [`hypertension-food-guide/`](hypertension-food-guide/) 等 |
+| 02 | 📊 参考数据 | 食物成分、GI 表与营养素定义 | [`china-food-composition/`](china-food-composition/) |
+| 03 | 🌐 科普与媒体 | 公众沟通、科普网页与媒体生产 | [`shiwu-guanxing/`](shiwu-guanxing/) · [`chinese-dreamcore-nutrition-skills/`](chinese-dreamcore-nutrition-skills/) 等 |
+| 04 | 🔁 方法 · 工作流 · 研究 | 蒸馏方法论、指南自动化、营养 loop 助手与多 Agent 研究 | [`nutrition-skill-methodology/`](nutrition-skill-methodology/) · [`loop-engineering/`](loop-engineering/) · [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/) · [`multi-agent-research/`](multi-agent-research/) 等 |
+
+各板块成熟度不同：[`multi-agent-research/`](multi-agent-research/) 为早期研究占位；[`yuan-nutrition-mas-harness/`](yuan-nutrition-mas-harness/) 维护中（会议评审前公开入口有限）。状态只标注仓库能证实的事实。
+
+<a id="project-goal"></a>
 
 ## Project Goal｜项目目标
 
@@ -26,17 +75,23 @@ Nutrition Assistants is an open-source nutrition education and AI workflow proje
 
 ## Navigation｜导航
 
-- [Project Goal｜项目目标](#project-goal--项目目标)
-- [Project Overview｜项目概览](#project-overview--项目概览)
-- [Repository Structure｜仓库结构](#repository-structure--仓库结构)
-- [Covered Conditions｜覆盖主题 / 疾病方向](#covered-conditions--覆盖主题--疾病方向)
-- [AI Applications｜AI 应用方向](#ai-applications--ai-应用方向)
-- [Future Development Roadmap｜未来路线图](#future-development-roadmap--未来路线图)
-- [Multi-Agent Nutrition Assessment Research｜多 Agent 营养评估研究](#multi-agent-nutrition-assessment-research--多-agent-营养评估研究)
-- [Maintainer｜维护者](#maintainer--维护者)
-- [License｜许可说明](#license--许可说明)
+- [Project Introduction｜项目简介](#project-introduction)
+- [Who should start where｜从哪里开始](#start-here)
+- [Content map｜内容地图](#content-map)
+- [Project Goal｜项目目标](#project-goal)
+- [Project Overview｜项目概览](#project-overview)
+- [Repository Structure｜仓库结构](#repo-structure)
+- [Covered Conditions｜覆盖主题 / 疾病方向](#covered-conditions)
+- [AI Applications｜AI 应用方向](#ai-applications)
+- [Future Development Roadmap｜未来路线图](#future-development-roadmap)
+- [Multi-Agent Nutrition Assessment Research｜多 Agent 营养评估研究](#multi-agent-research)
+- [Maintainer｜维护者](#maintainer)
+- [Safety Scope｜安全边界](#safety-scope)
+- [License｜许可说明](#license)
 
 ---
+
+<a id="project-overview"></a>
 
 ## Project Overview｜项目概览
 
@@ -92,6 +147,8 @@ AI Skill 与工作流
 
 ---
 
+<a id="repo-structure"></a>
+
 ## Repository Structure｜仓库结构
 
 ### High-level map｜总览
@@ -102,6 +159,7 @@ AI Skill 与工作流
 | 🧭 Guideline automation | 指南自动化 / 营养政策 | Agent-native automation distilled from dietary guidelines and nutrition policy documents | [`cspi-uncompromised-dga/`](cspi-uncompromised-dga/) |
 | 🥗 Dietary guidance assistants | 食养助手（资料 / Skills） | Structured dietary guidance assistants for nutrition-related conditions | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/), [`ckd-food-guide-skill/`](ckd-food-guide-skill/), [`hypertension-food-guide/`](hypertension-food-guide/) |
 | 👩‍⚕️ Nutritionist application assistant | 营养师应用助手 | Professional workflow support for organizing three-day diet records and nutritionist-facing assessment materials | [`yuanjiang-nutritionist-diet-evaluation-assistant-skill/`](yuanjiang-nutritionist-diet-evaluation-assistant-skill/) |
+| 🔬 Portable evidence-review Skill | 功能医学综合 Skill | Portable for agents and oriented to evidence organization and reviewable drafts; not a diagnosis, prescription, treatment replacement, efficacy guarantee, or regulatory-approval tool | [`functional-medicine-skill/`](functional-medicine-skill/) |
 | 🌐 Public education projects | 科普网页 / 营养传播 | Public-facing nutrition education and communication examples | [`shiwu-guanxing/`](shiwu-guanxing/), [`glucose-revolution-skill/`](glucose-revolution-skill/), [`nutrition-taibai-growth/`](nutrition-taibai-growth/) |
 | 📊 Reference data | 参考数据 | Structured food composition data, GI tables, nutrient definitions | [`china-food-composition/`](china-food-composition/) |
 | 🤖 Workflows & multi-agent research | 工作流、Loop 与多 Agent 研究 | Nutrition content production workflow, loop-capable dietary assistants, and future multi-agent nutrition assessment exploration | [`yuanjiang-nutrition-production-line-skill/`](yuanjiang-nutrition-production-line-skill/), [`loop-dietary-guide-assistant/`](loop-dietary-guide-assistant/), [`loop-engineering/`](loop-engineering/), [`multi-agent-research/`](multi-agent-research/) |
@@ -117,6 +175,7 @@ AI Skill 与工作流
 | [`childhood-obesity-agent/`](childhood-obesity-agent/) | 儿童肥胖 Agent 示例 | Agent-style childhood obesity nutrition assistant example. |
 | [`diabetes-food-guide-skill/`](diabetes-food-guide-skill/) | 糖尿病食养助手 | Dietary guidance assistant for diabetes-related nutrition education. |
 | [`ckd-food-guide-skill/`](ckd-food-guide-skill/) | 慢性肾病食养助手 | Dietary guidance assistant for chronic kidney disease nutrition education. |
+| [`functional-medicine-skill/`](functional-medicine-skill/) | 功能医学综合 Skill | Portable agent Skill for evidence organization and drafts for qualified professional review; not a diagnosis, prescription, treatment replacement, efficacy guarantee, or regulatory-approval tool. |
 | [`hypertension-food-guide/`](hypertension-food-guide/) | 高血压食养助手 | Dietary guidance assistant for hypertension nutrition education. |
 | [`hyperlipidemia-food-guide/`](hyperlipidemia-food-guide/) | 高脂血症食养助手 | Dietary guidance assistant for hyperlipidemia nutrition education. |
 | [`osteoporosis-food-guide-skill/`](osteoporosis-food-guide-skill/) | 骨质疏松食养助手 | Dietary guidance assistant for osteoporosis nutrition education. |
@@ -139,6 +198,8 @@ AI Skill 与工作流
 | [`china-food-composition/`](china-food-composition/) | 中国食物成分表（标准版第6版） | Knowledge base distilled from *China Food Composition Tables* (Standard Edition, 6th Ed.). Contains food classification system (21 categories), 259-food glycemic index table, nutrient definitions with INFOODS Tagname, amino acid & fatty acid nomenclature, phytochemical reference metadata, and methodology notes. Created by Wang Runyuan. |
 
 ---
+
+<a id="covered-conditions"></a>
 
 ## Covered Conditions｜覆盖主题 / 疾病方向
 
@@ -167,6 +228,8 @@ Many of these assistants are based on structured interpretation of official Chin
 
 ---
 
+<a id="ai-applications"></a>
+
 ## AI Applications｜AI 应用方向
 
 | Application | 中文用途 | Why it matters |
@@ -184,6 +247,8 @@ Many of these assistants are based on structured interpretation of official Chin
 
 ---
 
+<a id="future-development-roadmap"></a>
+
 ## Future Development Roadmap｜未来路线图
 
 | Phase | English | 中文 |
@@ -196,6 +261,8 @@ Many of these assistants are based on structured interpretation of official Chin
 | 🚀 Phase 6 | Run larger-scale evidence extraction, bilingual documentation, safety evaluation, and workflow automation experiments under professional review. | 在专业复核下推进更大规模的证据提取、中英双语文档、安全评测与工作流自动化实验。 |
 
 ---
+
+<a id="multi-agent-research"></a>
 
 ## Multi-Agent Nutrition Assessment Research｜多 Agent 营养评估研究
 
@@ -231,6 +298,8 @@ Key research questions:
 
 ---
 
+<a id="maintainer"></a>
+
 ## Maintainer｜维护者
 
 **Wang Runyuan / 王润圆**
@@ -245,6 +314,8 @@ Key research questions:
   项目中使用的作者头像为维护者本人真实头像。
 
 ---
+
+<a id="safety-scope"></a>
 
 ## Safety Scope｜安全边界
 
@@ -271,6 +342,8 @@ For any disease, medication, pregnancy, child growth, kidney disease, eating dis
 涉及疾病、用药、孕期、儿童生长发育、肾病、进食障碍、不明原因体重下降或严重症状时，应寻求医生或营养专业人员帮助。
 
 ---
+
+<a id="license"></a>
 
 ## License｜许可说明
 
