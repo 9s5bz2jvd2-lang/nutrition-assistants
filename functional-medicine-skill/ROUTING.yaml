@@ -1,8 +1,9 @@
-# ROUTING.yaml — 功能医学综合 Skill
+# ROUTING.yaml — 功能医学综合 Skill (Global Evidence + Regulatory Gate Edition)
 # Purpose: machine/agent-readable hints for activation, safety gates, and budgeted references.
+# Schema version: routing-v2.0
 
 role: functional_medicine_knowledge_and_formula_design
-activation_model: "tree-based progressive disclosure (Layer 1-8)"
+activation_model: "tree-based progressive disclosure (Layer 1-8) + global evidence/regulatory gate"
 
 trigger_terms:
   strong:
@@ -14,8 +15,8 @@ trigger_terms:
     - 功能医学矩阵
     - 功能医学时间轴
     - 补剂配方
-    - 营养素处方
     - 营养素方案
+    - 营养素处方
     - 肠漏
     - SIBO
     - 肠道菌群失调
@@ -38,6 +39,24 @@ trigger_terms:
     - 营养基因组学
     - 治未病
     - 非药物干预
+    # NEW: regulatory/evidence gate triggers
+    - 法规合规
+    - 法规评估
+    - 市场准入
+    - regulatory compliance
+    - market authorization
+    - global compliant
+    - 管辖区评估
+    # NEW: personalized formula triggers
+    - 个性化配方
+    - 个人配方
+    - personalized formula
+    - individualized protocol
+    - 根据我的情况
+    - 根据我的症状
+    - 针对我个人
+    - my situation
+    - based on my condition
   weak:
     - 慢性病根源
     - 健康管理
@@ -49,7 +68,7 @@ trigger_terms:
 
 anti_triggers:
   - 只问一个普通营养知识（如"维生素C的作用"）
-  - 急性疾病/急诊症状（应建议立即就医）
+  - 急性疾患/急症症状（应建议立即就医）
   - 要求确诊疾病（本skill不诊断）
   - 要求替代处方药治疗
   - 只想要普通食谱/膳食指南（应转介食养助手）
@@ -69,11 +88,13 @@ neighbors:
     - osteoporosis-food-guide-skill
     - sarcopenia-food-guide-skill
   output:
-    - 循证证据表（RCT查询）
-    - 各国使用标准参考表
+    - 四轨证据矩阵（人体/动物/TCM/机制）
+    - 法规覆盖矩阵（管辖区/产品类别/成分）
+    - TCM身份与物质矩阵
+    - 搜索台账
+    - 阻断/残余风险摘要
 
 budget:
-  # 调用阶段预算
   layer_1_quick_reference:
     target_tokens: "500-1500"
     when: "快速概览功能医学概念"
@@ -96,8 +117,8 @@ budget:
     target_tokens: "on-demand only"
     when: "需要原文级深度引用"
   layer_8_evidence_query:
-    target_tokens: "per-nutrient lookup"
-    when: "配方生成后强制执行RCT查询"
+    target_tokens: "per-nutrient four-track lookup"
+    when: "配方生成后强制执行四轨证据+法规门控"
 
 missed_case_sweep:
   required:
@@ -108,6 +129,20 @@ missed_case_sweep:
     - referral_check                # 是否需要转介就医
     - anti_trigger_check            # 是否误触发
     - citation_verifiability        # 引用是否真实可核验
+    # NEW: global evidence/regulatory gate checks
+    - context_identity_gate_check   # 配方语境和身份是否已解析
+    - four_track_evidence_check     # 四轨证据是否均已执行
+    - cross_tier_promotion_check    # TCM跨层升级是否违规
+    - regulatory_gate_check         # 法规门控是否通过
+    - source_authority_check        # 来源是否为权威来源注册表中的来源
+    - fabricated_status_check       # 是否编造法规状态
+    # NEW: personalized formula checks
+    - intake_completeness_check     # 接诊数据是否完整
+    - triage_status_check           # 风险分诊是否已执行
+    - privacy_minimization_check    # 隐私最小化是否合规
+    - dose_derivation_check         # 剂量是否仅来自人群证据
+    - population_evidence_disclaimer_check  # 群体证据声明是否已添加
+    - professional_review_checklist_check   # 专业审阅清单是否已附加
   high_risk_extra:
     - pregnancy_lactation_flag      # 孕妇/哺乳期标注
     - pediatric_flag                # 儿童标注
@@ -125,8 +160,22 @@ route_log_fields:
   - safety_warnings_issued
   - referral_needed
   - followup_needed
+  # NEW
+  - context_gate_status
+  - identity_ambiguities
+  - four_track_evidence_executed
+  - regulatory_gate_status
+  - uncovered_jurisdictions
+  - blocking_reasons
+  # NEW: personalized formula fields
+  - intake_mode
+  - triage_status
+  - high_risk_identifiers
+  - excluded_ingredients_count
+  - mandatory_human_review_flag
+  - privacy_compliant
 
-# ── Path-based routing hints (added by progressive-disclosure refactor) ──
+# — Path-based routing hints —
 
 reference_paths:
   layer_1_quick_reference: reference/layer1_quick_reference.md
@@ -138,6 +187,17 @@ reference_paths:
   routing_tree_navigation: reference/routing_tree_navigation.md
   safety_red_lines: reference/safety_red_lines.md
   layer_8_evidence_query: reference/layer8_evidence_query.md
+  # NEW
+  formula_context_identity_gate: reference/formula_context_identity_gate.md
+  # NEW: personalized formula references
+  individualized_formula_intake_contract: reference/individualized_formula_intake_contract.md
+  risk_triage_contract: reference/risk_triage_contract.md
+  personalized_selection_flow: reference/personalized_selection_flow.md
+  reminder_package_contract: reference/reminder_package_contract.md
+  regulatory_gate: reference/regulatory_gate.md
+  source_registry: reference/source_registry.md
+  evidence_ledger_template: reference/evidence_ledger_template.json
+  regulatory_coverage_ledger_template: reference/regulatory_coverage_ledger_template.json
 
 knowledge_index: reference/knowledge_index.md
 
@@ -189,7 +249,19 @@ knowledge_paths:
 asset_paths:
   eval_cases: assets/eval-cases.md
 
-# ── V2 Runtime Prerequisites ──
+template_paths:
+  formula_candidate: templates/formula_candidate_template.md
+  evidence_matrix: templates/evidence_matrix_template.md
+  tcm_identity_matrix: templates/tcm_identity_material_matrix_template.md
+  regulatory_coverage_matrix: templates/regulatory_coverage_matrix_template.md
+  search_ledger: templates/search_ledger_template.md
+  blocking_risk_summary: templates/blocking_risk_summary_template.md
+  # NEW: personalized formula templates
+  personalized_formula_draft: templates/personalized_formula_draft_template.md
+  reminder_package: templates/reminder_package_template.md
+  intake_audit_ledger: templates/intake_audit_ledger_template.json
+
+# — V2 Runtime Prerequisites —
 v2_runtime:
   method: sparse-book-to-skill-distillation-v2
   purpose: complete one-time semantic distillation followed by sparse runtime retrieval
@@ -209,9 +281,9 @@ v2_runtime:
     hard_coded_chunk_counts_forbidden: true
     runtime_status_source: actual_built_artifacts
 
-# ── Formula Two-Pass Retrieval + Full-Corpus Safety Sweep ──
+# — Formula Two-Pass Retrieval + Four-Track Evidence + Regulatory Gate —
 formula_full_scan:
-  mode: two_pass
+  mode: two_pass_plus_four_track_evidence_plus_regulatory
   prerequisite: v2_runtime_ready
   trigger_keywords:
     - "配方"
@@ -220,6 +292,32 @@ formula_full_scan:
     - "剂量"
     - "protocol"
     - "supplement formula"
+    # NEW
+    - "法规合规"
+    - "regulatory compliance"
+    - "market authorization"
+
+  # NEW: pre-formula context/identity gate
+  context_identity_gate:
+    contract_doc: reference/formula_context_identity_gate.md
+    required_context_fields:
+      - formula_purpose
+      - intended_use
+      - product_category
+      - target_markets
+      - target_population
+    required_ingredient_fields:
+      - common_name
+      - scientific_latin_name
+      - plant_part
+      - processing_preparation
+      - extract_ratio_or_marker
+      - chemical_form
+      - dose_and_unit
+    botanical_fail_closed_rules:
+      - species_ambiguity
+      - plant_part_ambiguity
+      - extract_specification_missing
 
   phase_a_targeted_deep_retrieval:
     purpose: retrieve and deep-read only chunks directly relevant to the case
@@ -231,6 +329,7 @@ formula_full_scan:
       - contraindications
       - nutrients
       - special_populations
+      - target_markets
     selection_source: built semantic index and registry
     loading_rule: selected canonical chunks must be loaded from the exact original text
 
@@ -253,6 +352,80 @@ formula_full_scan:
       - unreadable
       - escalated_unresolved
 
+  # Mode C v3: four evidence tracks + separate reminder/safety sidecar
+  four_track_evidence:
+    contract_doc: reference/layer8_evidence_query.md
+    automatic_mode_c_contract: reference/mode_c_automatic_contract.md
+    template: templates/evidence_matrix_template.md
+    two_column_output_template: templates/mode_c_two_column_output_template.md
+    ledger_template: reference/evidence_ledger_template.json
+    search_ledger_template: templates/search_ledger_template.md
+    tracks:
+      - track_1_human_clinical
+      - track_2_animal_in_vivo
+      - track_3_tcm_material
+      - track_4_regulatory
+    tcm_tier_separation:
+      t1_classical: traditional_record_only
+      t2_pharmacopeial: pharmacopeial_standard
+      t3_modern_clinical: assessed_as_track_1
+    cross_tier_promotion: prohibited
+    reminder_safety_sidecar:
+      mechanism_is_not_efficacy_proof: mandatory_true
+      cannot_support_human_efficacy_or_regulatory_clearance: true
+
+  # NEW: personalized formula intake and triage
+  # NEW: personalized formula intake and triage
+  personalized_formula:
+    个性化接诊: true
+    contract_doc: reference/individualized_formula_intake_contract.md
+    automatic_mode_c_contract_doc: reference/mode_c_automatic_contract.md
+    triage_doc: reference/risk_triage_contract.md
+    selection_flow_doc: reference/personalized_selection_flow.md
+    draft_template: templates/personalized_formula_draft_template.md
+    two_column_output_template: templates/mode_c_two_column_output_template.md
+    audit_template: templates/intake_audit_ledger_template.json
+    draft_generated_mandatory: true
+    unknowns_do_not_suppress_draft: true
+    privacy_rules:
+      no_pii_required: true
+      session_scoped_identifiers: true
+      user_reported_default: true
+      data_retention_default: session_only
+    triage_statuses:
+      - incomplete_draft_needs_human_input
+      - draft_with_urgent_safety_flag
+      - draft_with_mandatory_human_review
+      - draft_with_regulatory_gap
+      - draft_for_professional_review
+      - human_reviewed_finalization
+    never_finalized: true
+    dose_derivation_prohibition:
+      animal_scaling_prohibited: true
+      traditional_amount_scaling_prohibited: true
+      only_human_evidence_doses: true
+    population_level_disclaimer_required: true
+    professional_review_checklist_required: true
+
+  # NEW: regulatory gate
+  regulatory_gate:
+    contract_doc: reference/regulatory_gate.md
+    template: templates/regulatory_coverage_matrix_template.md
+    ledger_template: reference/regulatory_coverage_ledger_template.json
+    source_registry: reference/source_registry.md
+    assessment_dimensions:
+      - per_ingredient
+      - per_jurisdiction
+      - per_product_category
+    allowed_statuses:
+      - permitted
+      - conditional
+    blocking_statuses:
+      - prohibited
+      - unknown
+      - not_assessed
+    global_compliant_requires: all_entries_permitted_or_conditional
+
   coverage_ledger:
     template: reference/formula_coverage_ledger_template.json
     generation_source: built registry and source manifest
@@ -269,7 +442,15 @@ formula_full_scan:
     gate_b: every registry chunk swept exactly once in Phase B
     gate_c: every sweep hit escalated and resolved; any unresolved or unreadable item blocks
     gate_d: every chunk identity and SHA-256 matches registry/source manifest
-    fail_closed: true
+    gate_e1: unresolved context/identity blocks finalization and specific blocked-identity search only; reviewable draft remains
+    gate_e2: every evidence-eligible component has T1/T2/T3/T4 attempt or ledgered block/failure; gaps block finalization only
+    gate_e3: human evidence status does not imply efficacy when absent
+    gate_e4: animal/traditional/mechanistic not promoted to clinical proof
+    gate_e5: regulatory assessment for every ingredient × every jurisdiction × every category
+    gate_e6: no fabricated citations or regulatory statuses
+    gate_e7: search ledger recorded for all queries
+    gate_e8: existing two-pass corpus safety contract retained
+    fail_closed: finalization_efficacy_and_market_claims_only
     justification_bypass_forbidden: true
 
   contract_doc: reference/formula_full_scan_contract.md

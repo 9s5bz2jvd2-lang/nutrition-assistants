@@ -1,0 +1,101 @@
+{
+  "_schema": "evidence-ledger-template-v1.0",
+  "_description": "Machine-readable four-track evidence ledger schema. One entry per ingredient per formula. All tracks must be executed even if no evidence is found.",
+
+  "_allowed_values": {
+    "evidence_status": ["supported", "weak", "absent", "conflicting", "animal_only", "traditional_only", "mechanistic_only"],
+    "study_type": ["meta_analysis", "systematic_review", "large_rct", "small_rct", "controlled_trial", "case_report", "none_found"],
+    "tcm_t1_status": ["traditional_record_only"],
+    "tcm_t2_status": ["pharmacopeial_standard"],
+    "tcm_t3_status": ["supported", "weak", "absent", "conflicting", "none_found"],
+    "mechanism_is_not_efficacy_proof": [true]
+  },
+
+  "_required_ingredient_fields": [
+    "ingredient_name",
+    "dose_in_formula",
+    "track_1_human_clinical",
+    "track_2_animal",
+    "track_3_tcm_material",
+    "track_4_mechanistic_safety",
+    "overall_evidence_status"
+  ],
+
+  "formula_metadata": {
+    "formula_id": "",
+    "search_date": "",
+    "search_sources_summary": []
+  },
+
+  "ingredients": [
+    {
+      "ingredient_name": "",
+      "dose_in_formula": "",
+      "track_1_human_clinical": {
+        "search_sources": [],
+        "evidence_found": false,
+        "study_type": "none_found",
+        "study_details": "",
+        "study_limitations": "",
+        "evidence_status": "absent",
+        "source_locator": ""
+      },
+      "track_2_animal": {
+        "search_sources": [],
+        "evidence_found": false,
+        "animal_species": "",
+        "route_of_administration": "",
+        "dose_and_unit": "",
+        "human_dose_non_equivalence_warning": "Animal doses are NOT directly translatable to human doses. All animal evidence is informational only.",
+        "duration": "",
+        "endpoints": "",
+        "source_locator": "",
+        "translation_limits": ""
+      },
+      "track_3_tcm_material": {
+        "t1_classical_record": {
+          "source_name": "",
+          "edition_or_version": "",
+          "specific_location": "",
+          "traditional_properties": "",
+          "status": "traditional_record_only"
+        },
+        "t2_pharmacopeial": {
+          "pharmacopoeia_name": "",
+          "monograph_title": "",
+          "volume_page": "",
+          "official_specifications": "",
+          "status": "pharmacopeial_standard"
+        },
+        "t3_modern_clinical": {
+          "search_sources": [],
+          "study_type": "none_found",
+          "study_details": "",
+          "source_locator": "",
+          "evidence_status": "absent"
+        },
+        "cross_tier_promotion_check": {
+          "t1_to_efficacy": "prohibited",
+          "t2_to_efficacy": "prohibited",
+          "violation_detected": false
+        }
+      },
+      "track_4_mechanistic_safety": {
+        "primary_mechanisms": [],
+        "mechanism_evidence_level": "",
+        "adverse_effects_signals": [],
+        "interaction_signals": [],
+        "source_locators": [],
+        "mechanism_is_not_efficacy_proof": true
+      },
+      "overall_evidence_status": "absent"
+    }
+  ],
+
+  "query_plan": {
+    "total_queries_executed": 0,
+    "queries_with_results": 0,
+    "queries_no_results": 0,
+    "coverage_notes": ""
+  }
+}

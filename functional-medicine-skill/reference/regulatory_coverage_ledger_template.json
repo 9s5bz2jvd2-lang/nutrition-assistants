@@ -1,0 +1,56 @@
+{
+  "_schema": "regulatory-coverage-ledger-template-v1.0",
+  "_description": "Machine-readable regulatory coverage ledger schema. One entry per ingredient × jurisdiction × product category.",
+
+  "_allowed_values": {
+    "status": ["permitted", "conditional", "prohibited", "unknown", "not_assessed"],
+    "product_category": ["conventional_food", "food_additive_ingredient", "dietary_supplement_health_product", "medicine", "other"],
+    "global_compliant_eligible": [true, false]
+  },
+
+  "_required_entry_fields": [
+    "ingredient_id",
+    "ingredient_name",
+    "jurisdiction",
+    "product_category",
+    "regulatory_authority",
+    "source_id",
+    "source_url",
+    "document_reference",
+    "document_version_date",
+    "status",
+    "identity_form_assessed",
+    "applicability_limitations",
+    "checked_at"
+  ],
+
+  "formula_metadata": {
+    "formula_id": "",
+    "assessment_date": "",
+    "product_category": "",
+    "target_markets": []
+  },
+
+  "entries": [],
+
+  "coverage_summary": {
+    "total_ingredients": 0,
+    "total_jurisdictions": 0,
+    "total_assessments": 0,
+    "permitted_count": 0,
+    "conditional_count": 0,
+    "prohibited_count": 0,
+    "unknown_count": 0,
+    "not_assessed_count": 0
+  },
+
+  "global_compliant_check": {
+    "all_markets_assessed": false,
+    "all_assessments_resolved": false,
+    "no_unknown_or_not_assessed": false,
+    "product_category_resolved": false,
+    "all_identities_resolved": false,
+    "global_compliant_eligible": false,
+    "blocking_reasons": []
+  }
+}

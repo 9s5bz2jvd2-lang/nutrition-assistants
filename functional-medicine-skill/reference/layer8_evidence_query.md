@@ -1,137 +1,135 @@
-# 第八层：循证医学动态查询与配方迭代
+# Layer 8: Four-Track Evidence Discovery & Regulatory Gate
 
-## 核心理念
+> **Schema version:** `layer8-evidence-v2.0`
+> **Supersedes:** `layer8_evidence_query.md` v1 (baseline commit `9f48aee`)
+> **Purpose:** After draft generation, execute a traceable, non-silent four-track evidence workflow. Each component receives a result or a ledgered failure/blocked row; gaps block only finalization, efficacy promotion, or market claims, never the reviewable draft.
 
-功能医学教材提供的是基础理论框架和经典配方逻辑，但营养科学和临床研究在不断推进。为了让配方建议既有扎实的理论基础，又有最新的循证医学支持，本skill具备动态查询最新人群RCT（随机对照试验）实验结果的能力，用实时证据迭代优化配方。
+---
 
-## 强制规则：每个配方必须附带循证证据表
+## Core Principle
 
-配方生成后，立即用 web_search 查询配方中每个营养素对应的最新循证证据，在配方后以表格形式输出。这不是可选步骤，是配方的固定组成部分。没有证据表的配方视为不完整。
+The textbook corpus provides theoretical framework and classical formulation logic. Nutritional science and clinical research advance continuously. Every draft runs four traceable tracks—human, animal/in-vivo, TCM/material, and regulatory—plus a reminder/safety sidecar. A missing/blocked/zero-result attempt is recorded, not silently omitted.
 
-每个营养素需要查询四类信息，整理成两张表：
+---
 
-### 表1：循证证据表
+## 1. Formula Context and Identity Eligibility
 
-| 营养素 | 剂量 | 人群RCT证据 | 动物实验证据 | 分子通路 |
-|--------|------|------------|-------------|----------|
-| [名称] | [配方中剂量] | [Meta分析/RCT：n=样本量, 干预时间, 关键发现, 来源] 或 "无RCT证据" | [动物模型, 关键发现, 来源] 或 "无动物实验" | [涉及的主要分子通路/信号通路] |
+- Draft creation occurs before research eligibility decisions. Missing medication, pregnancy/lactation, allergy, target market/category, or other intake facts become `UNKNOWN` reminder/review fields.
+- Botanical-specific search requires the identity tuple: common/local name, Latin species, plant part, preparation/extract, marker constituent, dose unit.
+- An unresolved botanical becomes `BLOCKED_IDENTITY`: preserve its draft row; create a query-ledger row with `outcome=blocked`; do not issue falsely specific botanical queries; ask the reviewer for the identity tuple.
+- Missing market/category produces T4 `not_assessed`/`unknown`, not an invented status.
 
-### 表2：各国使用标准与法规参考
+## 2. Four Evidence Tracks
 
-| 营养素 | 配方剂量 | 中国标准 | 美国标准 | 欧盟标准 | 其他 |
-|--------|---------|---------|---------|---------|------|
-| [名称] | [剂量] | [RNI/AI/UL, 来源] | [RDA/UL, 来源] | [EFSA参考值] | [日本/澳新等, 如有] |
+### Track 1: Human Clinical Evidence
+Search verified SR/MA/RCT and human clinical records. For every selected source report locator, population, intervention/specification, dose, duration, outcome, limitations, query, source, and date. Snippets are not evidence; a scoped no-result is not proof of no evidence.
 
-### 查询要求
+### Track 2: Animal/In-vivo Evidence
+For each selected source report species/model, route, animal dose/unit, duration, endpoints, locator, translation limits, and the mandatory warning that animal findings/doses do not establish human efficacy/dose.
 
-人群RCT证据：
-- 优先近5年（2020-2026）的Meta分析和大型RCT
-- 英文搜索为主（PubMed/Cochrane覆盖更全）
-- 如有高质量Meta分析，列出最新一篇即可
-- 如某营养素在目标人群中缺乏RCT证据，如实标注"无RCT证据"
+### Track 3: TCM/Material Evidence
+T1 classical material requires text title, edition/version, and exact entry/page/volume location; T2 official material requires a verifiable pharmacopeial/monograph identity record; T3 modern TCM clinical research is analysed under Track 1 standards. T1/T2 never prove efficacy.
 
-动物实验证据：
-- 有些原料（尤其是功能性植物提取物、新兴营养素）可能只有动物实验数据，必须查
-- 搜索词："[营养素英文名] [疾病英文名] animal study OR murine OR rat OR in vivo"
-- 列出动物模型（如STZ诱导糖尿病大鼠、高脂饮食小鼠等）、关键发现、来源
-- 无动物实验证据的标注"无动物实验"
+### Track 4: Regulatory Evidence
+Record ingredient identity × product category × declared target market using authoritative sources. Status vocabulary: `permitted`, `conditional`, `prohibited`, `unknown`, `not_assessed`. Missing market/category has status `not_assessed`; it blocks only market/clearance claims.
 
-分子通路：
-- 总结该营养素涉及的主要分子通路和信号通路
-- 从教材知识和搜索结果中提取，如：NFκB通路、Nrf2/ARE通路、AMPK通路、PI3K/Akt通路、甲基化循环、电子传递链等
-- 搜索词："[营养素英文名] molecular pathway mechanism [疾病英文名]"
-- 简洁列出通路名称和作用节点，不需要展开细节
+### Reminder/Safety Sidecar (not Track 4)
+Record mechanism level, adverse-effect signals, interaction signals, medication/use-time questions, and red flags. Always set `mechanism_is_not_efficacy_proof=true`; no such signal can become human efficacy or regulatory evidence.
 
-各国使用标准：
-- 搜索中国营养学会RNI/AI/UL、美国RDA/UL（NIH ODS）、欧盟EFSA参考值
-- 搜索词："[营养素英文名] recommended intake OR tolerable upper intake level China OR US OR EFSA"
-- 标注配方剂量与各国UL的关系（如"低于中国UL 50%"、"接近美国UL"等）
-- 如某标准缺失，标注"未查到"
+## 3. Evidence Discovery Query Plan
 
-通用要求：
-- 配方中每个营养素都要查，都要列在表里
-- 不要编造文献和标准数据，查到什么写什么
-- 如证据与教材推荐有差异，在表格下方备注调整建议
+For each formula, produce a query plan record BEFORE executing searches:
 
-## 查询执行流程
+| Field | Description |
+|-------|-------------|
+| `formula_id` | Formula identifier |
+| `search_date` | ISO 8601 date |
+| `tracks_executed` | List of tracks (T1-T4) |
+| `sources_searched` | Per-track list of sources with query strings |
+| `total_queries_executed` | Count |
+| `queries_with_results` | Count |
+| `queries_no_results` | Count |
+| `coverage_notes` | Any source gaps, access limitations, or notes |
 
-### Step 0：配方前文献发现（强制，在确定配方成分之前执行）
+**Staged discovery requirement:**
+1. **Stage 1 (Pre-formula, Step 0):** Indication-level discovery — search broadly for ALL nutrients/supplements with evidence for the target condition, not limited to textbook recommendations.
+2. **Stage 2 (Post-formula):** Per-ingredient search — for each ingredient in the final formula, execute all four tracks.
+3. **Stage 3 (Regulatory):** Per-ingredient × per-jurisdiction regulatory assessment per `regulatory_gate.md`.
 
-配方成分不能仅依赖教材蒸馏文件推荐。在Step 3b阶段，必须先搜索目标适应症领域所有相关营养素的临床证据，发现教材未覆盖的有效成分。
+---
 
-执行方式：
-1. 从用户的疾病/症状/失衡中提取核心医学概念（英文关键词）
-2. 搜索该领域所有营养素/补充剂的RCT和Meta分析，不限于教材推荐清单
-3. 搜索词模板：
-   - "[疾病/症状英文] supplement OR nutrition OR nutraceutical meta-analysis OR systematic review RCT"
-   - "[疾病/症状英文] antioxidant OR anti-aging OR functional medicine clinical trial"
-   - "[疾病/症状英文] natural compound OR phytochemical OR botanical extract RCT"
-4. 从搜索结果中提取所有被证明有效的营养素/植物提取物/功能性成分
-5. 与教材推荐清单对比，标记：
-   - ✅ 教材已有且有文献支持
-   - 🆕 教材未提及但有RCT证据支持（需加入候选清单）
-   - ⚠️ 教材推荐但文献不支持或证据弱（需在配方中标注）
-6. 将合并后的完整候选清单进入Step 3d筛选决策
+## 4. Evidence Status Vocabulary
 
-### Step 1-6：配方后循证验证（原有流程，配方生成后执行）
+| Status | Meaning | Gate Effect |
+|--------|---------|-------------|
+| `supported` | Adequate human clinical evidence found from authoritative sources | Passes evidence gate |
+| `weak` | Some evidence found but of low quality, small sample, or limited applicability | Passes with caveats; must state limitations |
+| `absent` | No human clinical evidence found in searched sources | Does NOT imply safety; blocks efficacy claims |
+| `conflicting` | Evidence found but results are contradictory | Must present both sides; blocks definitive claims |
+| `animal_only` | Only animal evidence available | Human efficacy claim prohibited; translation limits mandatory |
+| `traditional_only` | Only traditional/classical record | Clinical efficacy claim prohibited |
+| `mechanistic_only` | Only mechanistic/in vitro evidence | Clinical efficacy claim prohibited |
 
-1. 从最终配方中提取所有营养素名称和剂量（包括Step 0新发现的成分）
-2. 结合用户的疾病/症状和人群特征，构造搜索词
-3. 对每个营养素执行三轮搜索：
-   - 第一轮（人群RCT）："[营养素英文名] [疾病英文名] meta-analysis OR systematic review OR RCT"
-   - 第二轮（动物实验）："[营养素英文名] [疾病英文名] animal study OR murine OR rat OR in vivo"
-   - 第三轮（分子通路）："[营养素英文名] molecular pathway mechanism [疾病英文名]"
-4. 对每个营养素查询各国使用标准："[营养素英文名] recommended intake upper limit China US EFSA"
-5. 从搜索结果中提取关键信息，汇总成两张表
-6. 如证据与教材推荐有差异，在表格下方备注调整建议
-7. 对Step 0中🆕标记的新发现成分，在证据表中需额外说明"教材未收录，由文献发现加入"
+---
 
-证据等级标注规则：
-- Meta分析/系统综述 → 标注"Meta分析"
-- 大样本RCT（n>200，双盲，安慰剂对照） → 标注"RCT"
-- 小样本RCT（n<200）或单中心 → 标注"小样本RCT"
-- 动物实验 → 标注"动物实验"并写明动物模型
-- 无人群RCT证据 → 如实标注"无RCT证据"，再查动物实验
-- 无任何实验证据 → 如实标注"无实验证据"
+## 5. Evidence × Regulatory Independence
 
-## 查询实例
+The evidence gate and regulatory gate are **independent, parallel gates**:
 
-用户场景：55岁女性，绝经后骨质疏松，维生素D缺乏，询问补钙方案
+- A formula with strong clinical evidence but no regulatory authorization → CANNOT be marketed.
+- A formula with regulatory authorization but no clinical evidence → CANNOT claim efficacy.
+- A formula must pass BOTH gates to be both evidence-supported and market-authorized.
+- Failure of either gate independently blocks the respective claim.
 
-配方生成后，查询执行（每个营养素三轮搜索+标准查询）：
+---
 
-表1：循证证据表
+## 6. Updated Output Tables
 
-| 营养素 | 剂量 | 人群RCT证据 | 动物实验证据 | 分子通路 |
-|--------|------|------------|-------------|----------|
-| 钙+VD | 1000mg+2000IU | Meta分析, n=7637, 3.5年, 能部骨折风险降14% (HR=0.86), Bolland et al, BMJ, 2022 | 去卵巢大鼠模型: 骨量丢失减少, Cao et al, Calcif Tissue Int, 2021 | VD→VDR→靶基因转录; 钙→CaSR→甲状旁腺调节 |
-| 维生素K2 | 180μg | RCT, n=325, 3年, 风骨密度+2.3% (p<0.05), Knapen et al, OSTEOINT, 2023 | 雌激素缺乏小鼠: 骨形成标志物升高, Iwamoto, JBN, 2022 | γ-谷氨酸羧化→骨钙素激活→羟基磷灰石结合 |
-| 镁 | 400mg | 小样本RCT, n=40, 6个月, P1NP+15%, Aydin et al, BTRE, 2024 | 高脂饮食小鼠: 骨微结构改善, Castiglioni, Nutrients, 2022 | TRPM6/7转运→成骨细胞分化; CTR→CaSR |
-| 硼 | 3mg | 无RCT证据 | 厧卵巢大鼠: 骨强度增加, TB+ trabecular, Hunt, J Trace Elem Med Biol, 2020 | 硼→细胞膜稳定性→跨膜信号传导; 间接影响VD代谢 |
-| 维生素C | 500mg | 队列研究, n=1464, 17年, 能部骨折-19% (HR=0.81), Morton, OSTEOINT, 2021 | 坏血病模型豚鼠: 胶原合成减少→骨基质受损 | 羟化酶辅因子→胶原羟脯氨酸合成→骨基质 |
+### Table 1: Four-Track Evidence Matrix
 
-表2：各国使用标准
+| Ingredient | Dose | Track 1: Human Clinical | Track 2: Animal | Track 3: TCM Material | Track 4: Mechanistic/Safety |
+|------------|------|------------------------|-----------------|----------------------|---------------------------|
+| [name] | [dose] | [study_type: details, locator, limitations] | [species/model: findings, locator, translation limits] | [T1: classical record / T2: pharmacopoeia / T3: modern clinical] | [pathways, adverse effects, interactions] |
 
-| 营养素 | 配方剂量 | 中国标准 | 美国标准 | 欧盟标准 |
-|--------|---------|---------|---------|----------|
-| 钙 | 1000mg | AI 800mg, UL 2000mg | RDA 1000mg, UL 2500mg | AI 750mg, UL 2500mg |
-| 维生素D | 2000IU | RNI 400IU, UL 2000IU | RDA 600IU, UL 4000IU | AI 15μg, UL 100μg |
-| 维生素K2 | 180μg | AI 80μg (K1计) | AI 120μg (K1计), UL 未设定 | AI 75μg, UL 未设定 |
-| 镁 | 400mg | RNI 330mg, UL 700mg(补充剂) | RDA 320mg, UL 350mg(补充剂) | AI 300mg, UL 250mg |
-| 硼 | 3mg | 未查到 | 无RDA, 自我GRAS认定 | 无EFSA参考值 |
-| 维生素C | 500mg | RNI 100mg, UL 2000mg | RDA 90mg, UL 2000mg | AI 110mg, UL 500mg(补充剂) |
+### Table 2: Regulatory Coverage Matrix
 
-配方剂量与标准对比备注：
-- 维生素D 2000IU等于中国UL，低于美国UL 4000IU，安全但需监测25(OH)D
-- 镁 400mg低于中国UL 700mg，高于RNI 330mg，属于补充治疗剂量
-- 硼无官方标准，3mg为文献报道的安全范围
+| Ingredient | Dose | Jurisdiction | Category | Authority | Status | Max Level | Source/Doc | Checked | Limitations |
+|------------|------|-------------|----------|-----------|--------|-----------|------------|---------|-------------|
+| [name] | [dose] | [market] | [cat] | [auth] | [status] | [level] | [ref] | [date] | [limits] |
 
-（以上为示例格式，实际查询时用web_search实时获取）
+### Table 3: Search Ledger
 
-## 注意事项
+| Ingredient | Track | Source | Query String | Date | Results | Selected | Notes |
+|------------|-------|--------|-------------|------|---------|----------|-------|
+| [name] | [T1/T2/T3/T4/REG] | [source_id] | [query] | [date] | [count] | [count] | [notes] |
 
-- web_search 每次返回最多10条结果，重要主题需要多轮搜索
-- web_fetch 可以获取具体页面的详细内容，但并非所有学术网站都允许完整访问
-- 优先引用发表在高影响因子期刊（IF>5）的研究
-- 对传统中药或植物提取物的RCT，注意研究方法的严谨性
-- 搜索结果中可能混入非学术内容，需要甄别来源可靠性（优先 .gov/.edu/.org 和知名期刊网站）
+---
+
+## 7. Fail-Closed Finalization Gates (Updated)
+
+| Gate | Condition | Fail-Closed Rule |
+|------|-----------|------------------|
+| (E1) | Formula context and identity fully resolved | Missing/ambiguous context or identity → abort |
+| (E2) | All four evidence tracks executed for every ingredient | Any unexecuted track → abort |
+| (E3) | Human evidence status does not imply efficacy when absent | Text implies efficacy but `evidence_status=absent` → abort |
+| (E4) | Animal/traditional/mechanistic evidence not promoted to clinical proof | Cross-tier promotion detected → abort |
+| (E5) | Regulatory assessment completed for every ingredient × every declared jurisdiction × every category | Any `unknown` or `not_assessed` → blocks "market-ready" claim |
+| (E6) | No fabricated citations, DOIs, trial registrations, or regulatory statuses | Fabrication detected → abort |
+| (E7) | Search ledger recorded for all queries | Missing search record → abort |
+| (E8) | Retains existing two-pass textbook corpus safety contract (Phase A/B) | Phase A/B coverage incomplete → abort |
+
+---
+
+## 8. Retained Baseline Elements
+
+The following baseline elements are RETAINED and remain mandatory:
+- Step 0 (pre-formula indication-level literature discovery)
+- Step 1-6 formula design workflow
+- Two-pass corpus retrieval contract (Phase A targeted + Phase B sweep)
+- Coverage ledger with SHA-256 verification
+- Finalization gates (A-D) from `formula_full_scan_contract.md`
+- All safety red lines from `safety_red_lines.md`
+- Special population safety gates
+- Anti-hallucination citation rules
+
+This document ADDS four evidence tracks, a regulatory gate, and a search ledger ON TOP of the existing contract.

@@ -1,0 +1,51 @@
+{
+  "case_id": "anonymous-adult-female-anxiety-rhythm-v0.1",
+  "known": {
+    "age": 30,
+    "sex": "female",
+    "bmi": 21,
+    "concerns": [
+      "anxiety/depression",
+      "late nights",
+      "frequent takeaway food"
+    ],
+    "liver_kidney": "reported normal"
+  },
+  "unknown": [
+    "medications",
+    "psychiatric treatment",
+    "pregnancy_lactation",
+    "allergy",
+    "bipolar_mania",
+    "self_harm_suicide",
+    "bleeding",
+    "thyroid",
+    "target_market",
+    "product_category"
+  ],
+  "components": [
+    "vitamin D3",
+    "B complex",
+    "vitamin C",
+    "EPA/DHA",
+    "magnesium glycinate",
+    "oral lavender oil",
+    "ashwagandha",
+    "rhodiola",
+    "saffron",
+    "passionflower"
+  ],
+  "required_invariants": {
+    "draft_generated": true,
+    "two_column_output": true,
+    "tracks": [
+      "T1_human",
+      "T2_animal",
+      "T3_tcm_material",
+      "T4_regulatory"
+    ],
+    "mechanism_is_not_efficacy_proof": true,
+    "unknowns_do_not_suppress_draft": true,
+    "human_finalization_required": true
+  }
+}

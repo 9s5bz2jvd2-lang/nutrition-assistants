@@ -1,0 +1,120 @@
+{
+  "_schema": "intake-audit-ledger-v2.0",
+  "_supersedes": "intake-audit-ledger-v1.0",
+  "_description": "Privacy-minimized, session-scoped audit ledger. Records provenance, triage, constraints, reminders, personalized selection stage, and decisions WITHOUT personal identifiers.",
+
+  "_allowed_values": {
+    "triage_status": ["incomplete_draft_needs_human_input", "draft_with_urgent_safety_flag", "draft_with_mandatory_human_review", "draft_with_regulatory_gap", "draft_for_professional_review", "human_reviewed_finalization"],
+    "provenance": ["required", "optional", "verified", "user_reported", "unknown", "not_applicable"],
+    "constraint_action": ["excluded", "flagged_professional_review", "dose_adjusted", "soft_accommodated", "informational_only"],
+    "reminder_category": ["use_followup", "information_gap", "safety_interaction", "evidence", "regulatory_product", "human_review"],
+    "reminder_severity": ["info", "suggestion", "important", "critical"],
+    "reminder_status": ["open", "acknowledged", "deferred", "resolved_by_human"],
+    "personalized_selection_stage": [1, 2, 3, 4, 5, 6, 7],
+    "human_decision": ["pending", "accept", "modify", "defer", "specialist_referral"]
+  },
+
+  "_required_audit_fields": [
+    "request_id",
+    "triage_status",
+    "intake_provenance_summary",
+    "constraints_applied",
+    "excluded_ingredients",
+    "reminder_summary",
+    "personalized_selection_stage",
+    "privacy_compliant"
+  ],
+
+  "request_id": "",
+  "audit_timestamp": "",
+  "privacy_compliant": true,
+  "data_retention": "session_only",
+
+  "intake_provenance_summary": {
+    "total_fields": 0,
+    "required_present": 0,
+    "user_reported_count": 0,
+    "verified_count": 0,
+    "unknown_count": 0,
+    "assumed_count": 0,
+    "optional_provided": 0,
+    "fields": []
+  },
+
+  "triage_status": "",
+  "triage_reasons": [],
+  "red_flags_detected": [],
+  "high_risk_identifiers": [],
+  "auto_finalization_blocked": true,
+
+  "constraints_applied": [
+    {
+      "constraint_id": "",
+      "category": "",
+      "source_field": "",
+      "specific_constraint": "",
+      "action": "",
+      "ingredients_affected": []
+    }
+  ],
+
+  "excluded_ingredients": [
+    {
+      "ingredient_name": "",
+      "exclusion_reason": "",
+      "evidence_status": "",
+      "alternative_offered": false,
+      "alternative_ingredient": ""
+    }
+  ],
+
+  "evidence_tier_assignments": [
+    {
+      "ingredient_name": "",
+      "overall_evidence_status": "",
+      "human_dose_derivation_source": ""
+    }
+  ],
+
+  "regulatory_coverage_summary": {
+    "target_markets": [],
+    "all_markets_fully_assessed": false,
+    "uncovered_markets": [],
+    "blocking_reasons": []
+  },
+
+  "reminder_summary": {
+    "total_reminders": 0,
+    "by_category": {
+      "use_followup": 0,
+      "information_gap": 0,
+      "safety_interaction": 0,
+      "evidence": 0,
+      "regulatory_product": 0,
+      "human_review": 0
+    },
+    "by_severity": {
+      "info": 0,
+      "suggestion": 0,
+      "important": 0,
+      "critical": 0
+    },
+    "open_count": 0,
+    "no_external_notification_claim": true
+  },
+
+  "professional_review_checklist": {
+    "present": false,
+    "items_checked": 0,
+    "items_total": 12
+  },
+
+  "personalized_selection_stage": 0,
+  "personalized_selection_status": "",
+  "human_decision_recorded": false,
+  "human_decision": "pending",
+  "handoff_version": "",
+
+  "draft_status": "",
+  "follow_up_questions_count": 0
+}
