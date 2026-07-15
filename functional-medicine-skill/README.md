@@ -1,6 +1,6 @@
 # 功能医学综合 Skill
 
-> **供灵台加载与调用**的功能医学 Skill：把知识路由、配方草案与证据记录拆成可审阅的步骤。它不是普通网页、独立应用或脱离灵台环境的通用 AI 服务；也**不是诊断、处方、治疗替代、疗效保证或法规放行工具**。
+> **可移植、可供不同 agent 加载与调用**的功能医学 Skill：把知识路由、配方草案与证据记录拆成可审阅的步骤。LingTai 是一种接入方式，不是唯一运行环境；任何能加载 `SKILL.md` 并引用配套 `reference/`、`templates/` 与验证材料的 agent 都可以按自己的 Skill 机制使用它。它不是普通网页或独立应用；也**不是诊断、处方、治疗替代、疗效保证或法规放行工具**。
 
 ## 它解决什么问题？
 
@@ -62,17 +62,18 @@
 - 高风险人群、药物相互作用、红旗症状与信息缺口必须清楚呈现给合格的人类专业人员；
 - 任何国家/地区的法规结论必须回到该市场、产品类别、原料身份和可追溯来源逐项判断。
 
-## 供灵台加载与调用
+## 在不同 agent 中使用
 
-这是一个可被灵台加载的 Skill。将此目录安装到支持自定义 Skill 的灵台：
+这是一个可移植的 Skill 目录。将整个 `functional-medicine-skill/` 连同其 `SKILL.md`、`ROUTING.yaml`、`reference/`、`templates/`、`assets/`、`tests/` 与 `validator/` 保持相对路径一起交给目标 agent 的 Skill 安装/加载机制。
 
 ```bash
 git clone https://github.com/9s5bz2jvd2-lang/nutrition-assistants.git
-cp -R nutrition-assistants/functional-medicine-skill \
-  <agent-workdir>/.library/custom/functional-medicine-skill
+# 将 nutrition-assistants/functional-medicine-skill/ 复制或安装到目标 agent 的 Skill 目录
 ```
 
-随后刷新该 agent 的 Skill catalog，再由 agent 按 `SKILL.md` 的触发条件加载。不同 agent 的权限、知识库、检索工具和人审流程不同；安装本 Skill 不会绕过任何系统权限、医疗安全或法规审查边界。
+- **LingTai 示例：** 可放到 `<agent-workdir>/.library/custom/functional-medicine-skill`，再刷新其 Skill catalog；
+- **其他 agent：** 使用各自的 Skill/提示词/文件加载机制读取 `SKILL.md`，并按它的按需引用路径加载相关材料；
+- **共同要求：** 不同 agent 的权限、知识库、检索工具和人审流程不同。安装本 Skill 不会绕过任何系统权限、医疗安全或法规审查边界。
 
 ## 目录导览
 
