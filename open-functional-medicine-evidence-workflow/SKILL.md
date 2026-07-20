@@ -8,7 +8,7 @@ tags:
   - functional-medicine
   - functional-medicine-matrix
   - personalized-plan
-last_changed_at: "2026-07-20T09:41:00-07:00"
+last_changed_at: "2026-07-20T15:47:00-07:00"
 ---
 
 # Open Functional Medicine Workflow
@@ -158,7 +158,3 @@ python3 scripts/test_functional_medicine_matrix.py
 ```
 
 The regression suite runs a synthetic valid fixture, proves the default invocation emits a complete Markdown text matrix with no SVG, proves the optional `--include-svg` invocation still produces deterministic SVG/Markdown/manifest output with the exact 3 ATM + 7 systems + central MES + 5 lifestyle structure, verifies manifest/hash accounting in both modes, checks markup escaping, and confirms malformed/unsafe input fails without overwriting prior output. Also verify the intrinsic Skill validator. Structural tests do not establish clinical validity.
-
-## Candidate status
-
-This is an isolated, uninstalled candidate. It is not clinically validated, not a certified PHI platform, not an official or proprietary branded instrument and not a replacement for licensed professional judgment.

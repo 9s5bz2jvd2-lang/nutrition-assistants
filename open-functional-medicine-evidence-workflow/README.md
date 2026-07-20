@@ -94,7 +94,3 @@ Human-facing artifacts remove secrets, private paths and prompt internals but re
 - `assets/*template*` — direct-question, intake, case, matrix, formula and review templates
 - `scripts/generate_functional_medicine_matrix.py` — local JSON+Markdown matrix generation, with optional SVG
 - `scripts/validate_candidate.py` — structural/safety validator
-
-## Current status
-
-This directory is the parent-reviewed English publication package for the Skill. Publication does not mean that it is installed, clinically validated, or approved for autonomous clinical use. The package remains a governed evidence-and-draft workflow whose outputs require the review stated in each route and formula-class contract.
