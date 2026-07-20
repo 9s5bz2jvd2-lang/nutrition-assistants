@@ -47,7 +47,7 @@ Individual diagnostic-support mode may proceed only when all conditions hold:
   included.
 - **De-identification:** direct identifiers are removed before entry.
 - **Approved handling:** the user is responsible for an appropriately governed
-  environment, access control, retention, and deletion. This candidate package
+  environment, access control, retention, and deletion. This Skill package
   is not itself a certified clinical data system.
 - **Human sign-off:** no diagnostic-support draft is released as a clinical
   conclusion until the responsible licensed reviewer explicitly signs off.
@@ -74,7 +74,7 @@ minimum-necessary de-identified input.
 | An emergency service | Acute red flags stop routine reasoning immediately. |
 | A validated clinical instrument | Six-Eye and the workflow itself have not been clinically validated. |
 | A replacement for standard care | Guideline-recognized evaluation and the responsible clinician remain authoritative. |
-| A certified PHI platform | Identified PHI is outside this candidate's ordinary file workflow. |
+| A certified PHI platform | Identified PHI is outside this Skill's ordinary file workflow. |
 | A proprietary body-system taxonomy | It does not assign branded domain or matrix codes. |
 
 ---

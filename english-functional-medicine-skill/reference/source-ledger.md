@@ -233,7 +233,7 @@ Each entry uses the following fields:
 
 ## Notes
 
-- All sources were retrieved on 2026-07-17 by the candidate author; the 12 listed URLs were access-rechecked successfully on 2026-07-20 before this public release.
+- All sources were retrieved on 2026-07-17 by the Skill author; the 12 listed URLs were access-rechecked successfully on 2026-07-20 before this public release.
 - Government (.gov) sources are generally in the US public domain but
   may contain third-party elements with separate rights. Each is
   classified as `US_GOV_PUBLIC_DOMAIN_OR_CHECK_NOTICE` to flag that

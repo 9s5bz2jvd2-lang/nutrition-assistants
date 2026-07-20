@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Validate the integrated functional-medicine evidence-workflow candidate package.
+Validate the integrated functional-medicine evidence Skill package.
 
 Usage:
-    python3 validate_candidate.py <candidate_root>
+    python3 validate_skill.py <candidate_root>
 
 Exit code 0 = all checks pass; exit code 1 = one or more failures.
 """
@@ -59,7 +59,7 @@ REQUIRED_ASSET_FILES = [
 ]
 
 REQUIRED_SCRIPTS = [
-    "scripts/validate_candidate.py",
+    "scripts/validate_skill.py",
     "scripts/similarity_screen.py",
     "scripts/generate_functional_medicine_matrix.py",
     "scripts/test_functional_medicine_matrix.py",
@@ -109,7 +109,7 @@ REQUIRED_SAFETY_PHRASES = [
 ]
 
 REQUIRED_FRONTMATTER_FIELDS = {
-    "name": "open-functional-medicine-evidence-workflow",
+    "name": "english-functional-medicine-skill",
     "version": "0.4.0",
 }
 
@@ -886,7 +886,7 @@ def main():
         print(f"Error: '{root}' is not a directory")
         sys.exit(2)
 
-    print(f"Validating candidate at: {os.path.abspath(root)}")
+    print(f"Validating Skill at: {os.path.abspath(root)}")
     print("=" * 60)
 
     check_required_files(root)

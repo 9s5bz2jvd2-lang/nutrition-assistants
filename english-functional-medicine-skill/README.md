@@ -1,6 +1,6 @@
-# Open Functional Medicine Workflow — v0.4.0 candidate
+# English Functional Medicine Skill
 
-A non-web, conversation-native Skill candidate for two different needs:
+A non-web, conversation-native Skill for two different needs:
 
 1. **ordinary nutrition/health evidence questions** — answer directly from Skill knowledge plus freshly verified guidance, systematic reviews and RCTs;
 2. **authorized individual case analysis** — organize messy case materials, screen red flags, generate a source-traceable functional medicine matrix and produce gated food, supplement, medical-nutrition or TCM plan drafts.
@@ -33,7 +33,7 @@ When the user supplies symptoms, labs, diagnoses, diet records, medications or a
 
 ## Real local artifacts
 
-The candidate includes a dependency-free generator:
+The Skill includes a dependency-free generator:
 
 ```bash
 python3 scripts/generate_functional_medicine_matrix.py INPUT.json OUTPUT_DIR
@@ -61,7 +61,7 @@ When a material gate is missing, the output remains an unpopulated scaffold. The
 
 ## Model assistance
 
-Model assistance is optional and untrusted. The candidate adds:
+Model assistance is optional and untrusted. The Skill adds:
 
 - minimum-necessary, de-identified structured projection;
 - untrusted-data delimiting;
@@ -93,4 +93,4 @@ Human-facing artifacts remove secrets, private paths and prompt internals but re
 - `reference/output-contract.md` — output types and statuses
 - `assets/*template*` — direct-question, intake, case, matrix, formula and review templates
 - `scripts/generate_functional_medicine_matrix.py` — local JSON+Markdown matrix generation, with optional SVG
-- `scripts/validate_candidate.py` — structural/safety validator
+- `scripts/validate_skill.py` — structural/safety validator

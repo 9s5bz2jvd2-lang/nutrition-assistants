@@ -1,5 +1,5 @@
 ---
-name: open-functional-medicine-evidence-workflow
+name: english-functional-medicine-skill
 description: |
   Use for general nutrition or functional-medicine evidence questions and authorized, de-identified case requests for a matrix, diagnostic-support draft, food/lifestyle recipe, supplement, medical-nutrition plan, or TCM formula. Route general questions to freshly verified guidance, reviews, and RCTs; use case triage and class-specific safety gates only for an actual case or explicit personalization. Text is default and SVG is opt-in. Never guess ingredients or doses or replace licensed judgment.
 version: 0.4.0
@@ -8,12 +8,12 @@ tags:
   - functional-medicine
   - functional-medicine-matrix
   - personalized-plan
-last_changed_at: "2026-07-20T15:47:00-07:00"
+last_changed_at: "2026-07-20T16:03:00-07:00"
 ---
 
-# Open Functional Medicine Workflow
+# English Functional Medicine Skill
 
-This candidate Skill has two routes and one rule: **answer the actual need without making a simple question carry a case workflow**.
+This Skill has two routes and one rule: **answer the actual need without making a simple question carry a case workflow**.
 
 ## Route first
 
@@ -64,7 +64,7 @@ Only when the user provides case records or explicitly asks for personalized ana
 | evidence card/exploration | `assets/evidence-card-template.md`, `assets/evidence-exploration-template.md` |
 | synthetic/hypothetical review | `assets/hypothetical-case-template.md`, `assets/review-output-template.md` |
 | release status | `assets/release-status-template.json`, `reference/output-contract.md` |
-| candidate integrity/similarity screen | `scripts/validate_candidate.py`, `scripts/similarity_screen.py` |
+| Skill integrity/similarity screen | `scripts/validate_skill.py`, `scripts/similarity_screen.py` |
 | functional-medicine-matrix regression | `scripts/test_functional_medicine_matrix.py` |
 | source/rights provenance | `reference/source-ledger.md`, `reference/private-study-provenance.md` |
 
@@ -150,10 +150,10 @@ Follow `reference/output-contract.md` and the class-specific template. Preserve 
 
 ## Validation
 
-Before calling this candidate complete:
+Before releasing this Skill:
 
 ```bash
-python3 scripts/validate_candidate.py .
+python3 scripts/validate_skill.py .
 python3 scripts/test_functional_medicine_matrix.py
 ```
 

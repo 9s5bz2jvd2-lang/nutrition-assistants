@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Similarity screen: compare the integrated candidate Markdown files against the
+Similarity screen: compare the integrated Skill Markdown files against the
 old functional-medicine corpus (33 chapter .txt files + 7 distilled .md files).
 
 Method:
@@ -55,7 +55,7 @@ def main():
         "knowledge/distilled_*.md",
     ])
 
-    print(f"Candidate files: {len(new_files)}")
+    print(f"Skill files: {len(new_files)}")
     print(f"Old corpus files: {len(old_files)}")
 
     old_sets = {}
