@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "artifact_class": "food_lifestyle",
+  "release_state": "blocked_for_safety_or_missing_core_input",
+  "allowed_release_states_by_class": {
+    "food_lifestyle": [
+      "ready_for_low_risk_use",
+      "professional_review_recommended",
+      "blocked_for_safety_or_missing_core_input"
+    ],
+    "supplement": [
+      "incomplete_scaffold_needs_core_input",
+      "draft_for_qualified_professional_review",
+      "draft_with_mandatory_specialist_review",
+      "rejected_for_safety",
+      "human_review_recorded"
+    ],
+    "medical_nutrition": [
+      "incomplete_scaffold_needs_clinical_data",
+      "draft_for_responsible_clinical_team",
+      "rejected_or_escalated",
+      "human_clinical_authorization_recorded"
+    ],
+    "tcm_formula": [
+      "incomplete_scaffold_needs_syndrome_or_identity",
+      "draft_for_licensed_tcm_practitioner_review",
+      "draft_with_mandatory_cross_specialty_review",
+      "rejected_for_safety",
+      "human_practitioner_review_recorded"
+    ]
+  },
+  "model_output_validation": {
+    "strict_parse": "pass|fail|not_applicable",
+    "schema_and_allowlist": "pass|fail|not_applicable",
+    "provenance_and_evidence": "pass|fail|not_applicable",
+    "class_gate": "pass|fail|not_applicable",
+    "safety_and_interaction": "pass|fail|not_applicable",
+    "renderer_and_artifact_integrity": "pass|fail|not_applicable",
+    "final_status": "valid|invalid|incomplete"
+  },
+  "ai_assistance_disclosure": "AI-assisted draft; source, class-gate and reviewer status remain visible.",
+  "permitted_use": [
+    "review incomplete scaffold"
+  ],
+  "prohibited_use": [
+    "treat as diagnosis",
+    "replace medical care",
+    "claim regulatory clearance",
+    "execute a high-risk draft before its required human review"
+  ],
+  "blockers": [
+    {
+      "field": "allergies",
+      "status": "unknown",
+      "effect": "do not finalize recommendations containing uncertain allergens",
+      "owner": "user_or_qualified_reviewer"
+    }
+  ],
+  "required_reviewer": {
+    "competence": "appropriate to class, risk and jurisdiction",
+    "local_authority_status": "not_recorded"
+  },
+  "human_review": {
+    "status": "not_reviewed",
+    "decision": "none",
+    "reviewer_role": "not_recorded",
+    "changes_and_rationale": []
+  }
+}

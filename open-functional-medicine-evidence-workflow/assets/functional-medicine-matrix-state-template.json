@@ -1,0 +1,126 @@
+{
+  "schema_version": "2.0",
+  "language": "en",
+  "case_key": "DEMO-001",
+  "generated_at": "2026-07-20",
+  "items": [
+    {
+      "id": "I01",
+      "text": "Example: recent, still unverified change in sleep",
+      "provenance": "user_reported",
+      "period": "recent",
+      "domains": ["assimilation"],
+      "mes": false,
+      "story_role": "mediator",
+      "certainty": "reported",
+      "contradictions": []
+    },
+    {
+      "id": "I02",
+      "text": "Example: recent mood lability, more pronounced after stress events",
+      "provenance": "user_reported",
+      "period": "recent",
+      "domains": [],
+      "mes": true,
+      "story_role": "trigger",
+      "certainty": "reported",
+      "contradictions": ["May compound with insufficient sleep"]
+    },
+    {
+      "id": "I03",
+      "text": "Example: long standing high fat, high sugar dietary preference",
+      "provenance": "user_reported",
+      "period": "chronic",
+      "domains": ["assimilation", "energy"],
+      "mes": false,
+      "story_role": "antecedent",
+      "certainty": "possible",
+      "contradictions": []
+    },
+    {
+      "id": "I04",
+      "text": "Example: reduced exercise tolerance, slower recovery after activity",
+      "provenance": "user_reported",
+      "period": "recent",
+      "domains": ["energy", "transport"],
+      "mes": false,
+      "story_role": "unclassified",
+      "certainty": "reported",
+      "contradictions": []
+    },
+    {
+      "id": "I05",
+      "text": "Example: repeated slow skin or mucosal repair",
+      "provenance": "user_reported",
+      "period": "chronic",
+      "domains": ["defense_and_repair"],
+      "mes": false,
+      "story_role": "unclassified",
+      "certainty": "reported",
+      "contradictions": []
+    },
+    {
+      "id": "I06",
+      "text": "Example: neck, shoulder, and back stiffness after prolonged sitting",
+      "provenance": "user_reported",
+      "period": "chronic",
+      "domains": ["structural_integrity"],
+      "mes": false,
+      "story_role": "unclassified",
+      "certainty": "reported",
+      "contradictions": []
+    },
+    {
+      "id": "I07",
+      "text": "Example: menstrual cycle fluctuations correlated with stress rhythm",
+      "provenance": "user_reported",
+      "period": "recent",
+      "domains": ["communication"],
+      "mes": false,
+      "story_role": "mediator",
+      "certainty": "possible",
+      "contradictions": []
+    },
+    {
+      "id": "I08",
+      "text": "Example: occasional constipation, irregular bowel rhythm",
+      "provenance": "user_reported",
+      "period": "recent",
+      "domains": ["biotransformation_and_elimination"],
+      "mes": false,
+      "story_role": "unclassified",
+      "certainty": "reported",
+      "contradictions": []
+    }
+  ],
+  "lifestyle": {
+    "sleep": ["I01"],
+    "movement": ["I04"],
+    "nutrition": ["I03"],
+    "stress": ["I02"],
+    "relationships": []
+  },
+  "links": [
+    {
+      "id": "L01",
+      "source_item_ids": ["I02", "I03"],
+      "domains": ["assimilation", "energy"],
+      "relation_type": "shared_context",
+      "provenance": "professional_interpretation",
+      "evidence_refs": ["self-report"],
+      "uncertainty": "Needs chronology and competing explanations",
+      "contradictions": [],
+      "reviewer_status": "unreviewed"
+    }
+  ],
+  "flags": {
+    "red_flags": [],
+    "safety_concerns": [],
+    "missing_data": ["sleep duration and chronology"],
+    "uncertainty_notes": ["organizational example only"]
+  },
+  "review": {
+    "status": "draft",
+    "reviewer_role": "not_recorded"
+  }
+}
